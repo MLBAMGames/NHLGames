@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿Imports MetroFramework.Controls
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class NHLGames
     Inherits System.Windows.Forms.Form
 
@@ -28,7 +30,7 @@ Partial Class NHLGames
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NHLGames))
         Me.gridGames = New System.Windows.Forms.DataGridView()
-        Me.dtDate = New System.Windows.Forms.DateTimePicker()
+        Me.dtDate = New MetroFramework.Controls.MetroDateTime()
         Me.btnHosts = New System.Windows.Forms.Button()
         Me.btnWatch = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
@@ -127,9 +129,10 @@ Partial Class NHLGames
         Me.dtDate.CustomFormat = "yyyy-MM-dd"
         Me.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtDate.Location = New System.Drawing.Point(5, 12)
+        Me.dtDate.MinimumSize = New System.Drawing.Size(0, 29)
         Me.dtDate.Name = "dtDate"
         Me.dtDate.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.dtDate.Size = New System.Drawing.Size(96, 20)
+        Me.dtDate.Size = New System.Drawing.Size(96, 29)
         Me.dtDate.TabIndex = 2
         '
         'btnHosts
@@ -476,7 +479,7 @@ Partial Class NHLGames
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents dtDate As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtDate As MetroDateTime
     Friend WithEvents btnHosts As System.Windows.Forms.Button
     Friend WithEvents btnWatch As System.Windows.Forms.Button
     Friend WithEvents btnRefresh As System.Windows.Forms.Button
@@ -497,8 +500,6 @@ Partial Class NHLGames
     Friend WithEvents lblVersion As Label
     Friend WithEvents btnURL As Button
     Friend WithEvents gbServer As GroupBox
-    Friend WithEvents rbVOD As RadioButton
-    Friend WithEvents rbLive As RadioButton
     Friend WithEvents SplitContainer As SplitContainer
     Friend WithEvents RichTextBox As RichTextBox
     Friend WithEvents pnlSettings As Panel
@@ -507,4 +508,6 @@ Partial Class NHLGames
     Friend WithEvents lnkMPCDownload As LinkLabel
     Friend WithEvents MPCTooltip As ToolTip
     Friend WithEvents VLCTooltip As ToolTip
+    Friend WithEvents rbVOD As RadioButton
+    Friend WithEvents rbLive As RadioButton
 End Class

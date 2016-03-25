@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0D71CCEF-DD58-43E3-8794-39203DD6999C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>NHLGames.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>NHLGames</RootNamespace>
     <AssemblyName>NHLGames</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -61,7 +61,22 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>Logos\nhl_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.3.5.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.3.5.0\lib\net45\MetroFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.3.5.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.3.5.0\lib\net45\MetroFramework.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.3.5.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.3.5.0\lib\net45\MetroFramework.Fonts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -92,17 +107,31 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Controls\BorderPanel.vb" />
+    <Compile Include="Controls\GameControl.Designer.vb">
+      <DependentUpon>GameControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GameControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchGameControl.Designer.vb">
+      <DependentUpon>WatchGameControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WatchGameControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NHLGamesMetro.Designer.vb">
+      <DependentUpon>NHLGamesMetro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NHLGamesMetro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Objects\GameManager.vb" />
+    <Compile Include="Utilities\ApplicationSettings.vb" />
+    <Compile Include="Utilities\DateHelper.vb" />
     <Compile Include="Utilities\Downloader.vb" />
     <Compile Include="Objects\Game.vb" />
     <Compile Include="Objects\GameStream.vb" />
-    <Compile Include="URL.Designer.vb">
-      <DependentUpon>URL.vb</DependentUpon>
-    </Compile>
-    <Compile Include="URL.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Games.vb" />
     <Compile Include="NHLGames.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -128,11 +157,24 @@
     <Compile Include="Utilities\FileAccess.vb" />
     <Compile Include="Utilities\HostsFile.vb" />
     <Compile Include="Utilities\ImageFetcher.vb" />
+    <Compile Include="Utilities\Serialization.vb" />
     <Compile Include="Utilities\TextboxConsoleOutputRediect.vb" />
+    <Compile Include="WatchGameForm.Designer.vb">
+      <DependentUpon>WatchGameForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WatchGameForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="URL.resx">
-      <DependentUpon>URL.vb</DependentUpon>
+    <EmbeddedResource Include="Controls\GameControl.resx">
+      <DependentUpon>GameControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WatchGameControl.resx">
+      <DependentUpon>WatchGameControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NHLGamesMetro.resx">
+      <DependentUpon>NHLGamesMetro.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -142,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NHLGames.resx">
       <DependentUpon>NHLGames.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatchGameForm.resx">
+      <DependentUpon>WatchGameForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -209,8 +254,11 @@
     <EmbeddedResource Include="Logos\WinnipegJets.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Logos\nhl-icon.png" />
-    <Content Include="Logos\nhl_icon.ico" />
+    <EmbeddedResource Include="Logos\nhl-icon.png" />
+    <None Include="DeveloperReadme.txt" />
+    <Content Include="Logos\nhl_icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -53,9 +53,9 @@ Public Class NHLGames
 
             Dim JSONSchedule As JObject = Downloader.DownloadJSONSchedule(dateTime)
             AvailableGames = Downloader.DownloadAvailableGames()
-            Games = Game.GetGames(JSONSchedule, AvailableGames)
+            GameManager.RefreshGames(dateTime, JSONSchedule, AvailableGames)
 
-            For Each game As Game In Games
+            For Each game As Game In GameManager.GamesList
 
                 'Dim newRow As DataGridViewRow = gridGames.Rows(0).Clone()
 
@@ -83,8 +83,8 @@ Public Class NHLGames
                                       game.Id.ToString(),
                                       game.Date.ToLocalTime().ToString("h:mm tt"),
                                       ImageFetcher.GetEmbeddedImage(game.AwayTeamLogo),
-                                      ImageFetcher.GetEmbeddedImage(game.HomeTeamLogo),
-                                      game.AwayTeam,
+                                        ImageFetcher.GetEmbeddedImage(game.HomeTeamLogo),
+                game.AwayTeam,
                                       game.AwayAbbrev,
                                       game.HomeTeam,
                                       game.HomeAbbrev,
@@ -210,8 +210,7 @@ Public Class NHLGames
 
     Private Sub btnHosts_Click(sender As Object, e As EventArgs) Handles btnHosts.Click
 
-        'HostsFile.AddEntry("82.196.2.27 mf.svc.nhl.com")
-        HostsFile.AddEntry("146.185.131.14 mf.svc.nhl.com")
+        HostsFile.AddEntry("82.196.2.27", "mf.svc.nhl.com")
 
     End Sub
 
@@ -353,8 +352,8 @@ Public Class NHLGames
         '    strUrl = gridGames.SelectedRows(0).Cells("french" & strServer).Value.Replace("CDN", strCDN)
         'End If
 
-        Dim dialogURL As New dlURL(strUrl)
-        dialogURL.ShowDialog()
+        'Dim dialogURL As New dlURL(strUrl)
+        'dialogURL.ShowDialog()
     End Sub
 
     Private Sub NHLGames_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd

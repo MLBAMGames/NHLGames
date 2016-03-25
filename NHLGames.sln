@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NHLGames", "WindowsApplication1\NHLGames.vbproj", "{0D71CCEF-DD58-43E3-8794-39203DD6999C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{80D42D09-D072-4617-9EC2-A09CE2BDC3CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,8 @@ Global
 		{0D71CCEF-DD58-43E3-8794-39203DD6999C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D71CCEF-DD58-43E3-8794-39203DD6999C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D71CCEF-DD58-43E3-8794-39203DD6999C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D42D09-D072-4617-9EC2-A09CE2BDC3CA}.Debug|Any CPU.ActiveCfg = Debug
+		{80D42D09-D072-4617-9EC2-A09CE2BDC3CA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
