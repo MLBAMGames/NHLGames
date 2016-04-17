@@ -78,7 +78,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error: Exception logging the Connect status: {e.Message}.");
+                Console.WriteLine($"Exception logging the Connect status: {e.Message}.");
             }
 
 
@@ -103,7 +103,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
                         return;
                     }
 
-                    Console.WriteLine("Spotify: Failed to connect. Attempting to reconnect in 10 seconds.");
+                    Console.WriteLine("Spotify: Failed to connect to Spotify. Attempting to reconnect in 10 seconds.");
                 }
                 catch (Exception e)
                 {
@@ -119,28 +119,28 @@ namespace NHLGames.AdDetection.Modules.Spotify
         {
             if (!SpotifyLocalAPI.IsSpotifyRunning())
             {
-                Console.WriteLine("Spotify: Process not running. Trying to start it...");
+                Console.WriteLine("Spotify: Spotify isn't running. Trying to start it...");
                 try
                 {
                     SpotifyLocalAPI.RunSpotify();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error: Starting Spotify: {e.Message}");
+                    Console.WriteLine($"Error: Could not start Spotify: {e.Message}");
                     return false;
                 }
             }
 
             if (!SpotifyLocalAPI.IsSpotifyWebHelperRunning())
             {
-                Console.WriteLine("Spotify: Web Helper isn't running. Trying to start it...");
+                Console.WriteLine("Spotify: Spotify Web Helper isn't running. Trying to start it...");
                 try
                 {
                     SpotifyLocalAPI.RunSpotifyWebHelper();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error: Starting Spotify Web Helper: {e.Message}");
+                    Console.WriteLine($"Error: Could not start Spotify Web Helper: {e.Message}");
                     return false;
                 }
             }
