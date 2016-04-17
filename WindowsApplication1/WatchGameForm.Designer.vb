@@ -29,10 +29,10 @@ Partial Class WatchGameForm
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.pnlBasic = New MetroFramework.Controls.MetroPanel()
         Me.MetroPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.rbHome = New MetroFramework.Controls.MetroRadioButton()
+        Me.rbAway = New MetroFramework.Controls.MetroRadioButton()
         Me.rbFrench = New MetroFramework.Controls.MetroRadioButton()
         Me.rbNational = New MetroFramework.Controls.MetroRadioButton()
-        Me.rbAway = New MetroFramework.Controls.MetroRadioButton()
-        Me.rbHome = New MetroFramework.Controls.MetroRadioButton()
         Me.MetroPanel3 = New MetroFramework.Controls.MetroPanel()
         Me.rbVOD = New MetroFramework.Controls.MetroRadioButton()
         Me.rbLive = New MetroFramework.Controls.MetroRadioButton()
@@ -131,6 +131,28 @@ Partial Class WatchGameForm
         Me.MetroPanel4.Size = New System.Drawing.Size(395, 25)
         Me.MetroPanel4.TabIndex = 7
         '
+        'rbHome
+        '
+        Me.rbHome.AutoSize = True
+        Me.rbHome.Checked = True
+        Me.rbHome.Location = New System.Drawing.Point(3, 3)
+        Me.rbHome.Name = "rbHome"
+        Me.rbHome.Size = New System.Drawing.Size(56, 15)
+        Me.rbHome.TabIndex = 11
+        Me.rbHome.TabStop = True
+        Me.rbHome.Text = "Home"
+        Me.rbHome.UseSelectable = True
+        '
+        'rbAway
+        '
+        Me.rbAway.AutoSize = True
+        Me.rbAway.Location = New System.Drawing.Point(65, 3)
+        Me.rbAway.Name = "rbAway"
+        Me.rbAway.Size = New System.Drawing.Size(52, 15)
+        Me.rbAway.TabIndex = 12
+        Me.rbAway.Text = "Away"
+        Me.rbAway.UseSelectable = True
+        '
         'rbFrench
         '
         Me.rbFrench.AutoSize = True
@@ -150,28 +172,6 @@ Partial Class WatchGameForm
         Me.rbNational.TabIndex = 13
         Me.rbNational.Text = "National"
         Me.rbNational.UseSelectable = True
-        '
-        'rbAway
-        '
-        Me.rbAway.AutoSize = True
-        Me.rbAway.Location = New System.Drawing.Point(65, 3)
-        Me.rbAway.Name = "rbAway"
-        Me.rbAway.Size = New System.Drawing.Size(52, 15)
-        Me.rbAway.TabIndex = 12
-        Me.rbAway.Text = "Away"
-        Me.rbAway.UseSelectable = True
-        '
-        'rbHome
-        '
-        Me.rbHome.AutoSize = True
-        Me.rbHome.Checked = True
-        Me.rbHome.Location = New System.Drawing.Point(3, 3)
-        Me.rbHome.Name = "rbHome"
-        Me.rbHome.Size = New System.Drawing.Size(56, 15)
-        Me.rbHome.TabIndex = 11
-        Me.rbHome.TabStop = True
-        Me.rbHome.Text = "Home"
-        Me.rbHome.UseSelectable = True
         '
         'MetroPanel3
         '
@@ -608,7 +608,7 @@ Partial Class WatchGameForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(589, 326)
+        Me.ClientSize = New System.Drawing.Size(589, 321)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "WatchGameForm"

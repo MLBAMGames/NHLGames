@@ -9,13 +9,13 @@ Imports NHLGames.AdDetection
 Imports NHLGames.TextboxConsoleOutputRediect
 
 Public Class NHLGamesMetro
-
     Private AvailableGames As New List(Of String)
     Private Const ServerIP As String = "146.185.131.14"
     Private Const DomainName As String = "mf.svc.nhl.com"
     Private Shared SettingsLoaded As Boolean = False
     Public Shared FormInstance As NHLGamesMetro = Nothing
     Private AdDetectorViewModel As AdDetectorViewModel = Nothing
+    Private notifyIcon As NotifyIcon = New NotifyIcon()
 
     ' Starts the application. -- See: https://msdn.microsoft.com/en-us/library/system.windows.forms.application.threadexception(v=vs.110).aspx
     <SecurityPermission(SecurityAction.Demand, Flags:=SecurityPermissionFlag.ControlAppDomain)>
@@ -36,7 +36,7 @@ Public Class NHLGamesMetro
         Dim _writer = New TextBoxStreamWriter(form.RichTextBox)
         Console.SetOut(_writer)
 
-        '' Runs the application.
+        ' Runs the application.
         Application.Run(form)
     End Sub
 
@@ -151,7 +151,7 @@ Public Class NHLGamesMetro
 
             If rbAkamai.Checked Then
                 WatchArgs.CDN = "akc"
-            ElseIf rbLevel3.Checked
+            ElseIf rbLevel3.Checked Then
                 WatchArgs.CDN = "l3c"
             End If
 
@@ -270,10 +270,6 @@ Public Class NHLGamesMetro
 
         VersionCheck()
         IntitializeApplicationSettings()
-
-
-
-
     End Sub
 
 
@@ -315,8 +311,6 @@ Public Class NHLGamesMetro
         RichTextBox.SelectionStart = RichTextBox.Text.Length
         RichTextBox.ScrollToCaret()
     End Sub
-
-
 
     Private Sub btnOpenHostsFile_Click(sender As Object, e As EventArgs) Handles btnOpenHostsFile.Click
         Dim HostsFilePath As String = Environment.SystemDirectory & "\drivers\etc\hosts"
@@ -493,6 +487,35 @@ Public Class NHLGamesMetro
         'If (tomorrow <= dtDate.MaxDate) Then
         dtDate.Value = dtDate.Value.Add(TimeSpan.FromDays(1))
         'End If
+    End Sub
+
+    Private Sub NHLNotifyIcon_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NHLNotifyIcon.MouseDoubleClick
+        If e.Button = MouseButtons.Left Then
+            NHLNotifyIcon.Visible = False
+            Me.Visible = True
+            Me.WindowState = FormWindowState.Normal
+        End If
+    End Sub
+
+    Protected Overrides Sub OnResize(ByVal e As System.EventArgs)
+        MyBase.OnResize(e)
+        Select Case Me.WindowState
+            Case FormWindowState.Minimized
+                If TrayCheckbox.Checked() Then
+                    Me.Visible = False
+                    NHLNotifyIcon.Visible = True
+                End If
+        End Select
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+    Private Sub RestoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreToolStripMenuItem.Click
+        NHLNotifyIcon.Visible = False
+        Me.Visible = True
+        Me.WindowState = FormWindowState.Normal
     End Sub
 
 #End Region

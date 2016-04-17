@@ -11,19 +11,19 @@ Public Class GameControl
         SetInitialProperties(Game)
         UpdateGameStatusProperties(Game)
 
-        lblAwayScore.Visible = showScores
         lblHomeScore.Visible = showScores
+        lblAwayScore.Visible = showScores
 
         AddHandler _Game.GameUpdated, AddressOf GameUpdatedHandler
 
     End Sub
 
     Private Sub UpdateGameStatusProperties(Game As Game)
-        lblAwayScore.Text = Game.AwayScore
-        lblAwayTeam.Text = Game.AwayAbbrev
-
         lblHomeScore.Text = Game.HomeScore
         lblHomeTeam.Text = Game.HomeAbbrev
+
+        lblAwayScore.Text = Game.AwayScore
+        lblAwayTeam.Text = Game.AwayAbbrev
 
         'btnWatch.Enabled = Game.Date <= DateTime.Now 'AndAlso Game.GameIsLive
 
@@ -40,17 +40,17 @@ Public Class GameControl
     End Sub
 
     Private Sub SetInitialProperties(Game As Game)
-        picHome.SizeMode = PictureBoxSizeMode.StretchImage
+        picAway.SizeMode = PictureBoxSizeMode.StretchImage
         If String.IsNullOrEmpty(Game.HomeTeamLogo) = False Then
-            picHome.Image = ImageFetcher.GetEmbeddedImage(Game.HomeTeamLogo)
-            HomeTeamToolTip.SetToolTip(picHome, "Home Team: " & Game.HomeTeam)
+            picAway.Image = ImageFetcher.GetEmbeddedImage(Game.AwayTeamLogo)
+            AwayTeamToolTip.SetToolTip(picAway, "Away Team: " & Game.AwayTeam)
         End If
 
 
-        picAway.SizeMode = PictureBoxSizeMode.StretchImage
+        picHome.SizeMode = PictureBoxSizeMode.StretchImage
         If String.IsNullOrEmpty(Game.AwayTeamLogo) = False Then
-            picAway.Image = ImageFetcher.GetEmbeddedImage(Game.AwayTeamLogo)
-            AwayTeamToolTip.SetToolTip(picAway, "Away Team: " & Game.AwayTeam)
+            picHome.Image = ImageFetcher.GetEmbeddedImage(Game.HomeTeamLogo)
+            HomeTeamToolTip.SetToolTip(picHome, "Home Team: " & Game.HomeTeam)
         End If
 
         lblTime.Text = Game.Date.ToLocalTime().ToString("h:mm tt")

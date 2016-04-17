@@ -333,6 +333,8 @@ Public Class Game
             Dim duplicate As String = If(IsVOD, Stream.VODURL, Stream.GameURL)
             duplicate = duplicate.Substring(0, duplicate.LastIndexOf("/")) & "_1" & duplicate.Substring(duplicate.LastIndexOf("/"), duplicate.Length - duplicate.LastIndexOf("/"))
 
+            Stream.GameURL = Stream.GameURL.Replace("CDN", CDN)
+
             Try
                 Dim myHttpWebRequest As HttpWebRequest = CType(WebRequest.Create(duplicate), HttpWebRequest)
                 Dim myHttpWebResponse As HttpWebResponse = CType(myHttpWebRequest.GetResponse(), HttpWebResponse)
@@ -360,7 +362,6 @@ Public Class Game
                 returnValue &= """ "
             End If
 
-            returnValue = returnValue.Replace("CDN", CDN)
             If Is60FPS Then
                 returnValue &= " best "
             Else

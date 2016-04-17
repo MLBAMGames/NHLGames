@@ -25,8 +25,9 @@ Partial Class NHLGamesMetro
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NHLGamesMetro))
         Me.gridGames = New System.Windows.Forms.DataGridView()
         Me.dtDate = New MetroFramework.Controls.MetroDateTime()
@@ -86,6 +87,11 @@ Partial Class NHLGamesMetro
         Me.AdDetectionSettingsElementHost = New System.Windows.Forms.Integration.ElementHost()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.NHLNotifyIcon = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.NHLNotifyIconMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RestoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TrayCheckbox = New MetroFramework.Controls.MetroCheckBox()
         CType(Me.gridGames, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
         Me.GamesTab.SuspendLayout()
@@ -95,6 +101,7 @@ Partial Class NHLGamesMetro
         Me.MetroPanel1.SuspendLayout()
         Me.ConsoleTab.SuspendLayout()
         Me.AdDetectionSettingsTab.SuspendLayout()
+        Me.NHLNotifyIconMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'gridGames
@@ -110,37 +117,37 @@ Partial Class NHLGamesMetro
         Me.gridGames.BackgroundColor = System.Drawing.Color.White
         Me.gridGames.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.gridGames.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.Padding = New System.Windows.Forms.Padding(3, 5, 3, 0)
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gridGames.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.Padding = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gridGames.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.gridGames.ColumnHeadersHeight = 30
         Me.gridGames.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.gridGames.Location = New System.Drawing.Point(204, 12)
         Me.gridGames.MultiSelect = False
         Me.gridGames.Name = "gridGames"
         Me.gridGames.ReadOnly = True
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gridGames.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.Padding = New System.Windows.Forms.Padding(0, 5, 0, 0)
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gridGames.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.gridGames.RowHeadersVisible = False
         Me.gridGames.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.gridGames.RowTemplate.DefaultCellStyle.Padding = New System.Windows.Forms.Padding(0, 2, 0, 2)
         Me.gridGames.RowTemplate.DividerHeight = 1
         Me.gridGames.RowTemplate.Height = 35
         Me.gridGames.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridGames.Size = New System.Drawing.Size(384, 52)
+        Me.gridGames.Size = New System.Drawing.Size(534, 52)
         Me.gridGames.TabIndex = 0
         Me.gridGames.Visible = False
         '
@@ -151,7 +158,7 @@ Partial Class NHLGamesMetro
         Me.dtDate.CustomFormat = "yyyy-MM-dd"
         Me.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtDate.Location = New System.Drawing.Point(23, 6)
-        Me.dtDate.MinimumSize = New System.Drawing.Size(0, 29)
+        Me.dtDate.MinimumSize = New System.Drawing.Size(4, 29)
         Me.dtDate.Name = "dtDate"
         Me.dtDate.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.dtDate.Size = New System.Drawing.Size(125, 29)
@@ -161,7 +168,7 @@ Partial Class NHLGamesMetro
         '
         Me.btnRefresh.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnRefresh.Location = New System.Drawing.Point(757, 12)
+        Me.btnRefresh.Location = New System.Drawing.Point(873, 12)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(93, 22)
         Me.btnRefresh.TabIndex = 5
@@ -172,7 +179,7 @@ Partial Class NHLGamesMetro
         '
         Me.lblVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblVersion.AutoSize = True
-        Me.lblVersion.Location = New System.Drawing.Point(664, 44)
+        Me.lblVersion.Location = New System.Drawing.Point(780, 44)
         Me.lblVersion.MinimumSize = New System.Drawing.Size(200, 5)
         Me.lblVersion.Name = "lblVersion"
         Me.lblVersion.Size = New System.Drawing.Size(200, 13)
@@ -205,8 +212,8 @@ Partial Class NHLGamesMetro
         Me.TabControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl.Location = New System.Drawing.Point(10, 60)
         Me.TabControl.Name = "TabControl"
-        Me.TabControl.SelectedIndex = 3
-        Me.TabControl.Size = New System.Drawing.Size(870, 520)
+        Me.TabControl.SelectedIndex = 1
+        Me.TabControl.Size = New System.Drawing.Size(1020, 520)
         Me.TabControl.TabIndex = 22
         Me.TabControl.UseSelectable = True
         '
@@ -223,7 +230,7 @@ Partial Class NHLGamesMetro
         Me.GamesTab.HorizontalScrollbarSize = 10
         Me.GamesTab.Location = New System.Drawing.Point(4, 38)
         Me.GamesTab.Name = "GamesTab"
-        Me.GamesTab.Size = New System.Drawing.Size(862, 478)
+        Me.GamesTab.Size = New System.Drawing.Size(1012, 478)
         Me.GamesTab.TabIndex = 0
         Me.GamesTab.Text = "Games      "
         Me.GamesTab.VerticalScrollbarBarColor = True
@@ -262,11 +269,12 @@ Partial Class NHLGamesMetro
         Me.FlowLayoutPanel.BackColor = System.Drawing.Color.White
         Me.FlowLayoutPanel.Location = New System.Drawing.Point(3, 41)
         Me.FlowLayoutPanel.Name = "FlowLayoutPanel"
-        Me.FlowLayoutPanel.Size = New System.Drawing.Size(863, 442)
+        Me.FlowLayoutPanel.Size = New System.Drawing.Size(1013, 442)
         Me.FlowLayoutPanel.TabIndex = 6
         '
         'SettingTab
         '
+        Me.SettingTab.Controls.Add(Me.TrayCheckbox)
         Me.SettingTab.Controls.Add(Me.MetroButton1)
         Me.SettingTab.Controls.Add(Me.chkEnableStreamArgs)
         Me.SettingTab.Controls.Add(Me.txtStreamerArgs)
@@ -300,7 +308,7 @@ Partial Class NHLGamesMetro
         Me.SettingTab.HorizontalScrollbarSize = 10
         Me.SettingTab.Location = New System.Drawing.Point(4, 38)
         Me.SettingTab.Name = "SettingTab"
-        Me.SettingTab.Size = New System.Drawing.Size(862, 478)
+        Me.SettingTab.Size = New System.Drawing.Size(1012, 478)
         Me.SettingTab.TabIndex = 1
         Me.SettingTab.Text = "Settings      "
         Me.SettingTab.VerticalScrollbarBarColor = True
@@ -764,7 +772,7 @@ Partial Class NHLGamesMetro
         Me.ConsoleTab.HorizontalScrollbarSize = 10
         Me.ConsoleTab.Location = New System.Drawing.Point(4, 38)
         Me.ConsoleTab.Name = "ConsoleTab"
-        Me.ConsoleTab.Size = New System.Drawing.Size(862, 478)
+        Me.ConsoleTab.Size = New System.Drawing.Size(1012, 478)
         Me.ConsoleTab.TabIndex = 2
         Me.ConsoleTab.Text = "Console      "
         Me.ConsoleTab.VerticalScrollbarBarColor = True
@@ -790,7 +798,7 @@ Partial Class NHLGamesMetro
         Me.AdDetectionSettingsTab.Location = New System.Drawing.Point(4, 38)
         Me.AdDetectionSettingsTab.Margin = New System.Windows.Forms.Padding(2)
         Me.AdDetectionSettingsTab.Name = "AdDetectionSettingsTab"
-        Me.AdDetectionSettingsTab.Size = New System.Drawing.Size(862, 478)
+        Me.AdDetectionSettingsTab.Size = New System.Drawing.Size(1012, 478)
         Me.AdDetectionSettingsTab.TabIndex = 4
         Me.AdDetectionSettingsTab.Text = "Ad Detection Modules"
         Me.AdDetectionSettingsTab.VerticalScrollbarBarColor = True
@@ -805,19 +813,56 @@ Partial Class NHLGamesMetro
         Me.AdDetectionSettingsElementHost.Location = New System.Drawing.Point(0, 0)
         Me.AdDetectionSettingsElementHost.Margin = New System.Windows.Forms.Padding(2)
         Me.AdDetectionSettingsElementHost.Name = "AdDetectionSettingsElementHost"
-        Me.AdDetectionSettingsElementHost.Size = New System.Drawing.Size(862, 478)
+        Me.AdDetectionSettingsElementHost.Size = New System.Drawing.Size(1012, 478)
         Me.AdDetectionSettingsElementHost.TabIndex = 2
         Me.AdDetectionSettingsElementHost.Child = Nothing
+        '
+        'NHLNotifyIcon
+        '
+        Me.NHLNotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.NHLNotifyIcon.BalloonTipText = "Double click to restore"
+        Me.NHLNotifyIcon.BalloonTipTitle = "NHLGames"
+        Me.NHLNotifyIcon.ContextMenuStrip = Me.NHLNotifyIconMenu
+        Me.NHLNotifyIcon.Icon = CType(resources.GetObject("NHLNotifyIcon.Icon"), System.Drawing.Icon)
+        Me.NHLNotifyIcon.Text = "NHLGames"
+        '
+        'NHLNotifyIconMenu
+        '
+        Me.NHLNotifyIconMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RestoreToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.NHLNotifyIconMenu.Name = "ContextMenuStrip1"
+        Me.NHLNotifyIconMenu.Size = New System.Drawing.Size(114, 48)
+        '
+        'RestoreToolStripMenuItem
+        '
+        Me.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem"
+        Me.RestoreToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.RestoreToolStripMenuItem.Text = "Restore"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'TrayCheckbox
+        '
+        Me.TrayCheckbox.AutoSize = True
+        Me.TrayCheckbox.Location = New System.Drawing.Point(137, 135)
+        Me.TrayCheckbox.Name = "TrayCheckbox"
+        Me.TrayCheckbox.Size = New System.Drawing.Size(111, 15)
+        Me.TrayCheckbox.TabIndex = 53
+        Me.TrayCheckbox.Text = "Minimize to Tray"
+        Me.TrayCheckbox.UseSelectable = True
         '
         'NHLGamesMetro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(900, 600)
+        Me.ClientSize = New System.Drawing.Size(1050, 600)
         Me.Controls.Add(Me.TabControl)
         Me.Controls.Add(Me.lblVersion)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(900, 600)
+        Me.MinimumSize = New System.Drawing.Size(1050, 600)
         Me.Name = "NHLGamesMetro"
         Me.Padding = New System.Windows.Forms.Padding(10, 60, 20, 20)
         Me.Resizable = False
@@ -837,6 +882,7 @@ Partial Class NHLGamesMetro
         Me.MetroPanel1.PerformLayout()
         Me.ConsoleTab.ResumeLayout(False)
         Me.AdDetectionSettingsTab.ResumeLayout(False)
+        Me.NHLNotifyIconMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -901,4 +947,9 @@ Partial Class NHLGamesMetro
     Friend WithEvents AdDetectionSettingsElementHost As Integration.ElementHost
     Friend WithEvents btnYesterday As MetroButton
     Friend WithEvents btnTomorrow As MetroButton
+    Friend WithEvents NHLNotifyIcon As NotifyIcon
+    Friend WithEvents NHLNotifyIconMenu As ContextMenuStrip
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RestoreToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TrayCheckbox As MetroCheckBox
 End Class
