@@ -68,9 +68,9 @@ namespace NHLGames.AdDetection.Modules.Spotify
                 var serverTime = new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds(status.ServerTime);
                 var difference = now - serverTime;
                 Console.WriteLine(
-                    $"Connected to Spotify! Online: {status.Online}. Play Enabled: {status.PlayEnabled}");
+                    $"Spotify: Connected! Online: {status.Online}. Play Enabled: {status.PlayEnabled}");
                 Console.WriteLine(
-                    $"Playing: {status.Playing}. Running: {status.Running}. Track Not Null : {status.Track != null}");
+                    $"Spotify: Playing - {status.Playing}. Running: {status.Running}. Track Not Null : {status.Track != null}");
                 Console.WriteLine($"Client Version: '{status.ClientVersion}'.");
                 Console.WriteLine($"ServerTime: '{serverTime}' ");
                 Console.WriteLine(
@@ -78,7 +78,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Exception logging the Connect status: {e.Message}.");
+                Console.WriteLine($"Error: Exception logging the Connect status: {e.Message}.");
             }
 
 
@@ -87,12 +87,12 @@ namespace NHLGames.AdDetection.Modules.Spotify
 
         private void OnPlayerStateChanged(object sender, PlayStateEventArgs e)
         {
-            Console.WriteLine($"Spotify Playing state changed to '{e.Playing}'");
+            Console.WriteLine($"Spotify: Playing state changed to '{e.Playing}'");
         }
 
         private void ConnectLoop()
         {
-            Console.WriteLine("Attempting to connect to Spotify...");
+            Console.WriteLine("Spotify: Attempting to connect...");
 
             while (true)
             {
@@ -103,12 +103,12 @@ namespace NHLGames.AdDetection.Modules.Spotify
                         return;
                     }
 
-                    Console.WriteLine("Failed to connect to Spotify. Attempting to reconnect in 10 seconds.");
+                    Console.WriteLine("Spotify: Failed to connect. Attempting to reconnect in 10 seconds.");
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(
-                        $"Unexpected exception connecting to Spotify: {e.Message}. Attempting to reconnect in {m_connectSleep}.");
+                        $"Error: Unexpected exception connecting to Spotify: {e.Message}. Attempting to reconnect in {m_connectSleep}.");
                 }
 
                 Thread.Sleep(m_connectSleep);
@@ -119,28 +119,28 @@ namespace NHLGames.AdDetection.Modules.Spotify
         {
             if (!SpotifyLocalAPI.IsSpotifyRunning())
             {
-                Console.WriteLine("Spotify isn't running. Trying to start it...");
+                Console.WriteLine("Spotify: Process not running. Trying to start it...");
                 try
                 {
                     SpotifyLocalAPI.RunSpotify();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error starting spotify: {e.Message}");
+                    Console.WriteLine($"Error: Starting Spotify: {e.Message}");
                     return false;
                 }
             }
 
             if (!SpotifyLocalAPI.IsSpotifyWebHelperRunning())
             {
-                Console.WriteLine("Spotify Web Helper isn't running. Trying to start it...");
+                Console.WriteLine("Spotify: Web Helper isn't running. Trying to start it...");
                 try
                 {
                     SpotifyLocalAPI.RunSpotifyWebHelper();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error starting Spotify Web Helper: {e.Message}");
+                    Console.WriteLine($"Error: Starting Spotify Web Helper: {e.Message}");
                     return false;
                 }
             }
