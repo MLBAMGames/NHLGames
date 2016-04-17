@@ -70,7 +70,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
                 Console.WriteLine(
                     $"Spotify: Connected! Online: {status.Online}. Play Enabled: {status.PlayEnabled}");
                 Console.WriteLine(
-                    $"Spotify: Playing - {status.Playing}. Running: {status.Running}. Track Not Null : {status.Track != null}");
+                    $"Playing: {status.Playing}. Running: {status.Running}. Track Not Null : {status.Track != null}");
                 Console.WriteLine($"Client Version: '{status.ClientVersion}'.");
                 Console.WriteLine($"ServerTime: '{serverTime}' ");
                 Console.WriteLine(
@@ -78,7 +78,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Exception logging the Connect status: {e.Message}.");
+                Console.WriteLine($"Error: Exception logging the Connect status: {e.Message}.");
             }
 
 
@@ -103,7 +103,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
                         return;
                     }
 
-                    Console.WriteLine("Spotify: Failed to connect to Spotify. Attempting to reconnect in 10 seconds.");
+                    Console.WriteLine("Spotify: Failed to connect. Attempting to reconnect in 10 seconds.");
                 }
                 catch (Exception e)
                 {
@@ -126,7 +126,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error: Could not start Spotify: {e.Message}");
+                    Console.WriteLine($"Error: Could not starty Spotify: {e.Message}");
                     return false;
                 }
             }
@@ -140,7 +140,7 @@ namespace NHLGames.AdDetection.Modules.Spotify
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Error: Could not start Spotify Web Helper: {e.Message}");
+                    Console.WriteLine($"Error: starting Spotify Web Helper: {e.Message}");
                     return false;
                 }
             }
