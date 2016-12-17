@@ -139,7 +139,7 @@ Public Class Game
     Public Sub Watch(args As GameWatchArguments)
 
         Dim t As Task = New Task(Function()
-                                     Console.WriteLine("Starting: livestreamer.exe") '& args.LiveStreamerPath & " " & args.ToString())
+                                     Console.WriteLine("Starting: " & args.LiveStreamerPath & " " & args.ToString(True))
 
                                      Dim proc = New Process() With {.StartInfo =
             New ProcessStartInfo With {
@@ -153,11 +153,14 @@ Public Class Game
                                      Try
                                          proc.Start()
 
-                                         'No longer show livestreamer console output
-                                         'While (proc.StandardOutput.EndOfStream = False)
-                                         '    Dim line = proc.StandardOutput.ReadLine()
-                                         '    Console.WriteLine(line)
-                                         'End While
+                                         'Remove stream URL from console output
+                                         While (proc.StandardOutput.EndOfStream = False)
+                                             Dim line = proc.StandardOutput.ReadLine()
+                                             If line.Contains("m3u8") Then
+                                                 line = line.Substring(0, line.IndexOf("http://")) & "--URL CENSORED--." & line.Substring(line.IndexOf("m3u8"))
+                                             End If
+                                             Console.WriteLine(line)
+                                         End While
                                      Catch ex As Exception
                                          Console.WriteLine("Error: " & ex.Message)
                                      End Try
@@ -180,7 +183,7 @@ Public Class Game
     End Property
 
 
-    Public Sub New(game As JObject, availableGameIds As List(Of String))
+    Public Sub New(game As JObject, availableGameIds As HashSet(Of String))
 
         _GameObj = game
 
@@ -188,7 +191,7 @@ Public Class Game
 
     End Sub
 
-    Private Sub LoadGameData(game As JObject, availableGameIds As List(Of String))
+    Private Sub LoadGameData(game As JObject, availableGameIds As HashSet(Of String))
 
         'Dim timeZoneInfo As TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time")
         Dim dateTimeStr As String = game.Property("gameDate").Value.ToString() '"2016-03-20T21:00:00Z"
@@ -292,9 +295,15 @@ Public Class Game
         Public Property UseOutputArgs As Boolean = False
         Public Property PlayerOutputPath As String = ""
 
-
         Public Overrides Function ToString() As String
+            Return OutputArgs(False)
+        End Function
 
+        Public Overloads Function ToString(ByVal SafeOutput As Boolean)
+            Return OutputArgs(SafeOutput)
+        End Function
+
+        Private Function OutputArgs(ByVal SafeOutput As Boolean)
             '--player-passthrough hls  should allow for seeking, never seems to work
             '--player-external-http should allow for serviio to serve stream to DLNA player, my TV can't seem to open the media though. DLNA player on phone sort of works, craps out after 10 sec or so
 
@@ -321,17 +330,25 @@ Public Class Game
                 returnValue &= " --player-passthrough=hls "
             End If
 
-            returnValue &= "--http-cookie=""mediaAuth=" & Common.GetRandomString(240) & """ --http-header=""User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, Like Gecko) Chrome/48.0.2564.82 Safari/537.36 Edge/14.14316"" "
-
-            returnValue &= """hlsvariant://"
-
-            If IsVOD Then
-                returnValue &= Stream.VODURL
-            Else
-                returnValue &= Stream.GameURL
+            If SafeOutput = False Then
+                returnValue &= "--http-cookie=""mediaAuth=" & Common.GetRandomString(240) & " """
             End If
 
-            returnValue = returnValue.Replace("CDN", CDN)
+            returnValue &= "--http-header=""User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, Like Gecko) Chrome/48.0.2564.82 Safari/537.36 Edge/14.14316"" "
+
+            If SafeOutput = False Then
+                returnValue &= """hlsvariant://"
+
+                If IsVOD Then
+                    returnValue &= Stream.VODURL
+                Else
+                    returnValue &= Stream.GameURL
+                End If
+
+                returnValue = returnValue.Replace("CDN", CDN)
+            Else
+                returnValue &= """hlsvariant://--URL CENSORED--"
+            End If
 
             If Is60FPS Then
                 returnValue &= " name_key=bitrate"" "

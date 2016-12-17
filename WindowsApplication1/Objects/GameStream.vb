@@ -37,7 +37,7 @@ Public Class GameStream
     Public Sub New()
 
     End Sub
-    Public Sub New(game As Game, stream As JObject, availableGameIds As List(Of String), type As StreamType)
+    Public Sub New(game As Game, stream As JObject, availableGameIds As HashSet(Of String), type As StreamType)
         Dim dateString As String = game.Date.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture).Replace("-", "/")
         Dim dateString2 As String = game.Date.ToString("yyyyMMdd", CultureInfo.InvariantCulture)
         Dim feedType As String = stream.Property("mediaFeedType").Value.ToString().Replace("AWAY", "VISIT")
@@ -45,7 +45,7 @@ Public Class GameStream
         Me.PlayBackID = stream.Property("mediaPlaybackId").Value.ToString()
         'Me.GameURL = "http://hlslive-CDN.med2.med.nhl.com/ls04/nhl/" & dateString & "/NHL_GAME_VIDEO_" & game.AwayAbbrev & game.HomeAbbrev & "_M2_" & feedType & "_" & dateString2 & "/master_wired60.m3u8"
 
-        If availableGameIds.Contains(PlayBackID) Or availableGameIds.Contains(PlayBackID & "akc") Or availableGameIds.Contains(PlayBackID & "l3c") Then
+        If availableGameIds.Contains(PlayBackID) OrElse availableGameIds.Contains(PlayBackID & "akc") OrElse availableGameIds.Contains(PlayBackID & "l3c") Then
             IsAvailable = True
         End If
 

@@ -10,7 +10,7 @@ Imports NHLGames.TextboxConsoleOutputRediect
 
 Public Class NHLGamesMetro
 
-    Private AvailableGames As New List(Of String)
+    Private AvailableGames As New HashSet(Of String)
     Private Const OldServerIP As String = "146.185.131.14"
     Private Const ServerIP As String = "107.6.175.181"
     Private Const DomainName As String = "mf.svc.nhl.com"

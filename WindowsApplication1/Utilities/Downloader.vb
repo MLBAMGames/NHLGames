@@ -88,13 +88,11 @@ Public Class Downloader
         Return ReadFileContents(ChangelogFileName).Trim()
     End Function
 
-    Public Shared Function DownloadAvailableGames() As List(Of String)
+    Public Shared Function DownloadAvailableGames() As HashSet(Of String)
 
         Console.WriteLine("Checking: Available games")
-
         DownloadFile(GamesTxtURL, GamesTextFileName)
-        Return ReadFileContents(GamesTextFileName).Split(New Char() {vbLf}).ToList()
-
+        Return New HashSet(Of String)(ReadFileContents(GamesTextFileName).Split(New Char() {vbLf}))
     End Function
 
 

@@ -20,7 +20,7 @@ Public Class GameManager
     End Sub
 
 
-    Public Shared Sub RefreshGames(dateTime As DateTime, jsonObj As JToken, availableGames As List(Of String))
+    Public Shared Sub RefreshGames(dateTime As DateTime, jsonObj As JToken, availableGames As HashSet(Of String))
 
         Dim tempList As New List(Of Game)
         GamesListDate = dateTime

@@ -7,7 +7,7 @@ Imports System
 
 Public Class NHLGames
 
-    Private AvailableGames As New List(Of String)
+    Private AvailableGames As New HashSet(Of String)
     Private Games As New List(Of Game)
 
     Private ReadOnly Property SelectedGame As Game
