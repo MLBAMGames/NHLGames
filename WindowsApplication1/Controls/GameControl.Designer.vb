@@ -242,7 +242,7 @@ Partial Class GameControl
         'GameControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.Controls.Add(Me.BorderPanel1)
         Me.Name = "GameControl"

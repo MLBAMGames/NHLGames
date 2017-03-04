@@ -258,7 +258,7 @@ Public Class NHLGamesMetro
             lblVersion.ForeColor = Color.Red
             lnkDownload.Visible = True
             Dim strChangeLog = Downloader.DownloadChangelog()
-            MetroMessageBox.Show(Me, "Version " & strLatest & " is available! Changes:" & vbCrLf & vbCrLf & strChangeLog, "New Version Available", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(Me, "Version " & strLatest & " is available! Changes:" & vbCrLf & vbCrLf & strChangeLog, "New Version Available", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
             lblVersion.Text = "Version: " & ApplicationSettings.Read(Of String)(ApplicationSettings.Settings.Version)
             lblVersion.ForeColor = Color.Gray
@@ -295,6 +295,8 @@ Public Class NHLGamesMetro
         VersionCheck()
         IntitializeApplicationSettings()
         'LoadGames(dtDate.Value) 'Already handled via dtDate_ValueChanged
+
+        Font = New Font(Font.Name, 8.25F * 96.0F / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont)
     End Sub
 
 
@@ -437,9 +439,9 @@ Public Class NHLGamesMetro
 
     Private Sub btnHosts_Click(sender As Object, e As EventArgs) Handles btnHosts.Click
         If HostsFile.TestEntry(DomainName, ServerIP) Then
-            MetroMessageBox.Show(Me, "Hosts file looks good!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(Me, "Hosts file looks good!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            MetroMessageBox.Show(Me, "Hosts entry doesn't seem to be working :(", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show(Me, "Hosts entry doesn't seem to be working :(", "Failure", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -597,6 +599,10 @@ Public Class NHLGamesMetro
     Private Sub lnkDownload_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDownload.LinkClicked
         Dim sInfo As ProcessStartInfo = New ProcessStartInfo("https://www.reddit.com/r/nhl_games/wiki/downloads")
         Process.Start(sInfo)
+    End Sub
+
+    Private Sub ToolStripContainer1_BottomToolStripPanel_Click(sender As Object, e As EventArgs) Handles ToolStripContainer1.BottomToolStripPanel.Click
+
     End Sub
 
 

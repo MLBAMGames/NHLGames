@@ -114,6 +114,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\BorderPanel.vb" />
+    <Compile Include="Controls\BufferedFlowPanel.Designer.vb">
+      <DependentUpon>BufferedFlowPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BufferedFlowPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomMetroTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DBLayoutPanel.Designer.vb">
+      <DependentUpon>DBLayoutPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DBLayoutPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\GameControl.Designer.vb">
       <DependentUpon>GameControl.vb</DependentUpon>
     </Compile>

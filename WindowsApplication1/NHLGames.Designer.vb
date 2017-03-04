@@ -30,7 +30,7 @@ Partial Class NHLGames
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NHLGames))
         Me.gridGames = New System.Windows.Forms.DataGridView()
-        Me.dtDate = New MetroFramework.Controls.MetroDateTime()
+        Me.dtDate = New Windows.Forms.DateTimePicker()
         Me.btnHosts = New System.Windows.Forms.Button()
         Me.btnWatch = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
