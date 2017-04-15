@@ -184,10 +184,11 @@ Partial Class NHLGamesMetro
         '
         Me.lblVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblVersion.AutoSize = True
-        Me.lblVersion.Location = New System.Drawing.Point(728, 44)
-        Me.lblVersion.MinimumSize = New System.Drawing.Size(200, 5)
+        Me.lblVersion.Location = New System.Drawing.Point(636, 44)
+        Me.lblVersion.MaximumSize = New System.Drawing.Size(400, 13)
+        Me.lblVersion.MinimumSize = New System.Drawing.Size(400, 13)
         Me.lblVersion.Name = "lblVersion"
-        Me.lblVersion.Size = New System.Drawing.Size(200, 13)
+        Me.lblVersion.Size = New System.Drawing.Size(400, 13)
         Me.lblVersion.TabIndex = 17
         Me.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
@@ -904,8 +905,9 @@ Partial Class NHLGamesMetro
         '
         'lnkDownload
         '
+        Me.lnkDownload.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lnkDownload.AutoSize = True
-        Me.lnkDownload.Location = New System.Drawing.Point(967, 44)
+        Me.lnkDownload.Location = New System.Drawing.Point(981, 44)
         Me.lnkDownload.Name = "lnkDownload"
         Me.lnkDownload.Size = New System.Drawing.Size(55, 13)
         Me.lnkDownload.TabIndex = 23
