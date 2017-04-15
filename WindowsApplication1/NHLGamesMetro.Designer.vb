@@ -184,10 +184,11 @@ Partial Class NHLGamesMetro
         '
         Me.lblVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblVersion.AutoSize = True
-        Me.lblVersion.Location = New System.Drawing.Point(728, 44)
-        Me.lblVersion.MinimumSize = New System.Drawing.Size(200, 5)
+        Me.lblVersion.Location = New System.Drawing.Point(636, 44)
+        Me.lblVersion.MaximumSize = New System.Drawing.Size(400, 13)
+        Me.lblVersion.MinimumSize = New System.Drawing.Size(400, 13)
         Me.lblVersion.Name = "lblVersion"
-        Me.lblVersion.Size = New System.Drawing.Size(200, 13)
+        Me.lblVersion.Size = New System.Drawing.Size(400, 13)
         Me.lblVersion.TabIndex = 17
         Me.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
@@ -233,9 +234,9 @@ Partial Class NHLGamesMetro
         Me.GamesTab.HorizontalScrollbarBarColor = True
         Me.GamesTab.HorizontalScrollbarHighlightOnWheel = False
         Me.GamesTab.HorizontalScrollbarSize = 10
-        Me.GamesTab.Location = New System.Drawing.Point(4, 38)
+        Me.GamesTab.Location = New System.Drawing.Point(4, 35)
         Me.GamesTab.Name = "GamesTab"
-        Me.GamesTab.Size = New System.Drawing.Size(1022, 498)
+        Me.GamesTab.Size = New System.Drawing.Size(1022, 501)
         Me.GamesTab.TabIndex = 0
         Me.GamesTab.Text = "Games      "
         Me.GamesTab.VerticalScrollbarBarColor = True
@@ -463,13 +464,10 @@ Partial Class NHLGamesMetro
         '
         'lnkMpvDownload
         '
-        Me.lnkMpvDownload.AutoSize = True
-        Me.lnkMpvDownload.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.lnkMpvDownload.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.lnkMpvDownload.Location = New System.Drawing.Point(219, -1)
+        Me.lnkMpvDownload.Location = New System.Drawing.Point(0, 0)
         Me.lnkMpvDownload.Name = "lnkMpvDownload"
-        Me.lnkMpvDownload.Size = New System.Drawing.Size(23, 23)
-        Me.lnkMpvDownload.TabIndex = 20
+        Me.lnkMpvDownload.Size = New System.Drawing.Size(75, 23)
+        Me.lnkMpvDownload.TabIndex = 2
         Me.lnkMpvDownload.Text = "?"
         Me.lnkMpvDownload.UseSelectable = True
         '
@@ -904,8 +902,9 @@ Partial Class NHLGamesMetro
         '
         'lnkDownload
         '
+        Me.lnkDownload.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lnkDownload.AutoSize = True
-        Me.lnkDownload.Location = New System.Drawing.Point(967, 44)
+        Me.lnkDownload.Location = New System.Drawing.Point(985, 44)
         Me.lnkDownload.Name = "lnkDownload"
         Me.lnkDownload.Size = New System.Drawing.Size(55, 13)
         Me.lnkDownload.TabIndex = 23
