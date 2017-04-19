@@ -10,7 +10,7 @@ Imports Newtonsoft.Json.Linq
 Public Class Downloader
 
     Private Shared GamesTxtURL = "http://nhl.chickenkiller.com/static/ids.txt"
-    Private Shared ScheduleAPIURL = "http://statsapi.web.nhl.com/api/v1/schedule?startDate={0}&endDate={1}&expand=schedule.teams,schedule.game.content.media.epg"
+    Private Shared ScheduleAPIURL = "http://statsapi.web.nhl.com/api/v1/schedule?startDate={0}&endDate={1}&expand=schedule.teams,schedule.linescore,schedule.game.seriesSummary,schedule.game.content.media.epg"
     Private Shared ApplicationVersionURL = "http://showtimes.ninja/static/version.txt"
     Private Shared ChangelogURL As String = "http://showtimes.ninja/static/changelog.txt"
 
@@ -123,7 +123,6 @@ Public Class Downloader
         Dim reader As New JsonTextReader(New StringReader(data))
         reader.DateParseHandling = DateParseHandling.None
         returnValue = JObject.Load(reader)
-
         Return returnValue
 
     End Function

@@ -5,7 +5,7 @@ Public Class GameControl
     Private _Game As Game
     Private _selectedDate As Date
 
-    Public Sub New(Game As Game, showScores As Boolean, selectedDate As Date)
+    Public Sub New(Game As Game, showScores As Boolean, showLiveScores As Boolean, selectedDate As Date)
         InitializeComponent()
 
         _Game = Game
@@ -14,8 +14,24 @@ Public Class GameControl
         SetInitialProperties(Game)
         UpdateGameStatusProperties(Game)
 
-        lblHomeScore.Visible = showScores
-        lblAwayScore.Visible = showScores
+        If Game.GameIsLive Then
+            lblHomeScore.Visible = showLiveScores
+            lblAwayScore.Visible = showLiveScores
+            If Not showLiveScores And Game.GameIsInPlayoff And Game.Date.ToLocalTime() = Date.Today Then
+                lblNotInSeason.Text = "Playoffs"
+            End If
+        Else
+            lblHomeScore.Visible = showScores
+            lblAwayScore.Visible = showScores
+            If showScores And Game.GameIsFinal And Game.GamePeriod <> "3rd" Then
+                lblTime.Text += If(Game.GamePeriod <> "", "/" + Game.GamePeriod, "")
+            End If
+            If Not showScores And Game.GameIsInPlayoff And Game.GameIsFinal Then
+                lblNotInSeason.Text = "Playoffs"
+            End If
+        End If
+
+        lblLive.Visible = Game.GameIsLive
 
         AddHandler _Game.GameUpdated, AddressOf GameUpdatedHandler
 
@@ -29,51 +45,106 @@ Public Class GameControl
         lblAwayTeam.Text = Game.AwayAbbrev
 
         'btnWatch.Enabled = Game.Date <= DateTime.Now 'AndAlso Game.GameIsLive
-
-        If Game.Date <= DateTime.Now.ToUniversalTime() AndAlso Game.GameIsLive Then
-            BorderPanel1.BorderColour = Color.Green
-            'lblVS.Visible = True
-        ElseIf Game.Date <= DateTime.Now.ToUniversalTime() Then
-            BorderPanel1.BorderColour = Color.LightGray
-            'lblVS.Visible = True
-        Else
+        If Game.GameIsScheduled And Game.Date.ToLocalTime() <= Date.Today.AddDays(1) Then
+            BorderPanel1.BorderColour = Color.FromArgb(255, 0, 175, 220)
+        ElseIf Game.GameIsPreGame Then
+            BorderPanel1.BorderColour = Color.Lime
+        ElseIf Game.GameIsLive Then
+            BorderPanel1.BorderColour = Color.Red
+        ElseIf Game.GameIsScheduled Then
             BorderPanel1.BorderColour = Color.DarkGray
-            'lblVS.Visible = False
         End If
     End Sub
 
     Private Sub SetInitialProperties(Game As Game)
         picAway.SizeMode = PictureBoxSizeMode.StretchImage
-        If String.IsNullOrEmpty(Game.HomeTeamLogo) = False Then
-            picAway.Image = ImageFetcher.GetEmbeddedImage(Game.AwayTeamLogo)
-            AwayTeamToolTip.SetToolTip(picAway, "Away Team: " & Game.AwayTeam)
+        If String.IsNullOrEmpty(Game.HomeTeam) = False Then
+            picAway.Image = ImageFetcher.GetEmbeddedImage(Game.AwayTeam)
+            TeamToolTip.SetToolTip(picAway, "Away Team: " & Game.AwayTeamName)
         End If
 
 
         picHome.SizeMode = PictureBoxSizeMode.StretchImage
-        If String.IsNullOrEmpty(Game.AwayTeamLogo) = False Then
-            picHome.Image = ImageFetcher.GetEmbeddedImage(Game.HomeTeamLogo)
-            HomeTeamToolTip.SetToolTip(picHome, "Home Team: " & Game.HomeTeam)
+        If String.IsNullOrEmpty(Game.AwayTeam) = False Then
+            picHome.Image = ImageFetcher.GetEmbeddedImage(Game.HomeTeam)
+            TeamToolTip.SetToolTip(picHome, "Home Team: " & Game.HomeTeamName)
         End If
 
-        lblTime.Text = Game.Date.ToLocalTime().ToString("h:mm tt")
+        lblPeriod.Text = ""
+        lblNotInSeason.Text = ""
+        If Not Game.GameIsInSeason Then
+            If Game.GameIsInPlayoff Then
+                If Game.GameIsLive Or Game.GameIsPreGame Then
+                    lblNotInSeason.Text = "GM " + Game.SeriesGameNumber + ": " + Game.SeriesGameStatus
+                Else
+                    lblNotInSeason.Text = Game.SeriesGameStatus
+                    lblPeriod.Text = "Game" + Game.SeriesGameNumber
+                End If
+            Else
+                lblNotInSeason.Text = "Preseason"
+            End If
+        End If
+
+
+        If Game.GameIsLive Then
+            lblTime.Text = Game.GameTimeLeft.ToString()
+            lblPeriod.Text = Game.GamePeriod.ToString()
+        ElseIf Game.GameIsFinal Then
+            lblTime.Text = Game.GameState.ToString
+        ElseIf Game.GameIsPreGame Then
+            lblTime.Text = Game.Date.ToLocalTime().ToString("h:mm tt")
+            lblPeriod.Text = Game.GameState.ToString
+        Else
+            lblTime.Text = Game.Date.ToLocalTime().ToString("h:mm tt")
+        End If
+
+        lblNoStream.Visible = If(Not Game.AreAnyStreamsAvailable And Game.Date.ToLocalTime <= Date.Today.AddDays(1), True, False)
+        If Not Game.AreAnyStreamsAvailable And Game.Date.ToLocalTime >= Date.Today Then
+            lblNoStream.Text = "Streams available during pregame"
+        End If
+
+        Dim tip As String = ""
 
         lblAwayStream.Visible = Game.AwayStream.IsAvailable
-        If Game.AwayStream.Network <> String.Empty Then
-            lblAwayStream.Text = lblAwayStream.Text & " (" & Game.AwayStream.Network & ")"
+        If Game.AwayStream.IsAvailable Then
+            tip = Game.Away + " stream"
+            If Game.AwayStream.Network <> String.Empty Then
+                lblAwayStream.Text += " (" & Game.AwayStream.Network & ")"
+                tip += " on " + Game.AwayStream.Network
+            End If
+            TeamToolTip.SetToolTip(lblAwayStream, tip)
         End If
+
         lblHomeStream.Visible = Game.HomeStream.IsAvailable
-        If Game.HomeStream.Network <> String.Empty Then
-            lblHomeStream.Text = lblHomeStream.Text & " (" & Game.HomeStream.Network & ")"
+        If Game.HomeStream.IsAvailable Then
+            tip = Game.Home + " stream"
+            If Game.HomeStream.Network <> String.Empty Then
+                lblHomeStream.Text += " (" & Game.HomeStream.Network & ")"
+                tip += " on " + Game.HomeStream.Network
+            End If
+            TeamToolTip.SetToolTip(lblHomeStream, tip)
         End If
+
         lblFrenchStream.Visible = Game.FrenchStream.IsAvailable
-        If Game.FrenchStream.Network <> String.Empty Then
-            lblFrenchStream.Text = lblFrenchStream.Text & " (" & Game.FrenchStream.Network & ")"
+        If Game.FrenchStream.IsAvailable Then
+            tip = "French canadians stream"
+            If Game.FrenchStream.Network <> String.Empty Then
+                lblFrenchStream.Text += " (" & Game.FrenchStream.Network & ")"
+                tip += " on " + Game.FrenchStream.Network
+            End If
+            TeamToolTip.SetToolTip(lblFrenchStream, tip)
         End If
+
         lblNationalStream.Visible = Game.NationalStream.IsAvailable
-        If Game.NationalStream.Network <> String.Empty Then
-            lblNationalStream.Text = lblNationalStream.Text & " (" & Game.NationalStream.Network & ")"
+        If Game.NationalStream.IsAvailable Then
+            tip = "National stream"
+            If Game.NationalStream.Network <> String.Empty Then
+                lblNationalStream.Text += " (" & Game.NationalStream.Network & ")"
+                tip += " on " + Game.NationalStream.Network
+            End If
+            TeamToolTip.SetToolTip(lblNationalStream, tip)
         End If
+
         lblMultiCam1.Visible = Game.MultiCam1Stream.IsAvailable
 
         lblMultiCam2.Visible = Game.MultiCam2Stream.IsAvailable
@@ -83,11 +154,6 @@ Public Class GameControl
         lblEndzoneCam1.Visible = Game.EndzoneCam1Stream.IsAvailable
 
         lblEndzoneCam2.Visible = Game.EndzoneCam2Stream.IsAvailable
-    End Sub
-
-    Private Sub btnWatch_Click(sender As Object, e As EventArgs)
-        Dim newForm As New WatchGameForm(_Game, New GameWatchArguments())
-        newForm.ShowDialog(Me)
     End Sub
 
     Private Sub GameUpdatedHandler(game As Game)

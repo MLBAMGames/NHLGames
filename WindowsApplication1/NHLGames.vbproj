@@ -114,6 +114,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\BorderPanel.vb" />
+    <Compile Include="Controls\CalenderControl.Designer.vb">
+      <DependentUpon>CalenderControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CalenderControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\GameControl.Designer.vb">
       <DependentUpon>GameControl.vb</DependentUpon>
     </Compile>
@@ -133,9 +139,7 @@
     <Compile Include="Utilities\Downloader.vb" />
     <Compile Include="Objects\Game.vb" />
     <Compile Include="Objects\GameStream.vb" />
-    <Compile Include="NHLGames.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="NHLGames.vb" />
     <Compile Include="NHLGames.Designer.vb">
       <DependentUpon>NHLGames.vb</DependentUpon>
       <SubType>Form</SubType>
@@ -168,6 +172,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\CalenderControl.resx">
+      <DependentUpon>CalenderControl.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\GameControl.resx">
       <DependentUpon>GameControl.vb</DependentUpon>
     </EmbeddedResource>
@@ -205,7 +212,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -220,40 +227,47 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Logos\AnaheimDucks.gif" />
-    <EmbeddedResource Include="Logos\ArizonaCoyotes.gif" />
-    <EmbeddedResource Include="Logos\BostonBruins.gif" />
-    <EmbeddedResource Include="Logos\BuffaloSabres.gif" />
-    <EmbeddedResource Include="Logos\CalgaryFlames.gif" />
-    <EmbeddedResource Include="Logos\CarolinaHurricanes.gif" />
-    <EmbeddedResource Include="Logos\ChicagoBlackhawks.gif" />
-    <EmbeddedResource Include="Logos\ColoradoAvalanche.gif" />
-    <EmbeddedResource Include="Logos\ColumbusBlueJackets.gif" />
-    <EmbeddedResource Include="Logos\DallasStars.gif" />
-    <EmbeddedResource Include="Logos\DetroitRedWings.gif" />
-    <EmbeddedResource Include="Logos\EdmontonOilers.gif" />
-    <EmbeddedResource Include="Logos\FloridaPanthers.gif" />
-    <EmbeddedResource Include="Logos\LosAngelesKings.gif" />
-    <EmbeddedResource Include="Logos\MinnesotaWild.gif" />
-    <EmbeddedResource Include="Logos\MontrealCanadiens.gif" />
-    <EmbeddedResource Include="Logos\NashvillePredators.gif" />
-    <EmbeddedResource Include="Logos\NewJerseyDevils.gif" />
-    <EmbeddedResource Include="Logos\NewYorkIslanders.gif" />
-    <EmbeddedResource Include="Logos\NewYorkRangers.gif" />
-    <EmbeddedResource Include="Logos\OttawaSenators.gif" />
-    <EmbeddedResource Include="Logos\PhiladelphiaFlyers.gif" />
-    <EmbeddedResource Include="Logos\PittsburghPenguins.gif" />
-    <EmbeddedResource Include="Logos\SanJoseSharks.gif" />
-    <EmbeddedResource Include="Logos\StLouisBlues.gif" />
-    <EmbeddedResource Include="Logos\TampaBayLightning.gif" />
-    <EmbeddedResource Include="Logos\TorontoMapleLeafs.gif" />
-    <EmbeddedResource Include="Logos\VancouverCanucks.gif" />
-    <EmbeddedResource Include="Logos\WashingtonCapitals.gif" />
-    <EmbeddedResource Include="Logos\WinnipegJets.gif" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Logos\Oilers.gif" />
+    <EmbeddedResource Include="Logos\Panthers.gif" />
+    <EmbeddedResource Include="Logos\Penguins.gif" />
+    <EmbeddedResource Include="Logos\Predators.gif" />
+    <EmbeddedResource Include="Logos\Rangers.gif" />
+    <EmbeddedResource Include="Logos\RedWings.gif" />
+    <EmbeddedResource Include="Logos\Sabres.gif" />
+    <EmbeddedResource Include="Logos\Senators.gif" />
+    <EmbeddedResource Include="Logos\Sharks.gif" />
+    <EmbeddedResource Include="Logos\Stars.gif" />
+    <EmbeddedResource Include="Logos\Wild.gif" />
     <EmbeddedResource Include="Logos\nhl-icon.png" />
     <None Include="DeveloperReadme.txt" />
+    <None Include="Icons\bdown.png" />
+    <None Include="Icons\bleft.png" />
+    <None Include="Icons\bright.png" />
+    <None Include="Icons\bup.png" />
+    <None Include="Icons\wdate.png" />
+    <None Include="Icons\wleft.png" />
+    <None Include="Icons\wrefresh.png" />
+    <None Include="Icons\wright.png" />
+    <EmbeddedResource Include="Logos\Avalanche.gif" />
+    <EmbeddedResource Include="Logos\Blackhawks.gif" />
+    <EmbeddedResource Include="Logos\BlueJackets.gif" />
+    <EmbeddedResource Include="Logos\Blues.gif" />
+    <EmbeddedResource Include="Logos\Bruins.gif" />
+    <EmbeddedResource Include="Logos\Canadiens.gif" />
+    <EmbeddedResource Include="Logos\Canucks.gif" />
+    <EmbeddedResource Include="Logos\Capitals.gif" />
+    <EmbeddedResource Include="Logos\Coyotes.gif" />
+    <EmbeddedResource Include="Logos\Devils.gif" />
+    <EmbeddedResource Include="Logos\Ducks.gif" />
+    <EmbeddedResource Include="Logos\Flames.gif" />
+    <EmbeddedResource Include="Logos\Flyers.gif" />
+    <EmbeddedResource Include="Logos\GoldenKnights.gif" />
+    <EmbeddedResource Include="Logos\Hurricanes.gif" />
+    <EmbeddedResource Include="Logos\Islanders.gif" />
+    <EmbeddedResource Include="Logos\Jets.gif" />
+    <EmbeddedResource Include="Logos\Kings.gif" />
+    <EmbeddedResource Include="Logos\Lightning.gif" />
+    <EmbeddedResource Include="Logos\MapleLeafs.gif" />
     <Content Include="Logos\nhl_icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

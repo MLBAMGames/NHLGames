@@ -8,6 +8,7 @@ Imports MetroFramework.Forms
 Imports Newtonsoft.Json.Linq
 Imports NHLGames.AdDetection
 Imports NHLGames.TextboxConsoleOutputRediect
+Imports System.Drawing.Text
 
 Public Class NHLGamesMetro
 
@@ -18,6 +19,12 @@ Public Class NHLGamesMetro
     Public Shared FormInstance As NHLGamesMetro = Nothing
     Private AdDetectorViewModel As AdDetectorViewModel = Nothing
     Private StatusTimer As Timer
+    Private LoadingTimer As Timer
+    Public Shared m_progressValue As Integer = 0
+    Public Shared m_progressMaxValue As Integer = 1000
+    Public Shared m_flpCalendar As FlowLayoutPanel
+    Public Shared m_lblDate As Label
+    Public Shared m_Date As Date
 
     ' Starts the application. -- See: https://msdn.microsoft.com/en-us/library/system.windows.forms.application.threadexception(v=vs.110).aspx
     <SecurityPermission(SecurityAction.Demand, Flags:=SecurityPermissionFlag.ControlAppDomain)>
@@ -44,6 +51,12 @@ Public Class NHLGamesMetro
 
     Private Sub IntitializeApplicationSettings()
 
+        SettingsToolTip.SetToolTip(rbQual1, "~0.4Go/hr")
+        SettingsToolTip.SetToolTip(rbQual2, "~0.5Go/hr")
+        SettingsToolTip.SetToolTip(rbQual3, "~0.9Go/hr")
+        SettingsToolTip.SetToolTip(rbQual4, "~1.2Go/hr")
+        SettingsToolTip.SetToolTip(rbQual5, "~1.5Go/hr")
+        SettingsToolTip.SetToolTip(rbQual6, "~2.0Go/hr")
         Dim mpcPath As String = ApplicationSettings.Read(Of String)(ApplicationSettings.Settings.MPCPath, "")
         If mpcPath = "" Then
             'mpcPath = FileAccess.LocateEXE("mpc-hc64.exe", "\MPC-HC")
@@ -106,7 +119,7 @@ Public Class NHLGamesMetro
         txtLiveStreamPath.Text = liveStreamerPath
 
         MetroCheckBox1.Checked = ApplicationSettings.Read(Of Boolean)(ApplicationSettings.Settings.ShowScores, True)
-
+        MetroCheckBox2.Checked = ApplicationSettings.Read(Of Boolean)(ApplicationSettings.Settings.ShowLiveScores, True)
 
         Dim watchArgs As Game.GameWatchArguments = ApplicationSettings.Read(Of Game.GameWatchArguments)(ApplicationSettings.Settings.DefaultWatchArgs)
 
@@ -116,6 +129,11 @@ Public Class NHLGamesMetro
         End If
 
         BindWatchArgsToForm(watchArgs)
+
+        m_Date = DateHelper.GetPacificTime()
+        lblDate.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(m_Date.DayOfWeek).Substring(0, 3) + ", " +
+            CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m_Date.Month).Substring(0, 3) + " " +
+            Date.Today.Day.ToString + ", " + m_Date.Year.ToString
 
         SettingsLoaded = True
 
@@ -180,6 +198,11 @@ Public Class NHLGamesMetro
 
             WatchArgs.UseOutputArgs = chkEnableOutput.Checked
             WatchArgs.PlayerOutputPath = txtOutputPath.Text
+
+            progress.Location = New Point((FlowLayoutPanel.Width - progress.Width) / 2, FlowLayoutPanel.Location.Y + 150)
+            NoGames.Location = New Point((FlowLayoutPanel.Width - NoGames.Width) / 2, FlowLayoutPanel.Location.Y + 148)
+
+            tmrAnimate.Start()
 
             ApplicationSettings.SetValue(ApplicationSettings.Settings.DefaultWatchArgs, Serialization.SerializeObject(Of Game.GameWatchArguments)(WatchArgs))
         End If
@@ -270,7 +293,8 @@ Public Class NHLGamesMetro
         If InvokeRequired Then
             BeginInvoke(New Action(Of Game)(AddressOf NewGameFoundHandler), gameObj)
         Else
-            Dim gameControl As New GameControl(gameObj, ApplicationSettings.Read(Of Boolean)(ApplicationSettings.Settings.ShowScores, True), dtDate.Value)
+            Dim gameControl As New GameControl(gameObj, ApplicationSettings.Read(Of Boolean)(ApplicationSettings.Settings.ShowScores),
+                ApplicationSettings.Read(Of Boolean)(ApplicationSettings.Settings.ShowLiveScores, True), m_Date)
             FlowLayoutPanel.Controls.Add(gameControl)
         End If
 
@@ -280,30 +304,21 @@ Public Class NHLGamesMetro
 
     Private Sub NHLGames_Load(sender As Object, e As EventArgs) Handles Me.Load
         AddHandler GameManager.NewGameFound, AddressOf NewGameFoundHandler
-
+        m_flpCalendar = flpCalender
+        m_lblDate = lblDate
         AdDetectorViewModel = New AdDetectorViewModel()
         AdDetectionSettingsElementHost.Child = AdDetectorViewModel.SettingsControl
-
-        dtDate.Value = DateHelper.GetPacificTime()
         'dtDate.MaxDate = DateHelper.GetPacificTime()
         TabControl.SelectedIndex = 0
-
+        flpCalender.Controls.Add(New CalenderControl(flpCalender))
         ServerIP = Dns.GetHostEntry("nhl.chickenkiller.com").AddressList.First.ToString()
 
         If (HostsFile.TestEntry(DomainName, ServerIP) = False) Then
             HostsFile.AddEntry(ServerIP, DomainName, True)
         End If
-
         VersionCheck()
         IntitializeApplicationSettings()
-        'LoadGames(dtDate.Value) 'Already handled via dtDate_ValueChanged
-    End Sub
-
-
-
-    Private Sub dtDate_ValueChanged(sender As Object, e As EventArgs) Handles dtDate.ValueChanged
-
-        LoadGamesAsync(dtDate.Value)
+        LoadGamesAsync(m_Date)
     End Sub
 
 
@@ -314,7 +329,6 @@ Public Class NHLGamesMetro
     Private Sub LoadGamesAsync(dateTime As DateTime)
         Dim LoadGamesFunc As New Action(Of DateTime)(Sub(dt As DateTime) LoadGames(dt))
         LoadGamesFunc.BeginInvoke(dateTime, Nothing, Nothing)
-
 
     End Sub
 
@@ -341,9 +355,11 @@ Public Class NHLGamesMetro
 
     End Sub
     Private Sub LoadGames(dateTime As DateTime)
-
         Try
+            NHLGamesMetro.m_progressValue = 0
+            SetLoading(True)
             SetFormStatusLabel("Loading Games")
+
             'If dateTime <> GameManager.GamesListDate Then
             GameManager.ClearGames()
             ClearGamePanel()
@@ -353,16 +369,15 @@ Public Class NHLGamesMetro
             AvailableGames = Downloader.DownloadAvailableGames() 'TODO: not download each time?
             GameManager.RefreshGames(dateTime, JSONSchedule, AvailableGames)
             ResizeGamePanel()
-
-            SetFormStatusLabel("Games Loaded")
-
+            SetFormStatusLabel("Games Found : " + GameManager.GamesList.Count.ToString())
+            SetLoading(False)
         Catch ex As Exception
             Console.WriteLine(ex.ToString())
         End Try
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
-        LoadGamesAsync(dtDate.Value)
+        LoadGamesAsync(m_Date)
     End Sub
 
     Private Sub RichTextBox_TextChanged(sender As Object, e As EventArgs) Handles RichTextBox.TextChanged
@@ -487,7 +502,15 @@ Public Class NHLGamesMetro
             BeginInvoke(New Action(Of String)(AddressOf SetFormStatusLabel), text)
         Else
             Me.StatusLabel.Text = [text]
-            StatusTimer = New Timer(New TimerCallback(Sub() If StatusLabel.Text = text Then SetFormStatusLabel("")), Nothing, 2000, Timeout.Infinite)
+        End If
+    End Sub
+
+    Private Sub SetLoading(visible As Boolean)
+        If InvokeRequired Then
+            BeginInvoke(New Action(Of Boolean)(AddressOf SetLoading), visible)
+        Else
+            Me.progress.Visible = [visible]
+            LoadingTimer = New Timer(New TimerCallback(Sub() If progress.Visible Then SetLoading(True)), Nothing, 1000, Timeout.Infinite)
         End If
     End Sub
 
@@ -563,20 +586,17 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub btnYesterday_Click(sender As Object, e As EventArgs) Handles btnYesterday.Click
-        Dim yesterday = dtDate.Value.Add(TimeSpan.FromDays(1))
-
-        If (yesterday >= dtDate.MinDate) Then
-            dtDate.Value = dtDate.Value.Subtract(TimeSpan.FromDays(1))
-        End If
+        m_Date = m_Date.AddDays(-1)
+        lblDate.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(m_Date.DayOfWeek).Substring(0, 3) + ", " +
+            CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m_Date.Month).Substring(0, 3) + " " +
+            m_Date.Day.ToString + ", " + m_Date.Year.ToString
     End Sub
 
     Private Sub btnTomorrow_Click(sender As Object, e As EventArgs) Handles btnTomorrow.Click
-
-        'Dim tomorrow = dtDate.Value.Add(TimeSpan.FromDays(1))
-
-        'If (tomorrow <= dtDate.MaxDate) Then
-        dtDate.Value = dtDate.Value.Add(TimeSpan.FromDays(1))
-        'End If
+        m_Date = m_Date.AddDays(1)
+        lblDate.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(m_Date.DayOfWeek).Substring(0, 3) + ", " +
+            CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m_Date.Month).Substring(0, 3) + " " +
+            m_Date.Day.ToString + ", " + m_Date.Year.ToString
     End Sub
 
     Private Sub lblVersion_Click(sender As Object, e As EventArgs) Handles lblVersion.Click
@@ -609,6 +629,50 @@ Public Class NHLGamesMetro
 
     Private Sub btnAddHosts_Click(sender As Object, e As EventArgs) Handles btnAddHosts.Click
         HostsFile.AddEntry(ServerIP, DomainName, True)
+    End Sub
+
+    Private Sub btnDate_Click(sender As Object, e As EventArgs) Handles btnDate.Click
+        Dim val = If(flpCalender.Visible, False, True)
+        flpCalender.Visible = val
+    End Sub
+
+    Private Sub lblDate_TextChanged(sender As Object, e As EventArgs) Handles lblDate.TextChanged
+        LoadGamesAsync(m_Date)
+    End Sub
+
+    Private Sub tmrAnimate_Tick(sender As Object, e As EventArgs) Handles tmrAnimate.Tick
+        If NHLGamesMetro.m_progressValue < Me.progress.Maximum Then
+            progress.Value = NHLGamesMetro.m_progressValue
+        ElseIf progress.Value < Me.progress.Maximum And NHLGamesMetro.m_progressValue <= Me.progress.Maximum Then
+            progress.Value = Me.progress.Maximum
+        End If
+
+        'I use a timer cause it never fails to hide the progress bar or the <no games> label when the games are loaded
+        If progress.Visible Then
+            btnDate.Enabled = False
+            btnTomorrow.Enabled = False
+            btnYesterday.Enabled = False
+            NoGames.Visible = False
+        Else
+            btnDate.Enabled = True
+            btnTomorrow.Enabled = True
+            btnYesterday.Enabled = True
+            If (FlowLayoutPanel.Controls.Count = 0) Then
+                Me.NoGames.Visible = True
+            Else
+                Me.NoGames.Visible = False
+            End If
+        End If
+
+        If FlowLayoutPanel.Controls.Count <> 0 And (progress.Visible Or NoGames.Visible) Then
+            progress.Visible = False
+            NoGames.Visible = False
+        End If
+
+    End Sub
+
+    Private Sub MetroCheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles MetroCheckBox2.CheckedChanged
+        ApplicationSettings.SetValue(ApplicationSettings.Settings.ShowLiveScores, MetroCheckBox2.Checked)
     End Sub
 
 #End Region
