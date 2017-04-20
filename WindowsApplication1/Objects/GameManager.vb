@@ -25,18 +25,17 @@ Public Class GameManager
         Dim tempList As New List(Of Game)
         GamesListDate = dateTime
         Try
+            Dim progress = Convert.ToInt32((NHLGamesMetro.m_progressMaxValue - NHLGamesMetro.m_progressValue) / Convert.ToInt32(jsonObj("totalGames").ToString())) - 1
             For Each o As JToken In jsonObj.Children(Of JToken)
                 If o.Path = "dates" Then
                     For Each game As JObject In o.Children.Item(0)("games").Children(Of JObject)
-
-                        tempList.Add(New Game(game, availableGames))
+                        tempList.Add(New Game(game, availableGames, progress))
                     Next
                 End If
             Next
         Catch ex As Exception
             'do nothing (avoid clogging console with IndexOutOfRangeExceptions for dates with no games)
         End Try
-
 
         tempList = tempList.OrderBy(Of Long)(Function(val) val.Date.Ticks).ToList()
 
@@ -55,7 +54,4 @@ Public Class GameManager
     'Private Shared Sub GameUpdatedHandler(game As Game)
     '    RaiseEvent GameUpdated(game)
     'End Sub
-
-
-
 End Class

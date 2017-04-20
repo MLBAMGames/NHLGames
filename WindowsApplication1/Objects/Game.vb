@@ -3,6 +3,15 @@ Imports System.Text
 Imports System.IO
 Imports Newtonsoft.Json.Linq
 
+
+Public Enum GameStateEnum
+    Scheduled = 1
+    Pregame = 2
+    InProgress = 3
+    Ending = 4
+    Final = 5
+End Enum
+
 <DebuggerDisplay("{HomeTeam} vs. {AwayTeam} at {[Date]}")>
 Public Class Game
 
@@ -12,13 +21,31 @@ Public Class Game
     Public Event GameStatusChanged(sender As Game, isActive As Boolean)
 
     Private _GameObj As JObject
+    Private _StatusID As String = ""
+    Private _GameType As Integer
+
+    Private _HomeScore As String = ""
+    Private _AwayScore As String = ""
 
     Public Id As Guid = Guid.NewGuid()
     Public GameID As String = ""
     Public [Date] As DateTime
-    Public AwayTeam As String
-    Public AwayAbbrev As String
+    Public GameState As GameStateEnum
+    Public GamePeriod As String = ""
+    Public GameTimeLeft As String = ""
 
+    Public SeriesGameNumber As String = ""
+    Public SeriesGameStatus As String = ""
+
+    Public Away As String = ""
+    Public AwayAbbrev As String = ""
+    Public AwayTeam As String = ""
+    Public AwayTeamName As String = ""
+
+    Public Home As String = ""
+    Public HomeAbbrev As String = ""
+    Public HomeTeam As String = ""
+    Public HomeTeamName As String = ""
 
     Public AwayStream As GameStream = New GameStream()
     Public HomeStream As GameStream = New GameStream()
@@ -34,7 +61,7 @@ Public Class Game
         Return HomeTeam & " vs " & AwayTeam
     End Function
 
-    Private _StatusID As String = ""
+
     Public Property StatusID As String
         Get
             Return _StatusID
@@ -49,15 +76,48 @@ Public Class Game
         End Set
     End Property
 
+    Public ReadOnly Property GameIsFinal As Boolean
+        Get
+            Return _StatusID = "5" Or _StatusID = "6" Or _StatusID = "7"
+        End Get
+    End Property
 
     Public ReadOnly Property GameIsLive As Boolean
         Get
-            Return _StatusID = "3"
+            Return (_StatusID = "3" Or _StatusID = "4")
         End Get
-
     End Property
 
-    Private _HomeScore As String = ""
+    Public ReadOnly Property GameIsPreGame As Boolean
+        Get
+            Return _StatusID = "2"
+        End Get
+    End Property
+
+    Public ReadOnly Property GameIsScheduled As Boolean
+        Get
+            Return _StatusID = "1"
+        End Get
+    End Property
+
+    Public ReadOnly Property GameIsInPlayoff As Boolean
+        Get
+            Return _GameType = 3
+        End Get
+    End Property
+
+    Public ReadOnly Property GameIsInSeason As Boolean
+        Get
+            Return _GameType = 2
+        End Get
+    End Property
+
+    Public ReadOnly Property GameIsInPreSeason As Boolean
+        Get
+            Return _GameType = 1
+        End Get
+    End Property
+
     Public Property HomeScore As String
         Get
             Return _HomeScore
@@ -71,7 +131,7 @@ Public Class Game
         End Set
     End Property
 
-    Private _AwayScore As String = ""
+
     Public Property AwayScore As String
         Get
             Return _AwayScore
@@ -84,28 +144,6 @@ Public Class Game
             End If
 
         End Set
-    End Property
-
-    Public ReadOnly Property AwayTeamLogo As String
-        Get
-            If (String.IsNullOrEmpty(AwayTeam) = False) Then
-                Return RemoveDiacritics(AwayTeam.Replace(" ", "").Replace(".", "")) & ".gif"
-            Else
-                Return ""
-            End If
-        End Get
-    End Property
-
-    Public HomeTeam As String
-    Public HomeAbbrev As String
-    Public ReadOnly Property HomeTeamLogo As String
-        Get
-            If (String.IsNullOrEmpty(HomeTeam) = False) Then
-                Return RemoveDiacritics(HomeTeam.Replace(" ", "").Replace(".", "")) & ".gif"
-            Else
-                Return ""
-            End If
-        End Get
     End Property
 
     Public Sub Update(game As Game)
@@ -189,15 +227,15 @@ Public Class Game
     End Property
 
 
-    Public Sub New(game As JObject, availableGameIds As HashSet(Of String))
+    Public Sub New(game As JObject, availableGameIds As HashSet(Of String), maxprogress As Integer)
 
         _GameObj = game
 
-        LoadGameData(game, availableGameIds)
+        LoadGameData(game, availableGameIds, maxprogress)
 
     End Sub
 
-    Private Sub LoadGameData(game As JObject, availableGameIds As HashSet(Of String))
+    Private Sub LoadGameData(game As JObject, availableGameIds As HashSet(Of String), maxprogressize As Integer)
 
         'Dim timeZoneInfo As TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time")
         Dim dateTimeStr As String = game.Property("gameDate").Value.ToString() '"2016-03-20T21:00:00Z"
@@ -209,35 +247,48 @@ Public Class Game
 
         [Date] = dateTimeVal.ToUniversalTime() ' Must use universal time to always get correct date for stream
 
+
         GameID = game.Property("gamePk").ToString()
         _StatusID = game("status")("statusCode").ToString()
+        Dim status = If(_StatusID >= 5, 5, _StatusID)
+
+        Home = game("teams")("home")("team")("locationName").ToString()
+        HomeAbbrev = game("teams")("home")("team")("abbreviation").ToString()
+        HomeTeam = RemoveDiacritics(game("teams")("home")("team")("teamName").ToString().Replace(" ", "").Replace(".", ""))
+        HomeTeamName = Home + " " + HomeTeam
+
+        Away = game("teams")("away")("team")("locationName").ToString()
+        AwayAbbrev = game("teams")("away")("team")("abbreviation").ToString()
+        AwayTeam = RemoveDiacritics(game("teams")("away")("team")("teamName").ToString().Replace(" ", "").Replace(".", ""))
+        AwayTeamName = Away + " " + AwayTeam
+        _GameType = Convert.ToInt32(GetChar(game("gamePk"), 6)) - 48 'Get type of the game : 1 preseason, 2 regular, 3 series
+        GameState = [Enum].Parse(GetType(GameStateEnum), status)
+
+        If (status >= 3) Then
+            GamePeriod = game("linescore")("currentPeriodOrdinal").ToString() '1st 2nd 3rd OT 2OT ...
+            'If (status < 5) Then
+            GameTimeLeft = game("linescore")("currentPeriodTimeRemaining").ToString() 'Final, 12:34, 20:00
+            'End If
+        End If
+
+        If _GameType = 3 Then
+            SeriesGameNumber = game("seriesSummary")("gameNumber").ToString()
+            SeriesGameStatus = game("seriesSummary")("seriesStatusShort").ToString()
+        End If
 
         If [Date] <= DateTime.Now.ToUniversalTime() Then
             HomeScore = game("teams")("home")("score").ToString()
             AwayScore = game("teams")("away")("score").ToString()
         End If
 
-
-
-        HomeTeam = game("teams")("home")("team")("name").ToString()
-        HomeAbbrev = game("teams")("home")("team")("abbreviation").ToString()
-
-
-
-
-
-        AwayTeam = game("teams")("away")("team")("name").ToString()
-        AwayAbbrev = game("teams")("away")("team")("abbreviation").ToString()
-
-
-
         If game("content")("media") IsNot Nothing Then
+
             For Each stream As JObject In game("content")("media")("epg")
                 If stream.Property("title") = "NHLTV" Then
                     For Each item As JArray In stream.Property("items")
+                        Dim countStreams = item.Count
                         For Each innerStream As JObject In item.Children(Of JObject)
                             Dim strType As String = innerStream.Property("mediaFeedType")
-
                             If strType = "AWAY" Then
                                 AwayStream = New GameStream(Me, innerStream, availableGameIds, GameStream.StreamType.Away)
                             ElseIf strType = "HOME" Then
@@ -261,6 +312,7 @@ Public Class Game
                                     EndzoneCam2Stream = New GameStream(Me, innerStream, availableGameIds, GameStream.StreamType.EndzoneCam2)
                                 End If
                             End If
+                            NHLGamesMetro.m_progressValue += Convert.ToInt32(maxprogressize / countStreams)
                         Next
                     Next
                 End If

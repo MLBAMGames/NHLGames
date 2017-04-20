@@ -9,16 +9,16 @@ Imports Newtonsoft.Json.Linq
 
 Public Class Downloader
 
-    Private Shared GamesTxtURL = "http://nhl.chickenkiller.com/static/ids.txt"
-    Private Shared ScheduleAPIURL = "http://statsapi.web.nhl.com/api/v1/schedule?startDate={0}&endDate={1}&expand=schedule.teams,schedule.game.content.media.epg"
-    Private Shared ApplicationVersionURL = "http://showtimes.ninja/static/version.txt"
-    Private Shared ChangelogURL As String = "http://showtimes.ninja/static/changelog.txt"
+    Private Shared GamesTxtURL As String = "http://nhl.chickenkiller.com/static/ids.txt"
+    Private Shared ScheduleAPIURL As String = "http://statsapi.web.nhl.com/api/v1/schedule?startDate={0}&endDate={1}&expand=schedule.teams,schedule.game.content.media.epg"
+    Private Shared ApplicationVersionURL As String = "showtimes.ninja/static/version.txt"
+    Private Shared ChangelogURL As String = "showtimes.ninja/static/changelog.txt"
 
     Private Shared ApplicationVersionFileName As String = "version.txt"
     Private Shared GamesTextFileName As String = "games.txt"
     Private Shared ChangelogFileName As String = "changelog.txt"
 
-    Private Shared LocalFileDirectory = ""
+    Private Shared LocalFileDirectory As String = ""
 
     Private Shared Function GetLocalFileDirectory() As String
         If String.IsNullOrEmpty(LocalFileDirectory) Then
@@ -75,17 +75,39 @@ Public Class Downloader
     End Function
 
     Public Shared Function DownloadApplicationVersion() As String
-
+        Dim AppVers As String = ""
         Console.WriteLine("Checking: Application version")
 
-        DownloadFile(ApplicationVersionURL, ApplicationVersionFileName)
-        Return ReadFileContents(ApplicationVersionFileName).Trim()
-
+        DownloadFile("http://" + ApplicationVersionURL, ApplicationVersionFileName)
+        AppVers = ReadFileContents(ApplicationVersionFileName).Trim()
+        If Not AppVers.Contains("<html>") Then
+            Return AppVers
+        Else
+            DownloadFile("https://" + ApplicationVersionURL, ApplicationVersionFileName)
+            AppVers = ReadFileContents(ApplicationVersionFileName).Trim()
+            If Not AppVers.Contains("<html>") Then
+                Return AppVers
+            Else
+                Return AppVers = ""
+            End If
+        End If
     End Function
 
     Public Shared Function DownloadChangelog() As String
-        DownloadFile(ChangelogURL, ChangelogFileName)
-        Return ReadFileContents(ChangelogFileName).Trim()
+        Dim AppChangelog As String = ""
+        DownloadFile("http://" + ChangelogURL, ChangelogFileName)
+        AppChangelog = ReadFileContents(ChangelogFileName).Trim()
+        If Not AppChangelog.Contains("<html>") Then
+            Return AppChangelog
+        Else
+            DownloadFile("https://" + ChangelogURL, ChangelogFileName)
+            AppChangelog = ReadFileContents(ChangelogFileName).Trim()
+            If Not AppChangelog.Contains("<html>") Then
+                Return AppChangelog
+            Else
+                Return AppChangelog = ""
+            End If
+        End If
     End Function
 
     Public Shared Function DownloadAvailableGames() As HashSet(Of String)
