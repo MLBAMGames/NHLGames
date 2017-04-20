@@ -139,11 +139,6 @@
     <Compile Include="Utilities\Downloader.vb" />
     <Compile Include="Objects\Game.vb" />
     <Compile Include="Objects\GameStream.vb" />
-    <Compile Include="NHLGames.vb" />
-    <Compile Include="NHLGames.Designer.vb">
-      <DependentUpon>NHLGames.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -162,14 +157,9 @@
     <Compile Include="Utilities\FileAccess.vb" />
     <Compile Include="Utilities\HostsFile.vb" />
     <Compile Include="Utilities\ImageFetcher.vb" />
+    <Compile Include="Utilities\PathFinder.vb" />
     <Compile Include="Utilities\Serialization.vb" />
     <Compile Include="Utilities\TextboxConsoleOutputRediect.vb" />
-    <Compile Include="WatchGameForm.Designer.vb">
-      <DependentUpon>WatchGameForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WatchGameForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\CalenderControl.resx">
@@ -186,12 +176,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NHLGames.resx">
-      <DependentUpon>NHLGames.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WatchGameForm.resx">
-      <DependentUpon>WatchGameForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

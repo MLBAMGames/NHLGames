@@ -59,16 +59,8 @@ Public Class NHLGamesMetro
         SettingsToolTip.SetToolTip(rbQual6, "~2.0Go/hr")
         Dim mpcPath As String = ApplicationSettings.Read(Of String)(ApplicationSettings.Settings.MPCPath, "")
         If mpcPath = "" Then
-            'mpcPath = FileAccess.LocateEXE("mpc-hc64.exe", "\MPC-HC")
-            'If mpcPath = String.Empty Then
-            '    mpcPath = FileAccess.LocateEXE("mpc-hc.exe", "\MPC-HC")
-            '    If mpcPath = String.Empty Then
-            '        mpcPath = "Unknown"
-
-            If My.Computer.FileSystem.FileExists("C:\Program Files\MPC-HC\mpc-hc64.exe") Then
-                mpcPath = "C:\Program Files\MPC-HC\mpc-hc64.exe"
-            ElseIf My.Computer.FileSystem.FileExists("C:\Program Files (x86)\MPC-HC\mpc-hc.exe") Then
-                mpcPath = "C:\Program Files (x86)\MPC-HC\mpc-hc.exe"
+            If My.Computer.FileSystem.FileExists(PathFinder.GetPathOfMPC) Then
+                mpcPath = PathFinder.GetPathOfMPC
             End If
         End If
 
@@ -78,14 +70,8 @@ Public Class NHLGamesMetro
 
         Dim vlcPath As String = ApplicationSettings.Read(Of String)(ApplicationSettings.Settings.VLCPath, "")
         If vlcPath = "" Then
-            'vlcPath = FileAccess.LocateEXE("vlc.exe", "\VideoLAN\VLC")
-            'If vlcPath = String.Empty Then
-            '    vlcPath = "Unknown"
-
-            If My.Computer.FileSystem.FileExists("C:\Program Files\VideoLAN\VLC\vlc.exe") Then
-                vlcPath = "C:\Program Files\VideoLAN\VLC\vlc.exe"
-            ElseIf My.Computer.FileSystem.FileExists("C:\Program Files (x86)\VideoLAN\VLC\vlc.exe") Then
-                vlcPath = "C:\Program Files (x86)\VideoLAN\VLC\vlc.exe"
+            If My.Computer.FileSystem.FileExists(PathFinder.GetPathOfVLC) Then
+                vlcPath = PathFinder.GetPathOfVLC
             End If
         End If
 
