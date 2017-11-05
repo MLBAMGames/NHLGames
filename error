@@ -1,0 +1,108 @@
+NHLGames Official Bug Report v1.0.8h
+
+OS : Microsoft Windows 7 Home Premium  64 Bits
+
+UI loaded : True
+
+Domain resolved : True
+
+Server IP found : True
+
+Selected hostname : nhl.chickenkiller.com
+
+Selected player : MPV
+
+Streamlink path : C:\Users\Marek\Desktop\NHLGames_v1.0.8h\streamlink-0.8.1\streamlink.exe [=UI:True]
+
+VLC path : C:\Program Files (x86)\VideoLAN\VLC\vlc.exe [=UI:True]
+
+MPC path : C:\Program Files\MPC-HC\mpc-hc64.exe [=UI:True]
+
+MPV path : C:\Users\Marek\Desktop\NHLGames_v1.0.8h\mpv\mpv.exe [=UI:True]
+
+Console log : 
+
+
+[19:49:22] Status: Setting updated for 'MpcPath' to 'C:\Program Files\MPC-HC\mpc-hc64.exe'
+
+[19:49:22] Status: Setting updated for 'VlcPath' to 'C:\Program Files (x86)\VideoLAN\VLC\vlc.exe'
+
+[19:49:22] Status: Setting updated for 'MpvPath' to 'C:\Users\Marek\Desktop\NHLGames_v1.0.8h\mpv\mpv.exe'
+
+[19:49:22] Status: Setting updated for 'StreamlinkPath' to 'C:\Users\Marek\Desktop\NHLGames_v1.0.8h\streamlink-0.8.1\streamlink.exe'
+
+[19:49:22] Status: Setting updated for 'SelectedLanguage' to 'English'
+
+[19:49:22] Status: Setting updated for 'SelectedServer' to 'nhl.freegamez.gq'
+
+[19:49:22] Fetching: Game schedule for 2017-11-05 from NHL.tv
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:49:22] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:27] Status: Setting updated for 'SelectedServer' to 'nhl.chickenkiller.com'
+
+[19:52:43] Fetching: Saved game schedule for 2017-11-04 (C:\Users\Marek\AppData\Roaming\NHLGames\2017-11-04.json)
+
+[19:52:45] Fetching: Game schedule for 2017-11-05 from NHL.tv
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
+
+[19:52:46] Error: The remote server returned an error: (404) Not Found.
