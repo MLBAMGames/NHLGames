@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="NHLGames.WPF.View.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModel="clr-namespace:NHLGames.WPF.ViewModel"
+             xmlns:converters="clr-namespace:NHLGames.WPF.Converters"
+             xmlns:properties="clr-namespace:NHLGames.WPF.Properties"
+             mc:Ignorable="d" 
+             FontSize="15"
+             Width="350"
+             Margin="2"
+             d:DataContext="{d:DesignInstance Type=viewModel:GameViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <converters:GameStateColorConverter x:Key="gameStateColorConverter" />
+        <converters:ReverseBooleanToVisibilityConverter x:Key="reverseBooleanToVisibilityConverter" />
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        <converters:TeamNameToImageConverter x:Key="teamNameToImageConverter" />
+        <converters:BroadcastersToImageConverter x:Key="broadcastersToImageConverter" />
+    </UserControl.Resources>
+
+    <Border BorderThickness="2" BorderBrush="LightGray">
+        <Border BorderThickness="2" >
+            <Border.BorderBrush>
+                <MultiBinding Converter="{StaticResource gameStateColorConverter}">
+                    <Binding Path="GameState" />
+                    <Binding Path="GameDate" />
+                </MultiBinding>
+            </Border.BorderBrush>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Margin="1" Source="../Icons/live.gif" Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding GameIsLive, Converter={StaticResource booleanToVisibilityConverter}}" />
+
+                    <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0">
+                        <Image Source="{Binding AwayTeam, Converter={StaticResource teamNameToImageConverter}, FallbackValue='..Icons/nhltv.gif'}" ToolTip="{Binding ToolTipAwayTeam}" Height="60" Width="60"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding AwayAbbrev}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="8" Grid.Column="1">
+                        <TextBlock Text="{Binding GamePeriod}" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding GameIsFinal, Converter={StaticResource reverseBooleanToVisibilityConverter}, ConverterParameter={x:Static Visibility.Hidden}}" />
+                        <TextBlock Text="{Binding GameTimeLeft}" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Grid Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding AwayScore}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Text="VS" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="2" Text="{Binding HomeScore}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <TextBlock Text="{Binding GameTitle}"  Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="10" Grid.Column="2">
+                        <Image Source="{Binding HomeTeam, Converter={StaticResource teamNameToImageConverter}, FallbackValue='..Icons/nhltv.gif'}" ToolTip="{Binding ToolTipHomeTeam}" Height="60" Width="60"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding HomeAbbrev}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                    </StackPanel>
+
+                    <Image Grid.Column="2" Margin="1" Source="../Icons/live.gif" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Visibility="{Binding GameIsLive, Converter={StaticResource booleanToVisibilityConverter}}" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90"/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+                </Grid>
+
+                <ItemsControl Margin="10,0,10,10" Grid.Row="1" ItemsSource="{Binding AvailableStreams}"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Visibility="{Binding AreAnyStreamsAvailable, Converter={StaticResource BooleanToVisibilityConverter }}"  >
+                    <ItemsControl.Resources>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource AccentedSquareButtonStyle}">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                    </ItemsControl.Resources>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button ToolTip="{Binding Tooltip}" Command="{Binding StartPlayerCommand}">
+                                <Image Height="26" Width="26">
+                                    <Image.Source>
+                                        <MultiBinding Converter='{StaticResource broadcastersToImageConverter}'>
+                                            <Binding Path="Network" />
+                                            <Binding Path="Type" />
+                                        </MultiBinding>
+                                    </Image.Source>
+                                </Image>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+
+                <TextBlock Grid.Row="1" 
+                           Margin="10"
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center" 
+                           Visibility="{Binding AreAnyStreamsAvailable, Converter={StaticResource reverseBooleanToVisibilityConverter}}"
+                           Text="{x:Static properties:Resources.lblStreamAvailableDuringPregame}"/>
+            </Grid>
+
+        </Border>
+    </Border>
+</UserControl>

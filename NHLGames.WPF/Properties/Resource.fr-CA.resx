@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnAddHosts" xml:space="preserve">
+    <value>3) Ajouter</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnCleanHosts" xml:space="preserve">
+    <value>4) Nettoyer</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnClearConsole" xml:space="preserve">
+    <value>Effacer</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnCopyConsole" xml:space="preserve">
+    <value>Copier au presse-papier</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnOpenHostsFile" xml:space="preserve">
+    <value>2) Voir Hosts</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnTestHosts" xml:space="preserve">
+    <value>1) Tester</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkShowFinalScores" xml:space="preserve">
+    <value>Résultats finaux</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkShowLiveScores" xml:space="preserve">
+    <value>Résultats en direct</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkShowSeriesRecord" xml:space="preserve">
+    <value>Détails des séries</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="enumending" xml:space="preserve">
+    <value>En cours</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumfinal" xml:space="preserve">
+    <value>Terminé</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enuminprogress" xml:space="preserve">
+    <value>En cours</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumpregame" xml:space="preserve">
+    <value>Avant-match</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumscheduled" xml:space="preserve">
+    <value>À venir</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="formatGbHour" xml:space="preserve">
+    <value>GB/Heure</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="formatMbHour" xml:space="preserve">
+    <value>MB/Heure</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="formatWeekMonthDayYear" xml:space="preserve">
+    <value>{0} {2} {1} {3}</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="gamePeriod1" xml:space="preserve">
+    <value>1ere</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriod2" xml:space="preserve">
+    <value>2eme</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriod3" xml:space="preserve">
+    <value>3eme</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodFinal" xml:space="preserve">
+    <value>Terminé</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodOt" xml:space="preserve">
+    <value>P</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodOtMore" xml:space="preserve">
+    <value>{0}E P</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesLead" xml:space="preserve">
+    <value>mène</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesTied" xml:space="preserve">
+    <value>égale</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesWin" xml:space="preserve">
+    <value>gagne</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblAwayTeam" xml:space="preserve">
+    <value>Visiteurs : {1} {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblCamViews" xml:space="preserve">
+    <value>{0} vues de camera</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblCdn" xml:space="preserve">
+    <value>Réseau de diffusion</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblEndzoneCam" xml:space="preserve">
+    <value>Caméra zone {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblEnglish" xml:space="preserve">
+    <value>English</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblFrench" xml:space="preserve">
+    <value>Français</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblFrenchNetwork" xml:space="preserve">
+    <value>Stream canadien français</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGame" xml:space="preserve">
+    <value>Match {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGameAbv" xml:space="preserve">
+    <value>M{0}: {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGetMpc" xml:space="preserve">
+    <value>Télécharger MPC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblGetVlc" xml:space="preserve">
+    <value>Télécharger VLC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblHomeTeam" xml:space="preserve">
+    <value>Locaux : {1} {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblHostname" xml:space="preserve">
+    <value>Nom de domaine</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblHosts" xml:space="preserve">
+    <value>Fichier Hosts (entrée)</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Langue</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMpcPath" xml:space="preserve">
+    <value>Emplacement MPC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMpvPath" xml:space="preserve">
+    <value>Emplacement MPV</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblNationalNetwork" xml:space="preserve">
+    <value>Stream national</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblNoGames" xml:space="preserve">
+    <value>Aucun match trouvé</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="lblNoStreamAvailable" xml:space="preserve">
+    <value>Aucun stream de disponible</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblNoteCdn" xml:space="preserve">
+    <value>Note: Veuillez rafraîchir la grille des matchs pour obtenir le changement de diffuseur</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblOnNetwork" xml:space="preserve">
+    <value> sur {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblOutput" xml:space="preserve">
+    <value>Enregistrement</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayer" xml:space="preserve">
+    <value>Lecteur par défaut</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayerArgs" xml:space="preserve">
+    <value>Lecteur args. supp.</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayoffs" xml:space="preserve">
+    <value>Séries</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblPreseason" xml:space="preserve">
+    <value>Présaison</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblQuality" xml:space="preserve">
+    <value>Qualité vidéo</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblRefCam" xml:space="preserve">
+    <value>Camera de l'arbitre</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblShowScores" xml:space="preserve">
+    <value>Afficher les résultats</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblSlPath" xml:space="preserve">
+    <value>Emplacement Streamlink</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblStreamAvailableDuringPregame" xml:space="preserve">
+    <value>Streams disponible durant l'avant-match</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblStreamerArgs" xml:space="preserve">
+    <value>Streamlink args. supp.</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblTeamStream" xml:space="preserve">
+    <value>{0} stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblVlcPath" xml:space="preserve">
+    <value>Emplacement VLC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lnkCalendarToday" xml:space="preserve">
+    <value>Aujourd'hui</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="msgAddHost" xml:space="preserve">
+    <value>Ajouter l'entrée du serveur au fichier Hosts</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgChangeLog" xml:space="preserve">
+    <value>Version {0} maintenant disponible! Changements: {1}{2}{3}</value>
+    <comment>Version</comment>
+  </data>
+  <data name="msgDiySteps" xml:space="preserve">
+    <value>Besoin d'aide?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgDiyStepsText" xml:space="preserve">
+    <value>Cette ligne doit se trouver dans votre fichier Hosts : {0}{1} {2}{0}Cliquez sur 'Ouvrir Hosts' pour accéder au fichier Hosts et ajouter (Ctrl+V) la ligne copiée à la fin du fichier Hosts.{0}Désirez-vous copier cette ligne d'entrée au presse-papier?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgErrorGeneralText" xml:space="preserve">
+    <value>Une erreur est survenue! Voir la console pour plus de détails.{0}Cliquez sur le bouton [?] dans le coin supérieur droit pour voir la documentation en anglais de NHLGames et obtenir un support rapide dans la section 'Support' (Application et Lecteur){0}Vous pouvez copier le contenu de la console avec le bouton 'Copier au presse-papier' et coller (CTRL+V) dans un nouveau sujet sur reddit /r/NHLGames pour obtenir de l'aide. Utilisez le lien en bas à gauche pour vous y rendre.</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgFailure" xml:space="preserve">
+    <value>Erreur</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgGamesFound" xml:space="preserve">
+    <value>Matchs trouvés : {0}</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgHostnameSet" xml:space="preserve">
+    <value>NHLGames ne peut pas fonctionner sans avoir son nom de domaine inscrit dans le fichier Hosts de Windows. Acceptez-vous que NHLGames ajoute une entrée à votre fichier Hosts, ainsi Windows pourra résoudre le nom de domaine de NHLGames et pourra se connecter à son adresse IP?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgHostsFailure" xml:space="preserve">
+    <value>L'entrée dans le fichier Hosts ne semble pas fonctionner :(</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgHostsSuccess" xml:space="preserve">
+    <value>Le fichier Hosts semble fonctionnel :)</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgLoadingGames" xml:space="preserve">
+    <value>Chargement des matchs</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgNewVersionAvailable" xml:space="preserve">
+    <value>Nouvelle version disponible</value>
+    <comment>Version</comment>
+  </data>
+  <data name="msgNewVersionText" xml:space="preserve">
+    <value>Une nouvelle version est disponible, téléchargez la plus récente version {0} sur /r/nhl_games</value>
+    <comment>Version</comment>
+  </data>
+  <data name="msgRemoveHost" xml:space="preserve">
+    <value>Retirer l'entrée du serveur au fichier Hosts</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgRunAsAdmin" xml:space="preserve">
+    <value>Accès d'administrateur requis</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgRunAsAdminText" xml:space="preserve">
+    <value>NHLGames requiert une entrée au fichier Hosts qui est manquante. Voulez-vous qu'elle redémarre avec le droit d'administrateur et l'ajoute l'entrée manquante?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>Succès</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgTeamVsTeam" xml:space="preserve">
+    <value>{0} vs {1}</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgTestHosts" xml:space="preserve">
+    <value>Tester le fichier Hosts</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgViewHosts" xml:space="preserve">
+    <value>Voir le fichier Hosts</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgViewHostsText" xml:space="preserve">
+    <value>Voulez-vous voir les changements apportés au fichier Hosts?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="tabConsole" xml:space="preserve">
+    <value>Console</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabGames" xml:space="preserve">
+    <value>Matchs</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabModules" xml:space="preserve">
+    <value>Modules</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabSettings" xml:space="preserve">
+    <value>Paramètres</value>
+    <comment>Main</comment>
+  </data>
+</root>

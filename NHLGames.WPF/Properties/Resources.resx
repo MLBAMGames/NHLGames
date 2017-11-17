@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnAddHosts" xml:space="preserve">
+    <value>3) Add Entry</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnCleanHosts" xml:space="preserve">
+    <value>4) Remove Entries</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnClearConsole" xml:space="preserve">
+    <value>Clear</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnCopyConsole" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnOpenHostsFile" xml:space="preserve">
+    <value>2) View Hosts</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="btnTestHosts" xml:space="preserve">
+    <value>1) Test</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkShowFinalScores" xml:space="preserve">
+    <value>Final Scores</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkShowLiveScores" xml:space="preserve">
+    <value>Live Scores</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkShowSeriesRecord" xml:space="preserve">
+    <value>Series Record</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="enumending" xml:space="preserve">
+    <value>Ending</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumfinal" xml:space="preserve">
+    <value>Final</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enuminprogress" xml:space="preserve">
+    <value>In progress</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumpregame" xml:space="preserve">
+    <value>Pregame</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumscheduled" xml:space="preserve">
+    <value>Scheduled</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="errorCliStreamlink" xml:space="preserve">
+    <value>[cli]</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorConfigFile" xml:space="preserve">
+    <value>Error: Can't find NHLGames config file. You will have to reinstall NHLGames.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorDeserialize" xml:space="preserve">
+    <value>Error : Failed to deserialize setting value of '{0}' to type '{1}'</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorDetection" xml:space="preserve">
+    <value>error:</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorDoubleDot" xml:space="preserve">
+    <value>:</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorExceptionDetection" xml:space="preserve">
+    <value>exception</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorFetchingGames" xml:space="preserve">
+    <value>Error: Failed to fetch games schedule.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorGeneral" xml:space="preserve">
+    <value>Error: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorMpvExe" xml:space="preserve">
+    <value>Error: Can't find mpv.exe : mpv is a media player that we shipped with NHLGames. You probably moved it or deleted it. Please set a player, NHLGames needs one.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorPlayerPathEmpty" xml:space="preserve">
+    <value>Error: No media player selected in settings.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorReadingSettings" xml:space="preserve">
+    <value>Error: Failed to read app setting: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorSetAdModule" xml:space="preserve">
+    <value>Error: Can't set Ad Detection Modules. Verify if a Nugget package has a dependency of an older nugget package that you have installed (ex: Spotify and Json): {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorStreamlinkExe" xml:space="preserve">
+    <value>Error:  Can't find streamlink.exe. Streamlink is a tool that NHLGames uses to send streams to your media player, we shipped it with NHLGames. You probably moved it or deleted it and if you don't set any custom path, you will have to put it back there, just drop the folder 'streamlink-0.8.1' next to NHLGames.exe.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorUnableToDecodeJson" xml:space="preserve">
+    <value>Error: Unable to decode url from NHL API, the structure has changed. We will have to fix this.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorUnknownServerDown" xml:space="preserve">
+    <value>unknown (server is not available)</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorWritingSettings" xml:space="preserve">
+    <value>Error: Failed to write app settings</value>
+    <comment>Console</comment>
+  </data>
+  <data name="formatGbHour" xml:space="preserve">
+    <value>GB/Hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="formatMbHour" xml:space="preserve">
+    <value>MB/Hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="formatWeekMonthDayYear" xml:space="preserve">
+    <value>{0}, {1} {2}, {3}</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="gamePeriod1" xml:space="preserve">
+    <value>1st</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriod2" xml:space="preserve">
+    <value>2nd</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriod3" xml:space="preserve">
+    <value>3rd</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodFinal" xml:space="preserve">
+    <value>Final</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodOt" xml:space="preserve">
+    <value>OT</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodOtMore" xml:space="preserve">
+    <value>{0}OT</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesLead" xml:space="preserve">
+    <value>leads</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesTied" xml:space="preserve">
+    <value>tied</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesWin" xml:space="preserve">
+    <value>wins</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblAwayTeam" xml:space="preserve">
+    <value>Away Team : {0} {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblCamViews" xml:space="preserve">
+    <value>{0} camera views</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblCdn" xml:space="preserve">
+    <value>CDN</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblEndzoneCam" xml:space="preserve">
+    <value>{0} endzone camera</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblEnglish" xml:space="preserve">
+    <value>English</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblFrench" xml:space="preserve">
+    <value>Français</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblFrenchNetwork" xml:space="preserve">
+    <value>French Canadian stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGame" xml:space="preserve">
+    <value>Game {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGameAbv" xml:space="preserve">
+    <value>GM {0}: {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGetMpc" xml:space="preserve">
+    <value>Download MPC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblGetVlc" xml:space="preserve">
+    <value>Download VLC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblHomeTeam" xml:space="preserve">
+    <value>Home Team : {0} {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblHostname" xml:space="preserve">
+    <value>Server's Hostname</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblHosts" xml:space="preserve">
+    <value>Server Hosts Entry</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMpcPath" xml:space="preserve">
+    <value>MPC Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMpvPath" xml:space="preserve">
+    <value>MPV Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblNationalNetwork" xml:space="preserve">
+    <value>National stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblNoGames" xml:space="preserve">
+    <value>No game found</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="lblNoStreamAvailable" xml:space="preserve">
+    <value>No stream available</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblNoteCdn" xml:space="preserve">
+    <value>Note: Refreshing games is required for CDN change to take effect</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblOnNetwork" xml:space="preserve">
+    <value> on {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblOutput" xml:space="preserve">
+    <value>Output</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayer" xml:space="preserve">
+    <value>Default Player</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayerArgs" xml:space="preserve">
+    <value>Players Args</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayoffs" xml:space="preserve">
+    <value>Playoffs</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblPreseason" xml:space="preserve">
+    <value>Preseason</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblQuality" xml:space="preserve">
+    <value>Stream Quality</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblRefCam" xml:space="preserve">
+    <value>Referee camera</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblShowScores" xml:space="preserve">
+    <value>Show Scores</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblSlPath" xml:space="preserve">
+    <value>Streamlink Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblStreamAvailableDuringPregame" xml:space="preserve">
+    <value>Streams available during pregame</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblStreamerArgs" xml:space="preserve">
+    <value>Streamer Args</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblTeamStream" xml:space="preserve">
+    <value>{0} stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblVlcPath" xml:space="preserve">
+    <value>VLC Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lnkCalendarToday" xml:space="preserve">
+    <value>Today</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="msgAddHost" xml:space="preserve">
+    <value>Add our server to your hosts file</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgAddReadOnly" xml:space="preserve">
+    <value>The {0} file is now set back to Read Only</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgBackingHostsFile" xml:space="preserve">
+    <value>Hosts: Backing up file: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgChangeLog" xml:space="preserve">
+    <value>Version {0} is available! Changes: {1}{2}{3}</value>
+    <comment>Version</comment>
+  </data>
+  <data name="msgCleanHostsFile" xml:space="preserve">
+    <value>Hosts: Removing existing entries from hosts file</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgDateTimeNow" xml:space="preserve">
+    <value>[{0}] </value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgDiySteps" xml:space="preserve">
+    <value>Need help?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgDiyStepsText" xml:space="preserve">
+    <value>This line needs to be insert in your hosts file : {0}{1} {2}{0}Click on 'Open Hosts File' to open the Hosts file and paste (Ctrl+V) that entry line at the end of your Hosts file.{0}Do you want to copy that entry line to your clipboard ?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgDownloadingJsonFile" xml:space="preserve">
+    <value>Downloading: Game schedule for {0} to {1}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgErrorGeneralText" xml:space="preserve">
+    <value>An error happened! See the console for more details.{0}Click on [?] button in the top-right corner to view NHLGames documentation for quick support in the Support section (App and Player).{0}You can also copy the console log using 'Copy to clipboard' button and paste it in a new thread on NHLGames subreddit for help. Use the link in the bottom-left corner to get there.</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgFailure" xml:space="preserve">
+    <value>Failure</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgFetching" xml:space="preserve">
+    <value>Fetching</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgFetchingSavedSchedule" xml:space="preserve">
+    <value>Fetching: Saved game schedule for {0} ({1})</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgGamesFound" xml:space="preserve">
+    <value>Games Found : {0}</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgGettingSchedule" xml:space="preserve">
+    <value>{0}: Game schedule for {1} from NHL.tv</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgHostnameSet" xml:space="preserve">
+    <value>NHLGames can't work without having its hostname set in your Windows Hosts file. Do you want to let NHLGames adds an entry to your Hosts file, so Windows can resolve NHLGames hostname and connect to its server's IP address?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgHostsFailure" xml:space="preserve">
+    <value>Hosts entry doesn't seem to be working :(</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgHostsSuccess" xml:space="preserve">
+    <value>Hosts file looks good!</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgLoadingGames" xml:space="preserve">
+    <value>Loading Games</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgNewVersionAvailable" xml:space="preserve">
+    <value>New Version Available</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgNewVersionText" xml:space="preserve">
+    <value>A new version is available, download the latest version {0} on /r/nhl_games</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgOff" xml:space="preserve">
+    <value>OFF</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgOn" xml:space="preserve">
+    <value>ON</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgRefreshing" xml:space="preserve">
+    <value>Refreshing</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgRemoveHost" xml:space="preserve">
+    <value>Remove our server from your hosts file</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="msgRemoveReadOnly" xml:space="preserve">
+    <value>Status: The {0} file is no longer Read Only</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgRunAsAdmin" xml:space="preserve">
+    <value>Admin Access Required</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgRunAsAdminText" xml:space="preserve">
+    <value>NHLGames is missing the required hosts file entry. Do you want to restart this application as an Administrator and add the required entry?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgServerNoRespondTryingAgain" xml:space="preserve">
+    <value>Status: Failed to download the game schedule file from {0}. Second attempt.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgServerSeemsDown" xml:space="preserve">
+    <value>Status: Server {0} seems down</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSettingUpdated" xml:space="preserve">
+    <value>Status: Setting updated for '{0}' to '{1}'</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgStartingApp" xml:space="preserve">
+    <value>Starting: {0} {1}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>Success</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgTeamVsTeam" xml:space="preserve">
+    <value>{0} vs {1}</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgTestHosts" xml:space="preserve">
+    <value>Test the hosts file</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="msgTestTxtContent" xml:space="preserve">
+    <value>Test ability to write to this directory</value>
+    <comment>Console / Writer</comment>
+  </data>
+  <data name="msgThisEnable" xml:space="preserve">
+    <value>{0} enable</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgValueTooLarge" xml:space="preserve">
+    <value>[Value too large for display]</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgViewHosts" xml:space="preserve">
+    <value>Open Hosts File</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgViewHostsText" xml:space="preserve">
+    <value>Do you wish to view the changes NHLGames made to your Hosts file?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgVOD" xml:space="preserve">
+    <value>Video On Demand Status: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="tabConsole" xml:space="preserve">
+    <value>Console</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabGames" xml:space="preserve">
+    <value>Games</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabModules" xml:space="preserve">
+    <value>Modules</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabSettings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Main</comment>
+  </data>
+  <data name="textCopyConsole" xml:space="preserve">
+    <value>NHLGames Official Bug Report {1}{0}{0}OS : {2} {3}{0}{0}UI loaded : {4}{0}{0}Domain resolved : {5}{0}{0}Server IP found : {6}{0}{0}Selected hostname : {7}{0}{0}Selected player : {8}{0}{0}Streamlink path : {9} [=UI:{10}]{0}{0}VLC path : {11} [=UI:{12}]{0}{0}MPC path : {13} [=UI:{14}]{0}{0}MPV path : {15} [=UI:{16}]{0}{0}Console log : {0}{0}{17}</value>
+    <comment>Console</comment>
+  </data>
+</root>

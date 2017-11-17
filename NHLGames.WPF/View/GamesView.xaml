@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="NHLGames.WPF.View.GamesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NHLGames.WPF.View"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Main.GamesViewModel, Source={StaticResource Locator}}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <CollectionViewSource x:Key="SortedItems" Source="{Binding Games}">
+                <CollectionViewSource.SortDescriptions>
+                    <componentModel:SortDescription PropertyName="GameDate"/>
+                </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+            <Button Margin="10,10,5,10" Command="{Binding PreviousDateCommand}" Style="{StaticResource AccentedSquareButtonStyle}" BorderThickness="0" >
+                <Rectangle Width="15"
+                           Height="15"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_chevron_left}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <DatePicker Width="200" Margin="0,10,0,10" IsTodayHighlighted="True" SelectedDate="{Binding SelectedDate}"  SelectedDateFormat="Long" >
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type DatePickerTextBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBox x:Name="PART_TextBox"
+                                             BorderThickness="0"
+                                             FontWeight="Bold"
+                                             Text="{Binding Path=SelectedDate, StringFormat='ddd, d MMM yyyy', RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DatePicker.Resources>
+                </DatePicker>
+            <Button Margin="5,10,10,10" Command="{Binding NextDateCommand}" Style="{StaticResource AccentedSquareButtonStyle}" BorderThickness="0" >
+                <Rectangle Width="15"
+                           Height="15"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_chevron_right}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+
+        <Button Margin="5,10,10,10" Command="{Binding RefreshGamesCommand}" HorizontalAlignment="Right" Style="{StaticResource AccentedSquareButtonStyle}" BorderThickness="0" >
+            <Rectangle Width="15"
+                       Height="15"
+                       Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_refresh}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+
+        <ItemsControl Margin="10,0,10,10" Grid.Row="1" ItemsSource="{Binding Source={StaticResource SortedItems}}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:GameView/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.Template>
+                <ControlTemplate TargetType="{x:Type ItemsControl}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+        </ItemsControl>
+
+        <controls:ProgressRing Grid.Row="0" Grid.RowSpan="2" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding IsActive}" />
+    </Grid>
+</UserControl>

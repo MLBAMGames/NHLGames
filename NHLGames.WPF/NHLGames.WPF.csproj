@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FE9FEF6-C90B-4117-8A2F-CDB1575DE39E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NHLGames.WPF</RootNamespace>
+    <AssemblyName>NHLGames.WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Core.3.0.1\lib\net45\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.0.1\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform.Core, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.0.1\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.0.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.MahApps.0.0.11\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.3.1.953, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.3.1.953\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Metro.Dialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Metro.Dialogs.0.0.0.2\lib\net45\Metro.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.3.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\BroadcastersToImageConverter.cs" />
+    <Compile Include="Converters\CdnTypeEnumToBooleanConverter.cs" />
+    <Compile Include="Converters\PlayerTypeEnumToBooleanConverter.cs" />
+    <Compile Include="Converters\QualityToBooleanConverter.cs" />
+    <Compile Include="Converters\ReverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\GameStateColorConverter.cs" />
+    <Compile Include="Converters\TeamNameToImageConverter.cs" />
+    <Compile Include="Objects\GameWatchArguments.cs" />
+    <Compile Include="Objects\RootObject.cs" />
+    <Compile Include="Services\MessageManager.cs" />
+    <Compile Include="Services\Player.cs" />
+    <Compile Include="Utilities\ApplicationSettings.cs" />
+    <Compile Include="Utilities\FileAccess.cs" />
+    <Compile Include="Utilities\HostsFile.cs" />
+    <Compile Include="Utilities\Serialization.cs" />
+    <Compile Include="Utilities\DateHelper.cs" />
+    <Compile Include="Utilities\Enums.cs" />
+    <Compile Include="Utilities\PathFinder.cs" />
+    <Compile Include="Utilities\Common.cs" />
+    <Compile Include="Utilities\ObservableCollectionEx.cs" />
+    <Compile Include="ViewModel\GameStreamViewModel.cs" />
+    <Compile Include="ViewModel\GameViewModel.cs" />
+    <Compile Include="Services\Downloader.cs" />
+    <Compile Include="Services\GameFetcher.cs" />
+    <Compile Include="Services\GameManager.cs" />
+    <Compile Include="Utilities\ConsoleRedirectStreamWriterWpf.cs" />
+    <Compile Include="Utilities\HyperlinkExtensions.cs" />
+    <Compile Include="ViewModel\GamesViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\GamesView.xaml.cs">
+      <DependentUpon>GamesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\GamesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="..\WindowsApplication1\English.resx">
+      <Link>English.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\WindowsApplication1\French.resx">
+      <Link>French.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.fr-CA.resx" />
+    <None Include="..\WindowsApplication1\App.config">
+      <Link>App.config</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\Entypo.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\WindowsApplication1\Logos\Avalanche.gif">
+      <Link>Logos\Avalanche.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Blackhawks.gif">
+      <Link>Logos\Blackhawks.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\BlueJackets.gif">
+      <Link>Logos\BlueJackets.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Blues.gif">
+      <Link>Logos\Blues.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Bruins.gif">
+      <Link>Logos\Bruins.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Canadiens.gif">
+      <Link>Logos\Canadiens.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Canucks.gif">
+      <Link>Logos\Canucks.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Capitals.gif">
+      <Link>Logos\Capitals.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Coyotes.gif">
+      <Link>Logos\Coyotes.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Devils.gif">
+      <Link>Logos\Devils.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Ducks.gif">
+      <Link>Logos\Ducks.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Flames.gif">
+      <Link>Logos\Flames.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Flyers.gif">
+      <Link>Logos\Flyers.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\GoldenKnights.gif">
+      <Link>Logos\GoldenKnights.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Hurricanes.gif">
+      <Link>Logos\Hurricanes.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Islanders.gif">
+      <Link>Logos\Islanders.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Jets.gif">
+      <Link>Logos\Jets.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Kings.gif">
+      <Link>Logos\Kings.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Lightning.gif">
+      <Link>Logos\Lightning.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\MapleLeafs.gif">
+      <Link>Logos\MapleLeafs.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Oilers.gif">
+      <Link>Logos\Oilers.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Panthers.gif">
+      <Link>Logos\Panthers.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Penguins.gif">
+      <Link>Logos\Penguins.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Predators.gif">
+      <Link>Logos\Predators.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Rangers.gif">
+      <Link>Logos\Rangers.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\RedWings.gif">
+      <Link>Logos\RedWings.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Sabres.gif">
+      <Link>Logos\Sabres.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Senators.gif">
+      <Link>Logos\Senators.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Sharks.gif">
+      <Link>Logos\Sharks.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Stars.gif">
+      <Link>Logos\Stars.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Logos\Wild.gif">
+      <Link>Logos\Wild.gif</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\WindowsApplication1\Icons\bdown.png">
+      <Link>Icons\bdown.png</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\bg.png">
+      <Link>Icons\bg.png</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\bup.png">
+      <Link>Icons\bup.png</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\close.gif">
+      <Link>Icons\close.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\download.gif">
+      <Link>Icons\download.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\endz1.gif">
+      <Link>Icons\endz1.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\endz2.gif">
+      <Link>Icons\endz2.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\helpgit.gif">
+      <Link>Icons\helpgit.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\live.gif">
+      <Link>Icons\live.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\logo.ico">
+      <Link>Icons\logo.ico</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\maximize.gif">
+      <Link>Icons\maximize.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\minimize.gif">
+      <Link>Icons\minimize.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\nhltv.gif">
+      <Link>Icons\nhltv.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\normal.gif">
+      <Link>Icons\normal.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\refc.gif">
+      <Link>Icons\refc.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\sixc.gif">
+      <Link>Icons\sixc.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\threec.gif">
+      <Link>Icons\threec.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\wdate.png">
+      <Link>Icons\wdate.png</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\wleft.png">
+      <Link>Icons\wleft.png</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\wrefresh.png">
+      <Link>Icons\wrefresh.png</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\Icons\wright.png">
+      <Link>Icons\wright.png</Link>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\WindowsApplication1\broadcasters\alt.gif">
+      <Link>Broadcasters\alt.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\att.gif">
+      <Link>Broadcasters\att.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\cbc.gif">
+      <Link>Broadcasters\cbc.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\csn.gif">
+      <Link>Broadcasters\csn.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\espn.gif">
+      <Link>Broadcasters\espn.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\fs.gif">
+      <Link>Broadcasters\fs.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\msg.gif">
+      <Link>Broadcasters\msg.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\nbc.gif">
+      <Link>Broadcasters\nbc.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\nesn.gif">
+      <Link>Broadcasters\nesn.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\rds.gif">
+      <Link>Broadcasters\rds.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\root.gif">
+      <Link>Broadcasters\root.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\sn.gif">
+      <Link>Broadcasters\sn.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\tsn.gif">
+      <Link>Broadcasters\tsn.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\tvas.gif">
+      <Link>Broadcasters\tvas.gif</Link>
+    </Resource>
+    <Resource Include="..\WindowsApplication1\broadcasters\wgn.gif">
+      <Link>Broadcasters\wgn.gif</Link>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

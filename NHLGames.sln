@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NHLGames", "WindowsApplication1\NHLGames.vbproj", "{0D71CCEF-DD58-43E3-8794-39203DD6999C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -27,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateModule", "AdModules\TemplateModule\TemplateModule.csproj", "{3FD4D720-54E2-456A-802E-A52C151653B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHLGames.AdDetection.Modules.OBS", "AdModules\NHLGames.AdDetection.Modules.OBS\NHLGames.AdDetection.Modules.OBS.csproj", "{D4309ED1-5D5C-4CF6-AB00-2C45D1D97BE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHLGames.WPF", "NHLGames.WPF\NHLGames.WPF.csproj", "{3FE9FEF6-C90B-4117-8A2F-CDB1575DE39E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,10 @@ Global
 		{D4309ED1-5D5C-4CF6-AB00-2C45D1D97BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4309ED1-5D5C-4CF6-AB00-2C45D1D97BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4309ED1-5D5C-4CF6-AB00-2C45D1D97BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE9FEF6-C90B-4117-8A2F-CDB1575DE39E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE9FEF6-C90B-4117-8A2F-CDB1575DE39E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE9FEF6-C90B-4117-8A2F-CDB1575DE39E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE9FEF6-C90B-4117-8A2F-CDB1575DE39E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +74,8 @@ Global
 		{B3E6426C-2EF0-41FB-BA26-93C140E716D3} = {A517EDE4-24B7-4209-BD10-5A9415B49B3E}
 		{3FD4D720-54E2-456A-802E-A52C151653B3} = {A517EDE4-24B7-4209-BD10-5A9415B49B3E}
 		{D4309ED1-5D5C-4CF6-AB00-2C45D1D97BE9} = {A517EDE4-24B7-4209-BD10-5A9415B49B3E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D23F201-7DF7-4CAA-9C6E-F2855B19E010}
 	EndGlobalSection
 EndGlobal

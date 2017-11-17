@@ -1,0 +1,183 @@
+﻿<UserControl x:Class="NHLGames.WPF.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NHLGames.WPF.View"
+             xmlns:Properties="clr-namespace:NHLGames.WPF.Properties"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:converters="clr-namespace:NHLGames.WPF.Converters"
+             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             xmlns:utilities="clr-namespace:NHLGames.WPF.Utilities"
+             DataContext="{Binding Main.SettingsViewModel, Source={StaticResource Locator}}"
+             dialogs:DialogParticipation.Register="{Binding}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:QualityToBooleanConverter x:Key="qualityToBooleanConverter" />
+            <converters:PlayerTypeEnumToBooleanConverter x:Key="playerTypeEnumToBooleanConverter" />
+            <converters:CdnTypeEnumToBooleanConverter x:Key="cdnTypeEnumToBooleanConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="*" MaxWidth="700" />
+            <ColumnDefinition Width="0.4*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="*" />            
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="*" />            
+            <RowDefinition Height="Auto" MinHeight="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblShowScores}" />
+        <Grid Grid.Row="0" Grid.Column="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Grid.Column="0" Content="{x:Static Properties:Resources.chkShowFinalScores}" IsChecked="{Binding ShowScores}" />
+            <CheckBox Grid.Column="1" Content="{x:Static Properties:Resources.chkShowLiveScores}" IsChecked="{Binding ShowLiveScores}" />
+            <CheckBox Grid.Column="2" Content="{x:Static Properties:Resources.chkShowSeriesRecord}" IsChecked="{Binding ShowSeriesRecord}" />
+         </Grid>
+
+        <TextBlock Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblPlayer}" />
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" >
+            <RadioButton Content="VLC" Margin="0,0,7,0" IsChecked="{Binding PlayerType, Converter={StaticResource playerTypeEnumToBooleanConverter}, ConverterParameter='{x:Static utilities:PlayerTypeEnum.Vlc}'}" />
+            <RadioButton Content="MPC" Margin="9,0,6,0" IsChecked="{Binding PlayerType, Converter={StaticResource playerTypeEnumToBooleanConverter}, ConverterParameter='{x:Static utilities:PlayerTypeEnum.Mpc}'}" />
+            <RadioButton Content="MPV" Margin="5,0,7,0" IsChecked="{Binding PlayerType, Converter={StaticResource playerTypeEnumToBooleanConverter}, ConverterParameter='{x:Static utilities:PlayerTypeEnum.Mpv}'}" />
+        </StackPanel>
+        
+        <TextBlock Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblQuality}" />
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" >
+            <RadioButton Content="224p" Margin="0,0,5,0" IsChecked="{Binding Quality, Converter={StaticResource qualityToBooleanConverter}, ConverterParameter=224p}" />
+            <RadioButton Content="228p" Margin="5,0,5,0" IsChecked="{Binding Quality, Converter={StaticResource qualityToBooleanConverter}, ConverterParameter=228p}" />
+            <RadioButton Content="360p" Margin="5,0,5,0" IsChecked="{Binding Quality, Converter={StaticResource qualityToBooleanConverter}, ConverterParameter=360p}" />
+            <RadioButton Content="504p" Margin="0,0,5,0" IsChecked="{Binding Quality, Converter={StaticResource qualityToBooleanConverter}, ConverterParameter=504p}" />
+            <RadioButton Content="540p" Margin="5,0,5,0" IsChecked="{Binding Quality, Converter={StaticResource qualityToBooleanConverter}, ConverterParameter=540p}" />
+            <RadioButton Content="720p" Margin="5,0,5,0" IsChecked="{Binding Quality, Converter={StaticResource qualityToBooleanConverter}, ConverterParameter=720p}" />
+            <CheckBox  Content="60 fps"  Margin="5,0,5,0" IsChecked="{Binding Is60Fps}" />
+        </StackPanel>
+        
+        <TextBlock Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblCdn}" />
+        <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" >
+            <RadioButton Content="Level 3" Margin="0,0,5,0" IsChecked="{Binding Cdn, Converter={StaticResource cdnTypeEnumToBooleanConverter}, ConverterParameter=l3c}" />
+            <RadioButton Content="Akamai" Margin="5,0,5,0" IsChecked="{Binding Cdn, Converter={StaticResource cdnTypeEnumToBooleanConverter}, ConverterParameter=akc}" />
+            <Label Content="{x:Static Properties:Resources.lblNoteCdn}" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblHostname}" />
+        <ComboBox Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" ItemsSource="{Binding HostNames}" SelectedValue="{Binding HostName}"/>
+        <TextBlock Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblHosts}" />
+        <StackPanel Grid.Row="6" Grid.Column="2" Orientation="Horizontal" >
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource AccentedSquareButtonStyle}">
+                    <Setter Property="MinWidth" Value="150" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="2" />
+                </Style>
+            </StackPanel.Resources>
+
+            <Button Margin="0,2,2,2" Content="{x:Static Properties:Resources.btnTestHosts}" Command="{Binding TestHostCommand}"/>
+            <Button Content="{x:Static Properties:Resources.btnOpenHostsFile}" Command="{Binding ViewHostCommand}"/>
+            <Button Content="{x:Static Properties:Resources.btnAddHosts}" Command="{Binding AddEntryCommand}"/>
+            <Button Content="{x:Static Properties:Resources.btnCleanHosts}" Command="{Binding RemoveEntriesCommand}"/>
+
+            <Button Margin="5" Command="{Binding HelpCommand}" Style="{StaticResource AccentedSquareButtonStyle}" BorderThickness="0" >
+                <Rectangle Width="15"
+                           Height="15"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_question}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="8" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblVlcPath}" />
+        <StackPanel Grid.Row="8" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="550" Text="{Binding VlcPath}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button Content="..." Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" Width="40" Command="{Binding OpenVlcPathCommand}"  />
+            <Button Margin="5,0,5,0" Command="{Binding RefreshGamesCommand}" Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" BorderThickness="0" >
+                <Rectangle Width="15"
+                           Height="15"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_download}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+        <TextBlock Grid.Row="9" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblMpcPath}" />
+        <StackPanel Grid.Row="9" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="550" Text="{Binding MpcPath}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button Content="..." Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" Width="40" Command="{Binding OpenMpcPathCommand}"  />
+            <Button Margin="5,0,5,0" Command="{Binding RefreshGamesCommand}" Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" BorderThickness="0" >
+                <Rectangle Width="15"
+                           Height="15"
+                           Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_download}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </StackPanel>
+        <TextBlock Grid.Row="10" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblMpvPath}" />
+        <StackPanel Grid.Row="10" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="550" Text="{Binding MpvPath}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button Content="..." Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" Width="40" Command="{Binding OpenMpvPathCommand}" />
+        </StackPanel>
+        <TextBlock Grid.Row="11" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblSlPath}" />
+        <StackPanel Grid.Row="11" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="550" Text="{Binding StreamlinkPath}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button Content="..." Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" Width="40" Command="{Binding OpenSlPathCommand}" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="13" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblOutput}" />
+        <StackPanel Grid.Row="13" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="550" Text="{Binding PlayerOutputPath}" VerticalAlignment="Center" IsEnabled="False" />
+            <Button Content="..." Style="{StaticResource AccentedSquareButtonStyle}" VerticalAlignment="Center" Width="40" IsEnabled="{Binding ElementName=ToggleSwitchPlayerOutputPath, Path=IsChecked}" Command="{Binding OpenOutputPathCommand}"/>
+            <controls:ToggleSwitch x:Name="ToggleSwitchPlayerOutputPath" Margin="5,0,0,0" VerticalAlignment="Center" OnLabel="On" OffLabel="Off" IsChecked="{Binding UseOutputArgs}" />
+        </StackPanel>
+        <TextBlock Grid.Row="14" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblPlayerArgs}" />
+        <StackPanel Grid.Row="14" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="590" Text="{Binding PlayerArgs}" VerticalAlignment="Center" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=ToggleSwitchPlayerArgs, Path=IsChecked}"/>
+            <controls:ToggleSwitch x:Name="ToggleSwitchPlayerArgs" Margin="5,0,0,0" VerticalAlignment="Center" OnLabel="On" OffLabel="Off" IsChecked="{Binding UsePlayerArgs}" />
+        </StackPanel>
+        <TextBlock Grid.Row="15" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblStreamerArgs}" />
+        <StackPanel Grid.Row="15" Grid.Column="2" Orientation="Horizontal"  >
+            <TextBox Margin="0,0,5,0" Width="590" Text="{Binding StreamlinkArgs}" VerticalAlignment="Center" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=ToggleSwitchStreamlinkArgs, Path=IsChecked}"/>
+            <controls:ToggleSwitch x:Name="ToggleSwitchStreamlinkArgs" Margin="5,0,0,0" VerticalAlignment="Center" OnLabel="On" OffLabel="Off" IsChecked="{Binding UsestreamlinkArgs}"  />
+        </StackPanel>
+
+        <TextBlock Grid.Row="17" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{x:Static Properties:Resources.lblLanguage}" />
+        <ComboBox Grid.Row="17" Grid.Column="2" VerticalAlignment="Center" ItemsSource="{Binding Languages}" SelectedValue="{Binding Language}"/>
+    </Grid>
+</UserControl>
+
