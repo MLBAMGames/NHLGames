@@ -1028,11 +1028,20 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Version {0} maintenant disponible! Changements: {1}{2}{3}.
+        '''  Looks up a localized string similar to Clique sur OK  pour obtenir la nouvelle version ou CANCEL pour la sauter. Voici les derniers changements:{0}{1}.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLog() As String
             Get
                 Return ResourceManager.GetString("msgChangeLog", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Cliquez sur OK pour voir la liste de changements sur GitHub.com et télécharger la nouvelle version ou CANCEL pour la sauter..
+        '''</summary>
+        Friend Shared ReadOnly Property msgChangeLogNone() As String
+            Get
+                Return ResourceManager.GetString("msgChangeLogNone", resourceCulture)
             End Get
         End Property
         

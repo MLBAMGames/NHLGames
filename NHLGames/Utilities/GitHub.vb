@@ -35,18 +35,20 @@ Namespace Utilities
             NHLGamesMetro.FormInstance.lnkDownload.Text = String.Format(
                     NHLGamesMetro.RmText.GetString("msgNewVersionText"),
                     gitHubTagVersion.ToString())
-            NHLGamesMetro.FormInstance.lnkDownload.Width = 700
+            NHLGamesMetro.FormInstance.lnkDownload.Width = 800
 
             If GetLastBuildVersionSkipped() = assemblyVersion Then Return
 
-            Dim dialogTitle = String.Format(NHLGamesMetro.RmText.GetString("msgNewVersionAvailable"), gitHubTagVersion)
-            Dim dialogMessage = String.Empty
-
+            Dim changelog = String.Empty
             If Not String.IsNullOrWhiteSpace(release.body) Then
-                Dim releaseBodySplitted = release.body.Split(New Char() {"\r\n", "\r", "\n"})
-                dialogMessage = releaseBodySplitted.Take(5).Aggregate(Function(c, n) $"{c}\n{n}")
+                Dim releaseBodySplitted = release.body.Split(New Char() {vbCrLf, vbCr, vbLf})
+                changelog = releaseBodySplitted.Where(Function(x) Not String.IsNullOrWhiteSpace(x) AndAlso x.StartsWith("- ")).Take(5).Aggregate(Function(c, n) $"{c}{vbCrLf}{n}")
             End If
 
+            Dim dialogTitle = String.Format(NHLGamesMetro.RmText.GetString("msgNewVersionAvailable"), gitHubTagVersion)
+            Dim dialogMessage = If (string.IsNullOrEmpty(changelog), 
+                NHLGamesMetro.RmText.GetString("msgChangeLogNone"), 
+                String.Format(NHLGamesMetro.RmText.GetString("msgChangeLog"), vbCrLf, changelog))
             Dim dialogResult = InvokeElement.MsgBoxBlue(
                 dialogMessage,
                 dialogTitle,

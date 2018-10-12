@@ -242,7 +242,7 @@
     <comment>Message</comment>
   </data>
   <data name="msgChangeLog" xml:space="preserve">
-    <value>Version {0} maintenant disponible! Changements: {1}{2}{3}</value>
+    <value>Clique sur OK  pour obtenir la nouvelle version ou CANCEL pour la sauter. Voici les derniers changements:{0}{1}</value>
     <comment>Version</comment>
   </data>
   <data name="msgErrorGeneralText" xml:space="preserve">
@@ -732,5 +732,9 @@
   <data name="tipTrackBarMove" xml:space="preserve">
     <value>Raccourcis claviers: (++)Page Haut/Bas(--) , (-)Gauche/Droite(+)</value>
     <comment>Settings tab</comment>
+  </data>
+  <data name="msgChangeLogNone" xml:space="preserve">
+    <value>Cliquez sur OK pour voir la liste de changements sur GitHub.com et télécharger la nouvelle version ou CANCEL pour la sauter.</value>
+    <comment>Version</comment>
   </data>
 </root>

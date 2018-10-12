@@ -141,7 +141,7 @@ Namespace Utilities
 
             Form.cbLanguage.Items.Clear()
             Form.cbLanguage.Items.AddRange(lstLanguages)
-            Form.cbLanguage.SelectedIndex = 0
+            Form.cbLanguage.SelectedItem = ApplicationSettings.Read(Of String)(SettingsEnum.SelectedLanguage, "English")
 
             Form.lblVersion.Text = String.Format("v {0}.{1}.{2}",
                                                  My.Application.Info.Version.Major,

@@ -302,7 +302,7 @@
     <comment>Console</comment>
   </data>
   <data name="msgChangeLog" xml:space="preserve">
-    <value>Version {0} is available! Changes: {1}{2}{3}</value>
+    <value>Click on OK to get the newest version or CANCEL to skip it. Here the lastest changes:{0}{1}</value>
     <comment>Version</comment>
   </data>
   <data name="msgCleanHostsFile" xml:space="preserve">
@@ -952,5 +952,9 @@
   <data name="tipTrackBarMove" xml:space="preserve">
     <value>Keyboard shorcuts: (++)Page Up/Down(--) , (-)Arrow Left/Right(+)</value>
     <comment>Settings tab</comment>
+  </data>
+  <data name="msgChangeLogNone" xml:space="preserve">
+    <value>Click on OK to view the change log on GitHub.com and download the newest version or CANCEL to skip it.</value>
+    <comment>Version</comment>
   </data>
 </root>
