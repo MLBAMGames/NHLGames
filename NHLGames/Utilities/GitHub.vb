@@ -39,11 +39,7 @@ Namespace Utilities
 
             If GetLastBuildVersionSkipped() = assemblyVersion Then Return
 
-            Dim changelog = String.Empty
-            If Not String.IsNullOrWhiteSpace(release.body) Then
-                Dim releaseBodySplitted = release.body.Split(New Char() {vbCrLf, vbCr, vbLf})
-                changelog = releaseBodySplitted.Where(Function(x) Not String.IsNullOrWhiteSpace(x) AndAlso x.StartsWith("- ")).Take(5).Aggregate(Function(c, n) $"{c}{vbCrLf}{n}")
-            End If
+            Dim changelog = BuildChangeLog(release.body)
 
             Dim dialogTitle = String.Format(NHLGamesMetro.RmText.GetString("msgNewVersionAvailable"), gitHubTagVersion)
             Dim dialogMessage = If (string.IsNullOrEmpty(changelog), 
@@ -105,6 +101,29 @@ Namespace Utilities
 
         Private Shared Function ParseTagToVersionString(tag As String) As String
             Return If(String.IsNullOrEmpty(tag), String.Empty, _regexTag.Replace(tag, String.Empty))
+        End Function
+
+        Private Shared Function BuildChangeLog(body As String) As String
+            Dim changelog = String.Empty
+            If String.IsNullOrWhiteSpace(body) Then Return changelog
+
+            Dim releaseBodySplitted = body.Split(New Char() {vbCrLf, vbCr, vbLf})
+            If Not releaseBodySplitted.Any() Then Return changelog
+
+            Dim filteredBodySplitted = releaseBodySplitted.Where(Function(x) Not String.IsNullOrWhiteSpace(x) AndAlso (x.StartsWith("- ") OrElse x.StartsWith("#")))
+            If Not filteredBodySplitted.Any() Then Return changelog
+
+            Dim skipLeftOfChangeLog = filteredBodySplitted.SkipWhile(Function(x) x.StartsWith("#"))
+            If Not skipLeftOfChangeLog.Any() Then
+                skipLeftOfChangeLog = filteredBodySplitted
+            End If
+
+            Dim skipRightOfChangeLog = skipLeftOfChangeLog.TakeWhile(Function(x) x.StartsWith("- "))
+            If Not skipRightOfChangeLog.Any() Then
+                skipRightOfChangeLog = skipLeftOfChangeLog
+            End If
+
+            Return skipRightOfChangeLog.Take(5).Aggregate(Function(c, n) $"{c}{vbCrLf}{n}")
         End Function
 
     End Class
