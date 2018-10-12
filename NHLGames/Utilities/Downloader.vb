@@ -7,42 +7,10 @@ Imports NHLGames.My.Resources
 
 Namespace Utilities
     Public Class Downloader
-        Private Const AppUrl As String = "https://showtimes.ninja/"
         Private Const ApiUrl As String = "http://statsapi.web.nhl.com/api/v1/schedule"
-
+        Private Shared ReadOnly Regex As New Regex("(\d+\.)(\d+\.)?(\d+\.)?(\*|\d+)")
         Private Const ScheduleApiurl As String = ApiUrl &
                                                  "?startDate={0}&endDate={1}&expand=schedule.teams,schedule.linescore,schedule.game.seriesSummary,schedule.game.content.media.epg"
-
-        Private Const AppVersionUrl As String = AppUrl & "static/version.txt"
-        Private Const AppChangelogUrl As String = AppUrl & "static/changelog.txt"
-        Private Const AppAnnouncementUrl As String = AppUrl & "static/announcement.txt"
-        Private Shared ReadOnly Regex As New Regex("(\d+\.)(\d+\.)?(\d+\.)?(\*|\d+)")
-
-        Public Shared Async Function DownloadApplicationVersion() As Task(Of Version)
-            Dim appVers As String = Await Common.SendWebRequestAndGetContentAsync(AppVersionUrl)
-            If appVers.Contains("<html>") Then
-                appVers = String.Empty
-            End If
-            appVers = Regex.Match(appVers).ToString()
-            If appVers = String.Empty Then Return New Version()
-            Return New Version(appVers)
-        End Function
-
-        Public Shared Async Function DownloadChangelog() As Task(Of String)
-            Dim appChangelog As String = Await Common.SendWebRequestAndGetContentAsync(AppChangelogUrl)
-            If appChangelog.Contains("<html>") Then
-                appChangelog = String.Empty
-            End If
-            Return appChangelog
-        End Function
-
-        Public Shared Async Function DownloadAnnouncement() As Task(Of String)
-            Dim appAnnouncement As String = Await Common.SendWebRequestAndGetContentAsync(AppAnnouncementUrl)
-            If appAnnouncement.Contains("<html>") Then
-                appAnnouncement = String.Empty
-            End If
-            Return appAnnouncement
-        End Function
 
         Public Shared Async Function DownloadJsonScheduleAsync(startDate As DateTime) As Task(Of JObject)
             Dim returnValue As JObject

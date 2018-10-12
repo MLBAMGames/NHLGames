@@ -1406,7 +1406,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to New Version Available.
+        '''  Looks up a localized string similar to New Version {0} is available.
         '''</summary>
         Friend Shared ReadOnly Property msgNewVersionAvailable() As String
             Get
@@ -1708,15 +1708,6 @@ Namespace My.Resources
         Friend Shared ReadOnly Property msgVOD() As String
             Get
                 Return ResourceManager.GetString("msgVOD", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to NHLGames server not available!.
-        '''</summary>
-        Friend Shared ReadOnly Property noAppServer() As String
-            Get
-                Return ResourceManager.GetString("noAppServer", resourceCulture)
             End Get
         End Property
         

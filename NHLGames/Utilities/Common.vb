@@ -144,20 +144,23 @@ Namespace Utilities
                 errorMessage = "missingFramework"
             ElseIf Not Await SendWebRequestAsync("https://www.google.com") Then
                 errorMessage = "noWebAccess"
-            ElseIf Not Await InitializeForm.VersionCheck() Then
-                errorMessage = "noAppServer"
             End If
+
+            Await GitHub.GetVersion()
+            Await GitHub.GetAccouncement()
+
             If Not errorMessage.Equals(String.Empty) Then
                 FatalError(NHLGamesMetro.RmText.GetString(errorMessage))
                 Console.WriteLine($"Status: {English.ResourceManager.GetString(errorMessage)}")
             End If
+
             Return errorMessage.Equals(String.Empty)
         End Function
 
         Public Shared Sub SetRedirectionServerInApp()
             NHLGamesMetro.HostName = NHLGamesMetro.FormInstance.cbServers.SelectedItem.ToString()
-            ApplicationSettings.SetValue(SettingsEnum.SelectedServer,
-                                         NHLGamesMetro.FormInstance.cbServers.SelectedItem.ToString())
+            ApplicationSettings.SetValue(SettingsEnum.SelectedServer, NHLGamesMetro.HostName)
+            Console.WriteLine(English.msgSettingUpdated, NHLGamesMetro.lblHostname.Text, NHLGamesMetro.HostName)
         End Sub
 
         Private Shared Sub FatalError(message As String)

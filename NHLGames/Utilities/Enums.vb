@@ -78,6 +78,7 @@
         ShowLiveTime
         DarkMode
         ProxyPort
+        LastBuildVersionSkipped
     End Enum
 
     Public Enum OutputTypeEnum

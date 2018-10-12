@@ -270,7 +270,7 @@
     <comment>Status bar</comment>
   </data>
   <data name="msgNewVersionAvailable" xml:space="preserve">
-    <value>Nouvelle version disponible</value>
+    <value>Nouvelle version {0} disponible</value>
     <comment>Version</comment>
   </data>
   <data name="msgNewVersionText" xml:space="preserve">
@@ -531,10 +531,6 @@
   </data>
   <data name="noGameServer" xml:space="preserve">
     <value>Aucun serveur de redirection trouvé!</value>
-    <comment>Message</comment>
-  </data>
-  <data name="noAppServer" xml:space="preserve">
-    <value>NHLGames serveur non disponible!</value>
     <comment>Message</comment>
   </data>
   <data name="tipCalendar" xml:space="preserve">

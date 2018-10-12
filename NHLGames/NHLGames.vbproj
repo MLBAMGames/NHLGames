@@ -225,6 +225,13 @@
     <Compile Include="NHLGamesMetro.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Objects\GitHub\Asset.vb" />
+    <Compile Include="Objects\GitHub\Commit.vb" />
+    <Compile Include="Objects\GitHub\Issue.vb" />
+    <Compile Include="Objects\GitHub\Label.vb" />
+    <Compile Include="Objects\GitHub\Milestone.vb" />
+    <Compile Include="Objects\GitHub\Release.vb" />
+    <Compile Include="Objects\GitHub\User.vb" />
     <Compile Include="res\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,6 +262,7 @@
     </Compile>
     <Compile Include="Utilities\FileAccess.vb" />
     <Compile Include="Utilities\GameFetcher.vb" />
+    <Compile Include="Utilities\GitHub.vb" />
     <Compile Include="Utilities\HostsFile.vb" />
     <Compile Include="Utilities\ImageFetcher.vb" />
     <Compile Include="Utilities\InitializeForm.vb" />

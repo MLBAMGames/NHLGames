@@ -9,38 +9,6 @@ Namespace Utilities
     Public Class InitializeForm
         Private Shared ReadOnly Form As NHLGamesMetro = NHLGamesMetro.FormInstance
 
-        Public Shared Async Function VersionCheck() As Task(Of Boolean)
-
-            Dim latestVersion As Version = Await Downloader.DownloadApplicationVersion()
-            If latestVersion.Equals(New Version()) Then Return False
-
-            If latestVersion > My.Application.Info.Version Then
-                Form.lnkDownload.Text = String.Format(
-                    NHLGamesMetro.RmText.GetString("msgNewVersionText"),
-                    latestVersion.ToString())
-                Form.lnkDownload.Width = 700
-                Dim strChangeLog As String = Await Downloader.DownloadChangelog()
-                InvokeElement.MsgBoxBlue(
-                    String.Format(NHLGamesMetro.RmText.GetString("msgChangeLog"), latestVersion.ToString(), vbCrLf,
-                                  vbCrLf, strChangeLog),
-                    NHLGamesMetro.RmText.GetString("msgNewVersionAvailable"),
-                    MessageBoxButtons.OK)
-            End If
-
-            Await AnnouncementCheck()
-            Return True
-        End Function
-
-        Private Shared Async Function AnnouncementCheck() As Task(Of Boolean)
-            Dim latestAnnouncement As String = Await Downloader.DownloadAnnouncement()
-            If Not latestAnnouncement.Equals(String.Empty) Then
-                InvokeElement.MsgBoxBlue(latestAnnouncement,
-                                         NHLGamesMetro.RmText.GetString("msgAnnouncement"),
-                                         MessageBoxButtons.OK)
-            End If
-            Return Not latestAnnouncement.Equals(String.Empty)
-        End Function
-
         Public Shared Sub SetLanguage()
             Dim lstStreamQualities = New String() {
                                                       NHLGamesMetro.RmText.GetString("cbQualitySuperb60fps"),
