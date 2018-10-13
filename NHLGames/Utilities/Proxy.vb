@@ -6,14 +6,14 @@ Namespace Utilities
         Private _proxy As Process
         Private const _stringToFind = "[MLBAMProxy] "
         Private const _mlbamProxyExeName = "mlbamproxy.exe"
-        Private ReadOnly _port As String = ApplicationSettings.Read(Of String)(SettingsEnum.ProxyPort, "17070")
+        Public ReadOnly port As String = ApplicationSettings.Read(Of String)(SettingsEnum.ProxyPort, "17070")
         Private ReadOnly _pathToProxy As String = Path.Combine(Application.StartupPath, _mlbamProxyExeName)
 
         Public Sub StartProxy()
             _proxy = New Process() With {.StartInfo =
                     New ProcessStartInfo With {
                     .FileName = _pathToProxy,
-                    .Arguments = $"-p {_port} -d {NHLGamesMetro.HostName} -s {NHLGamesMetro.DomainName}",
+                    .Arguments = $"-p {port} -d {NHLGamesMetro.HostName} -s {NHLGamesMetro.DomainName}",
                     .UseShellExecute = False,
                     .RedirectStandardOutput = True,
                     .CreateNoWindow =  Not NHLGamesMetro.FormInstance.tgOutput.Checked}
@@ -92,7 +92,7 @@ Namespace Utilities
         End Function
 
         Public Sub SetEnvironmentVariableForMpv()
-            Environment.SetEnvironmentVariable("http_proxy", $"http://127.0.0.1:{_port}", EnvironmentVariableTarget.Process)
+            Environment.SetEnvironmentVariable("http_proxy", $"http://127.0.0.1:{port}", EnvironmentVariableTarget.Process)
         End Sub
 
     End Class

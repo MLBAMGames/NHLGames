@@ -37,7 +37,7 @@ Public Class NHLGamesMetro
     Public Shared AnimateTipsTick As Integer = 0
     Public Const AnimateTipsEveryTick As Integer = 10000
     Public Shared Tips As New Dictionary(Of Integer, String)
-    Public Shared MitmProxy As Proxy
+    Public Shared MLBAMProxy As Proxy
     Public ProxyListening As Task(Of Boolean) = Nothing
 
     <SecurityPermission(SecurityAction.Demand, Flags:=SecurityPermissionFlag.ControlAppDomain)>
@@ -78,7 +78,7 @@ Public Class NHLGamesMetro
         FlpCalendar = flpCalendarPanel
         InitializeForm.SetSettings()
 
-        MitmProxy = New Proxy()
+        MLBAMProxy = New Proxy()
 
         HostsFile.ResetHost() 'TODO: Remove when we remove hosts class
         Await Common.CheckAppCanRun()

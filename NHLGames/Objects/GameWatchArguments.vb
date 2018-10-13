@@ -115,7 +115,7 @@ Namespace Objects
         End Function
 
         Private Function ProxyArgs() As String
-            Return String.Format(" --https-proxy=""127.0.0.1:{0}"" ", ApplicationSettings.Read(Of String)(SettingsEnum.ProxyPort, "8080"))
+            Return String.Format(" --https-proxy=""127.0.0.1:{0}"" ", NHLGamesMetro.MLBAMProxy.port)
         End Function
 
         Private Function NhlCookieArgs() As String
