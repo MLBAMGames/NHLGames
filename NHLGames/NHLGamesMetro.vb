@@ -662,18 +662,6 @@ Public Class NHLGamesMetro
         Next
     End Sub
 
-    Private Sub btnRecord_Click(sender As Object, e As EventArgs) Handles btnRecord.Click
-        flpRecordList.Visible = Not flpRecordList.Visible
-    End Sub
-
-    Private Sub flpRecordList_VisibleChanged(sender As Object, e As EventArgs) Handles flpRecordList.VisibleChanged
-        If flpRecordList.Visible Then
-            btnRecord.BackColor = Color.FromArgb(0, 170, 210)
-        Else
-            btnRecord.BackColor = Color.FromArgb(64, 64, 64)
-        End If
-    End Sub
-
     Private Sub cbLiveReplay_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cbLiveReplay.SelectedIndexChanged
         Player.RenewArgs()

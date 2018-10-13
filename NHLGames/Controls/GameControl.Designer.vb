@@ -22,9 +22,7 @@ Namespace Controls
             Dim resources As ComponentResourceManager = New ComponentResourceManager(GetType(GameControl))
             Me.tt = New MetroToolTip()
             Me.bpGameControl = New BorderPanel()
-            Me.flpSetRecording = New FlowLayoutPanel()
             Me.btnLiveReplay = New Button()
-            Me.btnRecordOne = New Button()
             Me.lblGameStatus = New MetroLabel()
             Me.lblDivider = New MetroLabel()
             Me.picAway = New PictureBox()
@@ -65,9 +63,7 @@ Namespace Controls
             Me.bpGameControl.BackgroundImageLayout = ImageLayout.None
             Me.bpGameControl.BorderColour = Color.LightGray
             Me.bpGameControl.BorderStyle = BorderStyle.FixedSingle
-            Me.bpGameControl.Controls.Add(Me.flpSetRecording)
             Me.bpGameControl.Controls.Add(Me.btnLiveReplay)
-            Me.bpGameControl.Controls.Add(Me.btnRecordOne)
             Me.bpGameControl.Controls.Add(Me.lblGameStatus)
             Me.bpGameControl.Controls.Add(Me.lblDivider)
             Me.bpGameControl.Controls.Add(Me.picAway)
@@ -86,19 +82,6 @@ Namespace Controls
             Me.bpGameControl.Size = New Size(312, 151)
             Me.bpGameControl.TabIndex = 9
             '
-            'flpSetRecording
-            '
-            Me.flpSetRecording.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
-            Me.flpSetRecording.AutoSize = True
-            Me.flpSetRecording.BackColor = Color.White
-            Me.flpSetRecording.FlowDirection = FlowDirection.RightToLeft
-            Me.flpSetRecording.Location = New Point(294, 22)
-            Me.flpSetRecording.Margin = New Padding(0)
-            Me.flpSetRecording.Name = "flpSetRecording"
-            Me.flpSetRecording.Size = New Size(12, 12)
-            Me.flpSetRecording.TabIndex = 33
-            Me.flpSetRecording.Visible = False
-            '
             'btnLiveReplay
             '
             Me.btnLiveReplay.BackColor = Color.Red
@@ -115,23 +98,6 @@ Namespace Controls
             Me.btnLiveReplay.TabIndex = 32
             Me.btnLiveReplay.UseVisualStyleBackColor = False
             Me.btnLiveReplay.Visible = False
-            '
-            'btnRecordOne
-            '
-            Me.btnRecordOne.BackColor = Color.White
-            Me.btnRecordOne.BackgroundImageLayout = ImageLayout.Zoom
-            Me.btnRecordOne.FlatAppearance.BorderColor = Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(210, Byte), Integer))
-            Me.btnRecordOne.FlatAppearance.BorderSize = 0
-            Me.btnRecordOne.FlatAppearance.MouseDownBackColor = Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-            Me.btnRecordOne.FlatAppearance.MouseOverBackColor = Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-            Me.btnRecordOne.FlatStyle = FlatStyle.Flat
-            Me.btnRecordOne.Location = New Point(288, 2)
-            Me.btnRecordOne.Margin = New Padding(0)
-            Me.btnRecordOne.Name = "btnRecordOne"
-            Me.btnRecordOne.Size = New Size(18, 18)
-            Me.btnRecordOne.TabIndex = 31
-            Me.btnRecordOne.UseVisualStyleBackColor = False
-            Me.btnRecordOne.Visible = False
             '
             'lblGameStatus
             '
@@ -487,7 +453,6 @@ Namespace Controls
         Friend WithEvents lblStreamStatus As MetroLabel
         Friend WithEvents lblGameStatus As MetroLabel
         Friend WithEvents lblDivider As MetroLabel
-        Friend WithEvents btnRecordOne As Button
         Friend WithEvents btnLiveReplay As Button
         Friend WithEvents flpStreams As FlowLayoutPanel
         Friend WithEvents lnkHome As Button
@@ -500,6 +465,5 @@ Namespace Controls
         Friend WithEvents lnkRef As Button
         Friend WithEvents lnkStar As Button
         Friend WithEvents lnkEnd1 As Button
-        Friend WithEvents flpSetRecording As FlowLayoutPanel
     End Class
 End Namespace

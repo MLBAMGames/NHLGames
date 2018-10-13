@@ -193,10 +193,6 @@
     <value> sur {0}</value>
     <comment>Game panel</comment>
   </data>
-  <data name="lblOutput" xml:space="preserve">
-    <value>Enregistrement</value>
-    <comment>Settings tab</comment>
-  </data>
   <data name="lblPlayer" xml:space="preserve">
     <value>Lecteur par défaut</value>
     <comment>Settings tab</comment>
@@ -600,26 +596,6 @@
   <data name="tipLiveStatusRewind" xml:space="preserve">
     <value>Reculer de {0} min</value>
     <comment>Game panel</comment>
-  </data>
-  <data name="tipAddRecord" xml:space="preserve">
-    <value>Ajouter aux enregistrements</value>
-    <comment>Game panel</comment>
-  </data>
-  <data name="tipRecording" xml:space="preserve">
-    <value>Ajoutée aux enregistrements</value>
-    <comment>Game panel</comment>
-  </data>
-  <data name="lblNow" xml:space="preserve">
-    <value>Maintenant</value>
-    <comment>Set record panel</comment>
-  </data>
-  <data name="lblStream" xml:space="preserve">
-    <value>Stream</value>
-    <comment>Set record panel</comment>
-  </data>
-  <data name="lblTime" xml:space="preserve">
-    <value>Heure</value>
-    <comment>Set record panel</comment>
   </data>
   <data name="lblLiveReplay" xml:space="preserve">
     <value>Rejoue en direct</value>

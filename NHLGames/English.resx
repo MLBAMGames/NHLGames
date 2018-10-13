@@ -869,26 +869,6 @@
     <value>Undefined</value>
     <comment>Game State Enum</comment>
   </data>
-  <data name="tipAddRecord" xml:space="preserve">
-    <value>Add to recordings</value>
-    <comment>Game panel</comment>
-  </data>
-  <data name="tipRecording" xml:space="preserve">
-    <value>Added to recordings</value>
-    <comment>Game panel</comment>
-  </data>
-  <data name="lblNow" xml:space="preserve">
-    <value>Now</value>
-    <comment>Set record panel</comment>
-  </data>
-  <data name="lblStream" xml:space="preserve">
-    <value>Stream</value>
-    <comment>Set record panel</comment>
-  </data>
-  <data name="lblTime" xml:space="preserve">
-    <value>Time</value>
-    <comment>Set record panel</comment>
-  </data>
   <data name="cbLiveReplayFeedStart" xml:space="preserve">
     <value>At the beginning of the stream</value>
     <comment>Settings tab</comment>

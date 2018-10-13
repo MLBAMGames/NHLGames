@@ -911,15 +911,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Now.
-        '''</summary>
-        Friend Shared ReadOnly Property lblNow() As String
-            Get
-                Return ResourceManager.GetString("lblNow", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to OBS.
         '''</summary>
         Friend Shared ReadOnly Property lblObs() As String
@@ -1118,15 +1109,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Stream.
-        '''</summary>
-        Friend Shared ReadOnly Property lblStream() As String
-            Get
-                Return ResourceManager.GetString("lblStream", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to Streams available at game time.
         '''</summary>
         Friend Shared ReadOnly Property lblStreamAvailableAtGameTime() As String
@@ -1150,15 +1132,6 @@ Namespace My.Resources
         Friend Shared ReadOnly Property lblTeamStream() As String
             Get
                 Return ResourceManager.GetString("lblTeamStream", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Time.
-        '''</summary>
-        Friend Shared ReadOnly Property lblTime() As String
-            Get
-                Return ResourceManager.GetString("lblTime", resourceCulture)
             End Get
         End Property
         
@@ -1775,15 +1748,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Add to recordings.
-        '''</summary>
-        Friend Shared ReadOnly Property tipAddRecord() As String
-            Get
-                Return ResourceManager.GetString("tipAddRecord", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to Broken stream.
         '''</summary>
         Friend Shared ReadOnly Property tipBrokenStream() As String
@@ -1978,15 +1942,6 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tipMonthRight() As String
             Get
                 Return ResourceManager.GetString("tipMonthRight", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Added to recordings.
-        '''</summary>
-        Friend Shared ReadOnly Property tipRecording() As String
-            Get
-                Return ResourceManager.GetString("tipRecording", resourceCulture)
             End Get
         End Property
         

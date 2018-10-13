@@ -12,10 +12,8 @@ Enjoy!
 ## /_Index_
 * [First use](#first-use)
   * [Requirements](#requirements)
-  * [Message about the hosts file](#message-about-the-hosts-file)
+  * [Message about the hosts file](#message-about-the-hosts-file) _v.1.3 and before_
   * [Is this app safe?](#is-this-app-safe)
-  * [Setup](#setup)
-     * [Hosts file](#hosts-file)  
  * [User interface](#user-interface)
    * [Games](#games)
       * [Navigation bar](#navigation-bar)
@@ -26,7 +24,7 @@ Enjoy!
      * [Rewind and Replay](#rewind-and-replay)
      * [Content Delivery Network (CDN)](#content-delivery-network-cdn)
      * [Server's Hostname](#servers-hostname)
-     * [Server Hosts Entry](#server-hosts-entry)
+     * [Server Hosts Entry](#server-hosts-entry) _v.1.3 and before_
      * [Players](#players)
      * [Streamer](#streamer)
      * [Language](#language)
@@ -47,23 +45,19 @@ ___
 
 # /_First use_
 ## //_Requirements_
-NHLGames is an app built on .NET Framework 4.5. So, it's only available on Windows and works on any CPU (x86/x64). If you run NHLGames on Windows 7 you will probably need to install [.NET Framework 4.5](https://www.microsoft.com/en-ca/download/details.aspx?id=30653). Windows XP and Vista are not supported.
+NHLGames is an app built on .NET Framework 4.5. So, it's only available on Windows, Windows XP and Vista are not supported, and it works on any CPU (x86/x64). If you run NHLGames on Windows 7 you will probably need to install :
+- [.NET Framework 4.5](https://www.microsoft.com/en-ca/download/details.aspx?id=30653)
+
+You will also need, if you downloaded the simplified version instead of the complete version in the Releases page:
+- A supported [media player](#players)
+- A supported [streamer](#streamer)
 
 ## //_Message about the hosts file_
+--- _v.1.3 and before_ ---    
 First time you start NHLGames it will ask if you wish to view the Hosts file. That means the app has changed a system file to let you use NHLGames without issues by adding a line like this one `XXX.XXX.XXX.XXX www.hosting.site.com` at the end of it. If you want to view the changes, then click Yes and you will have to select Notepad to view the file. If NHLGames did not succesfully changed this file, see the [Server Hosts Entry](#server-hosts-entry) section.
 
 ## //_Is this app safe?_
 Yes, it is. However, some anti-virus or anti-malware won't agree because we edit your hosts file in Windows/System32/drivers/etc/, a file used to redirect nhl.com to another ip. We do that, to make sure the app will get stream links for games that are available. But don't worry, this server only responds in plain text and won't hurt your pc. If you don't trust us, find out by yourself by looking at our code.
-
-## //_Setup_
-To be able to play streams properly, you have to choose a media player in the ![image](https://user-images.githubusercontent.com/23088305/32304695-9589db88-bf47-11e7-9af5-867c8db0d4a3.png) tab. Make sure the player that you choose has a valid path to the EXE file.
-
-MPV player comes with NHLGames. So if you don't have or want VLC/MPC players, just use our default media player to watch games. Make sure you select mpv as the default player.
-
-If you want to change some settings, see the [Settings](#settings) section.
-
-### ///_Hosts file_
-See the [Server Hosts Entry](#server-hosts-entry) section.
 
 # /_User interface_
 Everytime you launch NHLGames it will search for today's games. 
@@ -137,6 +131,7 @@ Alternate: Level 3
 This drop down list shows all NHLGames server hostname, so if you can't play games, try another hostname.
 
 ### ///_Server Hosts Entry_
+--- _v.1.3 and before_ ---    
 If the selected hostname (above) can be resolved by your network, it will get and save the related IP address in the Windows Hosts file. 
 
 To test your Hosts file, go to Settings and use the *Hosts File* drop down list (like shown below):
@@ -170,10 +165,10 @@ On the save file dialog pops. Make sure:
 Note: If you need to remove NHLGames entry, go back into the Hosts file drop down list in Settings and select *Remove the NHL.tv authentication bypass line from Hosts file* or *View Hosts file content in Notepad* and remove our entry.
 
 ### ///_Players_
-NHLGames supports up to 3 media players:
-- MPV (default player, comes with NHLGames)
-- MPC
-- VLC
+NHLGames supports up to 3 media players:     
+- [MPV](https://mpv.io/installation/) : a simple and powerful cross-platform media player    
+- [VLC](https://www.videolan.org/vlc/index.html) : a strong and popular cross-platform multimedia player     
+- [MPC](https://mpc-hc.org/downloads/) : a light-weight media player
 
 If you don't have or want VLC/MPC players, use our default media player to watch games. Make sure you select MPV as the default player.
 
@@ -182,11 +177,13 @@ If you had previously installed VLC or MPC, NHLGames should find it automaticall
 If you don't have one of these players installed and you want to install it, use the links on the right to download it.
 
 ### ///_Streamer_
-A streamer is not a media player, it's an application that NHLGames use to get the stream from Internet and parse it to your media player. The default streamer that NHLGames provided is [Livestreamer](http://docs.livestreamer.io/install.html) and its path is inside NHLGames directory and it should not move, otherwise you will to specified the new one or you won't be able to stream any game. It's also possible to change from Livestreamer to [Streamlink](https://streamlink.github.io/install.html), but you will have to download it, install it and provide the path in settings.
+A streamer is not a media player, it's an application that NHLGames use to get the stream from Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip, the **Simplified** does not have any. If you use the Complete package, just don't move the provided streamer and media player out of NHLGames folder, otherwise you will to specified another streamer to be able to stream a game.       
+- [LiveStreamer](http://docs.livestreamer.io/install.html) : a command-line tool that extracts and pipes streams into a media player    
+- [StreamLink](https://streamlink.github.io/install.html) : the same based command-line tool with many more plugins 
 
-If you can't play any stream, you might need to install one of these streamer (the portable version might not work for everyone), follow the link above (click on the streamer you want) and download the installer.
+If you can't play any stream, you might need to install one of these streamer (the portable version might not work for everyone), follow the link above (click on the streamer you want), download the installer and set the path in NHLGames settings
 
-If your antivirus or Windows Defender removes the streamer, try to install another version (example: 1.0.7 instead of 1.0.8).
+If your antivirus or Windows Defender removes the streamer, try to install another version (e.g.: 1.0.7 instead of 1.0.8).
 
 If you find one that works great for you, keep it, you will just have to change the path in settings when a new update of NHLGames will come out.
 

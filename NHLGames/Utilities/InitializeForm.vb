@@ -120,12 +120,6 @@ Namespace Utilities
             Next
             Form.lblTip.Text = NHLGamesMetro.Tips.First().Value
 
-            'RecordList
-            Form.flpRecordList.Controls.Clear()
-            Form.flpRecordList.Controls.Add(New OneRecordControl())
-            Form.flpRecordList.Controls.Add(New OneRecordControl())
-            Form.btnRecord.Text = Form.flpRecordList.Controls.Count
-
             SetThemeAndSvgOnForm()
         End Sub
 

@@ -197,18 +197,6 @@
     <Compile Include="Controls\MetroTrackBarNoMW.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\SetRecordControl.Designer.vb">
-      <DependentUpon>SetRecordControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SetRecordControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\OneRecordControl.Designer.vb">
-      <DependentUpon>OneRecordControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\OneRecordControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="English1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -282,12 +270,6 @@
     <EmbeddedResource Include="Controls\GameControl.resx">
       <DependentUpon>GameControl.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SetRecordControl.resx">
-      <DependentUpon>SetRecordControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\OneRecordControl.resx">
-      <DependentUpon>OneRecordControl.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="French.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>

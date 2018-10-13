@@ -35,14 +35,12 @@ Partial Class NHLGamesMetro
         Me.txtConsole = New System.Windows.Forms.RichTextBox()
         Me.tabMenu = New MetroFramework.Controls.MetroTabControl()
         Me.tabGames = New MetroFramework.Controls.MetroTabPage()
-        Me.flpRecordList = New System.Windows.Forms.FlowLayoutPanel()
         Me.spnLoading = New MetroFramework.Controls.MetroProgressSpinner()
         Me.lblDate = New MetroFramework.Controls.MetroLabel()
         Me.lblNoGames = New System.Windows.Forms.Label()
         Me.flpCalendarPanel = New System.Windows.Forms.FlowLayoutPanel()
         Me.flpGames = New System.Windows.Forms.FlowLayoutPanel()
         Me.pnlGameBar = New MetroFramework.Controls.MetroPanel()
-        Me.btnRecord = New System.Windows.Forms.Button()
         Me.btnTomorrow = New System.Windows.Forms.Button()
         Me.btnYesterday = New System.Windows.Forms.Button()
         Me.btnDate = New System.Windows.Forms.Button()
@@ -244,7 +242,7 @@ Partial Class NHLGamesMetro
         Me.tabMenu.Location = New System.Drawing.Point(-1, 60)
         Me.tabMenu.Margin = New System.Windows.Forms.Padding(0)
         Me.tabMenu.Name = "tabMenu"
-        Me.tabMenu.SelectedIndex = 1
+        Me.tabMenu.SelectedIndex = 0
         Me.tabMenu.Size = New System.Drawing.Size(992, 560)
         Me.tabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabMenu.Style = MetroFramework.MetroColorStyle.Blue
@@ -253,7 +251,6 @@ Partial Class NHLGamesMetro
         '
         'tabGames
         '
-        Me.tabGames.Controls.Add(Me.flpRecordList)
         Me.tabGames.Controls.Add(Me.spnLoading)
         Me.tabGames.Controls.Add(Me.lblDate)
         Me.tabGames.Controls.Add(Me.lblNoGames)
@@ -275,19 +272,6 @@ Partial Class NHLGamesMetro
         Me.tabGames.VerticalScrollbarBarColor = false
         Me.tabGames.VerticalScrollbarHighlightOnWheel = false
         Me.tabGames.VerticalScrollbarSize = 10
-        '
-        'flpRecordList
-        '
-        Me.flpRecordList.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.flpRecordList.AutoSize = true
-        Me.flpRecordList.BackColor = System.Drawing.Color.FromArgb(CType(CType(200,Byte),Integer), CType(CType(200,Byte),Integer), CType(CType(200,Byte),Integer))
-        Me.flpRecordList.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.flpRecordList.Location = New System.Drawing.Point(890, 41)
-        Me.flpRecordList.Name = "flpRecordList"
-        Me.flpRecordList.Padding = New System.Windows.Forms.Padding(3)
-        Me.flpRecordList.Size = New System.Drawing.Size(38, 30)
-        Me.flpRecordList.TabIndex = 20
-        Me.flpRecordList.Visible = false
         '
         'spnLoading
         '
@@ -367,7 +351,6 @@ Partial Class NHLGamesMetro
         Me.pnlGameBar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.pnlGameBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.pnlGameBar.Controls.Add(Me.btnRecord)
         Me.pnlGameBar.Controls.Add(Me.btnTomorrow)
         Me.pnlGameBar.Controls.Add(Me.btnYesterday)
         Me.pnlGameBar.Controls.Add(Me.btnDate)
@@ -384,28 +367,6 @@ Partial Class NHLGamesMetro
         Me.pnlGameBar.VerticalScrollbarBarColor = true
         Me.pnlGameBar.VerticalScrollbarHighlightOnWheel = true
         Me.pnlGameBar.VerticalScrollbarSize = 10
-        '
-        'btnRecord
-        '
-        Me.btnRecord.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btnRecord.BackColor = System.Drawing.Color.FromArgb(CType(CType(80,Byte),Integer), CType(CType(80,Byte),Integer), CType(CType(80,Byte),Integer))
-        Me.btnRecord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnRecord.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer), CType(CType(224,Byte),Integer))
-        Me.btnRecord.FlatAppearance.BorderSize = 0
-        Me.btnRecord.FlatAppearance.CheckedBackColor = System.Drawing.Color.White
-        Me.btnRecord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White
-        Me.btnRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(0,Byte),Integer), CType(CType(170,Byte),Integer), CType(CType(210,Byte),Integer))
-        Me.btnRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRecord.Font = New System.Drawing.Font("Segoe UI", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-        Me.btnRecord.ForeColor = System.Drawing.Color.White
-        Me.btnRecord.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnRecord.Location = New System.Drawing.Point(890, 8)
-        Me.btnRecord.Name = "btnRecord"
-        Me.btnRecord.Padding = New System.Windows.Forms.Padding(0, 0, 5, 0)
-        Me.btnRecord.Size = New System.Drawing.Size(24, 24)
-        Me.btnRecord.TabIndex = 141
-        Me.btnRecord.UseVisualStyleBackColor = false
-        Me.btnRecord.Visible = false
         '
         'btnTomorrow
         '
@@ -2367,8 +2328,6 @@ End Sub
     Friend WithEvents tlpReplay As TableLayoutPanel
     Friend WithEvents lblLiveRewindDetails As MetroLabel
     Friend WithEvents lblLiveRewind As MetroLabel
-    Friend WithEvents btnRecord As Button
-    Friend WithEvents flpRecordList As FlowLayoutPanel
     Friend WithEvents lblLiveReplay As MetroLabel
     Friend WithEvents lblVLCLogo As Label
     Friend WithEvents lvlMPCHCLogo As Label
