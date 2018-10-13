@@ -122,12 +122,12 @@ Namespace Controls
                                                            NHLGamesMetro.RmText.GetString("gamePeriodFinal").ToUpper())
                     End If
                 End If
-            ElseIf _game.GameState <= GameStateEnum.Pregame Then
+            ElseIf _game.GameState <= GameStateEnum.Pregame  Then
                 lblDivider.Visible = False
                 lblGameStatus.Visible = True
                 lblGameStatus.Text = _game.GameDate.ToLocalTime().ToString("h:mm tt")
 
-                If _game.GameState.Equals(GameStateEnum.Pregame) Then
+                If _game.GameState.Equals(GameStateEnum.Pregame) OrElse _game.AreAnyStreamsAvailable() Then
                     lblPeriod.BackColor = Color.FromArgb(255, 0, 170, 210)
                     If showLiveScores Then
                         lblPeriod.ForeColor = Color.White

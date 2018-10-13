@@ -1640,15 +1640,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Theme applied.
-        '''</summary>
-        Friend Shared ReadOnly Property msgThemeApplied() As String
-            Get
-                Return ResourceManager.GetString("msgThemeApplied", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to {0} enable.
         '''</summary>
         Friend Shared ReadOnly Property msgThisEnable() As String

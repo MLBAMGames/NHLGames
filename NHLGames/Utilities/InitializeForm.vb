@@ -339,6 +339,7 @@ Namespace Utilities
                 Form.lblDate.BackColor = Color.FromArgb(80, 80, 80)
                 Form.lblVersion.ForeColor = Color.LightGray
                 Form.lblStatus.ForeColor = Color.LightGray
+                Form.lblTip.ForeColor = Color.LightGray
                 Form.lblGamePanel.Theme = MetroThemeStyle.Dark
                 Form.tgShowTodayLiveGamesFirst.Theme = MetroThemeStyle.Dark
                 Form.tgShowLiveTime.Theme = MetroThemeStyle.Dark

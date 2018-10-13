@@ -9,7 +9,7 @@ Namespace Utilities
         Public ReadOnly port As String = ApplicationSettings.Read(Of String)(SettingsEnum.ProxyPort, "17070")
         Private ReadOnly _pathToProxy As String = Path.Combine(Application.StartupPath, _mlbamProxyExeName)
 
-        Public Sub StartProxy()
+        Private Sub StartProxy()
             _proxy = New Process() With {.StartInfo =
                     New ProcessStartInfo With {
                     .FileName = _pathToProxy,

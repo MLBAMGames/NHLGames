@@ -685,10 +685,6 @@
     <value>Voulez-vous redémarrer NHLGames pour appliquer les changements?</value>
     <comment>Message</comment>
   </data>
-  <data name="msgThemeApplied" xml:space="preserve">
-    <value>Thème appliqué</value>
-    <comment>Message</comment>
-  </data>
   <data name="missingFramework" xml:space="preserve">
     <value>Microsoft .NET 4.5 Framework requis manquant!</value>
     <comment>Message</comment>
