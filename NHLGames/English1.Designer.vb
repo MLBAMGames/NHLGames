@@ -1253,7 +1253,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Click on OK to get the newest version or CANCEL to skip it. Here the lastest changes:{0}{1}.
+        '''  Looks up a localized string similar to Do you want to get the newest version on GitHub.com? Here the lastest changes:{0}{1}.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLog() As String
             Get
@@ -1262,7 +1262,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Click on OK to view the change log on GitHub.com and download the newest version or CANCEL to skip it..
+        '''  Looks up a localized string similar to Do you want to view the change log on GitHub.com and download the newest version?.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLogNone() As String
             Get

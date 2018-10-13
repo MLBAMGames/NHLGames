@@ -238,7 +238,7 @@
     <comment>Message</comment>
   </data>
   <data name="msgChangeLog" xml:space="preserve">
-    <value>Clique sur OK  pour obtenir la nouvelle version ou CANCEL pour la sauter. Voici les derniers changements:{0}{1}</value>
+    <value>Voulez-vous obtenir la nouvelle version sur GitHub.com? Voici les derniers changements:{0}{1}</value>
     <comment>Version</comment>
   </data>
   <data name="msgErrorGeneralText" xml:space="preserve">
@@ -710,7 +710,7 @@
     <comment>Settings tab</comment>
   </data>
   <data name="msgChangeLogNone" xml:space="preserve">
-    <value>Cliquez sur OK pour voir la liste de changements sur GitHub.com et télécharger la nouvelle version ou CANCEL pour la sauter.</value>
+    <value>Voulez-vous voir la liste de changements sur GitHub.com et télécharger la nouvelle version?</value>
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">

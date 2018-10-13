@@ -302,7 +302,7 @@
     <comment>Console</comment>
   </data>
   <data name="msgChangeLog" xml:space="preserve">
-    <value>Click on OK to get the newest version or CANCEL to skip it. Here the lastest changes:{0}{1}</value>
+    <value>Do you want to get the newest version on GitHub.com? Here the lastest changes:{0}{1}</value>
     <comment>Version</comment>
   </data>
   <data name="msgCleanHostsFile" xml:space="preserve">
@@ -934,7 +934,7 @@
     <comment>Settings tab</comment>
   </data>
   <data name="msgChangeLogNone" xml:space="preserve">
-    <value>Click on OK to view the change log on GitHub.com and download the newest version or CANCEL to skip it.</value>
+    <value>Do you want to view the change log on GitHub.com and download the newest version?</value>
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">

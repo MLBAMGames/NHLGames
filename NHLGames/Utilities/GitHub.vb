@@ -36,7 +36,7 @@ Namespace Utilities
             NHLGamesMetro.FormInstance.lnkRelease.Visible = True
             NHLGamesMetro.FormInstance.lblTip.Visible = False
 
-            If GetLastBuildVersionSkipped() = assemblyVersion Then Return
+            If GetLastBuildVersionSkipped() = gitHubTagVersion Then Return
 
             Dim changelog = BuildChangeLog(release.body)
 
@@ -51,9 +51,9 @@ Namespace Utilities
 
             If dialogResult = dialogResult.OK Then
                 Process.Start(New ProcessStartInfo(release.html_url))
-            Else
-                ApplicationSettings.SetValue(SettingsEnum.LastBuildVersionSkipped, assemblyVersion.ToString())
             End If
+
+            ApplicationSettings.SetValue(SettingsEnum.LastBuildVersionSkipped, gitHubTagVersion.ToString())
         End Function
 
         Public Shared Async Function GetAccouncement() As Task
