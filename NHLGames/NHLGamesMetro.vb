@@ -34,9 +34,11 @@ Public Class NHLGamesMetro
     Private Shared _adDetectionEngine As AdDetection
     Public Shared ReadOnly GamesDict As New Dictionary(Of String, Game)
     Public Shared IsDarkMode As Boolean = False
+    Public Shared AnimateTipsTick As Integer = 0
+    Public Const AnimateTipsEveryTick As Integer = 10000
+    Public Shared Tips As New Dictionary(Of Integer, String)
     Public Shared MitmProxy As Proxy
     Public ProxyListening As Task(Of Boolean) = Nothing
-
 
     <SecurityPermission(SecurityAction.Demand, Flags:=SecurityPermissionFlag.ControlAppDomain)>
     Public Shared Sub Main()
@@ -108,6 +110,8 @@ Public Class NHLGamesMetro
         Else
             GameFetcher.LoadingProgress()
         End If
+        AnimateTipsTick += NHLGamesMetro.tmr.Interval
+        InvokeElement.AnimateTips()
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
@@ -309,11 +313,13 @@ Public Class NHLGamesMetro
         Next
     End Sub
 
-    Private Sub lnkDownload_Click(sender As Object, e As EventArgs) Handles lnkDownload.Click
-        Dim sInfo As ProcessStartInfo = If(
-            lnkDownload.Text.Equals(English.lnkSubreddit),
-            New ProcessStartInfo(SubredditLink),
-            New ProcessStartInfo(LatestReleaseLink))
+    Private Sub lnkReddit_Click(sender As Object, e As EventArgs) Handles lnkReddit.Click
+        Dim sInfo As ProcessStartInfo = New ProcessStartInfo(SubredditLink)
+        Process.Start(sInfo)
+    End Sub
+
+    Private Sub lnkRelease_Click(sender As Object, e As EventArgs) Handles lnkRelease.Click
+        Dim sInfo As ProcessStartInfo = New ProcessStartInfo(LatestReleaseLink)
         Process.Start(sInfo)
     End Sub
 
@@ -717,4 +723,5 @@ Public Class NHLGamesMetro
         ApplicationSettings.SetValue(SettingsEnum.ProxyPort, value)
         _writeToConsoleSettingsChanged(lblProxyPort.Text, value.ToString())
     End Sub
+
 End Class

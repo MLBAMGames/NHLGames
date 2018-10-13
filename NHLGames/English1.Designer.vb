@@ -1181,6 +1181,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to A new version is available, download the latest version on GitHub.
+        '''</summary>
+        Friend Shared ReadOnly Property lnkNewVersionText() As String
+            Get
+                Return ResourceManager.GetString("lnkNewVersionText", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to /r/nhl_games.
         '''</summary>
         Friend Shared ReadOnly Property lnkSubreddit() As String
@@ -1420,15 +1429,6 @@ Namespace My.Resources
         Friend Shared ReadOnly Property msgNewVersionAvailable() As String
             Get
                 Return ResourceManager.GetString("msgNewVersionAvailable", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to A new version is available, download the latest version {0} on GitHub.
-        '''</summary>
-        Friend Shared ReadOnly Property msgNewVersionText() As String
-            Get
-                Return ResourceManager.GetString("msgNewVersionText", resourceCulture)
             End Get
         End Property
         
@@ -1888,6 +1888,78 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tipLiveStatusRewind() As String
             Get
                 Return ResourceManager.GetString("tipLiveStatusRewind", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Rewind a live game: By pressing once on the Live icon at the top-left of a game panel.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage1() As String
+            Get
+                Return ResourceManager.GetString("tipMessage1", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Replay a live game: By pressing twice on the Live icon at the top-left of a game panel.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage2() As String
+            Get
+                Return ResourceManager.GetString("tipMessage2", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Show scores, remaining period time and team names by customizing the game panel in settings.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage3() As String
+            Get
+                Return ResourceManager.GetString("tipMessage3", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Record any game on Windows 10 by enabling the Output option in settings.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage4() As String
+            Get
+                Return ResourceManager.GetString("tipMessage4", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Enable Dark theme in settings to get the black interface.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage5() As String
+            Get
+                Return ResourceManager.GetString("tipMessage5", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Find the documentation or an anwser to your issue on our Wiki. Click at the top-right on [?] to get there.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage6() As String
+            Get
+                Return ResourceManager.GetString("tipMessage6", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Report any issue on Github in the issue tab. Click at the top-right on [?] to get there.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage7() As String
+            Get
+                Return ResourceManager.GetString("tipMessage7", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Visit our subreddit /r/nhl_games to chat with other redditors about NHLGames.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage8() As String
+            Get
+                Return ResourceManager.GetString("tipMessage8", resourceCulture)
             End Get
         End Property
         

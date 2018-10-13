@@ -32,10 +32,9 @@ Namespace Utilities
 
             If gitHubTagVersion <= assemblyVersion Then Return
 
-            NHLGamesMetro.FormInstance.lnkDownload.Text = String.Format(
-                    NHLGamesMetro.RmText.GetString("msgNewVersionText"),
-                    gitHubTagVersion.ToString())
-            NHLGamesMetro.FormInstance.lnkDownload.Width = 800
+            NHLGamesMetro.FormInstance.lnkRelease.Text = NHLGamesMetro.RmText.GetString("lnkNewVersionText")
+            NHLGamesMetro.FormInstance.lnkRelease.Visible = True
+            NHLGamesMetro.FormInstance.lblTip.Visible = False
 
             If GetLastBuildVersionSkipped() = assemblyVersion Then Return
 

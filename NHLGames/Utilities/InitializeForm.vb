@@ -8,6 +8,7 @@ Imports NHLGames.Objects
 Namespace Utilities
     Public Class InitializeForm
         Private Shared ReadOnly Form As NHLGamesMetro = NHLGamesMetro.FormInstance
+        Public Shared ReadOnly TotalTipCount As Integer = 8
 
         Public Shared Sub SetLanguage()
             Dim lstStreamQualities = New String() {
@@ -111,6 +112,13 @@ Namespace Utilities
             'Calendar
             Form.flpCalendarPanel.Controls.Clear()
             Form.flpCalendarPanel.Controls.Add(New CalendarControl())
+
+            'Tips
+            NHLGamesMetro.Tips.Clear()
+            For index As Integer = 1 To TotalTipCount
+                NHLGamesMetro.Tips.Add(index, NHLGamesMetro.RmText.GetString($"tipMessage{index}"))
+            Next
+            Form.lblTip.Text = NHLGamesMetro.Tips.First().Value
 
             'RecordList
             Form.flpRecordList.Controls.Clear()

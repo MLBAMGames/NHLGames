@@ -341,8 +341,8 @@
     <value>New Version {0} is available</value>
     <comment>Version</comment>
   </data>
-  <data name="msgNewVersionText" xml:space="preserve">
-    <value>A new version is available, download the latest version {0} on GitHub</value>
+  <data name="lnkNewVersionText" xml:space="preserve">
+    <value>A new version is available, download the latest version on GitHub</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgOff" xml:space="preserve">
@@ -956,5 +956,37 @@
   <data name="msgChangeLogNone" xml:space="preserve">
     <value>Click on OK to view the change log on GitHub.com and download the newest version or CANCEL to skip it.</value>
     <comment>Version</comment>
+  </data>
+  <data name="tipMessage1" xml:space="preserve">
+    <value>Rewind a live game: By pressing once on the Live icon at the top-left of a game panel</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage2" xml:space="preserve">
+    <value>Replay a live game: By pressing twice on the Live icon at the top-left of a game panel</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage3" xml:space="preserve">
+    <value>Show scores, remaining period time and team names by customizing the game panel in settings</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage4" xml:space="preserve">
+    <value>Record any game on Windows 10 by enabling the Output option in settings</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage5" xml:space="preserve">
+    <value>Enable Dark theme in settings to get the black interface</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage6" xml:space="preserve">
+    <value>Find the documentation or an anwser to your issue on our Wiki. Click at the top-right on [?] to get there</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage7" xml:space="preserve">
+    <value>Report any issue on Github in the issue tab. Click at the top-right on [?] to get there</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage8" xml:space="preserve">
+    <value>Visit our subreddit /r/nhl_games to chat with other redditors about NHLGames</value>
+    <comment>Tip</comment>
   </data>
 </root>

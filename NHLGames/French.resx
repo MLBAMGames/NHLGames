@@ -273,8 +273,8 @@
     <value>Nouvelle version {0} disponible</value>
     <comment>Version</comment>
   </data>
-  <data name="msgNewVersionText" xml:space="preserve">
-    <value>Une nouvelle version est disponible, téléchargez la plus récente version {0} sur GitHub</value>
+  <data name="lnkNewVersionText" xml:space="preserve">
+    <value>Une nouvelle version est disponible, téléchargez la plus récente version sur GitHub</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgRunAsAdmin" xml:space="preserve">
@@ -736,5 +736,37 @@
   <data name="msgChangeLogNone" xml:space="preserve">
     <value>Cliquez sur OK pour voir la liste de changements sur GitHub.com et télécharger la nouvelle version ou CANCEL pour la sauter.</value>
     <comment>Version</comment>
+  </data>
+  <data name="tipMessage1" xml:space="preserve">
+    <value>Reculer un match en direct: En appuyant une fois sur l'icone Live au haut-gauche d'un panneau de match</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage2" xml:space="preserve">
+    <value>Rejouer un match en direct: En appuyant deux fois sur l'icone Live au haut-gauche d'un panneau de match</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage3" xml:space="preserve">
+    <value>Afficher le pointage, temps de période restant et le nom des équipes en personnalissant le panneau de match dans les paramètres</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage4" xml:space="preserve">
+    <value>Enregistrer n'importe quel match sur Windows 10 en activant l'option de sauvegarde dans les paramètres</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage5" xml:space="preserve">
+    <value>Activez le thème Sombre pour avoir l'interface en noir</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage6" xml:space="preserve">
+    <value>Trouvez la documentation ou réponse à un problème sur notre Wiki. Cliquez en haut-droite sur [?] pour y accéder</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage7" xml:space="preserve">
+    <value>Rapporter tout problème sur GitHub dans le menu Issue. Cliquez en haut-droit sur [?] pour y accéder</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage8" xml:space="preserve">
+    <value>Visitez notre subreddit /r/nhl_games pour discuter avec d'autres redditeurs de NHLGames</value>
+    <comment>Tip</comment>
   </data>
 </root>

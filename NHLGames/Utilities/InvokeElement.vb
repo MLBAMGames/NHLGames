@@ -50,6 +50,25 @@ Namespace Utilities
             End If
         End Sub
 
+        Public Shared Sub AnimateTips()
+            If NHLGamesMetro.AnimateTipsTick Mod NHLGamesMetro.AnimateTipsEveryTick <> 0 Then Return
+
+            If NHLGamesMetro.FormInstance.InvokeRequired Then
+                 Dim asyncResult = NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf AnimateTips))
+                EndInvokeOf(asyncResult)
+            Else
+                If NHLGamesMetro.FormInstance.lblTip.Text.Contains(NHLGamesMetro.RmText.GetString("lnkNewVersionText")) Then Return
+
+                Dim currentTip = NHLGamesMetro.Tips.FirstOrDefault(Function(x) x.Value = NHLGamesMetro.FormInstance.lblTip.Text)
+                If currentTip.Value Is Nothing Then Return
+
+                Dim nextTip = NHLGamesMetro.Tips.FirstOrDefault(Function(x) If(currentTip.Key + 1 > InitializeForm.TotalTipCount, x.Key = 1, x.Key = currentTip.Key + 1))
+                If nextTip.Value Is Nothing Then Return
+
+                NHLGamesMetro.FormInstance.lblTip.Text = nextTip.Value
+            End If
+        End Sub
+
         Public Shared Sub NewGamesFound(gamesDict As List(Of Game))
             If NHLGamesMetro.FormInstance.InvokeRequired Then
                 Dim asyncResult =
