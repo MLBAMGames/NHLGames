@@ -103,19 +103,17 @@ Namespace Utilities
         End Function
 
         Private Shared Function BuildChangeLog(body As String) As String
-            Dim changelog = String.Empty
-            If String.IsNullOrWhiteSpace(body) Then Return changelog
+            If String.IsNullOrWhiteSpace(body) Then Return String.Empty
 
             Dim releaseBodySplitted = body.Split(New Char() {vbCrLf, vbCr, vbLf})
-            If Not releaseBodySplitted.Any() Then Return changelog
+            If Not releaseBodySplitted.Any() Then Return String.Empty
 
             Dim filteredBodySplitted = releaseBodySplitted.Where(Function(x) Not String.IsNullOrWhiteSpace(x) AndAlso (x.StartsWith("- ") OrElse x.StartsWith("#")))
-            If Not filteredBodySplitted.Any() Then Return changelog
+            If Not filteredBodySplitted.Any() Then Return String.Empty
 
-            Dim skipLeftOfChangeLog = filteredBodySplitted.SkipWhile(Function(x) x.StartsWith("#"))
-            If Not skipLeftOfChangeLog.Any() Then
-                skipLeftOfChangeLog = filteredBodySplitted
-            End If
+            Dim skipLeftOfChangeLog = filteredBodySplitted.SkipWhile(Function(x) Not x.Replace(" ", String.Empty).ToUpperInvariant().Contains("CHANGELOG"))
+            If skipLeftOfChangeLog.Count() <= 1 Then Return String.Empty
+            skipLeftOfChangeLog = skipLeftOfChangeLog.Skip(1)
 
             Dim skipRightOfChangeLog = skipLeftOfChangeLog.TakeWhile(Function(x) x.StartsWith("- "))
             If Not skipRightOfChangeLog.Any() Then
