@@ -734,11 +734,19 @@
     <comment>Tip</comment>
   </data>
   <data name="tipMessage7" xml:space="preserve">
-    <value>Rapporter tout problème sur GitHub dans le menu Issue. Cliquez en haut-droit sur [?] pour y accéder</value>
+    <value>Rapporter tout problème en ouvrant un issue sur GitHub. Cliquez en haut-droit sur [?] pour y accéder</value>
     <comment>Tip</comment>
   </data>
   <data name="tipMessage8" xml:space="preserve">
     <value>Visitez notre subreddit /r/nhl_games pour discuter avec d'autres redditeurs de NHLGames</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage10" xml:space="preserve">
+    <value>Castez un match à votre Chromecast avec le menu du lecteur VLC 3.0: Playback &gt; Rendered &gt;Cast</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage9" xml:space="preserve">
+    <value>L'avance/recule rapide d'un match en direct est seulement supporté par le lecteur MPV</value>
     <comment>Tip</comment>
   </data>
 </root>

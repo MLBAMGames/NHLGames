@@ -63,35 +63,36 @@ Namespace Objects
         End Function
 
         Private Function PlayerArgs() As String
-            Dim literalPlayerArgs = If(UseCustomPlayerArgs, CustomPlayerArgs, String.Empty)
+            Dim literalPlayerArgs = If(UseCustomPlayerArgs, $" {CustomPlayerArgs} ", String.Empty)
             Select Case PlayerType
                 Case PlayerTypeEnum.Mpv
                     Return _
                         $"--player ""{PlayerPath} --force-window=immediate --title """"{GameTitle _
-                            }"""" --user-agent=User-Agent=""""{Common.UserAgent}"""" {literalPlayerArgs} "" "
+                            }"""" --user-agent=User-Agent=""""{Common.UserAgent}""""{literalPlayerArgs}"" "
                 Case PlayerTypeEnum.Vlc
-                    Return $"--player ""{PlayerPath} --meta-title """"{GameTitle}"""" {literalPlayerArgs} "" "
+                    Return $"--player ""{PlayerPath} --meta-title """"{GameTitle}""""{literalPlayerArgs}"" "
                 Case PlayerTypeEnum.Mpc
-                    Return $"--player ""{PlayerPath} {literalPlayerArgs} "" "
+                    Return $"--player ""{PlayerPath}{literalPlayerArgs}"" "
             End Select
             Return String.Empty
         End Function
 
         Private Function ReplayArgs() As String
-            Dim presetHls = If(PlayerType.Equals(PlayerTypeEnum.Mpv), ' This only works with mpv (for seeking)
-                               "--player-passthrough=hls",
+            ' v1.3.2: Seeking through live game only works with mpv (presetHls)
+            Dim presetHls = If(PlayerType.Equals(PlayerTypeEnum.Mpv),
+                               "--player-passthrough=hls ",
                                String.Empty)
             If GameIsOnAir Then
                 If Not StreamLiveReplayCode.Equals(LiveStatusCodeEnum.Live) Then
                     Return $"--ringbuffer-size=4M --hls-segment-threads=2 --hls-live-edge={ReplayMinutes()} "
                 Else
-                    Return $"{presetHls} "
+                    Return presetHls
                 End If
             Else
                 If PlayerType.Equals(PlayerTypeEnum.Vlc) Then
                     Return $"--ringbuffer-size=8M --hls-segment-threads=2 "
                 Else
-                    Return $"{presetHls} "
+                    Return presetHls
                 End If
             End If
         End Function
@@ -115,7 +116,7 @@ Namespace Objects
         End Function
 
         Private Function ProxyArgs() As String
-            Return String.Format(" --https-proxy=""127.0.0.1:{0}"" ", NHLGamesMetro.MLBAMProxy.port)
+            Return String.Format("--https-proxy=""127.0.0.1:{0}"" ", NHLGamesMetro.MLBAMProxy.port)
         End Function
 
         Private Function NhlCookieArgs() As String

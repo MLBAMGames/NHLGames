@@ -1856,6 +1856,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Cast a game to your Chromecast with the VLC 3.0 player menu: Playback &gt; Rendered &gt;Cast.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage10() As String
+            Get
+                Return ResourceManager.GetString("tipMessage10", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Replay a live game: By pressing twice on the Live icon at the top-left of a game panel.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage2() As String
@@ -1901,7 +1910,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Report any issue on Github in the issue tab. Click at the top-right on [?] to get there.
+        '''  Looks up a localized string similar to Report any bug by opening an issue on Github. Click at the top-right on [?] to get there.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage7() As String
             Get
@@ -1915,6 +1924,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tipMessage8() As String
             Get
                 Return ResourceManager.GetString("tipMessage8", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Fast forward/rewind on a live game is only supported by the MPV player.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage9() As String
+            Get
+                Return ResourceManager.GetString("tipMessage9", resourceCulture)
             End Get
         End Property
         

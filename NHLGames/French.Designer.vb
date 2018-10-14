@@ -1352,6 +1352,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Castez un match à votre Chromecast avec le menu du lecteur VLC 3.0: Playback &gt; Rendered &gt;Cast.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage10() As String
+            Get
+                Return ResourceManager.GetString("tipMessage10", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Rejouer un match en direct: En appuyant deux fois sur l&apos;icone Live au haut-gauche d&apos;un panneau de match.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage2() As String
@@ -1397,7 +1406,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Rapporter tout problème sur GitHub dans le menu Issue. Cliquez en haut-droit sur [?] pour y accéder.
+        '''  Looks up a localized string similar to Rapporter tout problème en ouvrant un issue sur GitHub. Cliquez en haut-droit sur [?] pour y accéder.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage7() As String
             Get
@@ -1411,6 +1420,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tipMessage8() As String
             Get
                 Return ResourceManager.GetString("tipMessage8", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to L&apos;avance/recule rapide d&apos;un match en direct est seulement supporté par le lecteur MPV.
+        '''</summary>
+        Friend Shared ReadOnly Property tipMessage9() As String
+            Get
+                Return ResourceManager.GetString("tipMessage9", resourceCulture)
             End Get
         End Property
         

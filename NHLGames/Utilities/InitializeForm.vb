@@ -8,7 +8,7 @@ Imports NHLGames.Objects
 Namespace Utilities
     Public Class InitializeForm
         Private Shared ReadOnly Form As NHLGamesMetro = NHLGamesMetro.FormInstance
-        Public Shared ReadOnly TotalTipCount As Integer = 8
+        Public Shared ReadOnly TotalTipCount As Integer = 10
 
         Public Shared Sub SetLanguage()
             Dim lstStreamQualities = New String() {
