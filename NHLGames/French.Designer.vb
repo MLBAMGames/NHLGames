@@ -1361,7 +1361,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Rejouer un match en direct: En appuyant deux fois sur l&apos;icone Live au haut-gauche d&apos;un panneau de match.
+        '''  Looks up a localized string similar to Afficher l&apos;interface en noir en activant le thème Sombre dans les paramètres.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage2() As String
             Get
@@ -1388,7 +1388,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Activez le thème Sombre pour avoir l&apos;interface en noir.
+        '''  Looks up a localized string similar to Rejouer un match en direct: En appuyant deux fois sur l&apos;icone Live au haut-gauche d&apos;un panneau de match.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage5() As String
             Get

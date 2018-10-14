@@ -713,7 +713,7 @@
     <value>Reculer un match en direct: En appuyant une fois sur l'icone Live au haut-gauche d'un panneau de match</value>
     <comment>Tip</comment>
   </data>
-  <data name="tipMessage2" xml:space="preserve">
+  <data name="tipMessage5" xml:space="preserve">
     <value>Rejouer un match en direct: En appuyant deux fois sur l'icone Live au haut-gauche d'un panneau de match</value>
     <comment>Tip</comment>
   </data>
@@ -725,8 +725,8 @@
     <value>Enregistrer n'importe quel match sur Windows 10 en activant l'option de sauvegarde dans les paramètres</value>
     <comment>Tip</comment>
   </data>
-  <data name="tipMessage5" xml:space="preserve">
-    <value>Activez le thème Sombre pour avoir l'interface en noir</value>
+  <data name="tipMessage2" xml:space="preserve">
+    <value>Afficher l'interface en noir en activant le thème Sombre dans les paramètres</value>
     <comment>Tip</comment>
   </data>
   <data name="tipMessage6" xml:space="preserve">

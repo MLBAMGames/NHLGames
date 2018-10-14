@@ -934,11 +934,11 @@
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">
-    <value>Rewind a live game: By pressing once on the Live icon at the top-left of a game panel</value>
+    <value>Rewind a live game by clicking once on the red Live icon at the top-left of a game panel</value>
     <comment>Tip</comment>
   </data>
-  <data name="tipMessage2" xml:space="preserve">
-    <value>Replay a live game: By pressing twice on the Live icon at the top-left of a game panel</value>
+  <data name="tipMessage5" xml:space="preserve">
+    <value>Replay a live game by clicking twice on the red Live icon at the top-left of a game panel</value>
     <comment>Tip</comment>
   </data>
   <data name="tipMessage3" xml:space="preserve">
@@ -949,8 +949,8 @@
     <value>Record any game on Windows 10 by enabling the Output option in settings</value>
     <comment>Tip</comment>
   </data>
-  <data name="tipMessage5" xml:space="preserve">
-    <value>Enable Dark theme in settings to get the black interface</value>
+  <data name="tipMessage2" xml:space="preserve">
+    <value>Display the interface in black when enabling the Dark theme in settings</value>
     <comment>Tip</comment>
   </data>
   <data name="tipMessage6" xml:space="preserve">

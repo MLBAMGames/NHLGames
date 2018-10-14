@@ -1847,7 +1847,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Rewind a live game: By pressing once on the Live icon at the top-left of a game panel.
+        '''  Looks up a localized string similar to Rewind a live game by clicking once on the red Live icon at the top-left of a game panel.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage1() As String
             Get
@@ -1865,7 +1865,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Replay a live game: By pressing twice on the Live icon at the top-left of a game panel.
+        '''  Looks up a localized string similar to Display the interface in black when enabling the Dark theme in settings.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage2() As String
             Get
@@ -1892,7 +1892,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Enable Dark theme in settings to get the black interface.
+        '''  Looks up a localized string similar to Replay a live game by clicking twice on the red Live icon at the top-left of a game panel.
         '''</summary>
         Friend Shared ReadOnly Property tipMessage5() As String
             Get
