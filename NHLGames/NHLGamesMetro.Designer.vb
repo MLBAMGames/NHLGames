@@ -242,7 +242,7 @@ Partial Class NHLGamesMetro
         Me.tabMenu.Location = New System.Drawing.Point(-1, 60)
         Me.tabMenu.Margin = New System.Windows.Forms.Padding(0)
         Me.tabMenu.Name = "tabMenu"
-        Me.tabMenu.SelectedIndex = 0
+        Me.tabMenu.SelectedIndex = 1
         Me.tabMenu.Size = New System.Drawing.Size(992, 560)
         Me.tabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabMenu.Style = MetroFramework.MetroColorStyle.Blue
@@ -891,10 +891,10 @@ Partial Class NHLGamesMetro
         Me.cbStreamQuality.FontSize = MetroFramework.MetroComboBoxSize.Small
         Me.cbStreamQuality.FormattingEnabled = true
         Me.cbStreamQuality.IntegralHeight = false
-        Me.cbStreamQuality.ItemHeight = 19
+        Me.cbStreamQuality.ItemHeight = 21
         Me.cbStreamQuality.Location = New System.Drawing.Point(177, 153)
         Me.cbStreamQuality.Name = "cbStreamQuality"
-        Me.cbStreamQuality.Size = New System.Drawing.Size(600, 25)
+        Me.cbStreamQuality.Size = New System.Drawing.Size(600, 27)
         Me.cbStreamQuality.TabIndex = 500
         Me.cbStreamQuality.UseSelectable = true
         '
@@ -1239,10 +1239,10 @@ Partial Class NHLGamesMetro
         Me.cbLanguage.FontSize = MetroFramework.MetroComboBoxSize.Small
         Me.cbLanguage.FormattingEnabled = true
         Me.cbLanguage.IntegralHeight = false
-        Me.cbLanguage.ItemHeight = 19
+        Me.cbLanguage.ItemHeight = 21
         Me.cbLanguage.Location = New System.Drawing.Point(3, 3)
         Me.cbLanguage.Name = "cbLanguage"
-        Me.cbLanguage.Size = New System.Drawing.Size(600, 25)
+        Me.cbLanguage.Size = New System.Drawing.Size(600, 27)
         Me.cbLanguage.TabIndex = 1410
         Me.cbLanguage.UseSelectable = true
         '
@@ -1349,10 +1349,10 @@ Partial Class NHLGamesMetro
         Me.cbServers.FontSize = MetroFramework.MetroComboBoxSize.Small
         Me.cbServers.FormattingEnabled = true
         Me.cbServers.IntegralHeight = false
-        Me.cbServers.ItemHeight = 19
+        Me.cbServers.ItemHeight = 21
         Me.cbServers.Location = New System.Drawing.Point(177, 303)
         Me.cbServers.Name = "cbServers"
-        Me.cbServers.Size = New System.Drawing.Size(600, 25)
+        Me.cbServers.Size = New System.Drawing.Size(600, 27)
         Me.cbServers.TabIndex = 510
         Me.cbServers.UseSelectable = true
         '
@@ -1418,14 +1418,13 @@ Partial Class NHLGamesMetro
         Me.tlpGamePanelSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30!))
         Me.tlpGamePanelSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30!))
         Me.tlpGamePanelSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20!))
-        Me.tlpGamePanelSettings.Size = New System.Drawing.Size(768, 90)
+        Me.tlpGamePanelSettings.Size = New System.Drawing.Size(758, 90)
         Me.tlpGamePanelSettings.TabIndex = 512
         '
         'tgShowTodayLiveGamesFirst
         '
         Me.tgShowTodayLiveGamesFirst.AutoSize = true
-        Me.tgShowTodayLiveGamesFirst.Location = New System.Drawing.Point(0, 0)
-        Me.tgShowTodayLiveGamesFirst.Margin = New System.Windows.Forms.Padding(0)
+        Me.tgShowTodayLiveGamesFirst.Location = New System.Drawing.Point(3, 3)
         Me.tgShowTodayLiveGamesFirst.Name = "tgShowTodayLiveGamesFirst"
         Me.tgShowTodayLiveGamesFirst.Size = New System.Drawing.Size(80, 19)
         Me.tgShowTodayLiveGamesFirst.TabIndex = 8
@@ -1435,7 +1434,7 @@ Partial Class NHLGamesMetro
         'lblShowTodayLiveGamesFirst
         '
         Me.lblShowTodayLiveGamesFirst.AutoSize = true
-        Me.lblShowTodayLiveGamesFirst.Location = New System.Drawing.Point(83, 0)
+        Me.lblShowTodayLiveGamesFirst.Location = New System.Drawing.Point(89, 0)
         Me.lblShowTodayLiveGamesFirst.Name = "lblShowTodayLiveGamesFirst"
         Me.lblShowTodayLiveGamesFirst.Size = New System.Drawing.Size(214, 19)
         Me.lblShowTodayLiveGamesFirst.TabIndex = 9
@@ -1444,7 +1443,7 @@ Partial Class NHLGamesMetro
         'lblShowTeamCityAbr
         '
         Me.lblShowTeamCityAbr.AutoSize = true
-        Me.lblShowTeamCityAbr.Location = New System.Drawing.Point(467, 30)
+        Me.lblShowTeamCityAbr.Location = New System.Drawing.Point(465, 30)
         Me.lblShowTeamCityAbr.Name = "lblShowTeamCityAbr"
         Me.lblShowTeamCityAbr.Size = New System.Drawing.Size(218, 19)
         Me.lblShowTeamCityAbr.TabIndex = 7
@@ -1453,7 +1452,7 @@ Partial Class NHLGamesMetro
         'tgShowTeamCityAbr
         '
         Me.tgShowTeamCityAbr.AutoSize = true
-        Me.tgShowTeamCityAbr.Location = New System.Drawing.Point(384, 30)
+        Me.tgShowTeamCityAbr.Location = New System.Drawing.Point(382, 30)
         Me.tgShowTeamCityAbr.Margin = New System.Windows.Forms.Padding(0)
         Me.tgShowTeamCityAbr.Name = "tgShowTeamCityAbr"
         Me.tgShowTeamCityAbr.Size = New System.Drawing.Size(80, 19)
@@ -1464,7 +1463,7 @@ Partial Class NHLGamesMetro
         'lblShowLiveScores
         '
         Me.lblShowLiveScores.AutoSize = true
-        Me.lblShowLiveScores.Location = New System.Drawing.Point(83, 60)
+        Me.lblShowLiveScores.Location = New System.Drawing.Point(89, 60)
         Me.lblShowLiveScores.Name = "lblShowLiveScores"
         Me.lblShowLiveScores.Size = New System.Drawing.Size(134, 19)
         Me.lblShowLiveScores.TabIndex = 1
@@ -1474,8 +1473,7 @@ Partial Class NHLGamesMetro
         'tgShowLiveScores
         '
         Me.tgShowLiveScores.AutoSize = true
-        Me.tgShowLiveScores.Location = New System.Drawing.Point(0, 60)
-        Me.tgShowLiveScores.Margin = New System.Windows.Forms.Padding(0)
+        Me.tgShowLiveScores.Location = New System.Drawing.Point(3, 63)
         Me.tgShowLiveScores.Name = "tgShowLiveScores"
         Me.tgShowLiveScores.Size = New System.Drawing.Size(80, 19)
         Me.tgShowLiveScores.TabIndex = 4
@@ -1485,7 +1483,7 @@ Partial Class NHLGamesMetro
         'lblShowSeriesRecord
         '
         Me.lblShowSeriesRecord.AutoSize = true
-        Me.lblShowSeriesRecord.Location = New System.Drawing.Point(467, 0)
+        Me.lblShowSeriesRecord.Location = New System.Drawing.Point(465, 0)
         Me.lblShowSeriesRecord.Name = "lblShowSeriesRecord"
         Me.lblShowSeriesRecord.Size = New System.Drawing.Size(152, 19)
         Me.lblShowSeriesRecord.TabIndex = 2
@@ -1495,7 +1493,7 @@ Partial Class NHLGamesMetro
         'lblShowFinalScores
         '
         Me.lblShowFinalScores.AutoSize = true
-        Me.lblShowFinalScores.Location = New System.Drawing.Point(467, 60)
+        Me.lblShowFinalScores.Location = New System.Drawing.Point(465, 60)
         Me.lblShowFinalScores.Name = "lblShowFinalScores"
         Me.lblShowFinalScores.Size = New System.Drawing.Size(145, 19)
         Me.lblShowFinalScores.TabIndex = 0
@@ -1505,7 +1503,7 @@ Partial Class NHLGamesMetro
         'tgShowFinalScores
         '
         Me.tgShowFinalScores.AutoSize = true
-        Me.tgShowFinalScores.Location = New System.Drawing.Point(384, 60)
+        Me.tgShowFinalScores.Location = New System.Drawing.Point(382, 60)
         Me.tgShowFinalScores.Margin = New System.Windows.Forms.Padding(0)
         Me.tgShowFinalScores.Name = "tgShowFinalScores"
         Me.tgShowFinalScores.Size = New System.Drawing.Size(80, 19)
@@ -1516,7 +1514,7 @@ Partial Class NHLGamesMetro
         'tgShowSeriesRecord
         '
         Me.tgShowSeriesRecord.AutoSize = true
-        Me.tgShowSeriesRecord.Location = New System.Drawing.Point(384, 0)
+        Me.tgShowSeriesRecord.Location = New System.Drawing.Point(382, 0)
         Me.tgShowSeriesRecord.Margin = New System.Windows.Forms.Padding(0)
         Me.tgShowSeriesRecord.Name = "tgShowSeriesRecord"
         Me.tgShowSeriesRecord.Size = New System.Drawing.Size(80, 19)
@@ -1527,8 +1525,7 @@ Partial Class NHLGamesMetro
         'tgShowLiveTime
         '
         Me.tgShowLiveTime.AutoSize = true
-        Me.tgShowLiveTime.Location = New System.Drawing.Point(0, 30)
-        Me.tgShowLiveTime.Margin = New System.Windows.Forms.Padding(0)
+        Me.tgShowLiveTime.Location = New System.Drawing.Point(3, 33)
         Me.tgShowLiveTime.Name = "tgShowLiveTime"
         Me.tgShowLiveTime.Size = New System.Drawing.Size(80, 19)
         Me.tgShowLiveTime.TabIndex = 10
@@ -1538,7 +1535,7 @@ Partial Class NHLGamesMetro
         'lblShowLiveTime
         '
         Me.lblShowLiveTime.AutoSize = true
-        Me.lblShowLiveTime.Location = New System.Drawing.Point(83, 30)
+        Me.lblShowLiveTime.Location = New System.Drawing.Point(89, 30)
         Me.lblShowLiveTime.Name = "lblShowLiveTime"
         Me.lblShowLiveTime.Size = New System.Drawing.Size(114, 19)
         Me.lblShowLiveTime.TabIndex = 11
@@ -1872,10 +1869,10 @@ Partial Class NHLGamesMetro
         Me.cbLiveReplay.Dock = System.Windows.Forms.DockStyle.Left
         Me.cbLiveReplay.FontSize = MetroFramework.MetroComboBoxSize.Small
         Me.cbLiveReplay.FormattingEnabled = true
-        Me.cbLiveReplay.ItemHeight = 19
+        Me.cbLiveReplay.ItemHeight = 21
         Me.cbLiveReplay.Location = New System.Drawing.Point(177, 183)
         Me.cbLiveReplay.Name = "cbLiveReplay"
-        Me.cbLiveReplay.Size = New System.Drawing.Size(600, 25)
+        Me.cbLiveReplay.Size = New System.Drawing.Size(600, 27)
         Me.cbLiveReplay.TabIndex = 522
         Me.cbLiveReplay.UseSelectable = true
         '

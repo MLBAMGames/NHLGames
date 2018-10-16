@@ -1,4 +1,5 @@
-﻿Imports NHLGames.Utilities
+﻿Imports NAudio.CoreAudioApi
+Imports NHLGames.Utilities
 
 Namespace Objects.Modules
     Public Interface IAdModule
