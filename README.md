@@ -44,15 +44,17 @@ ___
 
 # /_First use_
 ## //_Requirements_
-NHLGames is an app built on .NET Framework 4.5. So, it's only available on Windows, Windows XP and Vista are not supported, and it works on any CPU (x86/x64). If you run NHLGames on Windows 7 you will probably need to install :
+NHLGames is an app built on .NET Framework 4.5. It's only available on Windows (Windows XP, Vista are not supported). Any CPU architecture is supported (x86/x64). 
+
+If you run NHLGames on Windows 7 you will probably need to install:
 - [.NET Framework 4.5](https://www.microsoft.com/en-ca/download/details.aspx?id=30653)
 
-You will also need, if you downloaded the simplified version instead of the complete version in the Releases page:
+If you downloaded the simplified version instead of the complete version in the Releases page, you'll need:
 - A supported [media player](#players)
 - A supported [streamer](#streamer)
 
 ## //_Is this app safe?_
-Yes, it is. However, some anti-virus or anti-malware won't agree because we edit your hosts file in Windows/System32/drivers/etc/, a file used to redirect nhl.com to another ip. We do that, to make sure the app will get stream links for games that are available. But don't worry, this server only responds in plain text and won't hurt your pc. If you don't trust us, find out by yourself by looking at our code.
+Yes, it is. However, some anti-virus / anti-malware programs may conflict because the host files, used to redirect nhl.com to another IP address, are edited in Windows/System32/drivers/etc/. This is done to make sure the app will get stream links for available games. This server only responds in plain text and won't harm your PC. You can verify yourself by inspecting the code.
 
 # /_User interface_
 Everytime you launch NHLGames it will search for today's games. 
