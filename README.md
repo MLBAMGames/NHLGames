@@ -63,16 +63,16 @@ Everytime you launch NHLGames it will search for today's games.
 ### ///_Navigation bar_
 If you want to watch past games, use the calendar or use the arrows to navigate through the days.
 ![image](https://user-images.githubusercontent.com/23088305/32304708-b0bf16f2-bf47-11e7-99f7-51c9dcb2382f.png)
-Use the refresh button (at the right) to refresh the current day games.
+Use the refresh button (right side) to refresh the current day's games.
 
 ### ///_Game panel_
-Game panels will have different frame color base on their game status (scheduled, pregame, live, ended).
+Game panels will have a different frame color based on their game status (scheduled, pregame, live, ended).
 
-Only today's games will show with a blue frame, like the one below :
+Games broadcasting will be shown with a blue border:
 
 ![image](https://user-images.githubusercontent.com/23088305/52686505-fd314d80-2f1b-11e9-83a7-17bf80997cc8.png)
 
-Today's games (Today's upcoming scheduled games, Pregame, Live) have a blue frame around them (like above). Every others games (ended or scheduled) are grey (like below)
+Other games (ended or scheduled) are grey:
 
 ![image](https://user-images.githubusercontent.com/23088305/52686420-99a72000-2f1b-11e9-93a4-5df0f85c6a1d.png)
 ![image](https://user-images.githubusercontent.com/23088305/52686434-b5aac180-2f1b-11e9-9eaa-abe31e889902.png)
@@ -81,7 +81,7 @@ Features on the panel:
 - Watch recap by clicking on the play icon on the top-right corner (when available)
 - Watch a stream by clicking on a network logo or a camera (hover on it to get some more info)
 
-Game panels can be customize to show or hide infos, it can be set in settings (see the next section)
+Game panels can be customized to show or hide information. It can be changed in the settings menu.
 
 
 ## //_Settings_
