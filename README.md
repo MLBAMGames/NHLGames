@@ -54,7 +54,7 @@ If you downloaded the simplified version instead of the complete version in the 
 - A supported [streamer](#streamer)
 
 ## //_Is this app safe?_
-Yes, it is. However, some anti-virus / anti-malware programs may conflict because the host files, used to redirect nhl.com to another IP address, are edited in Windows/System32/drivers/etc/. This is done to make sure the app will get stream links for available games. This server only responds in plain text and won't harm your PC. You can verify yourself by inspecting the code.
+Yes, it is. The server only responds in plain text and won't harm your PC. You can verify yourself by inspecting the code.
 
 # /_User interface_
 Everytime you launch NHLGames it will search for today's games. 
