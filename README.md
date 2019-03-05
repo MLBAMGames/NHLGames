@@ -86,7 +86,7 @@ Game panels can be customized to show or hide information. It can be changed in 
 
 ## //_Settings_
 ### ///_Customize Game panels_
-NHLGames gives you some options to change how a game panel will appear.
+NHLGames gives you options to change how a game panel will appear.
 
 | Option | Game status | Default value |
 | :--- |  :----- | :-----: |
@@ -98,7 +98,7 @@ NHLGames gives you some options to change how a game panel will appear.
 | Final scores |  Past games | `OFF` |
 
 ### ///_Stream Quality_
-The selected value will defined which quality will be sent to your media player, from the worst to the best quality. Selecting the highest quality also means bigger files to download :
+The selected value will define which video quality will be sent to your media player, from the worst to the best quality. Selecting the highest quality also means larger files to download :
 
 | Name      | Resolution    | Data usage   |
 | :-------- | :------------ | :----------: |
@@ -122,13 +122,13 @@ The Rewind/Replay feature is only available for Live games only. If you see a bl
 
 If you use the rewind or replay feature and you want to change the default behaviour, you can set your preferences here.
 #### Live Replay
-If Replay is selected , it will start the stream from the selected value
+If Replay is selected, it will start the stream from the selected value
 - When the game starts (drops the puck) - *7:10PM for a game scheduled at 7PM*
 - When the event starts (game time) - *7:00PM for a game scheduled at 7PM*
 - At the beginning of the stream - *Around 6:30PM (pregame) for a game starting at 7PM*
 
 #### Live Rewind
-If Rewind is selected , it will use the value to set the stream x minutes behind the live stream. Use the slider.
+If Rewind is selected, it will use the slider value to set the stream behind the live stream.
 
 ![image](https://user-images.githubusercontent.com/23088305/52688428-76cd3980-2f24-11e9-944c-f1990ad7bb6a.png)
 
@@ -138,13 +138,13 @@ If Rewind is selected , it will use the value to set the stream x minutes behind
 NHLGames uses by default Akamai CDN, but Level 3 can be activated by turn on the alternate network in settings.
 
 Default: Akamai
-> Akamai is one of the oldest CDNs and generally considered to be the largest global CDN. They have 'servers everywhere' and a wide range of products and services. The company is actively involved in Let's Encrypt and is pushing HTTP/2 adoption.
+> Akamai is one of the oldest CDNs and is generally considered to be the largest global CDN. They have 'servers everywhere' and a wide range of products and services. The company is actively involved in Let's Encrypt and is pushing HTTP/2 adoption.
 
 Alternate: Level 3
-> Level 3 owns and operates a global Tier-1 network and - logically - their CDN runs on top of it. It has POPs on all continents and their product focus is on video and large object delivery. Level 3 CDN is part of the Google Cloud CDN Interconnect.
+> Level 3 owns and operates a global Tier-1 network and their CDN runs on top of it. It has POPs on all continents and their product focus is on video and large object delivery. Level 3 CDN is part of the Google Cloud CDN Interconnect.
 
 ### ///_Server's Hostname_
-This drop down list shows all NHLGames server hostname, so if you can't play games, try another hostname.
+This drop down list shows all NHLGames server hostnames. If you can't play games, try another hostname.
 
 ### ///_Proxy Port_
 Use the slider to change the proxy port when starting NHLGames.
@@ -152,25 +152,25 @@ Use the slider to change the proxy port when starting NHLGames.
 Remember that if you close NHLGames while watching a stream, it will close the proxy as well and it will kill the stream. Just minimize NHLGames instead while playing.
 
 ### ///_Players_
-NHLGames supports up to 3 media players:     
+NHLGames supports 3 media players:     
 - [MPV](https://mpv.io/installation/) : a simple and powerful cross-platform media player    
 - [VLC](https://www.videolan.org/vlc/index.html) : a strong and popular cross-platform multimedia player     
 - [MPC](https://mpc-hc.org/downloads/) : a light-weight media player
 
-If you don't have or want VLC/MPC players, use our default media player to watch games. Make sure you select MPV as the default player.
+If you don't have or want VLC/MPC players, use the default media player to watch games. Make sure you select MPV as the default player.
 
-If you had previously installed VLC or MPC, NHLGames should find it automatically if you installed it in the default folder Program Files, otherwise you will have to browse ![image](https://cloud.githubusercontent.com/assets/23088305/25557239/b99ec37a-2cdb-11e7-8c27-d8b563128e8d.png) your computer and get the path to the EXE file. 
+If you had previously installed VLC or MPC, NHLGames should find it automatically if you installed it in Program Files. Otherwise you will have to browse ![image](https://cloud.githubusercontent.com/assets/23088305/25557239/b99ec37a-2cdb-11e7-8c27-d8b563128e8d.png) your computer and get the path to the .EXE file. 
 
-If you don't have one of these players installed and you want to install it, use the links on the right to download it.
+If you don't have one of these players installed, use the links on the right to download it.
 
 ### ///_Streamer_
-A streamer is not a media player, it's an application that NHLGames use to get the stream from Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip, the **Simplified** does not have any. If you use the Complete package, just don't move the provided streamer and media player out of NHLGames folder, otherwise you will to specified another streamer to be able to stream a game.       
+A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to speciy another streamer to be able to stream a game.       
 - [LiveStreamer](http://docs.livestreamer.io/install.html) : a tiny command-line tool that extracts and pipes streams into a media player    
 - [StreamLink](https://streamlink.github.io/install.html) : a livestream clone but updated and with addons
 
-If you can't play any stream, you might need to install one of these streamer (the portable version might not work for everyone), follow the link above (click on the streamer you want), download the installer and set the path in NHLGames settings
+If you can't play any stream, you might need to install one of these streamers (the portable version might not work for everyone). Follow the link above, download the installer and set the path in NHLGames settings.
 
-If your antivirus or Windows Defender removes the streamer, try to install another version (e.g.: 1.0.7 instead of 1.0.8).
+If your anti-virus or Windows Defender removes the streamer, try to install another version (e.g.: 1.0.7 instead of 1.0.8).
 
 If you find one that works great for you, keep it, you will just have to change the path in settings when a new update of NHLGames will come out.
 
@@ -202,7 +202,7 @@ Ad detection supports these applications:
    - Ad starting hotkey: Set the same hotkey that you use in OBS to display the window when a commercial plays.
 
 ## //_Console_
-Go to this tab to see everything that NHLGames logs. Also, any error or warning will show up here. Click on `Copy to clipboard` if you get an issue and want to report it on Github, just paste it when opening an issue.
+Go to this tab to see everything that NHLGames logs. Any error or warning will show up here. Click on `Copy to clipboard` if you get an issue and want to report it on Github. Paste the log text when opening an issue.
 
 # /_Support_
 Having an issue with NHLGames? Head to our [Wiki](https://github.com/NHLGames/NHLGames/wiki) to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/NHLGames/NHLGames/issues).
