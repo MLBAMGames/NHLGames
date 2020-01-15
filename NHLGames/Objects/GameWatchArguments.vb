@@ -91,7 +91,7 @@ Namespace Objects
                 Case PlayerTypeEnum.Mpv
                     args &= $"--force-window=immediate --title=""""{title}"""" --user-agent=User-Agent=""""{Common.UserAgent}"""""
                 Case PlayerTypeEnum.Vlc
-                    args &= $"--meta-title """"{title}"""" "
+                     args &= $"--meta-title=""""{title}"""" "
                     If IsProxyNecessary() Then args &= $"{VlcHttpProxyArgs()} "
                 Case PlayerTypeEnum.Mpc
             End Select
