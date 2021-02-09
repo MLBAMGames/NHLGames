@@ -22,7 +22,7 @@ Namespace My.Resources
     '''<summary>
     '''  A strongly-typed resource class, for looking up localized strings, etc.
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0"),  _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
     Friend Class French
@@ -830,6 +830,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Saison.
+        '''</summary>
+        Friend Shared ReadOnly Property lblSeason() As String
+            Get
+                Return ResourceManager.GetString("lblSeason", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Serveur indisponible.
         '''</summary>
         Friend Shared ReadOnly Property lblServerDown() As String
@@ -1249,6 +1258,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tabSettings() As String
             Get
                 Return ResourceManager.GetString("tabSettings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Classements.
+        '''</summary>
+        Friend Shared ReadOnly Property tabStandings() As String
+            Get
+                Return ResourceManager.GetString("tabStandings", resourceCulture)
             End Get
         End Property
         

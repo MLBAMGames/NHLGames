@@ -6,6 +6,7 @@ Imports System.Threading
 Imports MetroFramework.Controls
 Imports NHLGames.Controls
 Imports NHLGames.My.Resources
+Imports NHLGames.NHLStats
 Imports NHLGames.Objects
 Imports NHLGames.Objects.Modules
 Imports NHLGames.Utilities
@@ -77,7 +78,7 @@ Public Class NHLGamesMetro
         SuspendLayout()
 
         Common.GetLanguage()
-        tabMenu.SelectedIndex = 0
+        tabMenu.SelectedIndex = MainTabsEnum.Matchs
         FlpCalendar = flpCalendarPanel
         InitializeForm.SetSettings()
 
@@ -94,6 +95,8 @@ Public Class NHLGamesMetro
 
         tmr.Enabled = True
         InvokeElement.LoadGames()
+
+        InvokeElement.LoadStandings()
     End Sub
 
     Public Sub ClearGamePanel()
@@ -764,4 +767,10 @@ Public Class NHLGamesMetro
         _writeToConsoleSettingsChanged(lblProxyPort.Text, value.ToString())
     End Sub
 
+    Private Async Sub cbSeasons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSeasons.SelectedIndexChanged
+        Dim season As Season = cbSeasons.Items(cbSeasons.SelectedIndex)
+
+        Dim value = Standing.GetCurrentStandings(StandingTypeEnum.League, season.seasonId)
+        grdStanding.DataSource = value
+    End Sub
 End Class

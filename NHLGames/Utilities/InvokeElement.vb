@@ -1,5 +1,6 @@
 ﻿Imports MetroFramework
 Imports NHLGames.Controls
+Imports NHLGames.NHLStats
 Imports NHLGames.Objects
 
 Namespace Utilities
@@ -97,7 +98,7 @@ Namespace Utilities
                             buttons)
                 EndInvokeOf(asyncResult)
             Else
-                NHLGamesMetro.FormInstance.tabMenu.SelectedIndex = 2
+                NHLGamesMetro.FormInstance.tabMenu.SelectedIndex = MainTabsEnum.Settings
                 result = MetroMessageBox.Show(NHLGamesMetro.FormInstance,
                                               message,
                                               title,
@@ -133,6 +134,18 @@ Namespace Utilities
             Catch
             End Try
         End Sub
+
+        Public Shared Sub LoadStandings()
+            If NHLGamesMetro.FormInstance.InvokeRequired Then
+                Dim asyncResult =
+                        NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf LoadStandings))
+                EndInvokeOf(asyncResult)
+            Else
+                NHLGamesMetro.FormInstance.cbSeasons.DataSource = Season.GetAllSeasons()
+                NHLGamesMetro.FormInstance.cbSeasons.SelectedIndex = 0
+            End If
+        End Sub
+
     End Class
 End Namespace
 

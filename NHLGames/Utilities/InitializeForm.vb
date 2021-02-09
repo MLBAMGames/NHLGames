@@ -29,8 +29,9 @@ Namespace Utilities
 
             'Main
             Form.tabMenu.TabPages.Item(0).Text = NHLGamesMetro.RmText.GetString("tabGames")
-            Form.tabMenu.TabPages.Item(1).Text = NHLGamesMetro.RmText.GetString("tabSettings")
-            Form.tabMenu.TabPages.Item(2).Text = NHLGamesMetro.RmText.GetString("tabConsole")
+            Form.tabMenu.TabPages.Item(1).Text = NHLGamesMetro.RmText.GetString("tabStandings")
+            Form.tabMenu.TabPages.Item(2).Text = NHLGamesMetro.RmText.GetString("tabSettings")
+            Form.tabMenu.TabPages.Item(3).Text = NHLGamesMetro.RmText.GetString("tabConsole")
             Form.tt.SetToolTip(Form.btnHelp, NHLGamesMetro.RmText.GetString("tipHelp"))
 
             Form.lblNoGames.Text = NHLGamesMetro.RmText.GetString("lblNoGames")
@@ -42,6 +43,9 @@ Namespace Utilities
             Form.tt.SetToolTip(Form.btnDate, NHLGamesMetro.RmText.GetString("tipCalendar"))
             Form.tt.SetToolTip(Form.btnTomorrow, NHLGamesMetro.RmText.GetString("tipDayRight"))
             Form.tt.SetToolTip(Form.btnRefresh, NHLGamesMetro.RmText.GetString("tipRefresh"))
+
+            'Standings
+            Form.lblSeason.Text = NHLGamesMetro.RmText.GetString("lblSeason")
 
             'Settings
             Dim minutesBehind = Form.tbLiveRewind.Value * 5

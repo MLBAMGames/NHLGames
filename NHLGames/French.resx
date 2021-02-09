@@ -761,4 +761,12 @@
     <value>Résumé</value>
     <comment>Game panel</comment>
   </data>
+  <data name="tabStandings" xml:space="preserve">
+    <value>Classements</value>
+    <comment>Main</comment>
+  </data>
+  <data name="lblSeason" xml:space="preserve">
+    <value>Saison</value>
+    <comment>Standings Tab</comment>
+  </data>
 </root>
