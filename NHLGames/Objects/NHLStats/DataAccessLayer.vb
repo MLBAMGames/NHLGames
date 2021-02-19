@@ -9,9 +9,9 @@ Imports System.Net
 
 Namespace NHLStats
     Module DataAccessLayer
-        Function ExecuteAPICall(ByVal apiUrl As String) As JObject
-            Dim client = New System.Net.Http.HttpClient()
-            Dim stopwatch As System.Diagnostics.Stopwatch = New System.Diagnostics.Stopwatch()
+        Function ExecuteAPICall(Of T)(ByVal apiUrl As String) As T
+            Dim client = New HttpClient()
+            Dim stopwatch As Stopwatch = New System.Diagnostics.Stopwatch()
             Dim response = client.GetAsync(apiUrl).Result
             Dim responseSuccessful As Boolean = response.IsSuccessStatusCode
 
@@ -21,8 +21,7 @@ Namespace NHLStats
             End While
 
             Dim stringResult = response.Content.ReadAsStringAsync().Result
-            Dim json = JObject.Parse(stringResult)
-            Return json
+            Return JsonConvert.DeserializeObject(Of T)(stringResult)
         End Function
     End Module
 End Namespace

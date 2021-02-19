@@ -1,5 +1,5 @@
 ﻿Namespace NHLStats
-    Public Class Division
+    Public Class League
         Public Property id As Integer
         Public Property name As String
         Public Property link As String

@@ -1,4 +1,5 @@
 ﻿Imports MetroFramework
+Imports Newtonsoft.Json
 Imports NHLGames.Controls
 Imports NHLGames.NHLStats
 Imports NHLGames.Objects
@@ -55,7 +56,7 @@ Namespace Utilities
             If NHLGamesMetro.AnimateTipsTick Mod NHLGamesMetro.AnimateTipsEveryTick <> 0 Then Return
 
             If NHLGamesMetro.FormInstance.InvokeRequired Then
-                 Dim asyncResult = NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf AnimateTips))
+                Dim asyncResult = NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf AnimateTips))
                 EndInvokeOf(asyncResult)
             Else
                 If NHLGamesMetro.FormInstance.lblTip.Text.Contains(NHLGamesMetro.RmText.GetString("lnkNewVersionText")) Then Return
@@ -84,7 +85,8 @@ Namespace Utilities
                     ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveScores, False),
                     ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowSeriesRecord, False),
                     ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowTeamCityAbr, False),
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveTime, False))).ToArray())
+                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveTime, False),
+                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowStanding, False))).ToArray())
             End If
         End Sub
 
@@ -141,8 +143,30 @@ Namespace Utilities
                         NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf LoadStandings))
                 EndInvokeOf(asyncResult)
             Else
-                NHLGamesMetro.FormInstance.cbSeasons.DataSource = Season.GetAllSeasons()
+                NHLGamesMetro.FormInstance.cbSeasons.DataSource = Seasons.GetAllSeasons()
                 NHLGamesMetro.FormInstance.cbSeasons.SelectedIndex = 0
+            End If
+        End Sub
+
+        Public Shared Sub LoadTeamsName()
+            If NHLGamesMetro.FormInstance.InvokeRequired Then
+                Dim asyncResult =
+                        NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf LoadTeamsName))
+                EndInvokeOf(asyncResult)
+            Else
+                Dim readValue = ApplicationSettings.Read(Of String)(SettingsEnum.TeamNameAbbreviation, String.Empty)
+
+                If (readValue = String.Empty) Then
+                    Dim teamRootobject As TeamRootobject = TeamRootobject.GetTeamRootobject()
+
+                    For Each item As TeamObject In teamRootobject.teams
+                        Team.TeamAbbreviation.Add(item.name, item.abbreviation)
+                    Next
+
+                    ApplicationSettings.SetValue(SettingsEnum.TeamNameAbbreviation, JsonConvert.SerializeObject(Team.TeamAbbreviation))
+                Else
+                    Team.TeamAbbreviation = JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(readValue)
+                End If
             End If
         End Sub
 

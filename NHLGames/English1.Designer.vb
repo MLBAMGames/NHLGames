@@ -686,6 +686,150 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to AWAY.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblAWAY() As String
+            Get
+                Return ResourceManager.GetString("grLblAWAY", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to DIFF.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblDIFF() As String
+            Get
+                Return ResourceManager.GetString("grLblDIFF", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to GA.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblGA() As String
+            Get
+                Return ResourceManager.GetString("grLblGA", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to GF.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblGF() As String
+            Get
+                Return ResourceManager.GetString("grLblGF", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to GP.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblGP() As String
+            Get
+                Return ResourceManager.GetString("grLblGP", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to HOME.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblHOME() As String
+            Get
+                Return ResourceManager.GetString("grLblHOME", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to L.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblL() As String
+            Get
+                Return ResourceManager.GetString("grLblL", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to L10.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblL10() As String
+            Get
+                Return ResourceManager.GetString("grLblL10", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to OT.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblOT() As String
+            Get
+                Return ResourceManager.GetString("grLblOT", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to P%.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblPerc() As String
+            Get
+                Return ResourceManager.GetString("grLblPerc", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to PTS.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblPTS() As String
+            Get
+                Return ResourceManager.GetString("grLblPTS", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to ROW.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblROW() As String
+            Get
+                Return ResourceManager.GetString("grLblROW", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to RW.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblRW() As String
+            Get
+                Return ResourceManager.GetString("grLblRW", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to S/O.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblShootOut() As String
+            Get
+                Return ResourceManager.GetString("grLblShootOut", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to STRK.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblSTRK() As String
+            Get
+                Return ResourceManager.GetString("grLblSTRK", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to W.
+        '''</summary>
+        Friend Shared ReadOnly Property grLblW() As String
+            Get
+                Return ResourceManager.GetString("grLblW", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Use the alternate network.
         '''</summary>
         Friend Shared ReadOnly Property lblAlternateCdn() As String
@@ -1060,6 +1204,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property lblShowSeriesRecord() As String
             Get
                 Return ResourceManager.GetString("lblShowSeriesRecord", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Standing rank.
+        '''</summary>
+        Friend Shared ReadOnly Property lblShowStanding() As String
+            Get
+                Return ResourceManager.GetString("lblShowStanding", resourceCulture)
             End Get
         End Property
         
@@ -1712,6 +1865,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Conference.
+        '''</summary>
+        Friend Shared ReadOnly Property tabConferenceStandings() As String
+            Get
+                Return ResourceManager.GetString("tabConferenceStandings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Console.
         '''</summary>
         Friend Shared ReadOnly Property tabConsole() As String
@@ -1721,11 +1883,29 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Division.
+        '''</summary>
+        Friend Shared ReadOnly Property tabDivisionStandings() As String
+            Get
+                Return ResourceManager.GetString("tabDivisionStandings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Games.
         '''</summary>
         Friend Shared ReadOnly Property tabGames() As String
             Get
                 Return ResourceManager.GetString("tabGames", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to League.
+        '''</summary>
+        Friend Shared ReadOnly Property tabLeagueStandings() As String
+            Get
+                Return ResourceManager.GetString("tabLeagueStandings", resourceCulture)
             End Get
         End Property
         
@@ -1753,6 +1933,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tabStandings() As String
             Get
                 Return ResourceManager.GetString("tabStandings", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Wild Card.
+        '''</summary>
+        Friend Shared ReadOnly Property tabWildCardStandings() As String
+            Get
+                Return ResourceManager.GetString("tabWildCardStandings", resourceCulture)
             End Get
         End Property
         

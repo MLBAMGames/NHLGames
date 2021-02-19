@@ -15,6 +15,7 @@ Namespace Controls
         Private ReadOnly _showSeriesRecord As Boolean
         Private ReadOnly _showTeamCityAbr As Boolean
         Private ReadOnly _showLiveTime As Boolean
+        Private ReadOnly _showStanding As Boolean
         Private ReadOnly _broadcasters As Dictionary(Of String, String)
         Public LiveReplayCode As LiveStatusCodeEnum
         Private _lnkUnknowns() As Button
@@ -28,7 +29,7 @@ Namespace Controls
         End Property
 
         Public Sub UpdateGame(showScores As Boolean, showLiveScores As Boolean, showSeriesRecord As Boolean,
-                              showTeamCityAbr As Boolean, showLiveTime As Boolean, Optional gameUpdated As Game = Nothing)
+                              showTeamCityAbr As Boolean, showLiveTime As Boolean, showStanding As Boolean, Optional gameUpdated As Game = Nothing)
             If gameUpdated IsNot Nothing Then
                 If gameUpdated.StreamsDict Is Nothing Then Return
                 _game = gameUpdated
@@ -191,7 +192,7 @@ Namespace Controls
         End Sub
 
         Public Sub New(game As Game, showScores As Boolean, showLiveScores As Boolean, showSeriesRecord As Boolean,
-                       showTeamCityAbr As Boolean, showLiveTime As Boolean)
+                       showTeamCityAbr As Boolean, showLiveTime As Boolean, showStanding As Boolean)
 
             InitializeComponent()
             _broadcasters = New Dictionary(Of String, String)() From {
@@ -223,6 +224,7 @@ Namespace Controls
             _showSeriesRecord = showSeriesRecord
             _showTeamCityAbr = showTeamCityAbr
             _showLiveTime = showLiveTime
+            _showStanding = showStanding
             _game = game
 
             SetThemeAndSvgOnControl()
@@ -286,7 +288,7 @@ Namespace Controls
                 End If
             End If
 
-            UpdateGame(_showScores, _showLiveScores, _showSeriesRecord, _showTeamCityAbr, _showLiveTime)
+            UpdateGame(_showScores, _showLiveScores, _showSeriesRecord, _showTeamCityAbr, _showLiveTime, _showStanding)
         End Sub
 
         Private Sub SetWholeGamePanel()

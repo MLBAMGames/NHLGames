@@ -91,9 +91,11 @@
         ShowTodayLiveGamesFirst
         LastWindowSize
         ShowLiveTime
+        ShowStanding
         DarkMode
         ProxyPort
         LastBuildVersionSkipped
+        TeamNameAbbreviation
     End Enum
 
     Public Enum OutputTypeEnum

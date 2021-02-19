@@ -78,6 +78,7 @@ Namespace Utilities
             Form.lblShowSeriesRecord.Text = NHLGamesMetro.RmText.GetString("lblShowSeriesRecord")
             Form.lblShowTeamCityAbr.Text = NHLGamesMetro.RmText.GetString("lblShowTeamCityAbr")
             Form.lblShowTodayLiveGamesFirst.Text = NHLGamesMetro.RmText.GetString("lblShowTodayLiveGamesFirst")
+            Form.lblShowStanding.Text = NHLGamesMetro.RmText.GetString("lblShowStanding")
 
             Form.cbStreamQuality.Items.Clear()
             Form.cbStreamQuality.Items.AddRange(lstStreamQualities)
@@ -159,10 +160,10 @@ Namespace Utilities
             Form.txtMpvPath.Text = GetApplication(SettingsEnum.MpvPath,
                                                   Path.Combine(Application.StartupPath, "mpv\mpv.exe"))
 
-            Form.txtStreamerPath.Text = If (livestreamerPath.Equals(String.Empty), streamlinkPath, livestreamerPath)
+            Form.txtStreamerPath.Text = If(livestreamerPath.Equals(String.Empty), streamlinkPath, livestreamerPath)
 
             Dim proxyPort = ApplicationSettings.Read(Of Integer)(SettingsEnum.ProxyPort, 8080)
-            Form.tbProxyPort.Value = proxyPort /10
+            Form.tbProxyPort.Value = proxyPort / 10
             Form.lblProxyPortNumber.Text = proxyPort.ToString()
 
             Form.tgDarkMode.Checked = NHLGamesMetro.IsDarkMode
@@ -172,6 +173,7 @@ Namespace Utilities
             Form.tgShowSeriesRecord.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowSeriesRecord, False)
             Form.tgShowTeamCityAbr.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowTeamCityAbr, False)
             Form.tgShowLiveTime.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveTime, False)
+            Form.tgShowStanding.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowStanding, False)
             Form.tgShowTodayLiveGamesFirst.Checked =
                 ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowTodayLiveGamesFirst, False)
 
@@ -384,12 +386,14 @@ Namespace Utilities
                 Form.tgShowSeriesRecord.Theme = MetroThemeStyle.Dark
                 Form.tgShowTeamCityAbr.Theme = MetroThemeStyle.Dark
                 Form.tgShowFinalScores.Theme = MetroThemeStyle.Dark
+                Form.tgShowStanding.Theme = MetroThemeStyle.Dark
                 Form.lblShowTodayLiveGamesFirst.Theme = MetroThemeStyle.Dark
                 Form.lblShowLiveTime.Theme = MetroThemeStyle.Dark
                 Form.lblShowLiveScores.Theme = MetroThemeStyle.Dark
                 Form.lblShowSeriesRecord.Theme = MetroThemeStyle.Dark
                 Form.lblShowTeamCityAbr.Theme = MetroThemeStyle.Dark
                 Form.lblShowFinalScores.Theme = MetroThemeStyle.Dark
+                Form.lblShowStanding.Theme = MetroThemeStyle.Dark
                 Form.lblQuality.Theme = MetroThemeStyle.Dark
                 Form.cbStreamQuality.Theme = MetroThemeStyle.Dark
                 Form.lblLiveReplay.Theme = MetroThemeStyle.Dark
@@ -475,13 +479,18 @@ Namespace Utilities
                 Form.btnClearConsole.Theme = MetroThemeStyle.Dark
                 Form.btnCopyConsole.Theme = MetroThemeStyle.Dark
                 Form.btnYesterday.BackColor = Color.DarkGray
-                Form.btnYesterday.FlatAppearance.BorderColor =  Color.FromArgb(80, 80, 80)
+                Form.btnYesterday.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80)
                 Form.btnDate.BackColor = Color.DarkGray
                 Form.btnDate.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80)
                 Form.btnTomorrow.BackColor = Color.DarkGray
-                Form.btnTomorrow.FlatAppearance.BorderColor =  Color.FromArgb(80, 80, 80)
+                Form.btnTomorrow.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80)
                 Form.btnRefresh.BackColor = Color.DarkGray
-                Form.btnRefresh.FlatAppearance.BorderColor =  Color.FromArgb(80, 80, 80)
+                Form.btnRefresh.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80)
+                Form.tabStandings.Theme = MetroThemeStyle.Dark
+                Form.tlpStandings.BackColor = colorMetroThemeDark
+                Form.lblSeason.Theme = MetroThemeStyle.Dark
+                Form.cbSeasons.Theme = MetroThemeStyle.Dark
+                Form.tbStanding.Theme = MetroThemeStyle.Dark
             End If
             Form.pnlLogo.BackgroundImage = ImageFetcher.GetEmbeddedImage("nhlgames")
             Form.lblVLCLogo.Image = ImageFetcher.GetEmbeddedImage("vlc")

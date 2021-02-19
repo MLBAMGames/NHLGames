@@ -96,6 +96,7 @@ Public Class NHLGamesMetro
         tmr.Enabled = True
         InvokeElement.LoadGames()
 
+        InvokeElement.LoadTeamsName()
         InvokeElement.LoadStandings()
     End Sub
 
@@ -208,6 +209,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -327,6 +329,22 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
+                            GamesDict(game.GameId))
+        Next
+    End Sub
+
+    Private Sub tgShowStanding_CheckedChanged(sender As Object, e As EventArgs) Handles tgShowStanding.CheckedChanged
+        ApplicationSettings.SetValue(SettingsEnum.ShowStanding, tgShowStanding.Checked)
+        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowStanding.Text),
+                                    If(tgShowStanding.Checked, English.msgOn, English.msgOff))
+        For Each game As GameControl In flpGames.Controls
+            game.UpdateGame(tgShowFinalScores.Checked,
+                            tgShowLiveScores.Checked,
+                            tgShowSeriesRecord.Checked,
+                            tgShowTeamCityAbr.Checked,
+                            tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -380,6 +398,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -509,6 +528,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -612,6 +632,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -727,6 +748,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -754,7 +776,6 @@ Public Class NHLGamesMetro
         End Try
     End Sub
 
-
     Private Sub tbProxyPort_ValueChanged(sender As Object, e As EventArgs) Handles tbProxyPort.ValueChanged
         Dim value = tbProxyPort.Value * 10
         lblProxyPortNumber.Text = value.ToString()
@@ -767,10 +788,9 @@ Public Class NHLGamesMetro
         _writeToConsoleSettingsChanged(lblProxyPort.Text, value.ToString())
     End Sub
 
-    Private Async Sub cbSeasons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSeasons.SelectedIndexChanged
+    Private Sub cbSeasons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSeasons.SelectedIndexChanged
         Dim season As Season = cbSeasons.Items(cbSeasons.SelectedIndex)
-
-        Dim value = Standing.GetCurrentStandings(StandingTypeEnum.League, season.seasonId)
-        grdStanding.DataSource = value
+        StandingsHelper.GenerateStandings(tbStanding, season)
     End Sub
+
 End Class

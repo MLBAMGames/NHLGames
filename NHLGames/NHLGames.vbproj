@@ -195,6 +195,8 @@
     <Compile Include="Controls\MetroTrackBarNoMW.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\NHLStats\TeamCell.vb" />
+    <Compile Include="Controls\NHLStats\TeamColumn.vb" />
     <Compile Include="English1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,16 +220,22 @@
     <Compile Include="Objects\GitHub\Milestone.vb" />
     <Compile Include="Objects\GitHub\Release.vb" />
     <Compile Include="Objects\GitHub\User.vb" />
+    <Compile Include="Objects\NHLStats\Seasons.vb" />
+    <Compile Include="Objects\NHLStats\Streak.vb" />
     <Compile Include="Objects\NHLStats\Conference.vb" />
     <Compile Include="Objects\NHLStats\DataAccessLayer.vb" />
     <Compile Include="Objects\NHLStats\Division.vb" />
+    <Compile Include="Objects\NHLStats\League.vb" />
+    <Compile Include="Objects\NHLStats\Leaguerecord.vb" />
     <Compile Include="Objects\NHLStats\NHLAPIServiceURLs.vb" />
+    <Compile Include="Objects\NHLStats\Overallrecord.vb" />
+    <Compile Include="Objects\NHLStats\Record.vb" />
+    <Compile Include="Objects\NHLStats\Records.vb" />
     <Compile Include="Objects\NHLStats\Standing.vb" />
     <Compile Include="Objects\NHLStats\Season.vb" />
+    <Compile Include="Objects\NHLStats\ViewModels.vb" />
     <Compile Include="Objects\NHLStats\Team.vb" />
     <Compile Include="Objects\NHLStats\TeamRecord.vb" />
-    <Compile Include="Objects\NHLStats\Utilities.vb" />
-    <Compile Include="Objects\NHLStats\Venue.vb" />
     <Compile Include="Objects\NHL\Conference.vb" />
     <Compile Include="Objects\NHL\Content.vb" />
     <Compile Include="Objects\NHL\Date.vb" />
@@ -294,6 +302,7 @@
     <Compile Include="Utilities\Proxy.vb" />
     <Compile Include="Utilities\Serialization.vb" />
     <Compile Include="Utilities\ConsoleRedirectStreamWriter.vb" />
+    <Compile Include="Utilities\StandingsHelper.vb" />
     <Compile Include="Utilities\WindowsEvents.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -483,6 +492,7 @@
     <EmbeddedResource Include="res\images\recap_d.png" />
     <EmbeddedResource Include="res\images\recap_l.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

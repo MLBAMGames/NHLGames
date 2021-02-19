@@ -6,26 +6,16 @@ Namespace NHLStats
     Public Class NHLAPIServiceURLs
         Public Shared seasons As String = "https://statsapi.web.nhl.com/api/v1/seasons"
 
-        Public Shared leagueStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byLeague"
-        Public Shared leagueStandings_season_extension As String = "?season="
-        Public Shared leagueStandings_date_extension As String = "?date="
+        Public Shared leagueStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byLeague?season={0}&expand=standings.record"
+        Public Shared conferenceStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byConference?season={0}&expand=standings.record"
+        Public Shared divisionStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byDivision?season={0}&expand=standings.record"
+        Public Shared wildCardStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/wildCard?season={0}&expand=standings.record"
 
-        Public Shared conferenceStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byConference"
-        Public Shared conferenceStandings_season_extension As String = leagueStandings_season_extension
-        Public Shared conferenceStandings_date_extension As String = leagueStandings_date_extension
-
-        Public Shared divisionStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byDivision"
-        Public Shared divisionStandings_season_extension As String = leagueStandings_season_extension
-        Public Shared divisionStandings_date_extension As String = leagueStandings_date_extension
-
-        Public Shared wildCardStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/wildCard"
-        Public Shared wildCardStandings_season_extension As String = leagueStandings_season_extension
-        Public Shared wildCardStandings_date_extension As String = leagueStandings_date_extension
-        
         Public Shared todaysGames As String = "https://statsapi.web.nhl.com/api/v1/schedule"
         Public Shared specificGame As String = "https://statsapi.web.nhl.com/api/v1/game/###/feed/live"
         Public Shared specificGameContent As String = "https://statsapi.web.nhl.com/api/v1/game/###/content"
         Public Shared teams As String = "https://statsapi.web.nhl.com/api/v1/teams/"
+        Public Shared team As String = "https://statsapi.web.nhl.com/api/v1/teams/{0}"
         Public Shared teams_roster_extension As String = "?expand=team.roster"
         Public Shared teams_nextgame_extension As String = "?expand=team.schedule.next"
         Public Shared teamsStandings As String = "https://statsapi.web.nhl.com/api/v1/standings/byLeague/"

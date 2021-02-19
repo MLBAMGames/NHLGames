@@ -985,4 +985,88 @@
     <value>Season</value>
     <comment>Standings Tab</comment>
   </data>
+  <data name="grLblAWAY" xml:space="preserve">
+    <value>AWAY</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblDIFF" xml:space="preserve">
+    <value>DIFF</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGA" xml:space="preserve">
+    <value>GA</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGF" xml:space="preserve">
+    <value>GF</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGP" xml:space="preserve">
+    <value>GP</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblHOME" xml:space="preserve">
+    <value>HOME</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblL" xml:space="preserve">
+    <value>L</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblL10" xml:space="preserve">
+    <value>L10</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblOT" xml:space="preserve">
+    <value>OT</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblPerc" xml:space="preserve">
+    <value>P%</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblPTS" xml:space="preserve">
+    <value>PTS</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblROW" xml:space="preserve">
+    <value>ROW</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblRW" xml:space="preserve">
+    <value>RW</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblShootOut" xml:space="preserve">
+    <value>S/O</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblSTRK" xml:space="preserve">
+    <value>STRK</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblW" xml:space="preserve">
+    <value>W</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="tabConferenceStandings" xml:space="preserve">
+    <value>Conference</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabDivisionStandings" xml:space="preserve">
+    <value>Division</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabLeagueStandings" xml:space="preserve">
+    <value>League</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabWildCardStandings" xml:space="preserve">
+    <value>Wild Card</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="lblShowStanding" xml:space="preserve">
+    <value>Standing rank</value>
+    <comment>Settings tab</comment>
+  </data>
 </root>
