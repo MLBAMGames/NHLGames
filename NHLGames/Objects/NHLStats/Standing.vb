@@ -2,7 +2,6 @@
 
 Namespace NHLStats
     Public Class Standing
-        Public Property copyright As String
         Public Property records As List(Of Record)
 
         Private Shared Property LastFetchTime As DateTime = DateTime.Now

@@ -1,6 +1,5 @@
 ﻿Namespace NHLStats
     Public Class Seasons
-        Public Property copyright As String
         Public Property seasons As List(Of Season)
 
         Public Shared CurrentSeason As Season
