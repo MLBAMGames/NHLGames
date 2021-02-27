@@ -195,6 +195,7 @@
     <Compile Include="Controls\MetroTrackBarNoMW.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\NHLStats\Badge.vb" />
     <Compile Include="Controls\NHLStats\TeamCell.vb" />
     <Compile Include="Controls\NHLStats\TeamColumn.vb" />
     <Compile Include="English1.Designer.vb">

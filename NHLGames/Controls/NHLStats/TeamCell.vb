@@ -3,12 +3,6 @@
 Namespace NHLStats
     Public Class TeamCell
         Inherits DataGridViewCell
-        'Public Overrides ReadOnly Property ValueType() As Type
-        '    Get
-        '        ' Return the type of the value that CalendarCell contains.
-        '        Return GetType(StandingRowHeaderViewModel)
-        '    End Get
-        'End Property
 
         Public Overrides ReadOnly Property DefaultNewRowValue() As Object
             Get
@@ -64,11 +58,6 @@ Namespace NHLStats
 
             Dim formattedString As String = String.Format($"{formattedValue.Rank.ToString().PadLeft(2)}              {formattedValue.TeamName}")
             If formattedString IsNot Nothing AndAlso ((paint AndAlso Not cellEdited) OrElse computeContentBounds) Then
-                Dim verticalTextMarginTop As Integer = If(cellStyle.WrapMode = DataGridViewTriState.[True], DATAGRIDVIEWTEXTBOXCELL_verticalTextMarginTopWithWrapping, DATAGRIDVIEWTEXTBOXCELL_verticalTextMarginTopWithoutWrapping)
-                valBounds.Offset(DATAGRIDVIEWTEXTBOXCELL_horizontalTextMarginLeft, verticalTextMarginTop)
-                valBounds.Width -= DATAGRIDVIEWTEXTBOXCELL_horizontalTextMarginLeft + DATAGRIDVIEWTEXTBOXCELL_horizontalTextMarginRight
-                valBounds.Height -= verticalTextMarginTop + DATAGRIDVIEWTEXTBOXCELL_verticalTextMarginBottom
-
                 If valBounds.Width > 0 AndAlso valBounds.Height > 0 Then
                     Dim flags As TextFormatFlags = ComputeTextFormatFlagsForCellStyleAlignment(DataGridView.RightToLeft, cellStyle.Alignment, cellStyle.WrapMode)
 
@@ -120,19 +109,9 @@ Namespace NHLStats
             Return (paintParts And DataGridViewPaintParts.Border) <> 0
         End Function
 
-        Friend Shared Function PaintFocusCheck(ByVal paintParts As DataGridViewPaintParts) As Boolean
-            Return (paintParts And DataGridViewPaintParts.Focus) <> 0
-        End Function
-
         Friend Shared Function PaintContentForegroundCheck(ByVal paintParts As DataGridViewPaintParts) As Boolean
             Return (paintParts And DataGridViewPaintParts.ContentForeground) <> 0
         End Function
-
-        Private Const DATAGRIDVIEWTEXTBOXCELL_horizontalTextMarginLeft As Byte = 0
-        Private Const DATAGRIDVIEWTEXTBOXCELL_horizontalTextMarginRight As Byte = 0
-        Private Const DATAGRIDVIEWTEXTBOXCELL_verticalTextMarginTopWithWrapping As Byte = 1
-        Private Const DATAGRIDVIEWTEXTBOXCELL_verticalTextMarginTopWithoutWrapping As Byte = 2
-        Private Const DATAGRIDVIEWTEXTBOXCELL_verticalTextMarginBottom As Byte = 1
 
         Friend Shared Function ComputeTextFormatFlagsForCellStyleAlignment(ByVal rightToLeft As Boolean, ByVal alignment As DataGridViewContentAlignment, ByVal wrapMode As DataGridViewTriState) As TextFormatFlags
             Dim tff As TextFormatFlags

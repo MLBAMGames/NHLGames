@@ -14,7 +14,7 @@ Namespace NHLStats
             End Get
             Set(ByVal value As DataGridViewCell)
 
-                ' Ensure that the cell used for the template is a CalendarCell.
+                ' Ensure that the cell used for the template is a TeamCell.
                 If (value IsNot Nothing) AndAlso
                     Not value.GetType().IsAssignableFrom(GetType(TeamCell)) Then
                     Throw New InvalidCastException("Must be a CalendarCell")

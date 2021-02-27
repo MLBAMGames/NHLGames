@@ -2,6 +2,7 @@
 
 Namespace NHLStats
     Public Class Season
+
         Public Property seasonId As String
         Public Property regularSeasonStartDate As String
         Public Property regularSeasonEndDate As String

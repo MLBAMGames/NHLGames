@@ -1,10 +1,5 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Text
-Imports Newtonsoft.Json
+﻿Imports Newtonsoft.Json
 Imports System.Net.Http
-Imports Newtonsoft.Json.Linq
-Imports System.Linq
 Imports System.Net
 
 Namespace NHLStats

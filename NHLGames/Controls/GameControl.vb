@@ -2,6 +2,7 @@
 Imports System.Text
 Imports MetroFramework
 Imports MetroFramework.Drawing
+Imports NHLGames.NHLStats
 Imports NHLGames.Objects
 Imports NHLGames.Utilities
 
@@ -124,7 +125,7 @@ Namespace Controls
                                                            NHLGamesMetro.RmText.GetString("gamePeriodFinal").ToUpper())
                     End If
                 End If
-            ElseIf _game.GameState <= GameStateEnum.Pregame  Then
+            ElseIf _game.GameState <= GameStateEnum.Pregame Then
                 lblDivider.Visible = False
                 lblGameStatus.Visible = True
                 lblGameStatus.Text = _game.GameDate.ToLocalTime().ToString("h:mm tt")
@@ -182,6 +183,14 @@ Namespace Controls
 
             lblHomeTeam.Visible = showTeamCityAbr
             lblAwayTeam.Visible = showTeamCityAbr
+
+            If showStanding Then
+                Adorner.AddBadgeTo(picAway, Standing.GetCurrentStandings(StandingTypeEnum.League, Seasons.CurrentSeason.seasonId, _game.AwayTeam))
+                Adorner.AddBadgeTo(picHome, Standing.GetCurrentStandings(StandingTypeEnum.League, Seasons.CurrentSeason.seasonId, _game.HomeTeam))
+            Else
+                Adorner.RemoveBadgeFrom(picAway)
+                Adorner.RemoveBadgeFrom(picHome)
+            End If
 
             tt.SetToolTip(picAway,
                           String.Format(NHLGamesMetro.RmText.GetString("lblAwayTeam"), _game.Away, _game.AwayTeam))
@@ -380,7 +389,7 @@ Namespace Controls
         End Sub
 
         Private Function WatchArgs() As GameWatchArguments
-            Return ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, NHLGamesMetro.watchArgs)
+            Return ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, NHLGamesMetro.WatchArgs)
         End Function
 
         Private Sub WatchStream(streamType As StreamerTypeEnum)
