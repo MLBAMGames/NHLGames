@@ -2,6 +2,7 @@
 Imports System.Text
 Imports MetroFramework
 Imports MetroFramework.Drawing
+Imports NHLGames.NHLStats
 Imports NHLGames.Objects
 Imports NHLGames.Utilities
 
@@ -15,6 +16,7 @@ Namespace Controls
         Private ReadOnly _showSeriesRecord As Boolean
         Private ReadOnly _showTeamCityAbr As Boolean
         Private ReadOnly _showLiveTime As Boolean
+        Private ReadOnly _showStanding As Boolean
         Private ReadOnly _broadcasters As Dictionary(Of String, String)
         Public LiveReplayCode As LiveStatusCodeEnum
         Private _lnkUnknowns() As Button
@@ -28,7 +30,7 @@ Namespace Controls
         End Property
 
         Public Sub UpdateGame(showScores As Boolean, showLiveScores As Boolean, showSeriesRecord As Boolean,
-                              showTeamCityAbr As Boolean, showLiveTime As Boolean, Optional gameUpdated As Game = Nothing)
+                              showTeamCityAbr As Boolean, showLiveTime As Boolean, showStanding As Boolean, Optional gameUpdated As Game = Nothing)
             If gameUpdated IsNot Nothing Then
                 If gameUpdated.StreamsDict Is Nothing Then Return
                 _game = gameUpdated
@@ -123,7 +125,7 @@ Namespace Controls
                                                            NHLGamesMetro.RmText.GetString("gamePeriodFinal").ToUpper())
                     End If
                 End If
-            ElseIf _game.GameState <= GameStateEnum.Pregame  Then
+            ElseIf _game.GameState <= GameStateEnum.Pregame Then
                 lblDivider.Visible = False
                 lblGameStatus.Visible = True
                 lblGameStatus.Text = _game.GameDate.ToLocalTime().ToString("h:mm tt")
@@ -182,6 +184,14 @@ Namespace Controls
             lblHomeTeam.Visible = showTeamCityAbr
             lblAwayTeam.Visible = showTeamCityAbr
 
+            If showStanding Then
+                Adorner.AddBadgeTo(picAway, Standing.GetCurrentStandings(StandingTypeEnum.League, Seasons.CurrentSeason.seasonId, _game.AwayTeam))
+                Adorner.AddBadgeTo(picHome, Standing.GetCurrentStandings(StandingTypeEnum.League, Seasons.CurrentSeason.seasonId, _game.HomeTeam))
+            Else
+                Adorner.RemoveBadgeFrom(picAway)
+                Adorner.RemoveBadgeFrom(picHome)
+            End If
+
             tt.SetToolTip(picAway,
                           String.Format(NHLGamesMetro.RmText.GetString("lblAwayTeam"), _game.Away, _game.AwayTeam))
             tt.SetToolTip(picHome,
@@ -191,7 +201,7 @@ Namespace Controls
         End Sub
 
         Public Sub New(game As Game, showScores As Boolean, showLiveScores As Boolean, showSeriesRecord As Boolean,
-                       showTeamCityAbr As Boolean, showLiveTime As Boolean)
+                       showTeamCityAbr As Boolean, showLiveTime As Boolean, showStanding As Boolean)
 
             InitializeComponent()
             _broadcasters = New Dictionary(Of String, String)() From {
@@ -223,6 +233,7 @@ Namespace Controls
             _showSeriesRecord = showSeriesRecord
             _showTeamCityAbr = showTeamCityAbr
             _showLiveTime = showLiveTime
+            _showStanding = showStanding
             _game = game
 
             SetThemeAndSvgOnControl()
@@ -286,7 +297,7 @@ Namespace Controls
                 End If
             End If
 
-            UpdateGame(_showScores, _showLiveScores, _showSeriesRecord, _showTeamCityAbr, _showLiveTime)
+            UpdateGame(_showScores, _showLiveScores, _showSeriesRecord, _showTeamCityAbr, _showLiveTime, _showStanding)
         End Sub
 
         Private Sub SetWholeGamePanel()
@@ -378,7 +389,7 @@ Namespace Controls
         End Sub
 
         Private Function WatchArgs() As GameWatchArguments
-            Return ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, NHLGamesMetro.watchArgs)
+            Return ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, NHLGamesMetro.WatchArgs)
         End Function
 
         Private Sub WatchStream(streamType As StreamerTypeEnum)

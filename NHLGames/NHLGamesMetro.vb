@@ -6,6 +6,7 @@ Imports System.Threading
 Imports MetroFramework.Controls
 Imports NHLGames.Controls
 Imports NHLGames.My.Resources
+Imports NHLGames.NHLStats
 Imports NHLGames.Objects
 Imports NHLGames.Objects.Modules
 Imports NHLGames.Utilities
@@ -77,7 +78,7 @@ Public Class NHLGamesMetro
         SuspendLayout()
 
         Common.GetLanguage()
-        tabMenu.SelectedIndex = 0
+        tabMenu.SelectedIndex = MainTabsEnum.Matchs
         FlpCalendar = flpCalendarPanel
         InitializeForm.SetSettings()
 
@@ -94,6 +95,9 @@ Public Class NHLGamesMetro
 
         tmr.Enabled = True
         InvokeElement.LoadGames()
+
+        InvokeElement.LoadTeamsName()
+        InvokeElement.LoadStandings()
     End Sub
 
     Public Sub ClearGamePanel()
@@ -205,6 +209,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -324,6 +329,22 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
+                            GamesDict(game.GameId))
+        Next
+    End Sub
+
+    Private Sub tgShowStanding_CheckedChanged(sender As Object, e As EventArgs) Handles tgShowStanding.CheckedChanged
+        ApplicationSettings.SetValue(SettingsEnum.ShowStanding, tgShowStanding.Checked)
+        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowStanding.Text),
+                                    If(tgShowStanding.Checked, English.msgOn, English.msgOff))
+        For Each game As GameControl In flpGames.Controls
+            game.UpdateGame(tgShowFinalScores.Checked,
+                            tgShowLiveScores.Checked,
+                            tgShowSeriesRecord.Checked,
+                            tgShowTeamCityAbr.Checked,
+                            tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -377,6 +398,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -506,6 +528,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -620,6 +643,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -735,6 +759,7 @@ Public Class NHLGamesMetro
                             tgShowSeriesRecord.Checked,
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
+                            tgShowStanding.Checked,
                             GamesDict(game.GameId))
         Next
     End Sub
@@ -773,4 +798,10 @@ Public Class NHLGamesMetro
         ApplicationSettings.SetValue(SettingsEnum.ProxyPort, value)
         _writeToConsoleSettingsChanged(lblProxyPort.Text, value.ToString())
     End Sub
+
+    Private Sub cbSeasons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSeasons.SelectedIndexChanged
+        Dim season As Season = cbSeasons.Items(cbSeasons.SelectedIndex)
+        StandingsHelper.GenerateStandings(tbStanding, season)
+    End Sub
+
 End Class

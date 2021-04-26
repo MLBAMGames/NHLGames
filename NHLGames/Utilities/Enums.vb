@@ -1,4 +1,18 @@
-﻿Namespace Utilities
+﻿ Namespace Utilities
+    Public Enum MainTabsEnum
+        Matchs = 0
+        Standings = 1
+        Settings = 2
+        Console = 3
+    End Enum
+
+     Public Enum StandingTypeEnum
+         League = 0
+         Conference = 1
+         Division = 2
+         WildCard = 3
+     End Enum
+
     Public Enum GameStateEnum
 #Disable Warning InconsistentNaming
         Undefined = 0
@@ -77,9 +91,11 @@
         ShowTodayLiveGamesFirst
         LastWindowSize
         ShowLiveTime
+        ShowStanding
         DarkMode
         ProxyPort
         LastBuildVersionSkipped
+        TeamNameAbbreviation
     End Enum
 
     Public Enum OutputTypeEnum

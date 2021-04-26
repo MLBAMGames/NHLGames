@@ -769,4 +769,104 @@
     <value>Augmenter cette valeur peut corriger les médias qui continue après une pause commerciale.</value>
     <comment>Settings Tab</comment>
   </data>
+  <data name="lblMediaControlDelay" xml:space="preserve">
+    <value>Délai des contrôles de médias</value>
+    <comment>Settings Tab</comment>
+  </data>
+  <data name="tipMediaControlDelay" xml:space="preserve">
+    <value>Augmenter cette valeur peut corriger les médias qui continue après une pause commerciale.</value>
+    <comment>Settings Tab</comment>
+  </data>
+  <data name="tabStandings" xml:space="preserve">
+    <value>Classements</value>
+    <comment>Main</comment>
+  </data>
+  <data name="lblSeason" xml:space="preserve">
+    <value>Saison</value>
+    <comment>Standings Tab</comment>
+  </data>
+  <data name="grLblAWAY" xml:space="preserve">
+    <value>ÉTR</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblDIFF" xml:space="preserve">
+    <value>DIFF</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGA" xml:space="preserve">
+    <value>BC</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGF" xml:space="preserve">
+    <value>BP</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGP" xml:space="preserve">
+    <value>MJ</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblHOME" xml:space="preserve">
+    <value>DOM</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblL" xml:space="preserve">
+    <value>D</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblL10" xml:space="preserve">
+    <value>10D</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblOT" xml:space="preserve">
+    <value>DP</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblPerc" xml:space="preserve">
+    <value>%PTS</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblPTS" xml:space="preserve">
+    <value>PTS</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblROW" xml:space="preserve">
+    <value>VRP</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblRW" xml:space="preserve">
+    <value>VR</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblShootOut" xml:space="preserve">
+    <value>TB</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblSTRK" xml:space="preserve">
+    <value>SÉQ</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblW" xml:space="preserve">
+    <value>V</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="lblShowStanding" xml:space="preserve">
+    <value>Rang de classement</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="tabConferenceStandings" xml:space="preserve">
+    <value>Association</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabDivisionStandings" xml:space="preserve">
+    <value>Section</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabLeagueStandings" xml:space="preserve">
+    <value>Ligue</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabWildCardStandings" xml:space="preserve">
+    <value>Quatrième Ad</value>
+    <comment>Standing Tab</comment>
+  </data>
 </root>

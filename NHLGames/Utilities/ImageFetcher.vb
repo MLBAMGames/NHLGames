@@ -34,10 +34,11 @@ Namespace Utilities
 
             For Each f In files
                 Using s As Stream = myAssembly.GetManifestResourceStream($"NHLGames.{f.ToLower()}.svg")
-                    If s Is Nothing Then Return
-                    s.Position = 0
-                    Dim x = (SvgDocument.Open(Of SvgDocument)(s)).Draw()
-                    x.Save($"c:/output/{f}.png")
+                    If s IsNot Nothing Then
+                        s.Position = 0
+                        Dim x = (SvgDocument.Open(Of SvgDocument)(s)).Draw()
+                        x.Save($"c:/output/{f}.png")
+                    End If
                 End Using
             Next
         End Sub
