@@ -2583,8 +2583,4 @@ Partial Class NHLGamesMetro
     Friend WithEvents lblSeason As MetroLabel
     Friend WithEvents tlpStandings As TableLayoutPanel
     Friend WithEvents tabStandings As MetroTabPage
-    Friend WithEvents txtMediaControlDelay As MetroTextBox
-    Friend WithEvents lblMediaControlDelayMs As MetroLabel
-    Friend WithEvents lblMediaControlDelay As MetroLabel
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
 End Class
