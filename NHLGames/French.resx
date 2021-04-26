@@ -761,4 +761,12 @@
     <value>Résumé</value>
     <comment>Game panel</comment>
   </data>
+  <data name="lblMediaControlDelay" xml:space="preserve">
+    <value>Délai des contrôles de médias</value>
+    <comment>Settings Tab</comment>
+  </data>
+  <data name="tipMediaControlDelay" xml:space="preserve">
+    <value>Augmenter cette valeur peut corriger les médias qui continue après une pause commerciale.</value>
+    <comment>Settings Tab</comment>
+  </data>
 </root>

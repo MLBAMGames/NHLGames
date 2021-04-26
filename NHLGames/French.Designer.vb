@@ -22,7 +22,7 @@ Namespace My.Resources
     '''<summary>
     '''  A strongly-typed resource class, for looking up localized strings, etc.
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0"),  _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
     Friend Class French
@@ -655,6 +655,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property lblLiveRewindDetails() As String
             Get
                 Return ResourceManager.GetString("lblLiveRewindDetails", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Délai des contrôles de médias.
+        '''</summary>
+        Friend Shared ReadOnly Property lblMediaControlDelay() As String
+            Get
+                Return ResourceManager.GetString("lblMediaControlDelay", resourceCulture)
             End Get
         End Property
         
@@ -1357,6 +1366,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tipLiveStatusRewind() As String
             Get
                 Return ResourceManager.GetString("tipLiveStatusRewind", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Augmenter cette valeur peut corriger les médias qui continue après une pause commerciale..
+        '''</summary>
+        Friend Shared ReadOnly Property tipMediaControlDelay() As String
+            Get
+                Return ResourceManager.GetString("tipMediaControlDelay", resourceCulture)
             End Get
         End Property
         

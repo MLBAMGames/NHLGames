@@ -31,6 +31,7 @@ Namespace Objects.Modules
         Public Property ForceToOpen As Boolean
         Public Property PlayNextSong As Boolean
         Public Property AnyMediaPlayer As Boolean
+        Public Property MediaControlDelay As Integer
 
         Public ReadOnly Property Title As AdModulesEnum = AdModulesEnum.Spotify Implements IAdModule.Title
 
@@ -54,14 +55,14 @@ Namespace Objects.Modules
             Return File.Exists(_spotifyPath)
         End Function
 
-        Private Function IsSpotifyPlaying As Boolean
+        Private Function IsSpotifyPlaying() As Boolean
             Dim spotifyAudioSession = GetAudioSession(_spotifyId)
             Return GetCurrentVolume(spotifyAudioSession) > 0.0
         End Function
 
         Private Sub NextSong()
             If AnyMediaPlayer Then
-                Thread.Sleep(100)
+                Thread.Sleep(MediaControlDelay)
                 NativeMethods.PressKey(KeyVkNextSong)
             Else
                 SendActionKey(KeyNextSong)
@@ -72,7 +73,7 @@ Namespace Objects.Modules
             Dim curr? = NativeMethods.GetForegroundWindowFromHandle()
             Dim spotifyHandle? = Process.GetProcessById(_spotifyId).MainWindowHandle
             NativeMethods.SetForegroundWindowFromHandle(spotifyHandle)
-            Thread.Sleep(100)
+            Thread.Sleep(MediaControlDelay)
             SendKeys.SendWait(KeyTab) 'to unfocus any current field on spotify
             SendKeys.SendWait(Key)
             NativeMethods.SetBackgroundWindowFromHandle(spotifyHandle)
@@ -81,7 +82,7 @@ Namespace Objects.Modules
 
         Private Sub Play()
             If AnyMediaPlayer Then
-                Thread.Sleep(100)
+                Thread.Sleep(MediaControlDelay)
                 NativeMethods.PressKey(KeyVkPlayPause)
             Else
                 If IsSpotifyPlaying() Then Return
@@ -91,7 +92,7 @@ Namespace Objects.Modules
 
         Private Sub Pause()
             If AnyMediaPlayer Then
-                Thread.Sleep(100)
+                Thread.Sleep(MediaControlDelay)
                 NativeMethods.PressKey(KeyVkPlayPause)
             Else
                 If Not IsSpotifyPlaying() Then Return
