@@ -77,6 +77,9 @@ Partial Class NHLGamesMetro
         Me.flpSpotifyDescSettings = New System.Windows.Forms.FlowLayoutPanel()
         Me.tgSpotify = New MetroFramework.Controls.MetroToggle()
         Me.lblSpotifyDesc = New MetroFramework.Controls.MetroLabel()
+        Me.lblMediaControlDelay = New MetroFramework.Controls.MetroLabel()
+        Me.txtMediaControlDelay = New MetroFramework.Controls.MetroTextBox()
+        Me.lblMediaControlDelayMs = New MetroFramework.Controls.MetroLabel()
         Me.cbStreamQuality = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.lblStreamerArgs = New MetroFramework.Controls.MetroLabel()
         Me.lblPlayerArgs = New MetroFramework.Controls.MetroLabel()
@@ -188,6 +191,7 @@ Partial Class NHLGamesMetro
         Me.bw = New System.ComponentModel.BackgroundWorker()
         Me.btnHelp = New MetroFramework.Controls.MetroLink()
         Me.pnlLogo = New System.Windows.Forms.Panel()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.tabMenu.SuspendLayout()
         Me.tabGames.SuspendLayout()
         Me.pnlGameBar.SuspendLayout()
@@ -220,6 +224,7 @@ Partial Class NHLGamesMetro
         Me.pnlBottom.SuspendLayout()
         Me.tlpStatus.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtConsole
@@ -984,6 +989,63 @@ Partial Class NHLGamesMetro
         Me.lblSpotifyDesc.TabIndex = 75
         Me.lblSpotifyDesc.Text = "SPOTIFY_DESC"
         Me.lblSpotifyDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblMediaControlDelay
+        '
+        Me.lblMediaControlDelay.AutoSize = True
+        Me.lblMediaControlDelay.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lblMediaControlDelay.FontSize = MetroFramework.MetroLabelSize.Small
+        Me.lblMediaControlDelay.FontWeight = MetroFramework.MetroLabelWeight.Regular
+        Me.lblMediaControlDelay.Location = New System.Drawing.Point(3, 3)
+        Me.lblMediaControlDelay.Margin = New System.Windows.Forms.Padding(3)
+        Me.lblMediaControlDelay.Name = "lblMediaControlDelay"
+        Me.lblMediaControlDelay.Size = New System.Drawing.Size(141, 23)
+        Me.lblMediaControlDelay.TabIndex = 530
+        Me.lblMediaControlDelay.Text = "MEDIA_CONTROL_DELAY"
+        Me.lblMediaControlDelay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtMediaControlDelay
+        '
+        '
+        '
+        '
+        Me.txtMediaControlDelay.CustomButton.Image = Nothing
+        Me.txtMediaControlDelay.CustomButton.Location = New System.Drawing.Point(22, 1)
+        Me.txtMediaControlDelay.CustomButton.Name = ""
+        Me.txtMediaControlDelay.CustomButton.Size = New System.Drawing.Size(21, 21)
+        Me.txtMediaControlDelay.CustomButton.Style = MetroFramework.MetroColorStyle.Blue
+        Me.txtMediaControlDelay.CustomButton.TabIndex = 1
+        Me.txtMediaControlDelay.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light
+        Me.txtMediaControlDelay.CustomButton.UseSelectable = True
+        Me.txtMediaControlDelay.CustomButton.Visible = False
+        Me.txtMediaControlDelay.Lines = New String(-1) {}
+        Me.txtMediaControlDelay.Location = New System.Drawing.Point(150, 3)
+        Me.txtMediaControlDelay.MaxLength = 5
+        Me.txtMediaControlDelay.Name = "txtMediaControlDelay"
+        Me.txtMediaControlDelay.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtMediaControlDelay.ScrollBars = System.Windows.Forms.ScrollBars.None
+        Me.txtMediaControlDelay.SelectedText = ""
+        Me.txtMediaControlDelay.SelectionLength = 0
+        Me.txtMediaControlDelay.SelectionStart = 0
+        Me.txtMediaControlDelay.ShortcutsEnabled = True
+        Me.txtMediaControlDelay.Size = New System.Drawing.Size(44, 23)
+        Me.txtMediaControlDelay.TabIndex = 528
+        Me.txtMediaControlDelay.UseSelectable = True
+        Me.txtMediaControlDelay.WaterMarkColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.txtMediaControlDelay.WaterMarkFont = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel)
+        '
+        'lblMediaControlDelayMs
+        '
+        Me.lblMediaControlDelayMs.AutoSize = True
+        Me.lblMediaControlDelayMs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lblMediaControlDelayMs.FontSize = MetroFramework.MetroLabelSize.Small
+        Me.lblMediaControlDelayMs.Location = New System.Drawing.Point(200, 3)
+        Me.lblMediaControlDelayMs.Margin = New System.Windows.Forms.Padding(3)
+        Me.lblMediaControlDelayMs.Name = "lblMediaControlDelayMs"
+        Me.lblMediaControlDelayMs.Size = New System.Drawing.Size(22, 23)
+        Me.lblMediaControlDelayMs.TabIndex = 529
+        Me.lblMediaControlDelayMs.Text = "ms"
+        Me.lblMediaControlDelayMs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'cbStreamQuality
         '
@@ -2322,6 +2384,19 @@ Partial Class NHLGamesMetro
         Me.pnlLogo.Size = New System.Drawing.Size(170, 58)
         Me.pnlLogo.TabIndex = 10000
         '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.AutoSize = True
+        Me.FlowLayoutPanel1.Controls.Add(Me.lblMediaControlDelay)
+        Me.FlowLayoutPanel1.Controls.Add(Me.txtMediaControlDelay)
+        Me.FlowLayoutPanel1.Controls.Add(Me.lblMediaControlDelayMs)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(419, 0)
+        Me.FlowLayoutPanel1.Margin = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(225, 29)
+        Me.FlowLayoutPanel1.TabIndex = 531
+        '
         'NHLGamesMetro
         '
         Me.AccessibleDescription = "Watch NHL games for free in HD"
@@ -2508,4 +2583,8 @@ Partial Class NHLGamesMetro
     Friend WithEvents lblSeason As MetroLabel
     Friend WithEvents tlpStandings As TableLayoutPanel
     Friend WithEvents tabStandings As MetroTabPage
+    Friend WithEvents txtMediaControlDelay As MetroTextBox
+    Friend WithEvents lblMediaControlDelayMs As MetroLabel
+    Friend WithEvents lblMediaControlDelay As MetroLabel
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
 End Class

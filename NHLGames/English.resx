@@ -985,6 +985,14 @@
     <value>Raising this value may fix music still playing after a commercial break.</value>
     <comment>Settings Tab</comment>
   </data>
+  <data name="lblMediaControlDelay" xml:space="preserve">
+    <value>Media control delay</value>
+    <comment>Settings Tab</comment>
+  </data>
+  <data name="tipMediaControlDelay" xml:space="preserve">
+    <value>Raising this value may fix music still playing after a commercial break.</value>
+    <comment>Settings Tab</comment>
+  </data>
   <data name="tabStandings" xml:space="preserve">
     <value>Standings</value>
     <comment>Main</comment>
