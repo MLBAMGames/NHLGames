@@ -59,9 +59,9 @@ Namespace NHLStats
         Class Badge
             Inherits Label
 
-            Private BackColor As Color = Color.FromArgb(0, 174, 219)
-            Private ForeColor As Color = Color.White
-            Private font As Font = New Font("Sans Serif", 8.0F)
+            Private ellipseBackColor As Color = Color.FromArgb(0, 174, 219)
+            Private ellipseForeColor As Color = Color.White
+            Private ellipseFont As Font = New Font("Sans Serif", 8.0F)
 
             Public Sub New()
                 Me.AutoSize = True
@@ -69,8 +69,8 @@ Namespace NHLStats
             End Sub
 
             Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
-                e.Graphics.FillEllipse(New SolidBrush(BackColor), Me.ClientRectangle)
-                e.Graphics.DrawString(Text, font, New SolidBrush(ForeColor), 1, 4)
+                e.Graphics.FillEllipse(New SolidBrush(ellipseBackColor), Me.ClientRectangle)
+                e.Graphics.DrawString(Text, ellipseFont, New SolidBrush(ellipseForeColor), 1, 4)
             End Sub
 
         End Class

@@ -803,6 +803,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Délai des contrôles de médias.
+        '''</summary>
+        Friend Shared ReadOnly Property lblMediaControlDelay() As String
+            Get
+                Return ResourceManager.GetString("lblMediaControlDelay", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Détection de publicité.
         '''</summary>
         Friend Shared ReadOnly Property lblModules() As String
@@ -1564,6 +1573,15 @@ Namespace My.Resources
         Friend Shared ReadOnly Property tipLiveStatusRewind() As String
             Get
                 Return ResourceManager.GetString("tipLiveStatusRewind", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Augmenter cette valeur peut corriger les médias qui continue après une pause commerciale..
+        '''</summary>
+        Friend Shared ReadOnly Property tipMediaControlDelay() As String
+            Get
+                Return ResourceManager.GetString("tipMediaControlDelay", resourceCulture)
             End Get
         End Property
         

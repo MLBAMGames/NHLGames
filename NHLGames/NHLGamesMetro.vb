@@ -592,6 +592,7 @@ Public Class NHLGamesMetro
             spotify.ForceToOpen = chkSpotifyForceToStart.Checked
             spotify.PlayNextSong = chkSpotifyPlayNextSong.Checked
             spotify.AnyMediaPlayer = chkSpotifyAnyMediaPlayer.Checked
+            spotify.MediaControlDelay = txtMediaControlDelay.Text
             _adDetectionEngine.AddModule(spotify)
         ElseIf _adDetectionEngine.IsInAdModulesList(spotify.Title) Then
             _adDetectionEngine.RemoveModule(spotify.Title)
@@ -600,6 +601,16 @@ Public Class NHLGamesMetro
         AdDetection.Renew()
         _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblSpotify.Text),
                                        If(tgSpotify.Checked, English.msgOn, English.msgOff))
+    End Sub
+
+    Private Sub txtMediaControlDelay_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMediaControlDelay.KeyPress
+        e.Handled = Not Char.IsDigit(e.KeyChar) And Not Char.IsControl(e.KeyChar)
+    End Sub
+
+    Private Sub txtMediaControlDelay_TextChanged(sender As Object, e As EventArgs) Handles txtMediaControlDelay.TextChanged
+        If Not String.IsNullOrEmpty(txtMediaControlDelay.Text) Then
+            AdDetection.Renew()
+        End If
     End Sub
 
     Private Sub cbStreamQuality_SelectedIndexChanged(sender As Object, e As EventArgs) _
