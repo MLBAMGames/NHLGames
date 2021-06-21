@@ -104,7 +104,7 @@ Namespace Utilities
                     teamColumn.MinimumWidth = 200
 
                     metroGrid.Columns.Add(teamColumn)
-                    Dim height = dataSource.Count * (metroGrid.RowTemplate.Height + 5)
+                    Dim height = (dataSource.Count * metroGrid.RowTemplate.Height) + 30
                     metroGrid.MinimumSize = New Size(100, height)
 
                     AddHandler metroGrid.ColumnAdded, AddressOf ColumnAddedEventHandler
