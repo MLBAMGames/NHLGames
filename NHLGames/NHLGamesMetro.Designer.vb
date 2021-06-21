@@ -244,8 +244,8 @@ Partial Class NHLGamesMetro
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tabMenu.CausesValidation = False
-        Me.tabMenu.Controls.Add(Me.tabGames)
         Me.tabMenu.Controls.Add(Me.tabStandings)
+        Me.tabMenu.Controls.Add(Me.tabGames)
         Me.tabMenu.Controls.Add(Me.tabSettings)
         Me.tabMenu.Controls.Add(Me.tabConsole)
         Me.tabMenu.Cursor = System.Windows.Forms.Cursors.Default
@@ -255,7 +255,7 @@ Partial Class NHLGamesMetro
         Me.tabMenu.Location = New System.Drawing.Point(-1, 60)
         Me.tabMenu.Margin = New System.Windows.Forms.Padding(0)
         Me.tabMenu.Name = "tabMenu"
-        Me.tabMenu.SelectedIndex = 3
+        Me.tabMenu.SelectedIndex = 2
         Me.tabMenu.Size = New System.Drawing.Size(992, 560)
         Me.tabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabMenu.Style = MetroFramework.MetroColorStyle.Blue
@@ -646,7 +646,7 @@ Partial Class NHLGamesMetro
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
-        Me.tlpSettings.Size = New System.Drawing.Size(982, 514)
+        Me.tlpSettings.Size = New System.Drawing.Size(982, 516)
         Me.tlpSettings.TabIndex = 2
         '
         'tlpOBSSettings

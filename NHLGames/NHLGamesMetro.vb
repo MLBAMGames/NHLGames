@@ -242,15 +242,7 @@ Public Class NHLGamesMetro
         Dim rb As RadioButton = sender
         If rb.Checked Then
             Player.RenewArgs()
-            Dim gameArgs = ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, New GameWatchArguments)
-            Dim defaultPlayerArgs = New Dictionary(Of String, String)()
-            Select Case gameArgs.PlayerType
-                Case PlayerTypeEnum.Vlc
-                    defaultPlayerArgs = GameWatchArguments.VlcDefaultArgs
-                Case PlayerTypeEnum.Mpv
-                    defaultPlayerArgs = GameWatchArguments.MpvDefaultArgs
-            End Select
-            SetDefaultArgs(defaultPlayerArgs, txtPlayerArgs, True)
+            SetPlayerDefaultArgs(FormInstance, True)
             _writeToConsoleSettingsChanged(lblPlayer.Text, rb.Text)
         End If
     End Sub
@@ -268,6 +260,13 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub txtPlayerArgs_TextChanged(sender As Object, e As EventArgs) Handles txtPlayerArgs.TextChanged
+        Dim playerType = Player.GetPlayerType(FormInstance)
+        Dim args = txtPlayerArgs.Text.Split(New String() {" "}, StringSplitOptions.RemoveEmptyEntries)
+        GameWatchArguments.SavedPlayerArgs(playerType) = New Dictionary(Of String, String)()
+        For Each arg As String In args
+            Dim parts = arg.Split("=")
+            GameWatchArguments.SavedPlayerArgs(playerType).Add(parts(0), parts(1))
+        Next
         Player.RenewArgs()
         _writeToConsoleSettingsChanged(lblPlayerArgs.Text, txtPlayerArgs.Text)
     End Sub
@@ -367,14 +366,6 @@ Public Class NHLGamesMetro
                                        If(tgStreamer.Checked, English.msgOn, English.msgOff))
     End Sub
 
-    Private Sub tgPlayer_CheckedChanged(sender As Object, e As EventArgs) Handles tgPlayer.CheckedChanged
-        SetPlayerDefaultArgs(FormInstance)
-        txtPlayerArgs.Enabled = tgPlayer.Checked
-        Player.RenewArgs()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblPlayerArgs.Text),
-                                       If(tgPlayer.Checked, English.msgOn, English.msgOff))
-    End Sub
-
     Private Sub tgOutput_CheckedChanged(sender As Object, e As EventArgs) Handles tgOutput.CheckedChanged
         txtOutputArgs.Enabled = tgOutput.Checked
         If txtOutputArgs.Text = String.Empty Then
@@ -438,16 +429,18 @@ Public Class NHLGamesMetro
 
     Public Sub SetPlayerDefaultArgs(form As NHLGamesMetro, Optional overwrite As Boolean = False)
         If form Is Nothing Then Return
-        If Not form.tgPlayer.Checked Then
-            Dim defaultArgs = New Dictionary(Of String, String)()
-            If form.rbMPV.Checked Then
-                defaultArgs = GameWatchArguments.MpvDefaultArgs
-            ElseIf form.rbVLC.Checked Then
-                defaultArgs = GameWatchArguments.VlcDefaultArgs
-            End If
+        Dim gameArgs = ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, New GameWatchArguments)
+        Dim defaultPlayerArgs = New Dictionary(Of String, String)()
+        Select Case gameArgs.PlayerType
+            Case PlayerTypeEnum.Vlc
+                defaultPlayerArgs = GameWatchArguments.SavedPlayerArgs(PlayerTypeEnum.Vlc)
+            Case PlayerTypeEnum.Mpv
+                defaultPlayerArgs = GameWatchArguments.SavedPlayerArgs(PlayerTypeEnum.Mpv)
+            Case PlayerTypeEnum.Mpc
+                defaultPlayerArgs = GameWatchArguments.SavedPlayerArgs(PlayerTypeEnum.Mpc)
+        End Select
 
-            SetDefaultArgs(defaultArgs, form.txtPlayerArgs, overwrite)
-        End If
+        SetDefaultArgs(defaultPlayerArgs, form.txtPlayerArgs, overwrite)
     End Sub
 
     Private Sub SetDefaultArgs(args As Dictionary(Of String, String), txt As TextBox, Optional overwrite As Boolean = False)
