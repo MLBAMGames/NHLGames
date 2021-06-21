@@ -77,10 +77,10 @@ Namespace Objects
             If String.IsNullOrEmpty(PlayerPath) OrElse PlayerType.Equals(PlayerTypeEnum.None) Then _
                 Console.WriteLine(English.errorPlayerPathEmpty)
 
-            Dim result = String.Empty
+            Dim result As String
 
             If UseOutputArgs Then
-                result = OutputArgs()
+                result = OutputArgs() & ReplayArgs()
             Else
                 result = PlayerArgs() & ReplayArgs()
             End If
