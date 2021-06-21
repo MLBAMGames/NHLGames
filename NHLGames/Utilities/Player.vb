@@ -110,12 +110,12 @@ Namespace Utilities
             NHLGamesMetro.StreamStarted = False
         End Sub
 
-        Private Shared Function GetPlayerType(form As NHLGamesMetro) As PlayerTypeEnum
+        Public Shared Function GetPlayerType(form As NHLGamesMetro) As PlayerTypeEnum
             If form.rbMPV.Checked Then
                 Return PlayerTypeEnum.Mpv
-            Else If form.rbMPC.Checked Then
+            ElseIf form.rbMPC.Checked Then
                 Return PlayerTypeEnum.Mpc
-            Else If form.rbVLC.Checked Then
+            ElseIf form.rbVLC.Checked Then
                 Return PlayerTypeEnum.Vlc
             Else
                 Return PlayerTypeEnum.None
