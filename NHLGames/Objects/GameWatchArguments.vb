@@ -74,7 +74,6 @@ Namespace Objects
         End Function
 
         Private Function OutputArgs(safeOutput As Boolean) As String
-            safeOutput = False
             If String.IsNullOrEmpty(PlayerPath) OrElse PlayerType.Equals(PlayerTypeEnum.None) Then _
                 Console.WriteLine(English.errorPlayerPathEmpty)
 
