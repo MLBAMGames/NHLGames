@@ -51,6 +51,7 @@ Namespace Utilities
 
             For Each processId In MediaPlayerProcesses
                 Dim audioSession = GetAudioSession(processId)
+                If audioSession Is Nothing Then Return False
                 If GetCurrentVolume(audioSession) > 0 Then
                     AddOrUpdateLastSoundOccured(processId)
                 End If
