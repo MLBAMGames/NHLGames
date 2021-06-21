@@ -160,6 +160,13 @@ Namespace Objects
             If gameStream.GameUrl.Equals(String.Empty) Then Return String.Empty
 
             Dim streamUrlReturned = Await Common.SendWebRequestAndGetContentAsync(gameStream.GameUrl)
+
+            'If gameStream.Game.GameDate.ToLocalTime() < DateTime.Now.AddDays(-1) Then
+            '    Dim matches = Regex.Match(streamUrlReturned.Replace("hlslive", "hslvod"), "(.*nhl.com)(.*)(\/[a-z]{2}[0-9]{2}\/nhl\/.*)").Groups
+            '    If matches.Count < 4 Then Return streamUrlReturned
+            '    streamUrlReturned = $"{matches(1)}{matches(3)}"
+            'End If
+
             If streamUrlReturned.Equals(String.Empty) Then Return String.Empty
 
             Return If(Await Common.SendWebRequestAsync(streamUrlReturned), streamUrlReturned, String.Empty)
