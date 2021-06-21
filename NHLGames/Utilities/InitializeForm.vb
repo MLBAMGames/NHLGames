@@ -160,7 +160,7 @@ Namespace Utilities
             Form.txtMPCPath.Text = GetApplication(SettingsEnum.MpcPath, PathFinder.GetPathOfMpc())
             Form.txtVLCPath.Text = GetApplication(SettingsEnum.VlcPath, PathFinder.GetPathOfVlc())
             Form.txtMpvPath.Text = GetApplication(SettingsEnum.MpvPath,
-                                                  Path.Combine(Application.StartupPath, "mpv\mpv.exe"))
+                                                  Path.Combine(Application.StartupPath, $"mpv\{If(Environment.Is64BitOperatingSystem, "64bit", "32bit")}\mpv.exe"))
 
             Form.txtStreamerPath.Text = If(livestreamerPath.Equals(String.Empty), streamlinkPath, livestreamerPath)
 

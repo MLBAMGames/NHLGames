@@ -30,7 +30,7 @@ Namespace Objects
             {"--hls-segment-threads", "2"}, {"--hls-segment-attempts", "9"}, {"--hls-segment-timeout", "10"}, {"--hls-timeout", "180"}}
 
         Public Shared ReadOnly MpvDefaultArgs As Dictionary(Of String, String) = New Dictionary(Of String, String)() From {
-            {"--cache", "50000"}}
+            {"--cache", "yes"}}
 
         Public Shared ReadOnly VlcDefaultArgs As Dictionary(Of String, String) = New Dictionary(Of String, String)() From {
             {"--file-caching", "10000"}, {"--network-caching", "10000"}}
