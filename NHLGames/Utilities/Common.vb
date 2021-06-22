@@ -5,14 +5,11 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports Newtonsoft.Json
 Imports NHLGames.My.Resources
+Imports NHLGames.NHLStats
 Imports NHLGames.Objects.NHL
 
 Namespace Utilities
     Public Class Common
-        Private Const ApiUrl As String = "http://statsapi.web.nhl.com/api/v1/schedule"
-        Private Shared ReadOnly Regex As New Regex("(\d+\.)(\d+\.)?(\d+\.)?(\*|\d+)")
-        Private Const ScheduleApiurl As String = ApiUrl & "?startDate={0}&endDate={1}&expand=schedule.teams,schedule.linescore,schedule.game.seriesSummary,schedule.game.content.media.epg"
-
         Public Const UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"
         Private Const s = "abcdefghijklmnopqrstuvwxyz0123456789"
         Private Shared r As New Random
@@ -30,7 +27,7 @@ Namespace Utilities
 
         Public Shared Async Function GetScheduleAsync(startDate As DateTime) As Task(Of Schedule)
             Dim dateTimeString As String = startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
-            Dim url As String = String.Format(ScheduleApiurl, dateTimeString, dateTimeString)
+            Dim url As String = String.Format(NHLAPIServiceURLs.scheduleGames, dateTimeString, dateTimeString)
 
             Console.WriteLine(English.msgGettingSchedule, English.msgFetching,
                               startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
