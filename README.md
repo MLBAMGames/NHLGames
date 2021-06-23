@@ -7,7 +7,7 @@ Choose a game.
 Choose a stream.    
 Enjoy!
 
-![image](https://user-images.githubusercontent.com/23088305/39225241-269c99bc-4819-11e8-8f76-22e4d1f707ed.png)
+![image](https://user-images.githubusercontent.com/23088305/123110157-d3509580-d409-11eb-9527-5df8bd888807.png)
 
 ## /_Index_
 * [First use](#first-use)
@@ -17,6 +17,7 @@ Enjoy!
    * [Games](#games)
       * [Navigation bar](#navigation-bar)
       * [Game panel](#game-panel)
+   * [Standings](#standings)
    * [Settings](#settings)
      * [Customize game panels](#customize-game-panels)
      * [Stream Quality](#stream-quality)
@@ -80,15 +81,19 @@ Other games (ended or scheduled) are grey:
 Features on the panel: 
 - Watch recap by clicking on the play icon on the top-right corner (when available)
 - Watch a stream by clicking on a network logo or a camera (hover on it to get some more info)
+- Rewind a live stream: see [_Rewind and Replay_](#rewind-and-replay) section.
 
 Game panels can be customized to show or hide information. It can be changed in the settings menu.
 
+
+## //_Standings_
+It will show League, Conference, Division or Wild card standings for any season. You can also display the league standing for all teams in Games tab by turning ON the option **Standing rank** in Settings tab. 
 
 ## //_Settings_
 ### ///_Customize Game panels_
 NHLGames gives you options to change how a game panel will appear.
 
-| Option | Game status | Default value |
+| Option | Required game statuses to work | Default value |
 | :--- |  :----- | :-----: |
 | Order by live games first | Today's games | `ON` |
 | Live remaining time | Live games | `ON` |
@@ -96,6 +101,7 @@ NHLGames gives you options to change how a game panel will appear.
 | Series record | Live and past series games | `ON` |
 | Teams city abbreviation |  Upcoming, live and past games | `OFF` |
 | Final scores |  Past games | `OFF` |
+| Standing rank (League) | All | `OFF`|
 
 ### ///_Stream Quality_
 The selected value will define which video quality will be sent to your media player, from the worst to the best quality. Selecting the highest quality also means larger files to download :
@@ -197,6 +203,7 @@ Ad detection supports these applications:
    - Force to start: It will open Spotify when you start NHLGames
    - Always play next song: It won't pause Spotify when the ad ends, but skip to the next song.
    - (Experimental) Try with the detected media player: If you do not have Spotify running, but another (like Windows Media Player or iTunes), it will play/pause this player instead, by simulating the media hotkey [Play/Pause] on the keyboard
+   - Media control delay: By default 100ms, but can be increased if Spotify does not play or pause at the right time, 1000ms = 1 second btw.
 - OBS Scene Changer : If you want to switch between windows when an ad hits.
    - Ad ending hotkey: Set the same hotkey that the one in OBS to display the window that the game is on.
    - Ad starting hotkey: Set the same hotkey that you use in OBS to display the window when a commercial plays.
