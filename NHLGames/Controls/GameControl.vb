@@ -207,6 +207,7 @@ Namespace Controls
             _broadcasters = New Dictionary(Of String, String)() From {
                 {"ALT", "ALT"},
                 {"ATT", "ATT"},
+                {"BS", "BS"},
                 {"CBC", "CBC"},
                 {"CITY", "CBC"},
                 {"CNBC", "NBC"},
