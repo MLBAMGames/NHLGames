@@ -161,11 +161,16 @@ Namespace Objects
 
             Dim streamUrlReturned = Await Common.SendWebRequestAndGetContentAsync(gameStream.GameUrl)
 
-            'If gameStream.Game.GameDate.ToLocalTime() < DateTime.Now.AddDays(-1) Then
-            '    Dim matches = Regex.Match(streamUrlReturned.Replace("hlslive", "hslvod"), "(.*nhl.com)(.*)(\/[a-z]{2}[0-9]{2}\/nhl\/.*)").Groups
-            '    If matches.Count < 4 Then Return streamUrlReturned
-            '    streamUrlReturned = $"{matches(1)}{matches(3)}"
-            'End If
+            ' Recover old streams
+            If gameStream.Game.GameDate.ToLocalTime() < DateTime.Today.AddDays(-2) And streamUrlReturned.StartsWith("https://hlslive") Then
+                Dim network = gameStream.CdnParameter.ToString().ToLower()
+                Dim newServerUrl = streamUrlReturned _
+                .Replace($"hlslive-{network}.med2.med", $"hlslive-{network}.med") _
+                .Replace($"hlslive-{network}", $"vod-{network}-na1")
+                Dim matches = Regex.Match(newServerUrl, "(.*nhl.com)(.*)(\/[a-z]{2}[0-9]{2}\/)(nhl\/.*)").Groups
+                If matches.Count < 5 Then Return streamUrlReturned
+                streamUrlReturned = $"{matches(1)}/ps01/{matches(4)}"
+            End If
 
             If streamUrlReturned.Equals(String.Empty) Then Return String.Empty
 

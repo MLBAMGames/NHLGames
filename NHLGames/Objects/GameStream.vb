@@ -33,10 +33,7 @@ Namespace Objects
             If type = StreamTypeEnum.Unknown Then
                 Me.StreamTypeSelected = streamTypeSelected
             End If
-            CdnParameter = If(game.IsEnded,
-                              CdnTypeEnum.Akc,
-                              ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs,
-                                                                               New GameWatchArguments).Cdn)
+            CdnParameter = ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, New GameWatchArguments).Cdn
             GameUrl = $"http://{NHLGamesMetro.HostName}/getM3U8.php?league=NHL&id={PlayBackId}&cdn={CdnParameter.ToString().ToLower()}&date={DateHelper.GetPacificTime(game.GameDate).ToString("yyyy-MM-dd")}"
             Title = $"{game.AwayAbbrev} vs {game.HomeAbbrev} on {Network}"
         End Sub
