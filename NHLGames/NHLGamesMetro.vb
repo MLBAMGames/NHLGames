@@ -264,7 +264,8 @@ Public Class NHLGamesMetro
         Dim args = txtPlayerArgs.Text.Split(New String() {" "}, StringSplitOptions.RemoveEmptyEntries)
         GameWatchArguments.SavedPlayerArgs(playerType) = New Dictionary(Of String, String)()
         For Each arg As String In args
-            Dim parts = arg.Split("=")
+            Dim parts = arg.Split(New String() {"="}, StringSplitOptions.RemoveEmptyEntries)
+            If parts.Length <> 2 Then Return
             GameWatchArguments.SavedPlayerArgs(playerType).Add(parts(0), parts(1))
         Next
         Player.RenewArgs()
