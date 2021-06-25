@@ -53,7 +53,7 @@ Namespace Utilities
                     .Arguments = args.ToString(),
                     .UseShellExecute = False,
                     .RedirectStandardOutput = True,
-                    .CreateNoWindow = Not NHLGamesMetro.FormInstance.tgOutput.Checked}
+                    .CreateNoWindow = Not (NHLGamesMetro.FormInstance.tgOutput.Checked And args.Stream.Game IsNot Nothing)}
                     }
             procStreaming.EnableRaisingEvents = True
 

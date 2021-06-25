@@ -82,6 +82,10 @@ Namespace Objects
 
             Dim result As String
 
+            If UseOutputArgs And Stream.Game Is Nothing Then
+                UseOutputArgs = False
+            End If
+
             If UseOutputArgs Then
                 result = OutputArgs() & ReplayArgs()
             Else

@@ -172,6 +172,9 @@ Namespace Objects
                 streamUrlReturned = $"{matches(1)}/ps01/{matches(4)}"
             End If
 
+#If DEBUG Then
+            Console.WriteLine("{0}", streamUrlReturned)
+#End If
             If streamUrlReturned.Equals(String.Empty) Then Return String.Empty
 
             Return If(Await Common.SendWebRequestAsync(streamUrlReturned), streamUrlReturned, String.Empty)
