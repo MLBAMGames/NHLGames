@@ -170,8 +170,9 @@ If you had previously installed VLC or MPC, NHLGames should find it automaticall
 If you don't have one of these players installed, use the links on the right to download it.
 
 ### ///_Streamer_
-A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to speciy another streamer to be able to stream a game. We recommand:      
-- [StreamLink](https://streamlink.github.io/install.html) : a command-line tool that extracts and pipes streams into a media player 
+A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to speciy another streamer to be able to stream a game.     
+- [StreamLink](https://streamlink.github.io/install.html) : recommanded command-line tool that extracts and pipes streams into a media player 
+- [Livestreamer](https://docs.livestreamer.io/install.html) : old and deprecated tiny command-line tool that extracts and pipes streams into a media player. It may takes 60 secs to open a stream.
 
 Follow the link above, download the installer and set the path in NHLGames settings.
 
