@@ -170,15 +170,10 @@ If you had previously installed VLC or MPC, NHLGames should find it automaticall
 If you don't have one of these players installed, use the links on the right to download it.
 
 ### ///_Streamer_
-A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to speciy another streamer to be able to stream a game.       
-- [LiveStreamer](http://docs.livestreamer.io/install.html) : a tiny command-line tool that extracts and pipes streams into a media player    
-- [StreamLink](https://streamlink.github.io/install.html) : a livestream clone but updated and with addons
+A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to speciy another streamer to be able to stream a game. We recommand:      
+- [StreamLink](https://streamlink.github.io/install.html) : a command-line tool that extracts and pipes streams into a media player 
 
-If you can't play any stream, you might need to install one of these streamers (the portable version might not work for everyone). Follow the link above, download the installer and set the path in NHLGames settings.
-
-If your anti-virus or Windows Defender removes the streamer, try to install another version (e.g.: 1.0.7 instead of 1.0.8).
-
-If you find one that works great for you, keep it, you will just have to change the path in settings when a new update of NHLGames will come out.
+Follow the link above, download the installer and set the path in NHLGames settings.
 
 ### ///_Dark Theme_
 Renders NHLGames with dark tones. An application restarts is needed for changes to take effect.
