@@ -1,72 +1,59 @@
 ﻿Imports NHLGames.Updater.Utilities
+Imports NHLGames.Updater.Objects
 Imports Ionic.Zip
 Imports System.IO
 
 Public Class Updater
-    Public Const UPDATE_FILE = "update.zip"
     Public Const NHL_GAMES_APP = "nhlgames.exe"
     Public Shared ProjectDirectory As String = AppDomain.CurrentDomain.BaseDirectory + "..\"
     Public Shared NHLGamesFullPath As String = ProjectDirectory + NHL_GAMES_APP
-    Public Shared UpdateFileFullPath As String = ProjectDirectory + UPDATE_FILE
 
     Public Shared Async Function ProcessUpdateAsync() As Task
         Try
-            Dim succeeded = Await DownloadUpdateAsync()
-
-            If Not succeeded Then
-                LeaveConsole()
-            End If
-
-            ExtractDownloadedAsset()
-            File.Delete(UpdateFileFullPath)
+            Dim releases = Await GitHub.GetReleases()
+            For Each release As Objects.GitHub.Release In releases
+                Dim fileName = Await DownloadUpdateAsync(release)
+                ExtractDownloadedAsset(fileName)
+                File.Delete(fileName)
+            Next
         Catch ex As Exception
+            LeaveConsole()
             Process.Start(New ProcessStartInfo(GitHub.LATEST_RELEASE_LINK))
         End Try
 
+        Console.WriteLine("Successfully updated!")
         Process.Start(New ProcessStartInfo(NHLGamesFullPath))
         Environment.Exit(0)
     End Function
 
-    Shared Async Function DownloadUpdateAsync() As Task(Of Boolean)
+    Shared Async Function DownloadUpdateAsync(release As Objects.GitHub.Release) As Task(Of String)
         Try
-            Dim release = Await GitHub.GetRelease()
-
-            If Not AssemblyInfo.IsNewerVersionThanLatestAsset(release.tag_name) Then
-                Console.WriteLine("You are already using the latest version.")
-                Return False
-            End If
-
             Dim asset = GitHub.GetZipAssetFromRelease(release)
-
-            Await Web.DownloadFileAsync(asset.browser_download_url)
+            Return Await Web.DownloadFileAsync(asset.browser_download_url, release.tag_name)
         Catch ex As UnauthorizedAccessException
-            Console.WriteLine($"Something went wrong during the download. Make sure it was not blocked by your Antivirus Software.{vbCrLf}" + "The error was: " + ex.Message)
-            Return False
+            Console.WriteLine($"Something went wrong during the download. Make sure it was not blocked by your Antivirus Software.{vbCrLf}Error Message: " + ex.Message)
+            Throw ex
         Catch ex As Exception
-            Console.WriteLine($"Something went wrong during the download.{vbCrLf} The error was:" + ex.Message)
-            Return False
+            Console.WriteLine($"Something went wrong during the download.{vbCrLf}Error Message: " + ex.Message)
+            Throw ex
         End Try
-
-        Return True
     End Function
 
-    Public Shared Sub ExtractDownloadedAsset()
+    Public Shared Sub ExtractDownloadedAsset(fileName As String)
         Try
-            Dim zip As ZipFile = ZipFile.Read(UpdateFileFullPath)
+            Dim zip As ZipFile = ZipFile.Read(fileName)
             Console.WriteLine("Extracting...")
             zip.ExtractAll(ProjectDirectory, ExtractExistingFileAction.OverwriteSilently)
             zip.Dispose()
         Catch ex As UnauthorizedAccessException
             Console.WriteLine("An error occurred while extracting. Make sure NHLGames is not running or Antivirus Software is interferring.")
-            Console.WriteLine("You can extract the file manually at: " + UpdateFileFullPath)
+            Console.WriteLine("You can extract the file manually at: " + fileName)
             Console.WriteLine("Error Message: " + ex.Message)
-            LeaveConsole()
+            Throw ex
         Catch ex As Exception
             Console.WriteLine("An error occurred while extracting")
-            LeaveConsole()
+            Throw ex
         End Try
-
-        Console.WriteLine("Successfully updated!")
     End Sub
 
     Public Shared Sub LeaveConsole()

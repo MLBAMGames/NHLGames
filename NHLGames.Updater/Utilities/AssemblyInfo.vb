@@ -1,24 +1,25 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Class AssemblyInfo
-    Public Shared Function IsNewerVersionThanLatestAsset(name As String) As Boolean
-        Dim m As Match = Regex.Match(name, "v(\.)?((?:\d+\.)*\d+?).zip$")
+    Public Shared Function IsNewerVersionThanCurrent(name As String) As Boolean
+        Dim m As Match = Regex.Match(name, "v(\.)?((?:\d+\.)*\d+?)")
 
-        If m.Groups(1).Success Then
-            Dim currentVersion As String
+        If m.Groups(2).Success Then
+            Dim availableVersion As Version = New Version(m.Groups(2).Value)
+            Dim currentVersion As Version
             Try
-                currentVersion = FileVersionInfo.GetVersionInfo(Updater.NHLGamesFullPath).FileVersion
+                currentVersion = New Version(FileVersionInfo.GetVersionInfo(Updater.NHLGamesFullPath).FileVersion)
             Catch ex As Exception
                 Return True
             End Try
 
-            If currentVersion.StartsWith(m.Groups(1).Value) Then
-                Return False
+            If availableVersion > currentVersion Then
+                Return True
             End If
 
-            Return True
+            Return False
         End If
 
-        Return True
+        Return False
     End Function
 End Class

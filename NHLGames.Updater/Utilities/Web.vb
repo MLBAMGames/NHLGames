@@ -10,10 +10,12 @@ Namespace Utilities
 
         Shared WithEvents _wc As WebClient = New WebClient()
 
-        Public Shared Async Function DownloadFileAsync(url As String) As Task
+        Public Shared Async Function DownloadFileAsync(url As String, tag As String) As Task(Of String)
             Dim uri As Uri = New Uri(url)
-            Console.WriteLine("Downloading update...")
-            Await _wc.DownloadFileTaskAsync(uri, Updater.UpdateFileFullPath)
+            Console.WriteLine("Downloading update {0}...", tag)
+            Dim fileName = Updater.ProjectDirectory + "update-" + tag + ".zip"
+            Await _wc.DownloadFileTaskAsync(uri, fileName)
+            Return fileName
         End Function
 
         Private Shared Sub WebClient_DownloadProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs) Handles _wc.DownloadProgressChanged

@@ -9,25 +9,31 @@ Namespace Utilities
 
     Public Class GitHub
 
-        Public Const API_LATEST_RELEASE_LINK As String = "https://api.github.com/repos/NHLGames/NHLGames/releases/latest"
+        Public Const API_LATEST_RELEASES_LINK As String = "https://api.github.com/repos/NHLGames/NHLGames/releases"
         Public Const LATEST_RELEASE_LINK As String = "https://github.com/NHLGames/NHLGames/releases/latest"
 
-        Public Shared Async Function GetRelease() As Task(Of Release)
-            Dim request = Web.SetHttpWebRequest(API_LATEST_RELEASE_LINK)
+        Public Shared Async Function GetReleases() As Task(Of Release())
+            Dim request = Web.SetHttpWebRequest(API_LATEST_RELEASES_LINK)
 
-            Console.WriteLine("Getting latest release...")
+            Console.WriteLine("Getting releases...")
 
             Dim content = Await Web.SendWebRequestAndGetContentAsync(Nothing, request)
-            Dim release = JsonConvert.DeserializeObject(Of Release)(content)
+            Dim releases = JsonConvert.DeserializeObject(Of Release())(content)
 
-            If release Is Nothing Then
-                Console.WriteLine("Latest release not found.")
+            If releases Is Nothing Then
+                Console.WriteLine("Releases were not found.")
                 Return Nothing
             End If
 
-            Console.WriteLine("Latest release: {0}", release.tag_name)
+            Dim swapReleases = releases.Reverse()
+            Dim relatedReleases = swapReleases.Where(Function(r) AssemblyInfo.IsNewerVersionThanCurrent(r.tag_name)).ToArray()
 
-            Return release
+            If relatedReleases.Count() = 0 Then
+                Console.WriteLine("You are already using the latest version.")
+                Throw New Exception()
+            End If
+
+            Return relatedReleases
         End Function
 
         Public Shared Function GetZipAssetFromRelease(release As Release) As Asset
