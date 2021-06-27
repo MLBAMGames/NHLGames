@@ -15,7 +15,7 @@ Namespace Utilities
         Public Shared Async Function GetReleases() As Task(Of Release())
             Dim request = Web.SetHttpWebRequest(API_LATEST_RELEASES_LINK)
 
-            Console.WriteLine("Getting releases...")
+            Console.WriteLine("Getting missing releases...")
 
             Dim content = Await Web.SendWebRequestAndGetContentAsync(Nothing, request)
             Dim releases = JsonConvert.DeserializeObject(Of Release())(content)

@@ -53,13 +53,27 @@ Public Class Updater
         Catch ex As Exception
             Console.WriteLine("An error occurred while extracting")
             Throw ex
+        Finally
+            DeleteTempFiles()
         End Try
     End Sub
 
-    Public Shared Sub LeaveConsole()
+    Private Shared Sub LeaveConsole()
         Console.WriteLine("Press any key to exit")
         Console.ReadKey()
         Environment.Exit(1)
+    End Sub
+
+    Private Shared Sub DeleteTempFiles()
+        Dim extensions() As String = {".tmp"}
+        For Each filename As String In Directory.GetFiles(ProjectDirectory)
+            If extensions.Contains(Path.GetExtension(filename).ToLower) Then
+                Try
+                    File.Delete(filename)
+                Catch ex As Exception
+                End Try
+            End If
+        Next
     End Sub
 
 End Class
