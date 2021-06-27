@@ -1190,7 +1190,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Voulez-vous obtenir la nouvelle version sur GitHub.com? Voici les derniers changements:{0}{1}.
+        '''  Looks up a localized string similar to Voulez-vous mettre à jour à la dernière version? Voici les derniers changements:{0}{1}.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLog() As String
             Get

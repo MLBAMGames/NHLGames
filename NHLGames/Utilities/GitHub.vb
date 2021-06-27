@@ -50,7 +50,7 @@ Namespace Utilities
                 MessageBoxButtons.OKCancel)
 
             If dialogResult = dialogResult.OK Then
-                Process.Start(New ProcessStartInfo(release.html_url))
+                Update()
             End If
 
             ApplicationSettings.SetValue(SettingsEnum.LastBuildVersionSkipped, gitHubTagVersion.ToString())
@@ -101,6 +101,11 @@ Namespace Utilities
         Private Shared Function ParseTagToVersionString(tag As String) As String
             Return If(String.IsNullOrEmpty(tag), String.Empty, _regexTag.Replace(tag, String.Empty))
         End Function
+
+        Public Shared Sub Update()
+            Process.Start(New ProcessStartInfo(Application.StartupPath + "/Updater/Updater.exe"))
+            Application.Exit()
+        End Sub
 
         Private Shared Function BuildChangeLog(body As String) As String
             If String.IsNullOrWhiteSpace(body) Then Return String.Empty
