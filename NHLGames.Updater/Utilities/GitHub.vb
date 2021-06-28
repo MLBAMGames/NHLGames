@@ -37,7 +37,7 @@ Namespace Utilities
         End Function
 
         Public Shared Function GetZipAssetFromRelease(release As Release) As Asset
-            Dim asset = release.assets.Where(Function(a) Regex.IsMatch(a.name, "^NHLGames(-|\.)(v?)(\.)?\d+(\.\d+)?(\.\d+)?(-simplified)?.zip$")).FirstOrDefault()
+            Dim asset = release.assets.Where(Function(a) Regex.IsMatch(a.name, "TEST\.ZIP")).FirstOrDefault() ' "^NHLGames(-|\.)(v?)(\.)?\d+(\.\d+)?(\.\d+)?(-simplified)?.zip$")).FirstOrDefault()
             If asset Is Nothing Then
                 Console.WriteLine("This Release did not have any suitable asset to download. Try again later.")
             Else
