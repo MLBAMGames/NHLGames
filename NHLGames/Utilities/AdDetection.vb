@@ -210,8 +210,8 @@ Namespace Utilities
                 _settings.EnabledObsAdSceneHotKey.Alt = form.chkAdAlt.Checked
                 _settings.EnabledObsAdSceneHotKey.Shift = form.chkAdShift.Checked
 
-                ApplicationSettings.SetValue(SettingsEnum.AdDetection,
-                                             Serialization.SerializeObject(Of AdDetectionConfigs)(_settings))
+                My.Settings.AdDetection = Serialization.SerializeObject(Of AdDetectionConfigs)(_settings)
+                My.Settings.Save()
 
                 Return _settings
             End If

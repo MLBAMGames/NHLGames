@@ -276,7 +276,7 @@
     <Compile Include="Utilities\Enums.vb" />
     <Compile Include="Objects\GameWatchArguments.vb" />
     <Compile Include="Objects\GameManager.vb" />
-    <Compile Include="Utilities\ApplicationSettings.vb" />
+    <Compile Include="Utilities\SettingsExtensions.vb" />
     <Compile Include="Utilities\Common.vb" />
     <Compile Include="Utilities\DateHelper.vb" />
     <Compile Include="Objects\Game.vb" />
