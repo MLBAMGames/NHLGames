@@ -55,6 +55,9 @@ Public Class NHLGamesMetro
         Dim form As New NHLGamesMetro()
         FormInstance = form
 
+        My.Settings.Upgrade()
+        My.Settings.Save()
+
         Dim writer = New ConsoleRedirectStreamWriter(form.txtConsole)
         Console.SetOut(writer)
         Application.Run(form)
@@ -355,8 +358,7 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub lnkRelease_Click(sender As Object, e As EventArgs) Handles lnkRelease.Click
-        Dim sInfo As ProcessStartInfo = New ProcessStartInfo(LatestReleaseLink)
-        Process.Start(sInfo)
+        GitHub.Update()
     End Sub
 
     Private Sub tgStreamer_CheckedChanged(sender As Object, e As EventArgs) Handles tgStreamer.CheckedChanged

@@ -1145,7 +1145,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Une nouvelle version est disponible, téléchargez la plus récente version sur GitHub.
+        '''  Looks up a localized string similar to Une nouvelle version est disponible.
         '''</summary>
         Friend Shared ReadOnly Property lnkNewVersionText() As String
             Get
@@ -1190,7 +1190,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Voulez-vous obtenir la nouvelle version sur GitHub.com? Voici les derniers changements:{0}{1}.
+        '''  Looks up a localized string similar to Voulez-vous mettre à jour à la dernière version? Voici les derniers changements:{0}{1}.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLog() As String
             Get
@@ -1199,7 +1199,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Voulez-vous voir la liste de changements sur GitHub.com et télécharger la nouvelle version?.
+        '''  Looks up a localized string similar to Voulez-vous télécharger la nouvelle version?.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLogNone() As String
             Get
@@ -1406,7 +1406,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Section.
+        '''  Looks up a localized string similar to Division.
         '''</summary>
         Friend Shared ReadOnly Property tabDivisionStandings() As String
             Get
@@ -1460,7 +1460,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Quatrième Ad.
+        '''  Looks up a localized string similar to Quatrième As.
         '''</summary>
         Friend Shared ReadOnly Property tabWildCardStandings() As String
             Get

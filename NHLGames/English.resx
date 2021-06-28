@@ -301,10 +301,6 @@
     <value>Hosts: Backing up file: {0}</value>
     <comment>Console</comment>
   </data>
-  <data name="msgChangeLog" xml:space="preserve">
-    <value>Do you want to get the newest version on GitHub.com? Here the lastest changes:{0}{1}</value>
-    <comment>Version</comment>
-  </data>
   <data name="msgCleanHostsFile" xml:space="preserve">
     <value>Hosts: Removing existing entries from hosts file</value>
     <comment>Console</comment>
@@ -342,7 +338,7 @@
     <comment>Version</comment>
   </data>
   <data name="lnkNewVersionText" xml:space="preserve">
-    <value>A new version is available, download the latest version on GitHub</value>
+    <value>A new version is available</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgOff" xml:space="preserve">
@@ -926,7 +922,7 @@
     <comment>Settings tab</comment>
   </data>
   <data name="msgChangeLogNone" xml:space="preserve">
-    <value>Do you want to view the change log on GitHub.com and download the newest version?</value>
+    <value>Do you want to download the newest version?</value>
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">
@@ -976,14 +972,6 @@
   <data name="tipRecap" xml:space="preserve">
     <value>Recap</value>
     <comment>Game panel</comment>
-  </data>
-  <data name="lblMediaControlDelay" xml:space="preserve">
-    <value>Media control delay</value>
-    <comment>Settings Tab</comment>
-  </data>
-  <data name="tipMediaControlDelay" xml:space="preserve">
-    <value>Raising this value may fix music still playing after a commercial break.</value>
-    <comment>Settings Tab</comment>
   </data>
   <data name="lblMediaControlDelay" xml:space="preserve">
     <value>Media control delay</value>
@@ -1084,5 +1072,9 @@
   <data name="lblShowStanding" xml:space="preserve">
     <value>Standing rank</value>
     <comment>Settings tab</comment>
+  </data>
+  <data name="msgChangeLog" xml:space="preserve">
+    <value>Do you want to update to the latest version? Here the lastest changes:{0}{1}</value>
+    <comment>Version</comment>
   </data>
 </root>

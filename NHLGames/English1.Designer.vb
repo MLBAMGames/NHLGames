@@ -1325,7 +1325,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to A new version is available, download the latest version on GitHub.
+        '''  Looks up a localized string similar to A new version is available.
         '''</summary>
         Friend Shared ReadOnly Property lnkNewVersionText() As String
             Get
@@ -1424,7 +1424,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Do you want to get the newest version on GitHub.com? Here the lastest changes:{0}{1}.
+        '''  Looks up a localized string similar to Do you want to update to the latest version? Here the lastest changes:{0}{1}.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLog() As String
             Get
@@ -1433,7 +1433,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Do you want to view the change log on GitHub.com and download the newest version?.
+        '''  Looks up a localized string similar to Do you want to download the newest version?.
         '''</summary>
         Friend Shared ReadOnly Property msgChangeLogNone() As String
             Get

@@ -238,7 +238,7 @@
     <comment>Message</comment>
   </data>
   <data name="msgChangeLog" xml:space="preserve">
-    <value>Voulez-vous obtenir la nouvelle version sur GitHub.com? Voici les derniers changements:{0}{1}</value>
+    <value>Voulez-vous mettre à jour à la dernière version? Voici les derniers changements:{0}{1}</value>
     <comment>Version</comment>
   </data>
   <data name="msgErrorGeneralText" xml:space="preserve">
@@ -270,7 +270,7 @@
     <comment>Version</comment>
   </data>
   <data name="lnkNewVersionText" xml:space="preserve">
-    <value>Une nouvelle version est disponible, téléchargez la plus récente version sur GitHub</value>
+    <value>Une nouvelle version est disponible</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgRunAsAdmin" xml:space="preserve">
@@ -706,7 +706,7 @@
     <comment>Settings tab</comment>
   </data>
   <data name="msgChangeLogNone" xml:space="preserve">
-    <value>Voulez-vous voir la liste de changements sur GitHub.com et télécharger la nouvelle version?</value>
+    <value>Voulez-vous télécharger la nouvelle version?</value>
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">
@@ -760,14 +760,6 @@
   <data name="tipRecap" xml:space="preserve">
     <value>Résumé</value>
     <comment>Game panel</comment>
-  </data>
-  <data name="lblMediaControlDelay" xml:space="preserve">
-    <value>Délai des contrôles de médias</value>
-    <comment>Settings Tab</comment>
-  </data>
-  <data name="tipMediaControlDelay" xml:space="preserve">
-    <value>Augmenter cette valeur peut corriger les médias qui continue après une pause commerciale.</value>
-    <comment>Settings Tab</comment>
   </data>
   <data name="lblMediaControlDelay" xml:space="preserve">
     <value>Délai des contrôles de médias</value>
@@ -858,7 +850,7 @@
     <comment>Standing Tab</comment>
   </data>
   <data name="tabDivisionStandings" xml:space="preserve">
-    <value>Section</value>
+    <value>Division</value>
     <comment>Standing Tab</comment>
   </data>
   <data name="tabLeagueStandings" xml:space="preserve">
@@ -866,7 +858,7 @@
     <comment>Standing Tab</comment>
   </data>
   <data name="tabWildCardStandings" xml:space="preserve">
-    <value>Quatrième Ad</value>
+    <value>Quatrième As</value>
     <comment>Standing Tab</comment>
   </data>
 </root>
