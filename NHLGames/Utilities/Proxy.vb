@@ -8,7 +8,7 @@ Namespace Utilities
         Private _proxyVersion As Process
         Private Const _stringToFind = "[MLBAMProxy] "
         Private Const _exeName = "go-mlbam-proxy.exe"
-        Public ReadOnly port As String = ApplicationSettings.Read(Of String)(SettingsEnum.ProxyPort, "17070")
+        Public ReadOnly port As String = If(My.Settings.ProxyPort.ToString(), "17070")
         Private ReadOnly _folderPath As String = Path.Combine(Application.StartupPath, "proxy")
 
         Private _pathToProxy As String = String.Empty

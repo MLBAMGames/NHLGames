@@ -84,7 +84,7 @@ Namespace Utilities
                         End Using
                     End If
                 End Using
-            Catch
+            Catch ex As Exception
                 content.Dispose()
                 Return String.Empty
             End Try
@@ -96,8 +96,7 @@ Namespace Utilities
         End Function
 
         Public Shared Sub GetLanguage()
-            Dim lang = ApplicationSettings.Read(Of String)(SettingsEnum.SelectedLanguage, "English")
-
+            Dim lang = If(My.Settings.SelectedLanguage, "English")
             If lang = NHLGamesMetro.RmText.GetString("cbEnglish") Then
                 NHLGamesMetro.RmText = English.ResourceManager
             ElseIf lang = NHLGamesMetro.RmText.GetString("cbFrench") Then
@@ -132,7 +131,8 @@ Namespace Utilities
 
         Public Shared Sub SetRedirectionServerInApp()
             NHLGamesMetro.HostName = NHLGamesMetro.FormInstance.cbServers.SelectedItem.ToString()
-            ApplicationSettings.SetValue(SettingsEnum.SelectedServer, NHLGamesMetro.HostName)
+            My.Settings.SelectedServer = NHLGamesMetro.HostName
+            My.Settings.Save()
             Console.WriteLine(English.msgSettingUpdated, NHLGamesMetro.lblHostname.Text, NHLGamesMetro.HostName)
         End Sub
 
