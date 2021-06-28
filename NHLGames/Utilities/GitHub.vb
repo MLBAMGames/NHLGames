@@ -41,19 +41,20 @@ Namespace Utilities
             Dim changelog = BuildChangeLog(release.body)
 
             Dim dialogTitle = String.Format(NHLGamesMetro.RmText.GetString("msgNewVersionAvailable"), gitHubTagVersion)
-            Dim dialogMessage = If (string.IsNullOrEmpty(changelog), 
-                NHLGamesMetro.RmText.GetString("msgChangeLogNone"), 
+            Dim dialogMessage = If(String.IsNullOrEmpty(changelog),
+                NHLGamesMetro.RmText.GetString("msgChangeLogNone"),
                 String.Format(NHLGamesMetro.RmText.GetString("msgChangeLog"), vbCrLf, changelog))
             Dim dialogResult = InvokeElement.MsgBoxBlue(
                 dialogMessage,
                 dialogTitle,
                 MessageBoxButtons.OKCancel)
 
-            If dialogResult = dialogResult.OK Then
+            If dialogResult = DialogResult.OK Then
                 Update()
             End If
 
-            ApplicationSettings.SetValue(SettingsEnum.LastBuildVersionSkipped, gitHubTagVersion.ToString())
+            My.Settings.LastBuildVersionSkipped = gitHubTagVersion.ToString()
+            My.Settings.Save()
         End Function
 
         Public Shared Async Function GetAccouncement() As Task
@@ -92,7 +93,7 @@ Namespace Utilities
         End Function
 
         Private Shared Function GetLastBuildVersionSkipped() As Version
-            Dim lastBuildVersionSkipped = ApplicationSettings.Read(Of String)(SettingsEnum.LastBuildVersionSkipped, String.Empty)
+            Dim lastBuildVersionSkipped = My.Settings.LastBuildVersionSkipped
             If Not _regexVersion.IsMatch(lastBuildVersionSkipped) Then Return Nothing
 
             Return New Version(lastBuildVersionSkipped)

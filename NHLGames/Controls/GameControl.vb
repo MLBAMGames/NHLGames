@@ -390,7 +390,7 @@ Namespace Controls
         End Sub
 
         Private Function WatchArgs() As GameWatchArguments
-            Return ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, NHLGamesMetro.WatchArgs)
+            Return SettingsExtensions.ReadGameWatchArgs()
         End Function
 
         Private Sub WatchStream(streamType As StreamerTypeEnum)

@@ -131,7 +131,7 @@ Namespace Utilities
         End Sub
 
         Public Shared Sub SetWindow()
-            Dim windowSize = Split(ApplicationSettings.Read(Of String)(SettingsEnum.LastWindowSize, "990;655"), ";")
+            Dim windowSize = Split(If(My.Settings.LastWindowSize, "990;655"), ";")
             Form.Width = If(windowSize.Length = 2, Convert.ToInt32(windowSize(0)), 990)
             Form.Height = If(windowSize.Length = 2, Convert.ToInt32(windowSize(1)), 655)
         End Sub
@@ -150,7 +150,7 @@ Namespace Utilities
 
             Form.cbLanguage.Items.Clear()
             Form.cbLanguage.Items.AddRange(lstLanguages)
-            Form.cbLanguage.SelectedItem = ApplicationSettings.Read(Of String)(SettingsEnum.SelectedLanguage, "English")
+            Form.cbLanguage.SelectedItem = If(My.Settings.SelectedLanguage, "English")
 
             Form.lblVersion.Text = String.Format("v {0}.{1}.{2}",
                                                  My.Application.Info.Version.Major,
@@ -164,23 +164,22 @@ Namespace Utilities
 
             Form.txtStreamerPath.Text = If(livestreamerPath.Equals(String.Empty), streamlinkPath, livestreamerPath)
 
-            Dim proxyPort = ApplicationSettings.Read(Of Integer)(SettingsEnum.ProxyPort, 8080)
+            Dim proxyPort = If(My.Settings.ProxyPort = 0, My.Settings.ProxyPort, 17070)
             Form.tbProxyPort.Value = proxyPort / 10
             Form.lblProxyPortNumber.Text = proxyPort.ToString()
 
             Form.tgDarkMode.Checked = NHLGamesMetro.IsDarkMode
 
-            Form.tgShowFinalScores.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowScores, False)
-            Form.tgShowLiveScores.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveScores, False)
-            Form.tgShowSeriesRecord.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowSeriesRecord, False)
-            Form.tgShowTeamCityAbr.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowTeamCityAbr, False)
-            Form.tgShowLiveTime.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveTime, False)
-            Form.tgShowStanding.Checked = ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowStanding, False)
-            Form.tgShowTodayLiveGamesFirst.Checked =
-                ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowTodayLiveGamesFirst, False)
+            Form.tgShowFinalScores.Checked = My.Settings.ShowScores
+            Form.tgShowLiveScores.Checked = My.Settings.ShowLiveScores
+            Form.tgShowSeriesRecord.Checked = My.Settings.ShowSeriesRecord
+            Form.tgShowTeamCityAbr.Checked = My.Settings.ShowTeamCityAbr
+            Form.tgShowLiveTime.Checked = My.Settings.ShowLiveTime
+            Form.tgShowStanding.Checked = My.Settings.ShowStanding
+            Form.tgShowTodayLiveGamesFirst.Checked = My.Settings.ShowTodayLiveGamesFirst
 
             Dim playersPath = New String() {Form.txtMpvPath.Text, Form.txtMPCPath.Text, Form.txtVLCPath.Text}
-            Dim watchArgs = ApplicationSettings.Read(Of GameWatchArguments)(SettingsEnum.DefaultWatchArgs, Nothing)
+            Dim watchArgs = SettingsExtensions.ReadGameWatchArgs()
 
             If ValidWatchArgs(watchArgs, playersPath, Form.txtStreamerPath.Text) Then
                 watchArgs = Player.RenewArgs(True)
@@ -191,7 +190,7 @@ Namespace Utilities
 
             NHLGamesMetro.WatchArgs = BindWatchArgsToForm(watchArgs)
 
-            Dim adDetectionConfigs = ApplicationSettings.Read(Of AdDetectionConfigs)(SettingsEnum.AdDetection, Nothing)
+            Dim adDetectionConfigs = SettingsExtensions.ReadAdDetectionConfigs()
 
             If adDetectionConfigs Is Nothing Then
                 adDetectionConfigs = AdDetection.Renew(True)
@@ -216,28 +215,27 @@ Namespace Utilities
             NHLGamesMetro.LabelDate = Form.lblDate
         End Sub
 
-        Private Shared Function GetApplication(varPath As SettingsEnum, currentPath As String)
-            Dim savedPathFromConfig = ApplicationSettings.Read(Of String)(varPath, String.Empty)
+        Private Shared Function GetApplication(varSetting As SettingsEnum, currentPath As String)
+            Dim savedPathFromConfig = My.Settings(varSetting.ToString())
             Dim currentPathIfFound As String = currentPath
 
             If File.Exists(savedPathFromConfig) Then Return savedPathFromConfig
 
             If File.Exists(currentPathIfFound) Then
-                ApplicationSettings.SetValue(varPath, currentPathIfFound)
+                My.Settings(varSetting.ToString()) = currentPathIfFound
                 Return currentPathIfFound
             Else
-                ApplicationSettings.SetValue(varPath, String.Empty)
+                My.Settings(varSetting.ToString()) = String.Empty
                 Return String.Empty
             End If
         End Function
 
-        Private Shared Sub PopulateComboBox(cb As MetroComboBox, selectedItem As SettingsEnum, items As SettingsEnum,
-                                            defaultValue As String)
-            Dim cbItemsFromConfig = ApplicationSettings.Read(Of String)(items, defaultValue)
+        Private Shared Sub PopulateComboBox(cb As MetroComboBox, varSelectedServer As SettingsEnum, varServersList As SettingsEnum, defaultValue As String)
+            Dim cbItemsFromConfig = If(My.Settings(varServersList.ToString()), defaultValue)
 
             cb.Items.AddRange(cbItemsFromConfig.Split(";"))
 
-            cb.SelectedItem = ApplicationSettings.Read(Of String)(selectedItem, String.Empty)
+            cb.SelectedItem = If(My.Settings(varSelectedServer.ToString()), String.Empty)
             If cb.SelectedItem Is Nothing Then
                 cb.SelectedItem = cb.Items(0)
             End If
@@ -261,8 +259,8 @@ Namespace Utilities
                 watchArgs.PlayerType = PlayerTypeEnum.None
             End If
 
-            ApplicationSettings.SetValue(SettingsEnum.DefaultWatchArgs,
-                                             Serialization.SerializeObject(watchArgs))
+            My.Settings.DefaultWatchArgs = Serialization.SerializeObject(watchArgs)
+            My.Settings.Save()
         End Sub
 
         Private Shared Function ValidWatchArgs(watchArgs As GameWatchArguments, playersPath As String(),

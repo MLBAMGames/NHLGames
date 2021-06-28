@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Updater.vb" />
+    <Compile Include="Utilities\CustomExceptions.vb" />
     <Compile Include="Utilities\Web.vb" />
     <Compile Include="Utilities\AssemblyInfo.vb" />
     <Compile Include="Utilities\GitHub.vb" />

@@ -30,7 +30,7 @@ Namespace Utilities
 
             If relatedReleases.Count() = 0 Then
                 Console.WriteLine("You are already using the latest version.")
-                Throw New Exception()
+                Updater.LeaveConsole()
             End If
 
             Return relatedReleases
@@ -40,6 +40,7 @@ Namespace Utilities
             Dim asset = release.assets.Where(Function(a) Regex.IsMatch(a.name, "^NHLGames(-|\.)(v?)(\.)?\d+(\.\d+)?(\.\d+)?(-simplified)?.zip$")).FirstOrDefault()
             If asset Is Nothing Then
                 Console.WriteLine("This Release did not have any suitable asset to download. Try again later.")
+                Throw New ReleaseAssetNotFoundException()
             Else
                 Console.WriteLine("Release asset found: {0}", asset.name)
             End If
