@@ -270,7 +270,7 @@
     <comment>Version</comment>
   </data>
   <data name="lnkNewVersionText" xml:space="preserve">
-    <value>Une nouvelle version est disponible, téléchargez la plus récente version sur GitHub</value>
+    <value>Une nouvelle version est disponible</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgRunAsAdmin" xml:space="preserve">
@@ -706,7 +706,7 @@
     <comment>Settings tab</comment>
   </data>
   <data name="msgChangeLogNone" xml:space="preserve">
-    <value>Voulez-vous voir la liste de changements sur GitHub.com et télécharger la nouvelle version?</value>
+    <value>Voulez-vous télécharger la nouvelle version?</value>
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">
@@ -850,7 +850,7 @@
     <comment>Standing Tab</comment>
   </data>
   <data name="tabDivisionStandings" xml:space="preserve">
-    <value>Section</value>
+    <value>Division</value>
     <comment>Standing Tab</comment>
   </data>
   <data name="tabLeagueStandings" xml:space="preserve">
@@ -858,7 +858,7 @@
     <comment>Standing Tab</comment>
   </data>
   <data name="tabWildCardStandings" xml:space="preserve">
-    <value>Quatrième Ad</value>
+    <value>Quatrième As</value>
     <comment>Standing Tab</comment>
   </data>
 </root>

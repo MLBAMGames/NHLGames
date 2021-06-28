@@ -338,7 +338,7 @@
     <comment>Version</comment>
   </data>
   <data name="lnkNewVersionText" xml:space="preserve">
-    <value>A new version is available, download the latest version on GitHub</value>
+    <value>A new version is available</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgOff" xml:space="preserve">
@@ -922,7 +922,7 @@
     <comment>Settings tab</comment>
   </data>
   <data name="msgChangeLogNone" xml:space="preserve">
-    <value>Do you want to view the change log on GitHub.com and download the newest version?</value>
+    <value>Do you want to download the newest version?</value>
     <comment>Version</comment>
   </data>
   <data name="tipMessage1" xml:space="preserve">
