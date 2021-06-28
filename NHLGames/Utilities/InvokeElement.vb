@@ -80,13 +80,13 @@ Namespace Utilities
             Else
                 NHLGamesMetro.FormInstance.ClearGamePanel()
                 NHLGamesMetro.FormInstance.flpGames.Controls.AddRange((From game In gamesDict Select New GameControl(
-                    game,
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowScores, False),
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveScores, False),
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowSeriesRecord, False),
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowTeamCityAbr, False),
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowLiveTime, False),
-                    ApplicationSettings.Read(Of Boolean)(SettingsEnum.ShowStanding, False))).ToArray())
+                                                                                                  game,
+                                                                                                  My.Settings.ShowScores,
+                                                                                                  My.Settings.ShowLiveScores,
+                                                                                                  My.Settings.ShowSeriesRecord,
+                                                                                                  My.Settings.ShowTeamCityAbr,
+                                                                                                  My.Settings.ShowLiveTime,
+                                                                                                  My.Settings.ShowStanding)).ToArray())
             End If
         End Sub
 
@@ -154,19 +154,11 @@ Namespace Utilities
                         NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf LoadTeamsName))
                 EndInvokeOf(asyncResult)
             Else
-                Dim readValue = ApplicationSettings.Read(Of String)(SettingsEnum.TeamNameAbbreviation, String.Empty)
+                Dim teamRootobject As TeamRootobject = TeamRootobject.GetTeamRootobject()
 
-                If (readValue = String.Empty) Then
-                    Dim teamRootobject As TeamRootobject = TeamRootobject.GetTeamRootobject()
-
-                    For Each item As TeamObject In teamRootobject.teams
-                        Team.TeamAbbreviation.Add(item.name, item.abbreviation)
-                    Next
-
-                    ApplicationSettings.SetValue(SettingsEnum.TeamNameAbbreviation, JsonConvert.SerializeObject(Team.TeamAbbreviation))
-                Else
-                    Team.TeamAbbreviation = JsonConvert.DeserializeObject(Of Dictionary(Of String, String))(readValue)
-                End If
+                For Each item As TeamObject In teamRootobject.teams
+                    Team.TeamAbbreviation.Add(item.name, item.abbreviation)
+                Next
             End If
         End Sub
 

@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -52,6 +52,246 @@ Namespace My
 #End If
                 Return defaultInstance
             End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("17070")>  _
+        Public Property ProxyPort() As Integer
+            Get
+                Return CType(Me("ProxyPort"),Integer)
+            End Get
+            Set
+                Me("ProxyPort") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property DefaultWatchArgs() As String
+            Get
+                Return CType(Me("DefaultWatchArgs"),String)
+            End Get
+            Set
+                Me("DefaultWatchArgs") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property VlcPath() As String
+            Get
+                Return CType(Me("VlcPath"),String)
+            End Get
+            Set
+                Me("VlcPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property MpcPath() As String
+            Get
+                Return CType(Me("MpcPath"),String)
+            End Get
+            Set
+                Me("MpcPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property MpvPath() As String
+            Get
+                Return CType(Me("MpvPath"),String)
+            End Get
+            Set
+                Me("MpvPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property StreamerPath() As String
+            Get
+                Return CType(Me("StreamerPath"),String)
+            End Get
+            Set
+                Me("StreamerPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ShowScores() As Boolean
+            Get
+                Return CType(Me("ShowScores"),Boolean)
+            End Get
+            Set
+                Me("ShowScores") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ShowLiveScores() As Boolean
+            Get
+                Return CType(Me("ShowLiveScores"),Boolean)
+            End Get
+            Set
+                Me("ShowLiveScores") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ShowSeriesRecord() As Boolean
+            Get
+                Return CType(Me("ShowSeriesRecord"),Boolean)
+            End Get
+            Set
+                Me("ShowSeriesRecord") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ShowTeamCityAbr() As Boolean
+            Get
+                Return CType(Me("ShowTeamCityAbr"),Boolean)
+            End Get
+            Set
+                Me("ShowTeamCityAbr") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ShowTodayLiveGamesFirst() As Boolean
+            Get
+                Return CType(Me("ShowTodayLiveGamesFirst"),Boolean)
+            End Get
+            Set
+                Me("ShowTodayLiveGamesFirst") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ShowLiveTime() As Boolean
+            Get
+                Return CType(Me("ShowLiveTime"),Boolean)
+            End Get
+            Set
+                Me("ShowLiveTime") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("freegamez.ga;freesports.ddns.net")>  _
+        Public Property ServerList() As String
+            Get
+                Return CType(Me("ServerList"),String)
+            End Get
+            Set
+                Me("ServerList") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property SelectedServer() As String
+            Get
+                Return CType(Me("SelectedServer"),String)
+            End Get
+            Set
+                Me("SelectedServer") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("English")>  _
+        Public Property SelectedLanguage() As String
+            Get
+                Return CType(Me("SelectedLanguage"),String)
+            End Get
+            Set
+                Me("SelectedLanguage") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property AdDetection() As String
+            Get
+                Return CType(Me("AdDetection"),String)
+            End Get
+            Set
+                Me("AdDetection") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("990;655")>  _
+        Public Property LastWindowSize() As String
+            Get
+                Return CType(Me("LastWindowSize"),String)
+            End Get
+            Set
+                Me("LastWindowSize") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property ShowStanding() As Boolean
+            Get
+                Return CType(Me("ShowStanding"),Boolean)
+            End Get
+            Set
+                Me("ShowStanding") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property UseDarkMode() As Boolean
+            Get
+                Return CType(Me("UseDarkMode"),Boolean)
+            End Get
+            Set
+                Me("UseDarkMode") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property LastBuildVersionSkipped() As String
+            Get
+                Return CType(Me("LastBuildVersionSkipped"),String)
+            End Get
+            Set
+                Me("LastBuildVersionSkipped") = value
+            End Set
         End Property
     End Class
 End Namespace

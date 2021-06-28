@@ -161,8 +161,8 @@ Namespace Utilities
                     .PlayerOutputPath = form.txtOutputArgs.Text
                 }
 
-                ApplicationSettings.SetValue(SettingsEnum.DefaultWatchArgs,
-                                             Serialization.SerializeObject(watchArgs))
+                My.Settings.DefaultWatchArgs = Serialization.SerializeObject(watchArgs)
+                My.Settings.Save()
 
                 Return watchArgs
             End If
