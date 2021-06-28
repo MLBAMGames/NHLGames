@@ -58,6 +58,9 @@ Public Class NHLGamesMetro
         Dim form As New NHLGamesMetro()
         FormInstance = form
 
+        My.Settings.Upgrade()
+        My.Settings.Save()
+
         Dim writer = New ConsoleRedirectStreamWriter(form.txtConsole)
         Console.SetOut(writer)
         Application.Run(form)
