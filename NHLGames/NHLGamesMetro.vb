@@ -51,11 +51,7 @@ Public Class NHLGamesMetro
         Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException)
         AddHandler AppDomain.CurrentDomain.UnhandledException, AddressOf CurrentDomain_UnhandledException
 
-        If My.Settings.MustUpgrade Then
-            My.Settings.Upgrade()
-            My.Settings.MustUpgrade = False
-            My.Settings.Save()
-        End If
+        Updater.UpgradeSettings()
 
         IsDarkMode = My.Settings.UseDarkMode
 

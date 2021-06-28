@@ -304,6 +304,7 @@
     <Compile Include="Utilities\Serialization.vb" />
     <Compile Include="Utilities\ConsoleRedirectStreamWriter.vb" />
     <Compile Include="Utilities\StandingsHelper.vb" />
+    <Compile Include="Utilities\Updater.vb" />
     <Compile Include="Utilities\WindowsEvents.vb" />
   </ItemGroup>
   <ItemGroup>
