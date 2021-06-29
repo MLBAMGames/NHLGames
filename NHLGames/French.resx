@@ -270,7 +270,7 @@
     <comment>Version</comment>
   </data>
   <data name="lnkNewVersionText" xml:space="preserve">
-    <value>Une nouvelle version est disponible</value>
+    <value>Nouvelle version {0} est disponible! Cliquer pour mettre à jour.</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgRunAsAdmin" xml:space="preserve">
@@ -860,5 +860,13 @@
   <data name="tabWildCardStandings" xml:space="preserve">
     <value>Quatrième As</value>
     <comment>Standing Tab</comment>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Réinitialiser</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblResetDesc" xml:space="preserve">
+    <value>Réinitialiser aux paramètres par défaut et rédémarrer</value>
+    <comment>Settings tab</comment>
   </data>
 </root>

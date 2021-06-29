@@ -58,9 +58,6 @@ Public Class NHLGamesMetro
         Dim form As New NHLGamesMetro()
         FormInstance = form
 
-        My.Settings.Upgrade()
-        My.Settings.Save()
-
         Dim writer = New ConsoleRedirectStreamWriter(form.txtConsole)
         Console.SetOut(writer)
         Application.Run(form)
@@ -820,4 +817,19 @@ Public Class NHLGamesMetro
         StandingsHelper.GenerateStandings(tbStanding, season)
     End Sub
 
+    Private Sub tgReset_CheckedChanged(sender As Object, e As EventArgs) Handles tgReset.CheckedChanged
+        If tgReset.Checked = False Then Return
+
+        If InvokeElement.MsgBoxBlue(
+            RmText.GetString("msgAcceptToRestart"),
+            RmText.GetString("lblReset"),
+            MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            My.Settings.Reset()
+            My.Settings.Save()
+            Dim x = My.Settings.LastBuildVersionSkipped
+            RestartNHLGames()
+        End If
+
+        tgReset.Checked = False
+    End Sub
 End Class

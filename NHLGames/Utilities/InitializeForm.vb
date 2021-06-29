@@ -112,6 +112,9 @@ Namespace Utilities
             Form.chkSpotifyPlayNextSong.Text = NHLGamesMetro.RmText.GetString("chkSpotifyPlayNextSong")
             Form.chkSpotifyAnyMediaPlayer.Text = NHLGamesMetro.RmText.GetString("chkSpotifyAnyMediaPlayer")
 
+            Form.lblReset.Text = NHLGamesMetro.RmText.GetString("lblReset")
+            Form.lblResetDesc.Text = NHLGamesMetro.RmText.GetString("lblResetDesc")
+
             'Console
             Form.btnCopyConsole.Text = NHLGamesMetro.RmText.GetString("btnCopyConsole")
             Form.btnClearConsole.Text = NHLGamesMetro.RmText.GetString("btnClearConsole")
@@ -469,6 +472,9 @@ Namespace Utilities
                 Form.lblObsAdEndingHotkey.Theme = MetroThemeStyle.Dark
                 Form.txtAdKey.Theme = MetroThemeStyle.Dark
                 Form.txtGameKey.Theme = MetroThemeStyle.Dark
+                Form.lblReset.Theme = MetroThemeStyle.Dark
+                Form.tgReset.Theme = MetroThemeStyle.Dark
+                Form.lblResetDesc.Theme = MetroThemeStyle.Dark
                 Form.lblPlus1.Theme = MetroThemeStyle.Dark
                 Form.lblPlus2.Theme = MetroThemeStyle.Dark
                 Form.lblPlus3.Theme = MetroThemeStyle.Dark

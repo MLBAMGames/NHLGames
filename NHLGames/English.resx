@@ -338,7 +338,7 @@
     <comment>Version</comment>
   </data>
   <data name="lnkNewVersionText" xml:space="preserve">
-    <value>A new version is available</value>
+    <value>New version {0} is available! Click to update.</value>
     <comment>Status bar</comment>
   </data>
   <data name="msgOff" xml:space="preserve">
@@ -1076,5 +1076,13 @@
   <data name="msgChangeLog" xml:space="preserve">
     <value>Do you want to update to the latest version? Here the lastest changes:{0}{1}</value>
     <comment>Version</comment>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblResetDesc" xml:space="preserve">
+    <value>Reset settings to default and restart</value>
+    <comment>Settings tab</comment>
   </data>
 </root>

@@ -264,6 +264,9 @@
     <Compile Include="Objects\NHL\Teams.vb" />
     <Compile Include="Objects\NHL\TimeZone.vb" />
     <Compile Include="Objects\NHL\Venue.vb" />
+    <None Include="RESET_APP_SETTINGS.BAT">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="res\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
