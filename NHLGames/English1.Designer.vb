@@ -1163,6 +1163,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Reset.
+        '''</summary>
+        Friend Shared ReadOnly Property lblReset() As String
+            Get
+                Return ResourceManager.GetString("lblReset", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Reset settings to default and restart.
+        '''</summary>
+        Friend Shared ReadOnly Property lblResetDesc() As String
+            Get
+                Return ResourceManager.GetString("lblResetDesc", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Season.
         '''</summary>
         Friend Shared ReadOnly Property lblSeason() As String
@@ -1325,7 +1343,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to A new version is available.
+        '''  Looks up a localized string similar to New version {0} is available! Click to update..
         '''</summary>
         Friend Shared ReadOnly Property lnkNewVersionText() As String
             Get

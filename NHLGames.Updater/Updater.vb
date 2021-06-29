@@ -20,9 +20,12 @@ Public Class Updater
             If releases.Length = 0 Then Return
 
             For Each release As Objects.GitHub.Release In releases
+                Console.WriteLine("Updating to release {0}...", release.tag_name)
                 Dim fileName = Await DownloadUpdateAsync(release)
-                ExtractDownloadedAsset(fileName)
-                File.Delete(fileName)
+                If fileName <> String.Empty Then
+                    ExtractDownloadedAsset(fileName)
+                    File.Delete(fileName)
+                End If
             Next
 
             Console.WriteLine("Successfully updated!")
@@ -40,7 +43,7 @@ Public Class Updater
             Dim asset = GitHub.GetZipAssetFromRelease(release)
             Return Await Web.DownloadFileAsync(asset.browser_download_url, release.tag_name)
         Catch ex As ReleaseAssetNotFoundException
-            Throw ex
+            Return String.Empty
         Catch ex As UnauthorizedAccessException
             Console.WriteLine($"Something went wrong during the download. Make sure it was not blocked by your Antivirus Software.")
             Console.WriteLine("Error Message: " + ex.Message)

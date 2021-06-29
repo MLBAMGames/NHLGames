@@ -47,7 +47,6 @@ Partial Class NHLGamesMetro
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.tabStandings = New MetroFramework.Controls.MetroTabPage()
         Me.tlpStandings = New System.Windows.Forms.TableLayoutPanel()
-        Me.cbSeasons = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.lblSeason = New MetroFramework.Controls.MetroLabel()
         Me.tbStanding = New MetroFramework.Controls.MetroTabControl()
         Me.tabSettings = New MetroFramework.Controls.MetroTabPage()
@@ -77,7 +76,6 @@ Partial Class NHLGamesMetro
         Me.flpSpotifyDescSettings = New System.Windows.Forms.FlowLayoutPanel()
         Me.tgSpotify = New MetroFramework.Controls.MetroToggle()
         Me.lblSpotifyDesc = New MetroFramework.Controls.MetroLabel()
-        Me.cbStreamQuality = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.lblStreamerArgs = New MetroFramework.Controls.MetroLabel()
         Me.lblPlayerArgs = New MetroFramework.Controls.MetroLabel()
         Me.lblOutput = New MetroFramework.Controls.MetroLabel()
@@ -107,7 +105,6 @@ Partial Class NHLGamesMetro
         Me.lnkGetVlc = New MetroFramework.Controls.MetroLink()
         Me.lblLanguage = New MetroFramework.Controls.MetroLabel()
         Me.flpLanguage = New System.Windows.Forms.FlowLayoutPanel()
-        Me.cbLanguage = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.lblSlPath = New MetroFramework.Controls.MetroLabel()
         Me.lblMpvPath = New MetroFramework.Controls.MetroLabel()
         Me.lblMpcPath = New MetroFramework.Controls.MetroLabel()
@@ -116,10 +113,8 @@ Partial Class NHLGamesMetro
         Me.lblQuality = New MetroFramework.Controls.MetroLabel()
         Me.lblGamePanel = New MetroFramework.Controls.MetroLabel()
         Me.lblProxyPort = New MetroFramework.Controls.MetroLabel()
-        Me.cbServers = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.flpHostsFile = New System.Windows.Forms.FlowLayoutPanel()
         Me.lblProxyPortNumber = New MetroFramework.Controls.MetroLabel()
-        Me.tbProxyPort = New NHLGames.Controls.MetroTrackBarNoMW()
         Me.tlpGamePanelSettings = New System.Windows.Forms.TableLayoutPanel()
         Me.tgShowStanding = New MetroFramework.Controls.MetroToggle()
         Me.tgShowTodayLiveGamesFirst = New MetroFramework.Controls.MetroToggle()
@@ -162,13 +157,15 @@ Partial Class NHLGamesMetro
         Me.lblModulesDesc = New MetroFramework.Controls.MetroLabel()
         Me.tlpReplay = New System.Windows.Forms.TableLayoutPanel()
         Me.lblLiveRewindDetails = New MetroFramework.Controls.MetroLabel()
-        Me.tbLiveRewind = New NHLGames.Controls.MetroTrackBarNoMW()
         Me.lblLiveRewind = New MetroFramework.Controls.MetroLabel()
         Me.lblCdn = New MetroFramework.Controls.MetroLabel()
         Me.lblLiveReplay = New MetroFramework.Controls.MetroLabel()
-        Me.cbLiveReplay = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.tgDarkMode = New MetroFramework.Controls.MetroToggle()
         Me.lblDarkMode = New MetroFramework.Controls.MetroLabel()
+        Me.lblReset = New MetroFramework.Controls.MetroLabel()
+        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.tgReset = New MetroFramework.Controls.MetroToggle()
+        Me.lblResetDesc = New MetroFramework.Controls.MetroLabel()
         Me.tabConsole = New MetroFramework.Controls.MetroTabPage()
         Me.btnCopyConsole = New MetroFramework.Controls.MetroButton()
         Me.btnClearConsole = New MetroFramework.Controls.MetroButton()
@@ -181,13 +178,20 @@ Partial Class NHLGamesMetro
         Me.lblVersion = New MetroFramework.Controls.MetroLabel()
         Me.lnkReddit = New MetroFramework.Controls.MetroLink()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.lnkRelease = New MetroFramework.Controls.MetroLink()
         Me.lblTip = New MetroFramework.Controls.MetroLabel()
+        Me.lnkRelease = New MetroFramework.Controls.MetroLink()
         Me.spnStreaming = New MetroFramework.Controls.MetroProgressSpinner()
         Me.fbd = New System.Windows.Forms.FolderBrowserDialog()
         Me.bw = New System.ComponentModel.BackgroundWorker()
         Me.btnHelp = New MetroFramework.Controls.MetroLink()
         Me.pnlLogo = New System.Windows.Forms.Panel()
+        Me.cbSeasons = New NHLGames.Controls.MetroComboBoxNoMW()
+        Me.cbStreamQuality = New NHLGames.Controls.MetroComboBoxNoMW()
+        Me.cbLanguage = New NHLGames.Controls.MetroComboBoxNoMW()
+        Me.cbServers = New NHLGames.Controls.MetroComboBoxNoMW()
+        Me.tbProxyPort = New NHLGames.Controls.MetroTrackBarNoMW()
+        Me.tbLiveRewind = New NHLGames.Controls.MetroTrackBarNoMW()
+        Me.cbLiveReplay = New NHLGames.Controls.MetroComboBoxNoMW()
         Me.tabMenu.SuspendLayout()
         Me.tabGames.SuspendLayout()
         Me.pnlGameBar.SuspendLayout()
@@ -216,6 +220,7 @@ Partial Class NHLGamesMetro
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.flpAdDetection.SuspendLayout()
         Me.tlpReplay.SuspendLayout()
+        Me.FlowLayoutPanel2.SuspendLayout()
         Me.tabConsole.SuspendLayout()
         Me.pnlBottom.SuspendLayout()
         Me.tlpStatus.SuspendLayout()
@@ -497,19 +502,6 @@ Partial Class NHLGamesMetro
         Me.tlpStandings.Size = New System.Drawing.Size(982, 514)
         Me.tlpStandings.TabIndex = 2
         '
-        'cbSeasons
-        '
-        Me.cbSeasons.Dock = System.Windows.Forms.DockStyle.Left
-        Me.cbSeasons.FontSize = MetroFramework.MetroComboBoxSize.Small
-        Me.cbSeasons.FormattingEnabled = True
-        Me.cbSeasons.IntegralHeight = False
-        Me.cbSeasons.ItemHeight = 19
-        Me.cbSeasons.Location = New System.Drawing.Point(103, 33)
-        Me.cbSeasons.Name = "cbSeasons"
-        Me.cbSeasons.Size = New System.Drawing.Size(200, 25)
-        Me.cbSeasons.TabIndex = 501
-        Me.cbSeasons.UseSelectable = True
-        '
         'lblSeason
         '
         Me.lblSeason.AutoSize = True
@@ -608,6 +600,8 @@ Partial Class NHLGamesMetro
         Me.tlpSettings.Controls.Add(Me.cbLiveReplay, 2, 4)
         Me.tlpSettings.Controls.Add(Me.tgDarkMode, 2, 17)
         Me.tlpSettings.Controls.Add(Me.lblDarkMode, 0, 17)
+        Me.tlpSettings.Controls.Add(Me.lblReset, 0, 30)
+        Me.tlpSettings.Controls.Add(Me.FlowLayoutPanel2, 2, 30)
         Me.tlpSettings.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tlpSettings.ForeColor = System.Drawing.SystemColors.ControlText
         Me.tlpSettings.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize
@@ -615,7 +609,7 @@ Partial Class NHLGamesMetro
         Me.tlpSettings.Margin = New System.Windows.Forms.Padding(0)
         Me.tlpSettings.Name = "tlpSettings"
         Me.tlpSettings.Padding = New System.Windows.Forms.Padding(0, 0, 20, 0)
-        Me.tlpSettings.RowCount = 30
+        Me.tlpSettings.RowCount = 32
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
@@ -645,6 +639,8 @@ Partial Class NHLGamesMetro
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
+        Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.tlpSettings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.tlpSettings.Size = New System.Drawing.Size(982, 516)
         Me.tlpSettings.TabIndex = 2
@@ -982,20 +978,6 @@ Partial Class NHLGamesMetro
         Me.lblSpotifyDesc.TabIndex = 75
         Me.lblSpotifyDesc.Text = "SPOTIFY_DESC"
         Me.lblSpotifyDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'cbStreamQuality
-        '
-        Me.cbStreamQuality.Dock = System.Windows.Forms.DockStyle.Left
-        Me.cbStreamQuality.DropDownHeight = 200
-        Me.cbStreamQuality.FontSize = MetroFramework.MetroComboBoxSize.Small
-        Me.cbStreamQuality.FormattingEnabled = True
-        Me.cbStreamQuality.IntegralHeight = False
-        Me.cbStreamQuality.ItemHeight = 19
-        Me.cbStreamQuality.Location = New System.Drawing.Point(177, 183)
-        Me.cbStreamQuality.Name = "cbStreamQuality"
-        Me.cbStreamQuality.Size = New System.Drawing.Size(600, 25)
-        Me.cbStreamQuality.TabIndex = 500
-        Me.cbStreamQuality.UseSelectable = True
         '
         'lblStreamerArgs
         '
@@ -1339,20 +1321,6 @@ Partial Class NHLGamesMetro
         Me.flpLanguage.Size = New System.Drawing.Size(771, 30)
         Me.flpLanguage.TabIndex = 70
         '
-        'cbLanguage
-        '
-        Me.cbLanguage.BackColor = System.Drawing.SystemColors.Window
-        Me.cbLanguage.DropDownHeight = 80
-        Me.cbLanguage.FontSize = MetroFramework.MetroComboBoxSize.Small
-        Me.cbLanguage.FormattingEnabled = True
-        Me.cbLanguage.IntegralHeight = False
-        Me.cbLanguage.ItemHeight = 19
-        Me.cbLanguage.Location = New System.Drawing.Point(3, 3)
-        Me.cbLanguage.Name = "cbLanguage"
-        Me.cbLanguage.Size = New System.Drawing.Size(600, 25)
-        Me.cbLanguage.TabIndex = 1410
-        Me.cbLanguage.UseSelectable = True
-        '
         'lblSlPath
         '
         Me.lblSlPath.AutoSize = True
@@ -1448,21 +1416,6 @@ Partial Class NHLGamesMetro
         Me.lblProxyPort.Text = "PROXY_PORT"
         Me.lblProxyPort.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'cbServers
-        '
-        Me.cbServers.BackColor = System.Drawing.SystemColors.Window
-        Me.cbServers.Dock = System.Windows.Forms.DockStyle.Left
-        Me.cbServers.DropDownHeight = 80
-        Me.cbServers.FontSize = MetroFramework.MetroComboBoxSize.Small
-        Me.cbServers.FormattingEnabled = True
-        Me.cbServers.IntegralHeight = False
-        Me.cbServers.ItemHeight = 19
-        Me.cbServers.Location = New System.Drawing.Point(177, 333)
-        Me.cbServers.Name = "cbServers"
-        Me.cbServers.Size = New System.Drawing.Size(600, 25)
-        Me.cbServers.TabIndex = 510
-        Me.cbServers.UseSelectable = True
-        '
         'flpHostsFile
         '
         Me.flpHostsFile.Controls.Add(Me.lblProxyPortNumber)
@@ -1484,18 +1437,6 @@ Partial Class NHLGamesMetro
         Me.lblProxyPortNumber.TabIndex = 1
         Me.lblProxyPortNumber.Text = "000000"
         Me.lblProxyPortNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'tbProxyPort
-        '
-        Me.tbProxyPort.BackColor = System.Drawing.Color.Transparent
-        Me.tbProxyPort.LargeChange = 10
-        Me.tbProxyPort.Location = New System.Drawing.Point(69, 3)
-        Me.tbProxyPort.Maximum = 2500
-        Me.tbProxyPort.Minimum = 200
-        Me.tbProxyPort.Name = "tbProxyPort"
-        Me.tbProxyPort.Size = New System.Drawing.Size(534, 23)
-        Me.tbProxyPort.TabIndex = 0
-        Me.tbProxyPort.Value = 808
         '
         'tlpGamePanelSettings
         '
@@ -2013,21 +1954,6 @@ Partial Class NHLGamesMetro
         Me.lblLiveRewindDetails.Text = "00_MINUTES_BEHIND_LIVE"
         Me.lblLiveRewindDetails.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'tbLiveRewind
-        '
-        Me.tbLiveRewind.BackColor = System.Drawing.Color.Transparent
-        Me.tbLiveRewind.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.tbLiveRewind.LargeChange = 3
-        Me.tbLiveRewind.Location = New System.Drawing.Point(3, 1)
-        Me.tbLiveRewind.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
-        Me.tbLiveRewind.Maximum = 60
-        Me.tbLiveRewind.Minimum = 1
-        Me.tbLiveRewind.Name = "tbLiveRewind"
-        Me.tbLiveRewind.Size = New System.Drawing.Size(344, 29)
-        Me.tbLiveRewind.SmallChange = 2
-        Me.tbLiveRewind.TabIndex = 0
-        Me.tbLiveRewind.Value = 1
-        '
         'lblLiveRewind
         '
         Me.lblLiveRewind.AutoSize = True
@@ -2062,18 +1988,6 @@ Partial Class NHLGamesMetro
         Me.lblLiveReplay.Text = "REPLAY_LIVE_STREAM"
         Me.lblLiveReplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'cbLiveReplay
-        '
-        Me.cbLiveReplay.Dock = System.Windows.Forms.DockStyle.Left
-        Me.cbLiveReplay.FontSize = MetroFramework.MetroComboBoxSize.Small
-        Me.cbLiveReplay.FormattingEnabled = True
-        Me.cbLiveReplay.ItemHeight = 19
-        Me.cbLiveReplay.Location = New System.Drawing.Point(177, 213)
-        Me.cbLiveReplay.Name = "cbLiveReplay"
-        Me.cbLiveReplay.Size = New System.Drawing.Size(600, 25)
-        Me.cbLiveReplay.TabIndex = 522
-        Me.cbLiveReplay.UseSelectable = True
-        '
         'tgDarkMode
         '
         Me.tgDarkMode.AutoSize = True
@@ -2093,6 +2007,51 @@ Partial Class NHLGamesMetro
         Me.lblDarkMode.TabIndex = 524
         Me.lblDarkMode.Text = "DARK"
         Me.lblDarkMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblReset
+        '
+        Me.lblReset.AutoSize = True
+        Me.lblReset.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lblReset.Location = New System.Drawing.Point(3, 1080)
+        Me.lblReset.Name = "lblReset"
+        Me.lblReset.Size = New System.Drawing.Size(148, 30)
+        Me.lblReset.TabIndex = 525
+        Me.lblReset.Text = "RESET"
+        Me.lblReset.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'FlowLayoutPanel2
+        '
+        Me.FlowLayoutPanel2.Controls.Add(Me.tgReset)
+        Me.FlowLayoutPanel2.Controls.Add(Me.lblResetDesc)
+        Me.FlowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(174, 1080)
+        Me.FlowLayoutPanel2.Margin = New System.Windows.Forms.Padding(0)
+        Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(771, 30)
+        Me.FlowLayoutPanel2.TabIndex = 528
+        '
+        'tgReset
+        '
+        Me.tgReset.AutoSize = True
+        Me.tgReset.Location = New System.Drawing.Point(3, 3)
+        Me.tgReset.Name = "tgReset"
+        Me.tgReset.Size = New System.Drawing.Size(80, 19)
+        Me.tgReset.TabIndex = 526
+        Me.tgReset.Text = "Off"
+        Me.tgReset.UseSelectable = True
+        '
+        'lblResetDesc
+        '
+        Me.lblResetDesc.AutoSize = True
+        Me.lblResetDesc.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lblResetDesc.FontSize = MetroFramework.MetroLabelSize.Small
+        Me.lblResetDesc.Location = New System.Drawing.Point(91, 5)
+        Me.lblResetDesc.Margin = New System.Windows.Forms.Padding(5)
+        Me.lblResetDesc.Name = "lblResetDesc"
+        Me.lblResetDesc.Size = New System.Drawing.Size(70, 15)
+        Me.lblResetDesc.TabIndex = 527
+        Me.lblResetDesc.Text = "RESET_DESC"
+        Me.lblResetDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'tabConsole
         '
@@ -2236,8 +2195,8 @@ Partial Class NHLGamesMetro
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Controls.Add(Me.lnkRelease, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.lblTip, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblTip, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.lnkRelease, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(169, 0)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
@@ -2247,39 +2206,43 @@ Partial Class NHLGamesMetro
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(744, 38)
         Me.TableLayoutPanel1.TabIndex = 63
         '
-        'lnkRelease
-        '
-        Me.lnkRelease.AutoSize = True
-        Me.lnkRelease.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.lnkRelease.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.lnkRelease.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lnkRelease.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(155, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.lnkRelease.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lnkRelease.Location = New System.Drawing.Point(0, 0)
-        Me.lnkRelease.Margin = New System.Windows.Forms.Padding(0)
-        Me.lnkRelease.Name = "lnkRelease"
-        Me.lnkRelease.Size = New System.Drawing.Size(62, 38)
-        Me.lnkRelease.TabIndex = 20
-        Me.lnkRelease.Text = "RELEASE"
-        Me.lnkRelease.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lnkRelease.UseCustomBackColor = True
-        Me.lnkRelease.UseSelectable = True
-        Me.lnkRelease.Visible = False
-        '
         'lblTip
         '
         Me.lblTip.AutoSize = True
         Me.lblTip.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTip.FontSize = MetroFramework.MetroLabelSize.Small
-        Me.lblTip.Location = New System.Drawing.Point(62, 0)
+        Me.lblTip.Location = New System.Drawing.Point(0, 0)
         Me.lblTip.Margin = New System.Windows.Forms.Padding(0)
         Me.lblTip.Name = "lblTip"
-        Me.lblTip.Size = New System.Drawing.Size(682, 38)
+        Me.lblTip.Size = New System.Drawing.Size(23, 38)
         Me.lblTip.TabIndex = 62
         Me.lblTip.Text = "TIP"
         Me.lblTip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblTip.UseCustomBackColor = True
         Me.lblTip.UseCustomForeColor = True
+        '
+        'lnkRelease
+        '
+        Me.lnkRelease.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lnkRelease.AutoSize = True
+        Me.lnkRelease.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.lnkRelease.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lnkRelease.FontSize = MetroFramework.MetroLinkSize.Medium
+        Me.lnkRelease.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lnkRelease.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lnkRelease.Location = New System.Drawing.Point(23, 0)
+        Me.lnkRelease.Margin = New System.Windows.Forms.Padding(0)
+        Me.lnkRelease.Name = "lnkRelease"
+        Me.lnkRelease.Size = New System.Drawing.Size(721, 38)
+        Me.lnkRelease.TabIndex = 20
+        Me.lnkRelease.Text = "RELEASE"
+        Me.lnkRelease.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lnkRelease.UseCustomBackColor = True
+        Me.lnkRelease.UseCustomForeColor = True
+        Me.lnkRelease.UseSelectable = True
+        Me.lnkRelease.Visible = False
         '
         'spnStreaming
         '
@@ -2319,6 +2282,101 @@ Partial Class NHLGamesMetro
         Me.pnlLogo.Name = "pnlLogo"
         Me.pnlLogo.Size = New System.Drawing.Size(170, 58)
         Me.pnlLogo.TabIndex = 10000
+        '
+        'cbSeasons
+        '
+        Me.cbSeasons.Dock = System.Windows.Forms.DockStyle.Left
+        Me.cbSeasons.FontSize = MetroFramework.MetroComboBoxSize.Small
+        Me.cbSeasons.FormattingEnabled = True
+        Me.cbSeasons.IntegralHeight = False
+        Me.cbSeasons.ItemHeight = 19
+        Me.cbSeasons.Location = New System.Drawing.Point(103, 33)
+        Me.cbSeasons.Name = "cbSeasons"
+        Me.cbSeasons.Size = New System.Drawing.Size(200, 25)
+        Me.cbSeasons.TabIndex = 501
+        Me.cbSeasons.UseSelectable = True
+        '
+        'cbStreamQuality
+        '
+        Me.cbStreamQuality.Dock = System.Windows.Forms.DockStyle.Left
+        Me.cbStreamQuality.DropDownHeight = 200
+        Me.cbStreamQuality.FontSize = MetroFramework.MetroComboBoxSize.Small
+        Me.cbStreamQuality.FormattingEnabled = True
+        Me.cbStreamQuality.IntegralHeight = False
+        Me.cbStreamQuality.ItemHeight = 19
+        Me.cbStreamQuality.Location = New System.Drawing.Point(177, 183)
+        Me.cbStreamQuality.Name = "cbStreamQuality"
+        Me.cbStreamQuality.Size = New System.Drawing.Size(600, 25)
+        Me.cbStreamQuality.TabIndex = 500
+        Me.cbStreamQuality.UseSelectable = True
+        '
+        'cbLanguage
+        '
+        Me.cbLanguage.BackColor = System.Drawing.SystemColors.Window
+        Me.cbLanguage.DropDownHeight = 80
+        Me.cbLanguage.FontSize = MetroFramework.MetroComboBoxSize.Small
+        Me.cbLanguage.FormattingEnabled = True
+        Me.cbLanguage.IntegralHeight = False
+        Me.cbLanguage.ItemHeight = 19
+        Me.cbLanguage.Location = New System.Drawing.Point(3, 3)
+        Me.cbLanguage.Name = "cbLanguage"
+        Me.cbLanguage.Size = New System.Drawing.Size(600, 25)
+        Me.cbLanguage.TabIndex = 1410
+        Me.cbLanguage.UseSelectable = True
+        '
+        'cbServers
+        '
+        Me.cbServers.BackColor = System.Drawing.SystemColors.Window
+        Me.cbServers.Dock = System.Windows.Forms.DockStyle.Left
+        Me.cbServers.DropDownHeight = 80
+        Me.cbServers.FontSize = MetroFramework.MetroComboBoxSize.Small
+        Me.cbServers.FormattingEnabled = True
+        Me.cbServers.IntegralHeight = False
+        Me.cbServers.ItemHeight = 19
+        Me.cbServers.Location = New System.Drawing.Point(177, 333)
+        Me.cbServers.Name = "cbServers"
+        Me.cbServers.Size = New System.Drawing.Size(600, 25)
+        Me.cbServers.TabIndex = 510
+        Me.cbServers.UseSelectable = True
+        '
+        'tbProxyPort
+        '
+        Me.tbProxyPort.BackColor = System.Drawing.Color.Transparent
+        Me.tbProxyPort.LargeChange = 10
+        Me.tbProxyPort.Location = New System.Drawing.Point(69, 3)
+        Me.tbProxyPort.Maximum = 2500
+        Me.tbProxyPort.Minimum = 200
+        Me.tbProxyPort.Name = "tbProxyPort"
+        Me.tbProxyPort.Size = New System.Drawing.Size(534, 23)
+        Me.tbProxyPort.TabIndex = 0
+        Me.tbProxyPort.Value = 808
+        '
+        'tbLiveRewind
+        '
+        Me.tbLiveRewind.BackColor = System.Drawing.Color.Transparent
+        Me.tbLiveRewind.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.tbLiveRewind.LargeChange = 3
+        Me.tbLiveRewind.Location = New System.Drawing.Point(3, 1)
+        Me.tbLiveRewind.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.tbLiveRewind.Maximum = 60
+        Me.tbLiveRewind.Minimum = 1
+        Me.tbLiveRewind.Name = "tbLiveRewind"
+        Me.tbLiveRewind.Size = New System.Drawing.Size(344, 29)
+        Me.tbLiveRewind.SmallChange = 2
+        Me.tbLiveRewind.TabIndex = 0
+        Me.tbLiveRewind.Value = 1
+        '
+        'cbLiveReplay
+        '
+        Me.cbLiveReplay.Dock = System.Windows.Forms.DockStyle.Left
+        Me.cbLiveReplay.FontSize = MetroFramework.MetroComboBoxSize.Small
+        Me.cbLiveReplay.FormattingEnabled = True
+        Me.cbLiveReplay.ItemHeight = 19
+        Me.cbLiveReplay.Location = New System.Drawing.Point(177, 213)
+        Me.cbLiveReplay.Name = "cbLiveReplay"
+        Me.cbLiveReplay.Size = New System.Drawing.Size(600, 25)
+        Me.cbLiveReplay.TabIndex = 522
+        Me.cbLiveReplay.UseSelectable = True
         '
         'NHLGamesMetro
         '
@@ -2396,6 +2454,8 @@ Partial Class NHLGamesMetro
         Me.flpAdDetection.PerformLayout()
         Me.tlpReplay.ResumeLayout(False)
         Me.tlpReplay.PerformLayout()
+        Me.FlowLayoutPanel2.ResumeLayout(False)
+        Me.FlowLayoutPanel2.PerformLayout()
         Me.tabConsole.ResumeLayout(False)
         Me.pnlBottom.ResumeLayout(False)
         Me.tlpStatus.ResumeLayout(False)
@@ -2561,4 +2621,8 @@ Partial Class NHLGamesMetro
     Friend WithEvents lblSeason As MetroLabel
     Friend WithEvents tlpStandings As TableLayoutPanel
     Friend WithEvents tabStandings As MetroTabPage
+    Friend WithEvents lblReset As MetroLabel
+    Friend WithEvents tgReset As MetroToggle
+    Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
+    Friend WithEvents lblResetDesc As MetroLabel
 End Class
