@@ -1,4 +1,4 @@
-[![image](https://user-images.githubusercontent.com/23088305/39225217-073f7dc8-4819-11e8-86f8-bcfdbc395d10.png)](https://github.com/NHLGames/NHLGames)
+[![image](https://user-images.githubusercontent.com/23088305/39225217-073f7dc8-4819-11e8-86f8-bcfdbc395d10.png)](http://nhlgames.github.io/NHLGames/)
 
 Tool to watch NHL games streams in High Definition    
 
