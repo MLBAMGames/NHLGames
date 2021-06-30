@@ -14,7 +14,7 @@ Enjoy!
 - [First use](#first-use)
   - [Requirements](#requirements)
   - [Is this app safe?](#is-this-app-safe)
-- [User interface](#user-interface)
+- [Documentation](#documentation)
   - [Games](#games)
     - [Navigation bar](#navigation-bar)
     - [Game panel](#game-panel)
@@ -34,10 +34,6 @@ Enjoy!
     - [Ad Detection](#ad-detection)
   - [Console](#console)
 - [Wiki and Support](#wiki-and-support)
-- [Chromecast](#chromecast)
-  - [VLC 3.0](#vlc-30)
-  - [Google Chrome](#google-chrome)
-- [Phones and TVs](#phones-and-tvs)
 - [Contribute](#contribute)
 - [Donation](#donation)
 - [Download](#download)
@@ -54,7 +50,15 @@ If you run NHLGames on Windows 7 you will probably need to install:
 
 - [.NET Framework 4.5](https://www.microsoft.com/en-ca/download/details.aspx?id=30653)
 
-If you downloaded the simplified version instead of the complete version in the Releases page, you'll need:
+In the release page, [download](#download) the complete version includes:
+
+- Our proxy [mlbam-proxy](https://github.com/jwallet/go-mlbam-proxy)
+- Our Windows-Hosts-File editor [mlbam-host](https://github.com/jwallet/go-mlbam-hosts) (if you have issues with our proxy)
+- Our app upater
+- Media player MPV
+- Streamer Streamlink
+
+If you choose the simplified version instead of the complete version, you'll need:
 
 - A supported [media player](#players)
 - A supported [streamer](#streamer)
@@ -63,7 +67,7 @@ If you downloaded the simplified version instead of the complete version in the 
 
 Yes, it is. The server only responds in plain text and won't harm your PC. You can verify yourself by inspecting the code.
 
-# _User interface_
+# _Documentation_
 
 Everytime you launch NHLGames it will search for today's games.
 
@@ -247,34 +251,6 @@ Go to this tab to see everything that NHLGames logs. Any error or warning will s
 
 Having an issue with NHLGames? Head to our [Wiki](https://github.com/NHLGames/NHLGames/wiki) to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/NHLGames/NHLGames/issues).
 
-# _Chromecast_
-
-NHLGames doesn't support Chromecast, but VLC 3.0 player and Google Chrome does. Follow these steps if you want to play the game on your TV.
-
-## _VLC 3.0_
-
-![image](https://user-images.githubusercontent.com/23088305/37436787-15ef5fe2-27c0-11e8-8a47-b0a25b40a598.png)
-
-## _Google Chrome_
-
-![image](https://cloud.githubusercontent.com/assets/23088305/25557771/3570cf2a-2ce6-11e7-980a-b605b93c66dc.png)
-
-3. Select a pc monitor you want to share. Make sure audio share is checked.
-
-<img src="https://cloud.githubusercontent.com/assets/23088305/25556591/3145542a-2ccd-11e7-8ba4-d4947e2bb84f.png" width="460"/>
-
-4. Use NHLGames to get a stream, once the game plays, move the media player window to the right monitor and enjoy the show.
-
-<img src="https://cloud.githubusercontent.com/assets/23088305/25556617/a6caab1e-2ccd-11e7-89d3-c9177a997ed1.png" width="300"/>
-
-# _Phones and TVs_
-
-You can redirect the stream over the Internet by using VLC player output and host it.  
-Open NHLGames, go to settings, select VLC as your default and turn on player args.  
-Type `--sout=#http{mux=ts,dst=:8080/stream}`.  
-Click on a stream, VLC should open after accepting new configs to your firewall.  
-Go on your phone and use a player such as _MPV Mobile App_ to open the link `ip:8080/stream` replace `ip` by your external ip (internet/WAN) (google `my ip`) or by your internal ip (local/LAN) (cmd.exe `ipconfig`)
-
 # _Contribute_
 
 NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute : [Follow the guidelines](CONTRIBUTING.md)
@@ -288,4 +264,4 @@ Donate via Bitcoin: `17uSfctCE4n5uLAHqZQEozqEiLafSaUgQL`
 
 # _Download_
 
-### Windows: [Lastest release](https://github.com/NHLGames/NHLGames/releases)
+### Windows: [Lastest release](https://github.com/NHLGames/NHLGames/releases/latest)
