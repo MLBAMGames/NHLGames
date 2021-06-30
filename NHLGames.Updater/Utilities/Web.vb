@@ -6,7 +6,7 @@ Imports System.ComponentModel
 Namespace Utilities
     Public Class Web
         Public Const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"
-        Const BYTES_IN_MEGABYTE = 1000000
+        Const BYTES_IN_MEGABYTE = 1_000_000
 
         Shared WithEvents _wc As WebClient = New WebClient()
 
@@ -62,7 +62,7 @@ Namespace Utilities
                 Using myHttpWebResponse As HttpWebResponse = Await myHttpWebRequest.GetResponseAsync().ConfigureAwait(False)
                     If myHttpWebResponse.StatusCode = HttpStatusCode.OK Then
                         Using reader As Stream = myHttpWebResponse.GetResponseStream()
-                            reader.CopyTo(content)
+                            Await reader.CopyToAsync(content)
                         End Using
                     End If
                 End Using

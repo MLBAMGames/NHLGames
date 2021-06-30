@@ -5,9 +5,9 @@ Public Class Updater
     Public Const UPDATER_DIRECTORY = "updater"
     Public Shared ProjectDirectory As String = AppDomain.CurrentDomain.BaseDirectory
 
-    Public Shared UpdaterExtractedTempDirectoryPath = ProjectDirectory + UPDATER_TMP_DIRECTORY
-    Public Shared UpdaterExtractedContentDirectoryPath = UpdaterExtractedTempDirectoryPath + "\" + UPDATER_DIRECTORY
-    Public Shared UpdaterDirectoryPath = ProjectDirectory + UPDATER_DIRECTORY
+    Public Shared UpdaterExtractedTempDirectoryPath = $"{ProjectDirectory}{UPDATER_TMP_DIRECTORY}"
+    Public Shared UpdaterExtractedContentDirectoryPath = $"{UpdaterExtractedTempDirectoryPath}\{UPDATER_DIRECTORY}"
+    Public Shared UpdaterDirectoryPath = $"{ProjectDirectory}{UPDATER_DIRECTORY}"
 
     Public Shared Sub UpgradeSettings()
         If Directory.Exists(UpdaterExtractedContentDirectoryPath) Then

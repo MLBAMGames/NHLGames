@@ -25,10 +25,9 @@ Namespace Utilities
                 Return Nothing
             End If
 
-            Dim swapReleases = releases.Reverse()
-            Dim relatedReleases = swapReleases.Where(Function(r) AssemblyInfo.IsNewerVersionThanCurrent(r.tag_name)).ToArray()
+            Dim relatedReleases = releases.Reverse().Where(Function(r) AssemblyInfo.IsNewerVersionThanCurrent(r.tag_name)).ToArray()
 
-            If relatedReleases.Count() = 0 Then
+            If Not relatedReleases.Any() Then
                 Console.WriteLine("You are already using the latest version.")
                 Updater.LeaveConsole()
             End If

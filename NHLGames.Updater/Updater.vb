@@ -8,8 +8,8 @@ Public Class Updater
     Public Const UPDATER_TMP_DIRECTORY = "tmp_updater"
     Public Const NHL_GAMES_APP = "nhlgames.exe"
     Public Shared ProjectDirectory As String = AppDomain.CurrentDomain.BaseDirectory + "..\"
-    Public Shared UpdaterTempFullPath As String = ProjectDirectory + UPDATER_TMP_DIRECTORY
-    Public Shared NHLGamesFullPath As String = ProjectDirectory + NHL_GAMES_APP
+    Public Shared UpdaterTempFullPath As String = $"{ProjectDirectory}{UPDATER_TMP_DIRECTORY}"
+    Public Shared NHLGamesFullPath As String = $"{ProjectDirectory}{NHL_GAMES_APP}"
 
     Public Shared Async Function ProcessUpdateAsync() As Task
         DeleteTempFiles()
@@ -17,7 +17,7 @@ Public Class Updater
         Try
             Dim releases = Await GitHub.GetReleases()
 
-            If releases.Length = 0 Then Return
+            If Not releases.Any() Then Return
 
             For Each release As Objects.GitHub.Release In releases
                 Console.WriteLine("Updating to release {0}...", release.tag_name)
@@ -46,11 +46,11 @@ Public Class Updater
             Return String.Empty
         Catch ex As UnauthorizedAccessException
             Console.WriteLine($"Something went wrong during the download. Make sure it was not blocked by your Antivirus Software.")
-            Console.WriteLine("Error Message: " + ex.Message)
+            Console.WriteLine("Error Message: {0}", ex.Message)
             Throw ex
         Catch ex As Exception
             Console.WriteLine($"Something went wrong during the download.")
-            Console.WriteLine("Error Message: " + ex.Message)
+            Console.WriteLine("Error Message: {0}", ex.Message)
             Throw ex
         End Try
     End Function
@@ -69,12 +69,12 @@ Public Class Updater
             Next
         Catch ex As UnauthorizedAccessException
             Console.WriteLine("An error occurred while extracting. Make sure NHLGames is not running or Antivirus Software is interferring.")
-            Console.WriteLine("You can extract the file manually at: " + fileName)
-            Console.WriteLine("Error Message: " + ex.Message)
+            Console.WriteLine("You can extract the file manually at: {0}", fileName)
+            Console.WriteLine("Error Message: {0}", ex.Message)
             Throw ex
         Catch ex As Exception
             Console.WriteLine("An error occurred while extracting")
-            Console.WriteLine("Error Message: " + ex.Message)
+            Console.WriteLine("Error Message: {0}", ex.Message)
             Throw ex
         Finally
             DeleteTempFiles()
