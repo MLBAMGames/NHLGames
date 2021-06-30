@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/23088305/39225217-073f7dc8-4819-11e8-86f8-bcfdbc395d10.png)
+[![image](https://user-images.githubusercontent.com/23088305/39225217-073f7dc8-4819-11e8-86f8-bcfdbc395d10.png)](https://github.com/NHLGames/NHLGames)
 
 Tool to watch NHL games streams in High Definition    
 
@@ -32,7 +32,7 @@ Enjoy!
      * [Arguments](#arguments)
      * [Ad Detection](#ad-detection)
    * [Console](#console)
-* [Support](#support)
+* [Wiki and Support](#wiki-and-support)
 * [Chromecast](#chromecast)
   * [VLC 3.0](#vlc-30)
   * [Google Chrome](#google-chrome)
@@ -207,7 +207,7 @@ Ad detection supports these applications:
 ## //_Console_
 Go to this tab to see everything that NHLGames logs. Any error or warning will show up here. Click on `Copy to clipboard` if you get an issue and want to report it on Github. Paste the log text when opening an issue.
 
-# /_Support_
+# /_Wiki and Support_
 Having an issue with NHLGames? Head to our [Wiki](https://github.com/NHLGames/NHLGames/wiki) to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/NHLGames/NHLGames/issues).
 
 # /_Chromecast_
