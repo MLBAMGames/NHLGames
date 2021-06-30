@@ -56,8 +56,9 @@ Public Class Updater
     End Function
 
     Public Shared Sub ExtractDownloadedAsset(fileName As String)
+        Dim zip As ZipFile = Nothing
         Try
-            Dim zip As ZipFile = ZipFile.Read(fileName)
+            zip = ZipFile.Read(fileName)
             Console.WriteLine("Extracting...")
             For Each entry In zip.Entries()
                 If Path.GetDirectoryName(entry.FileName) = UPDATER_DIRECTORY Then
@@ -66,7 +67,6 @@ Public Class Updater
                     entry.Extract(ProjectDirectory, ExtractExistingFileAction.OverwriteSilently)
                 End If
             Next
-            zip.Dispose()
         Catch ex As UnauthorizedAccessException
             Console.WriteLine("An error occurred while extracting. Make sure NHLGames is not running or Antivirus Software is interferring.")
             Console.WriteLine("You can extract the file manually at: " + fileName)
@@ -78,6 +78,9 @@ Public Class Updater
             Throw ex
         Finally
             DeleteTempFiles()
+            If zip IsNot Nothing Then
+                zip.Dispose()
+            End If
         End Try
     End Sub
 
