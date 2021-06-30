@@ -68,7 +68,6 @@ Public Class Updater
             Next
             zip.Dispose()
         Catch ex As UnauthorizedAccessException
-            ' and updater is not running, cannot overwrite folder, updater is running
             Console.WriteLine("An error occurred while extracting. Make sure NHLGames is not running or Antivirus Software is interferring.")
             Console.WriteLine("You can extract the file manually at: " + fileName)
             Console.WriteLine("Error Message: " + ex.Message)
