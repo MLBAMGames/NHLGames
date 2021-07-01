@@ -249,8 +249,8 @@ Partial Class NHLGamesMetro
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tabMenu.CausesValidation = False
-        Me.tabMenu.Controls.Add(Me.tabStandings)
         Me.tabMenu.Controls.Add(Me.tabGames)
+        Me.tabMenu.Controls.Add(Me.tabStandings)
         Me.tabMenu.Controls.Add(Me.tabSettings)
         Me.tabMenu.Controls.Add(Me.tabConsole)
         Me.tabMenu.Cursor = System.Windows.Forms.Cursors.Default
@@ -260,7 +260,7 @@ Partial Class NHLGamesMetro
         Me.tabMenu.Location = New System.Drawing.Point(-1, 60)
         Me.tabMenu.Margin = New System.Windows.Forms.Padding(0)
         Me.tabMenu.Name = "tabMenu"
-        Me.tabMenu.SelectedIndex = 2
+        Me.tabMenu.SelectedIndex = 0
         Me.tabMenu.Size = New System.Drawing.Size(992, 560)
         Me.tabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabMenu.Style = MetroFramework.MetroColorStyle.Blue
