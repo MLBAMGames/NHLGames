@@ -253,6 +253,10 @@ Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side ba
 
 ### [Wiki and Support](https://github.com/NHLGames/NHLGames/wiki)
 
+If you think that the app does not work or is down, please check if our services are up
+
+### [Server Status](https://jwallet.github.io/nhl-games-status/)
+
 # _Contribute_
 
 NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute : [Follow the guidelines](CONTRIBUTING.md)
