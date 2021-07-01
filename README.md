@@ -257,6 +257,10 @@ If you think that the app does not work or is down, please check if our services
 
 ### [Server Status](https://jwallet.github.io/nhl-games-status/)
 
+Support by the reddit community
+
+### [Subreddit](https://www.reddit.com/r/nhl_games)
+
 # _Contribute_
 
 NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute : [Follow the guidelines](CONTRIBUTING.md)
