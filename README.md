@@ -4,7 +4,7 @@
 [![GitHub all releases](https://img.shields.io/github/downloads/NHLGames/NHLGames/total?style=flat-square)](https://www.github.com/NHLGames/NHLGames/releases/latest)
 [![Windows](https://img.shields.io/badge/plateform-windows-inactive?style=flat-square)](https://www.github.com/NHLGames/NHLGames/releases/latest)
 [![Subreddit subscribers](https://img.shields.io/reddit/subreddit-subscribers/nhl_games?style=flat-square)](https://www.reddit.com/r/nhl_games)
-![Status](https://mlbam-games-status.herokuapp.com/us/badge)
+[![Status](https://mlbam-games-status.herokuapp.com/us/badge)](https://jwallet.github.io/nhl-games-status/)
 
 Tool to watch NHL games streams in High Definition
 
