@@ -249,17 +249,19 @@ Go to this tab to see everything that NHLGames logs. Any error or warning will s
 
 # _Wiki and Support_
 
-Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/NHLGames/NHLGames/issues).
+Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/NHLGames/NHLGames/issues) :
 
-### [Wiki and Support](https://github.com/NHLGames/NHLGames/wiki)
+- #### [Wiki and Support](https://github.com/NHLGames/NHLGames/wiki)
 
-If you think that the app does not work or is down, please check if our services are up
 
-### [Server Status](https://jwallet.github.io/nhl-games-status/)
+If you think that the app does not work or is down, please check if our services are up :
 
-Support by the reddit community
+- #### [Server Status](https://jwallet.github.io/nhl-games-status/)
 
-### [Subreddit](https://www.reddit.com/r/nhl_games)
+
+Support by the reddit community :
+
+- #### [Subreddit](https://www.reddit.com/r/nhl_games)  
 
 # _Contribute_
 
