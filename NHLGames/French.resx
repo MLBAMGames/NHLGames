@@ -445,12 +445,12 @@
     <value>Change de fenêtre selon les touches configurées quand une annonce est détectée</value>
     <comment>Settings tab</comment>
   </data>
-  <data name="lblSpotify" xml:space="preserve">
-    <value>Spotify</value>
+  <data name="lblMedia" xml:space="preserve">
+    <value>Média</value>
     <comment>Settings tab</comment>
   </data>
-  <data name="lblSpotifyDesc" xml:space="preserve">
-    <value>Joue/Pause Spotify quand une annonce est détectée</value>
+  <data name="lblMediaDesc" xml:space="preserve">
+    <value>Joue/Pause le lecteur média quand une annonce est détectée</value>
     <comment>Settings tab</comment>
   </data>
   <data name="tipGetMpc" xml:space="preserve">
@@ -474,11 +474,11 @@
     <comment>Message</comment>
   </data>
   <data name="chkSpotifyForceToStart" xml:space="preserve">
-    <value>Forcer le démarrage</value>
+    <value>Forcer le démarrage de Spotify</value>
     <comment>Settings tab</comment>
   </data>
   <data name="chkSpotifyPlayNextSong" xml:space="preserve">
-    <value>Toujours jouer la prochaine chanson</value>
+    <value>Toujours jouer le prochain média</value>
     <comment>Settings tab</comment>
   </data>
   <data name="lblAlternateCdn" xml:space="preserve">
@@ -489,8 +489,8 @@
     <value>Panneau de partie</value>
     <comment>Settings tab</comment>
   </data>
-  <data name="chkSpotifyAnyMediaPlayer" xml:space="preserve">
-    <value>Essayer avec le lecteur média détecté</value>
+  <data name="chkSpotifyHotkeys" xml:space="preserve">
+    <value>Se lier à Spotify</value>
     <comment>Settings tab</comment>
   </data>
   <data name="gamePeriodSo" xml:space="preserve">

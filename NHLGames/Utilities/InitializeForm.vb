@@ -101,8 +101,8 @@ Namespace Utilities
 
             Form.lblModules.Text = NHLGamesMetro.RmText.GetString("lblModules")
             Form.lblModulesDesc.Text = NHLGamesMetro.RmText.GetString("lblModulesDesc")
-            Form.lblSpotify.Text = NHLGamesMetro.RmText.GetString("lblSpotify")
-            Form.lblSpotifyDesc.Text = NHLGamesMetro.RmText.GetString("lblSpotifyDesc")
+            Form.lblMedia.Text = NHLGamesMetro.RmText.GetString("lblMedia")
+            Form.lblMediaDesc.Text = NHLGamesMetro.RmText.GetString("lblMediaDesc")
             Form.lblMediaControlDelay.Text = NHLGamesMetro.RmText.GetString("lblMediaControlDelay")
             Form.lblOBS.Text = NHLGamesMetro.RmText.GetString("lblObs")
             Form.lblOBSDesc.Text = NHLGamesMetro.RmText.GetString("lblObsDesc")
@@ -110,7 +110,7 @@ Namespace Utilities
             Form.lblObsAdStartingHotkey.Text = NHLGamesMetro.RmText.GetString("lblObsAdStartingHotkey")
             Form.chkSpotifyForceToStart.Text = NHLGamesMetro.RmText.GetString("chkSpotifyForceToStart")
             Form.chkSpotifyPlayNextSong.Text = NHLGamesMetro.RmText.GetString("chkSpotifyPlayNextSong")
-            Form.chkSpotifyAnyMediaPlayer.Text = NHLGamesMetro.RmText.GetString("chkSpotifyAnyMediaPlayer")
+            Form.chkSpotifyHotkeys.Text = NHLGamesMetro.RmText.GetString("chkSpotifyHotkeys")
 
             Form.lblReset.Text = NHLGamesMetro.RmText.GetString("lblReset")
             Form.lblResetDesc.Text = NHLGamesMetro.RmText.GetString("lblResetDesc")
@@ -339,7 +339,7 @@ Namespace Utilities
 
                 Form.chkSpotifyForceToStart.Checked = configs.EnabledSpotifyForceToOpen
                 Form.chkSpotifyPlayNextSong.Checked = configs.EnabledSpotifyPlayNextSong
-                Form.chkSpotifyAnyMediaPlayer.Checked = configs.EnabledSpotifyAndAnyMediaPlayer
+                Form.chkSpotifyHotkeys.Checked = configs.EnabledSpotifyHotkeys
                 Form.txtMediaControlDelay.Text = configs.MediaControlDelay
 
                 Form.txtAdKey.Text = configs.EnabledObsAdSceneHotKey.Key
@@ -352,7 +352,7 @@ Namespace Utilities
                 Form.chkGameAlt.Checked = configs.EnabledObsGameSceneHotKey.Alt
                 Form.chkGameShift.Checked = configs.EnabledObsGameSceneHotKey.Shift
 
-                Form.tgSpotify.Checked = configs.EnabledSpotifyModule
+                Form.tgMedia.Checked = configs.EnabledSpotifyModule
                 Form.tgOBS.Checked = configs.EnabledObsModule
 
             End If
@@ -455,16 +455,16 @@ Namespace Utilities
                 Form.lblModules.Theme = MetroThemeStyle.Dark
                 Form.tgModules.Theme = MetroThemeStyle.Dark
                 Form.lblModulesDesc.Theme = MetroThemeStyle.Dark
-                Form.lblSpotify.Theme = MetroThemeStyle.Dark
-                Form.tgSpotify.Theme = MetroThemeStyle.Dark
-                Form.lblSpotifyDesc.Theme = MetroThemeStyle.Dark
+                Form.lblMedia.Theme = MetroThemeStyle.Dark
+                Form.tgMedia.Theme = MetroThemeStyle.Dark
+                Form.lblMediaDesc.Theme = MetroThemeStyle.Dark
                 Form.lblMediaControlDelay.Theme = MetroThemeStyle.Dark
                 Form.txtMediaControlDelay.BackColor = Color.FromArgb(80, 80, 80)
                 Form.txtMediaControlDelay.ForeColor = Color.LightGray
                 Form.lblMediaControlDelayMs.Theme = MetroThemeStyle.Dark
                 Form.chkSpotifyForceToStart.Theme = MetroThemeStyle.Dark
                 Form.chkSpotifyPlayNextSong.Theme = MetroThemeStyle.Dark
-                Form.chkSpotifyAnyMediaPlayer.Theme = MetroThemeStyle.Dark
+                Form.chkSpotifyHotkeys.Theme = MetroThemeStyle.Dark
                 Form.lblOBS.Theme = MetroThemeStyle.Dark
                 Form.tgOBS.Theme = MetroThemeStyle.Dark
                 Form.lblOBSDesc.Theme = MetroThemeStyle.Dark

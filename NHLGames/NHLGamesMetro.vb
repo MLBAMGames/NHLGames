@@ -544,12 +544,12 @@ Public Class NHLGamesMetro
         If tg.Checked Then
             _adDetectionEngine = New AdDetection
         Else
-            tgSpotify.Checked = False
+            tgMedia.Checked = False
             tgOBS.Checked = False
         End If
 
         tgOBS.Enabled = tg.Checked AndAlso txtAdKey.Text <> String.Empty AndAlso txtGameKey.Text <> String.Empty
-        tgSpotify.Enabled = tg.Checked
+        tgMedia.Enabled = tg.Checked
         tlpOBSSettings.Enabled = tg.Checked
         flpSpotifyParameters.Enabled = tg.Checked
 
@@ -587,7 +587,7 @@ Public Class NHLGamesMetro
                                        If(tgOBS.Checked, English.msgOn, English.msgOff))
     End Sub
 
-    Private Sub tgSpotify_CheckedChanged(sender As Object, e As EventArgs) Handles tgSpotify.CheckedChanged
+    Private Sub tgMedia_CheckedChanged(sender As Object, e As EventArgs) Handles tgMedia.CheckedChanged
         Dim tg As MetroToggle = sender
         Dim spotify As New Spotify
 
@@ -596,7 +596,7 @@ Public Class NHLGamesMetro
         If tg.Checked Then
             spotify.ForceToOpen = chkSpotifyForceToStart.Checked
             spotify.PlayNextSong = chkSpotifyPlayNextSong.Checked
-            spotify.AnyMediaPlayer = chkSpotifyAnyMediaPlayer.Checked
+            spotify.UseHotkeys = chkSpotifyHotkeys.Checked
             spotify.MediaControlDelay = txtMediaControlDelay.Text
             _adDetectionEngine.AddModule(spotify)
         ElseIf _adDetectionEngine.IsInAdModulesList(spotify.Title) Then
@@ -604,8 +604,8 @@ Public Class NHLGamesMetro
         End If
 
         AdDetection.Renew()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblSpotify.Text),
-                                       If(tgSpotify.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblMedia.Text),
+                                       If(tgMedia.Checked, English.msgOn, English.msgOff))
     End Sub
 
     Private Sub txtMediaControlDelay_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMediaControlDelay.KeyPress
@@ -657,14 +657,6 @@ Public Class NHLGamesMetro
     Private Sub txtObsKey_TextChanged(sender As Object, e As EventArgs) _
         Handles txtGameKey.TextChanged, txtAdKey.TextChanged
         tgOBS.Enabled = txtAdKey.Text <> String.Empty AndAlso txtGameKey.Text <> String.Empty AndAlso tgModules.Checked
-    End Sub
-
-    Private Sub chkSpotifyAnyMediaPlayer_CheckedChanged(sender As Object, e As EventArgs) _
-        Handles chkSpotifyAnyMediaPlayer.CheckedChanged
-        If chkSpotifyAnyMediaPlayer.Checked Then
-            chkSpotifyForceToStart.Checked = False
-        End If
-        chkSpotifyForceToStart.Enabled = Not chkSpotifyAnyMediaPlayer.Checked
     End Sub
 
     Private Sub pnlCalendar_MouseLeave(sender As Object, e As EventArgs) Handles flpCalendarPanel.MouseLeave

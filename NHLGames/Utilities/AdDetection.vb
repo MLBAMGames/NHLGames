@@ -79,6 +79,7 @@ Namespace Utilities
         End Function
 
         Public Function GetCurrentVolume(audioSession As AudioSessionControl) As Double
+            If audioSession Is Nothing Then Return 0.0
             Dim x = audioSession.DisplayName
             Dim volumeList = New List(Of Double)
             For j = 0 To 2
@@ -189,11 +190,11 @@ Namespace Utilities
             If NHLGamesMetro.FormLoaded OrElse forceSet Then
                 _settings = New AdDetectionConfigs With {
                     .IsEnabled = form.tgModules.Checked,
-                    .EnabledSpotifyModule = form.tgSpotify.Checked,
+                    .EnabledSpotifyModule = form.tgMedia.Checked,
                     .EnabledObsModule = form.tgOBS.Checked,
                     .EnabledSpotifyForceToOpen = form.chkSpotifyForceToStart.Checked,
                     .EnabledSpotifyPlayNextSong = form.chkSpotifyPlayNextSong.Checked,
-                    .EnabledSpotifyAndAnyMediaPlayer = form.chkSpotifyAnyMediaPlayer.Checked
+                    .EnabledSpotifyHotkeys = form.chkSpotifyHotkeys.Checked
                 }
 
                 If Not String.IsNullOrEmpty(form.txtMediaControlDelay.Text) Then
