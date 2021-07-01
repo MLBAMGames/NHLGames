@@ -9,7 +9,7 @@ Namespace Utilities
         Public Property EnabledObsAdSceneHotKey As Hotkey = New Hotkey()
         Public Property EnabledSpotifyForceToOpen As Boolean = False
         Public Property EnabledSpotifyPlayNextSong As Boolean = False
-        Public Property EnabledSpotifyAndAnyMediaPlayer As Boolean = False
+        Public Property EnabledSpotifyHotkeys As Boolean = False
         Public Property MediaControlDelay As Integer = 100
     End Class
 End Namespace

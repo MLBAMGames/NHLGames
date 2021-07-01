@@ -39,7 +39,7 @@ Namespace Utilities
                 Dim asyncResult = NHLGamesMetro.FormInstance.BeginInvoke(New Action(AddressOf ModuleSpotifyOff))
                 EndInvokeOf(asyncResult)
             Else
-                NHLGamesMetro.FormInstance.tgSpotify.Checked = False
+                NHLGamesMetro.FormInstance.tgMedia.Checked = False
             End If
         End Sub
 

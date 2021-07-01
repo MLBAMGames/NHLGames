@@ -30,7 +30,7 @@ Namespace Objects.Modules
 
         Public Property ForceToOpen As Boolean
         Public Property PlayNextSong As Boolean
-        Public Property AnyMediaPlayer As Boolean
+        Public Property UseHotkeys As Boolean
         Public Property MediaControlDelay As Integer
 
         Public ReadOnly Property Title As AdModulesEnum = AdModulesEnum.Spotify Implements IAdModule.Title
@@ -61,11 +61,11 @@ Namespace Objects.Modules
         End Function
 
         Private Sub NextSong()
-            If AnyMediaPlayer Then
+            If UseHotkeys Then
+                SendActionKey(KeyNextSong)
+            Else
                 Thread.Sleep(MediaControlDelay)
                 NativeMethods.PressKey(KeyVkNextSong)
-            Else
-                SendActionKey(KeyNextSong)
             End If
         End Sub
 
@@ -81,41 +81,41 @@ Namespace Objects.Modules
         End Sub
 
         Private Sub Play()
-            If AnyMediaPlayer Then
-                Thread.Sleep(MediaControlDelay)
-                NativeMethods.PressKey(KeyVkPlayPause)
-            Else
+            If UseHotkeys Then
                 If IsSpotifyPlaying() Then Return
                 SendActionKey(KeyPlayPause)
+            Else
+                Thread.Sleep(MediaControlDelay)
+                NativeMethods.PressKey(KeyVkPlayPause)
             End If
         End Sub
 
         Private Sub Pause()
-            If AnyMediaPlayer Then
-                Thread.Sleep(MediaControlDelay)
-                NativeMethods.PressKey(KeyVkPlayPause)
-            Else
+            If UseHotkeys Then
                 If Not IsSpotifyPlaying() Then Return
                 SendActionKey(KeyPlayPause)
+            Else
+                Thread.Sleep(MediaControlDelay)
+                NativeMethods.PressKey(KeyVkPlayPause)
             End If
         End Sub
 
         Private Function IsItInitialized() As Boolean
-            If AnyMediaPlayer Then Return _initialized
+            If Not UseHotkeys Then Return _initialized
             Try
                 Process.GetProcessById(_spotifyId)
             Catch ex As Exception
                 InvokeElement.ModuleSpotifyOff()
-                    _initialized = False
-                End Try
+                _initialized = False
+            End Try
             Return _initialized
         End Function
 
         Public Sub AdEnded() Implements IAdModule.AdEnded
             If Not IsItInitialized() Then Return
-            If AnyMediaPlayer Then Pause()
+            If Not UseHotkeys Then Pause()
             If PlayNextSong Then NextSong()
-            If Not AnyMediaPlayer Then Pause()
+            If UseHotkeys Then Pause()
         End Sub
 
         Public Sub AdStarted() Implements IAdModule.AdStarted
@@ -128,11 +128,6 @@ Namespace Objects.Modules
         End Sub
 
         Public Sub Initialize() Implements IAdModule.Initialize
-            If AnyMediaPlayer Then
-                _initialized = True
-                Return
-            End If
-
             If Not SpotifyIsInstalled() Then
                 _stopIt = True
                 InvokeElement.ModuleSpotifyOff()

@@ -272,16 +272,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Essayer avec le lecteur média détecté.
-        '''</summary>
-        Friend Shared ReadOnly Property chkSpotifyAnyMediaPlayer() As String
-            Get
-                Return ResourceManager.GetString("chkSpotifyAnyMediaPlayer", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Forcer le démarrage.
+        '''  Looks up a localized string similar to Forcer le démarrage de Spotify.
         '''</summary>
         Friend Shared ReadOnly Property chkSpotifyForceToStart() As String
             Get
@@ -290,7 +281,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Toujours jouer la prochaine chanson.
+        '''  Looks up a localized string similar to Se lier à Spotify.
+        '''</summary>
+        Friend Shared ReadOnly Property chkSpotifyHotkeys() As String
+            Get
+                Return ResourceManager.GetString("chkSpotifyHotkeys", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Toujours jouer le prochain média.
         '''</summary>
         Friend Shared ReadOnly Property chkSpotifyPlayNextSong() As String
             Get
@@ -803,11 +803,29 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Média.
+        '''</summary>
+        Friend Shared ReadOnly Property lblMedia() As String
+            Get
+                Return ResourceManager.GetString("lblMedia", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Délai des contrôles de médias.
         '''</summary>
         Friend Shared ReadOnly Property lblMediaControlDelay() As String
             Get
                 Return ResourceManager.GetString("lblMediaControlDelay", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Joue/Pause le lecteur média quand une annonce est détectée.
+        '''</summary>
+        Friend Shared ReadOnly Property lblMediaDesc() As String
+            Get
+                Return ResourceManager.GetString("lblMediaDesc", resourceCulture)
             End Get
         End Property
         
@@ -1087,24 +1105,6 @@ Namespace My.Resources
         Friend Shared ReadOnly Property lblSlPath() As String
             Get
                 Return ResourceManager.GetString("lblSlPath", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Spotify.
-        '''</summary>
-        Friend Shared ReadOnly Property lblSpotify() As String
-            Get
-                Return ResourceManager.GetString("lblSpotify", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Joue/Pause Spotify quand une annonce est détectée.
-        '''</summary>
-        Friend Shared ReadOnly Property lblSpotifyDesc() As String
-            Get
-                Return ResourceManager.GetString("lblSpotifyDesc", resourceCulture)
             End Get
         End Property
         

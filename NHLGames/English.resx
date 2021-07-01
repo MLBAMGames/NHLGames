@@ -585,12 +585,12 @@
     <value>Switch scenes using binded keys when an Ad is detected</value>
     <comment>Settings tab</comment>
   </data>
-  <data name="lblSpotify" xml:space="preserve">
-    <value>Spotify</value>
+  <data name="lblMedia" xml:space="preserve">
+    <value>Media</value>
     <comment>Settings tab</comment>
   </data>
-  <data name="lblSpotifyDesc" xml:space="preserve">
-    <value>Play/Pause Spotify when an Ad is detected</value>
+  <data name="lblMediaDesc" xml:space="preserve">
+    <value>Play/Pause the media player when an Ad is detected</value>
     <comment>Settings tab</comment>
   </data>
   <data name="msgFetching" xml:space="preserve">
@@ -618,11 +618,11 @@
     <comment>Message</comment>
   </data>
   <data name="chkSpotifyForceToStart" xml:space="preserve">
-    <value>Force to start</value>
+    <value>Force Spotify to start</value>
     <comment>Settings tab</comment>
   </data>
   <data name="chkSpotifyPlayNextSong" xml:space="preserve">
-    <value>Always play next song</value>
+    <value>Always play next media</value>
     <comment>Settings tab</comment>
   </data>
   <data name="lblAlternateCdn" xml:space="preserve">
@@ -637,8 +637,8 @@
     <value>warning:</value>
     <comment>Console</comment>
   </data>
-  <data name="chkSpotifyAnyMediaPlayer" xml:space="preserve">
-    <value>Try with the detected media player</value>
+  <data name="chkSpotifyHotkeys" xml:space="preserve">
+    <value>Bind to Spotify</value>
     <comment>Settings tab</comment>
   </data>
   <data name="msgAdDetectionException" xml:space="preserve">
