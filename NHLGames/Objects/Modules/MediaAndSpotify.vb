@@ -4,11 +4,9 @@ Imports NHLGames.My.Resources
 Imports NHLGames.Utilities
 
 Namespace Objects.Modules
-    Public Class Spotify
+    Public Class MediaAndSpotify
         Inherits AdDetection
         Implements IAdModule
-        
-        Private Const _numberOfSamples As Integer = 3
 
         Private ReadOnly _connectSleep As TimeSpan = TimeSpan.FromSeconds(5)
         Private _initialized As Boolean
@@ -22,8 +20,8 @@ Namespace Objects.Modules
         Private Const KeyPlayPause = " "
 
         Private ReadOnly _spotifyPossiblePaths() = New String() {
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"spotify\\spotify.exe"),
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Microsoft\\WindowsApps\\Spotify.exe")
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "spotify\\spotify.exe"),
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft\\WindowsApps\\Spotify.exe")
         }
 
         Private Shared _spotifyPath As String
@@ -134,12 +132,7 @@ Namespace Objects.Modules
                 Console.WriteLine(English.msgSpotifyIsntInstalled)
             End If
 
-            ConnectLoop()
-
-            If _spotifyId = 0 AndAlso Not _stopIt Then
-                InvokeElement.ModuleSpotifyOff()
-                Console.WriteLine(English.msgSpotifyNotConnected)
-            End If
+            Task.Run(AddressOf ConnectLoop)
 
             _initialized = True
         End Sub
@@ -149,7 +142,7 @@ Namespace Objects.Modules
             Dispose()
         End Sub
 
-        Private Sub ConnectLoop()
+        Private Async Function ConnectLoop() As Task
             While Not _stopIt
                 Try
                     If ConnectInternal() Then Return
@@ -158,9 +151,16 @@ Namespace Objects.Modules
                     InvokeElement.ModuleSpotifyOff()
                     Console.WriteLine(English.msgSpotifyException, ex.Message)
                 End Try
-                Task.Delay(_connectSleep)
+                Await Task.Delay(_connectSleep)
             End While
-        End Sub
+
+            If _spotifyId = 0 AndAlso Not _stopIt Then
+                InvokeElement.ModuleSpotifyOff()
+                Console.WriteLine(English.msgSpotifyNotConnected)
+            End If
+
+            _initialized = True
+        End Function
 
         Private Function ConnectInternal() As Boolean
             If Not SpotifyIsRunning() Then

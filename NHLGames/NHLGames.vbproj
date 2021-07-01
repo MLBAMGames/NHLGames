@@ -275,7 +275,7 @@
     <Compile Include="Utilities\AdDetectionConfigs.vb" />
     <Compile Include="Objects\Modules\Hotkey.vb" />
     <Compile Include="Objects\Modules\Obs.vb" />
-    <Compile Include="Objects\Modules\Spotify.vb" />
+    <Compile Include="Objects\Modules\MediaAndSpotify.vb" />
     <Compile Include="Utilities\Enums.vb" />
     <Compile Include="Objects\GameWatchArguments.vb" />
     <Compile Include="Objects\GameManager.vb" />

@@ -589,7 +589,7 @@ Public Class NHLGamesMetro
 
     Private Sub tgMedia_CheckedChanged(sender As Object, e As EventArgs) Handles tgMedia.CheckedChanged
         Dim tg As MetroToggle = sender
-        Dim spotify As New Spotify
+        Dim spotify As New MediaAndSpotify
 
         flpSpotifyParameters.Enabled = Not tg.Checked
 
