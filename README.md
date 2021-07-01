@@ -259,7 +259,7 @@ Thanks to our [contributors](https://github.com/NHLGames/NHLGames/graphs/contrib
 
 # _Donation_
 
-[Donate via Paypal](https://streamlabs.com/melnykout)  
+[Donate via Paypal](https://streamlabs.com/stevensnjd4/tip): Make sure to mention NHLGames in the message box so we know which project you're supporting!  
 Donate via Bitcoin: `17uSfctCE4n5uLAHqZQEozqEiLafSaUgQL`
 
 # _Download_
