@@ -234,11 +234,11 @@ NHLGames doesn't use any Ad Detection by default, but you can activate it and se
 
 Ad detection supports these applications:
 
-- Spotify Windows / Other music player: If you want to play music during ads.
-  - Force to start: It will open Spotify when you start NHLGames
-  - Always play next song: It won't pause Spotify when the ad ends, but skip to the next song.
-  - (Experimental) Try with the detected media player: If you do not have Spotify running, but another (like Windows Media Player or iTunes), it will play/pause this player instead, by simulating the media hotkey [Play/Pause] on the keyboard
-  - Media control delay: By default 100ms, but can be increased if Spotify does not play or pause at the right time, 1000ms = 1 second btw.
+- Media player: If you want to play music/video during ads from another media player.
+  - Always play next media: It won't pause your media player when the ad ends, but it will skip to the media (song/video).
+  - Bind to Spotify: If you want to use Spotify app, but Windows use another one instead, enabled this feature to use Spotify hotkeys.
+  - Force to start: It will open Spotify when you start NHLGames, or enable the media app detector.
+  - Media control delay: By default 100ms, but can be increased if your media player doesn't play or pause at the right time, 1000ms = 1 second btw.
 - OBS Scene Changer : If you want to switch between windows when an ad hits.
   - Ad ending hotkey: Set the same hotkey that the one in OBS to display the window that the game is on.
   - Ad starting hotkey: Set the same hotkey that you use in OBS to display the window when a commercial plays.
