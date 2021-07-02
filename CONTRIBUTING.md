@@ -10,7 +10,7 @@ Using NuGet packages:
 
 Using external applications:
 - [MPV](https://mpv.io/installation/) by [MPV Player](/mpv-player)
-- [Livestreamer](http://docs.livestreamer.io/install.html#windows-binaries) by [chrippa](/chrippa) (also supports [Streamlink](https://streamlink.github.io/install.html#windows-binaries) by [Streamlink](/streamlink))
+- [Streamlink](https://streamlink.github.io/install.html#windows-binaries) by [Streamlink](/streamlink) (also supports [Livestreamer](http://docs.livestreamer.io/install.html#windows-binaries) by [chrippa](/chrippa))
 
 Issues
 ------
@@ -31,7 +31,7 @@ In general, we follow the "fork-and-pull" Git workflow.
 
 > Work on open issues only. If you create a new issue, discuss about it, before starting to work on it
 
-> Refactoring should not be consider, except if every user is affected by the issue.   
+> If you create a new feature or update one, don't forget to add a section about it in the documentation.
 
 > Avoid any merge conflicts by merging the latest from "upstream" before making a pull request!
 
