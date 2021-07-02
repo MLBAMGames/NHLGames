@@ -285,7 +285,7 @@ Donate via Bitcoin: `17uSfctCE4n5uLAHqZQEozqEiLafSaUgQL`
 # _Download_
 
 In the _assets_ section of the release, download the `.zip` archive:
-- **Complete***: If you never downloaded NHLGames before, or you want to start fresh.
+- **Complete**: If you never downloaded NHLGames before, or you want to start fresh.
 - **Simplified**: If you already have MPV latest version and StreamLink apps on your PC.
 
 > Simplified version is x10 lighter than the Complete one.
