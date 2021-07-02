@@ -82,7 +82,9 @@ Everytime you launch NHLGames it will search for today's games.
 ### _Navigation bar_
 
 If you want to watch past games, use the calendar or use the arrows to navigate through the days.
+
 ![image](https://user-images.githubusercontent.com/23088305/32304708-b0bf16f2-bf47-11e7-99f7-51c9dcb2382f.png)
+
 Use the refresh button (right side) to refresh the current day's games.
 
 ### _Game panel_
@@ -257,17 +259,17 @@ Go to this tab to see everything that NHLGames logs. Any error or warning will s
 
 Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/NHLGames/NHLGames/issues) :
 
-- #### [Wiki and Support](https://github.com/NHLGames/NHLGames/wiki)
+> #### [Wiki and Support](https://github.com/NHLGames/NHLGames/wiki)
 
 
 If you think that the app does not work or is down, please check if our services are up :
 
-- #### [Server Status](https://jwallet.github.io/nhl-games-status/)
+> #### [Server Status](https://jwallet.github.io/nhl-games-status/)
 
 
 Support by the reddit community :
 
-- #### [Subreddit](https://www.reddit.com/r/nhl_games)  
+> #### [Subreddit](https://www.reddit.com/r/nhl_games)  
 
 # _Contribute_
 
@@ -281,5 +283,11 @@ Thanks to our [contributors](https://github.com/NHLGames/NHLGames/graphs/contrib
 Donate via Bitcoin: `17uSfctCE4n5uLAHqZQEozqEiLafSaUgQL`
 
 # _Download_
+
+In the _assets_ section of the release, download the `.zip` archive:
+- **Complete***: If you never downloaded NHLGames before, or you want to start fresh.
+- **Simplified**: If you already have MPV latest version and StreamLink apps on your PC.
+
+> Simplified version is x10 lighter than the Complete one.
 
 ### Windows: [Lastest release](https://github.com/NHLGames/NHLGames/releases/latest)
