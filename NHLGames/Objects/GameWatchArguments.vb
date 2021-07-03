@@ -35,18 +35,11 @@ Namespace Objects
         Public Shared ReadOnly VlcDefaultArgs As Dictionary(Of String, String) = New Dictionary(Of String, String)() From {
             {"--file-caching", "10000"}, {"--network-caching", "10000"}}
 
-        Public Shared DefaultPlayerArgs As Dictionary(Of PlayerTypeEnum, Dictionary(Of String, String)) = New Dictionary(Of PlayerTypeEnum, Dictionary(Of String, String))() From {
-            {PlayerTypeEnum.Mpc, New Dictionary(Of String, String)()},
-            {PlayerTypeEnum.Vlc, VlcDefaultArgs},
-            {PlayerTypeEnum.Mpv, MpvDefaultArgs},
-            {PlayerTypeEnum.None, New Dictionary(Of String, String)()}
-        }
-
-        Public Shared SavedPlayerArgs As Dictionary(Of PlayerTypeEnum, Dictionary(Of String, String)) = New Dictionary(Of PlayerTypeEnum, Dictionary(Of String, String))() From {
-            {PlayerTypeEnum.Mpc, New Dictionary(Of String, String)()},
-            {PlayerTypeEnum.Vlc, VlcDefaultArgs},
-            {PlayerTypeEnum.Mpv, MpvDefaultArgs},
-            {PlayerTypeEnum.None, New Dictionary(Of String, String)()}
+        Public Shared SavedPlayerArgs As Dictionary(Of PlayerTypeEnum, String()) = New Dictionary(Of PlayerTypeEnum, String())() From {
+            {PlayerTypeEnum.Mpc, {}},
+            {PlayerTypeEnum.Vlc, VlcDefaultArgs.Select(Function(kvp) $"{kvp.Key}={kvp.Value}").ToArray()},
+            {PlayerTypeEnum.Mpv, MpvDefaultArgs.Select(Function(kvp) $"{kvp.Key}={kvp.Value}").ToArray()},
+            {PlayerTypeEnum.None, {}}
         }
 
         Public Overrides Function ToString() As String

@@ -270,12 +270,7 @@ Public Class NHLGamesMetro
     Private Sub txtPlayerArgs_TextChanged(sender As Object, e As EventArgs) Handles txtPlayerArgs.TextChanged
         Dim playerType = Player.GetPlayerType(FormInstance)
         Dim args = txtPlayerArgs.Text.Split(New String() {" "}, StringSplitOptions.RemoveEmptyEntries)
-        GameWatchArguments.SavedPlayerArgs(playerType) = New Dictionary(Of String, String)()
-        For Each arg As String In args
-            Dim parts = arg.Split(New String() {"="}, StringSplitOptions.RemoveEmptyEntries)
-            If parts.Length <> 2 Then Return
-            GameWatchArguments.SavedPlayerArgs(playerType).Add(parts(0), parts(1))
-        Next
+        GameWatchArguments.SavedPlayerArgs(playerType) = args
         Player.RenewArgs()
         _writeToConsoleSettingsChanged(lblPlayerArgs.Text, txtPlayerArgs.Text)
     End Sub
@@ -441,7 +436,7 @@ Public Class NHLGamesMetro
     Public Sub SetPlayerDefaultArgs(form As NHLGamesMetro, Optional overwrite As Boolean = False)
         If form Is Nothing Then Return
         Dim gameArgs = SettingsExtensions.ReadGameWatchArgs()
-        Dim defaultPlayerArgs = New Dictionary(Of String, String)()
+        Dim defaultPlayerArgs = New String() {}
         Select Case gameArgs.PlayerType
             Case PlayerTypeEnum.Vlc
                 defaultPlayerArgs = GameWatchArguments.SavedPlayerArgs(PlayerTypeEnum.Vlc)
@@ -451,7 +446,7 @@ Public Class NHLGamesMetro
                 defaultPlayerArgs = GameWatchArguments.SavedPlayerArgs(PlayerTypeEnum.Mpc)
         End Select
 
-        SetDefaultArgs(defaultPlayerArgs, form.txtPlayerArgs, overwrite)
+        SetDefaultArgs(defaultPlayerArgs.ToDictionary(Function(x) x.Split("=").First(), Function(y) y.Substring(y.IndexOf("=") + 1)), form.txtPlayerArgs, overwrite)
     End Sub
 
     Private Sub SetDefaultArgs(args As Dictionary(Of String, String), txt As TextBox, Optional overwrite As Boolean = False)
