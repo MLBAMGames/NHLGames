@@ -1222,5 +1222,14 @@ Public Class NHLGamesMetro
             cbLiveReplay = value
         End Set
     End Property
+
+    Private Function GetSetting(name As String) Implements IMLBAMForm.GetSetting
+        Return My.Settings(name)
+    End Function
+
+    Private Sub SetSetting(name As String, value As Object) Implements IMLBAMForm.SetSetting
+        My.Settings(name) = value
+        My.Settings.Save()
+    End Sub
 #End Region
 End Class

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Drawing
+Imports System.IO
 Imports System.Reflection
 Imports Svg
 
@@ -22,7 +23,7 @@ Namespace Utilities
             Using s As Stream = myAssembly.GetManifestResourceStream($"NHLGames.{fileName.ToLower()}.svg")
                 If s Is Nothing Then Return Nothing
                 s.Position = 0
-                'image = (SvgDocument.Open(Of SvgDocument)(s)).Draw()
+                image = (SvgDocument.Open(Of SvgDocument)(s)).Draw()
             End Using
             Return image
         End Function
@@ -36,8 +37,8 @@ Namespace Utilities
                 Using s As Stream = myAssembly.GetManifestResourceStream($"NHLGames.{f.ToLower()}.svg")
                     If s IsNot Nothing Then
                         s.Position = 0
-                        'Dim x = (SvgDocument.Open(Of SvgDocument)(s)).Draw()
-                        'x.Save($"c:/output/{f}.png")
+                        Dim x = (SvgDocument.Open(Of SvgDocument)(s)).Draw()
+                        x.Save($"c:/output/{f}.png")
                     End If
                 End Using
             Next

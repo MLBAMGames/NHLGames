@@ -1,0 +1,1088 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnClearConsole" xml:space="preserve">
+    <value>Clear</value>
+    <comment>Console tab</comment>
+  </data>
+  <data name="btnCopyConsole" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+    <comment>Console tab</comment>
+  </data>
+  <data name="lblShowFinalScores" xml:space="preserve">
+    <value>Final scores</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblShowLiveScores" xml:space="preserve">
+    <value>Live scores</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblShowSeriesRecord" xml:space="preserve">
+    <value>Series record</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="errorDeserialize" xml:space="preserve">
+    <value>Error : Failed to deserialize setting value of '{0}' to type '{1}'</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorGeneral" xml:space="preserve">
+    <value>Error: Code failed at: {0} - With exception: {1}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgHostnameSet" xml:space="preserve">
+    <value>NHLGames needs to add a line to your Windows Hosts file so it can redirect NHL.tv streams properly. Do you let NHLGames add its hostname to this file?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="errorMpvExe" xml:space="preserve">
+    <value>Error: Can't find mpv.exe : mpv is a media player that we shipped with NHLGames. You probably moved it or deleted it. Please set a player, NHLGames needs one.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorPlayerPathEmpty" xml:space="preserve">
+    <value>Error: No media player selected in settings.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorReadingSettings" xml:space="preserve">
+    <value>Warning: Failed to read app setting: {0}. Exception occured with: {1}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorSetAdModule" xml:space="preserve">
+    <value>Warning: Can't set Ad Detection Modules. Verify if a Nugget package has a dependency of an older nugget package that you have installed: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorStreamerExe" xml:space="preserve">
+    <value>Error:  Can't find the specified streamer. The streamer is used to send streams to your media player, please select the one that comes with NHLGames or select a valid path of Livestreamer.exe or Streamlink.exe</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorWritingSettings" xml:space="preserve">
+    <value>Warning: Failed to write app settings. Make sure that NHLGames is inside a folder that your user account has full access, like a folder in your user workspace (Documents) or the root of your hard drive. Exception occured with: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="lblAwayTeam" xml:space="preserve">
+    <value>Away Team : {0} {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblCdn" xml:space="preserve">
+    <value>Content Delivery Network</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblEndzoneCam" xml:space="preserve">
+    <value>{0} endzone camera</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="cbEnglish" xml:space="preserve">
+    <value>English</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbFrench" xml:space="preserve">
+    <value>Français</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblFrenchNetwork" xml:space="preserve">
+    <value>French Canadian stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGame" xml:space="preserve">
+    <value>Game {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblGameAbv" xml:space="preserve">
+    <value>GM {0}: {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="tipGetMpc" xml:space="preserve">
+    <value>Download MPC-HC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="tipGetVlc" xml:space="preserve">
+    <value>Download VLC</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblHomeTeam" xml:space="preserve">
+    <value>Home Team : {0} {1}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblHostname" xml:space="preserve">
+    <value>Server's Hostname</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblProxyPort" xml:space="preserve">
+    <value>Proxy Port</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMpcPath" xml:space="preserve">
+    <value>MPC-HC Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMpvPath" xml:space="preserve">
+    <value>MPV Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblNationalNetwork" xml:space="preserve">
+    <value>National stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblNoStreamAvailable" xml:space="preserve">
+    <value>No stream available</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblOnNetwork" xml:space="preserve">
+    <value> on {0}</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblOutput" xml:space="preserve">
+    <value>Output</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayer" xml:space="preserve">
+    <value>Default Player</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPlayerArgs" xml:space="preserve">
+    <value>Players Args</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblPreseason" xml:space="preserve">
+    <value>Preseason</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblQuality" xml:space="preserve">
+    <value>Stream Quality</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblSlPath" xml:space="preserve">
+    <value>Streamer Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblStreamAvailableAtGameTime" xml:space="preserve">
+    <value>Streams available at game time</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblStreamerArgs" xml:space="preserve">
+    <value>Streamer Args</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblTeamStream" xml:space="preserve">
+    <value>{0} stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblVlcPath" xml:space="preserve">
+    <value>VLC Path</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lnkCalendarToday" xml:space="preserve">
+    <value>Today</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="msgAddHost" xml:space="preserve">
+    <value>Add our server to your hosts file</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgAddReadOnly" xml:space="preserve">
+    <value>The {0} file is now set back to Read Only</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgBackingHostsFile" xml:space="preserve">
+    <value>Hosts: Backing up file: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgCleanHostsFile" xml:space="preserve">
+    <value>Hosts: Removing existing entries from hosts file</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgErrorGeneralText" xml:space="preserve">
+    <value>An error happened! {0}Click on [?] (top-right corner) to get to NHLGames documentation and search for your issue.{0}If not found, click on "Copy to clipboard" and paste it in a new thread on /r/nhl_games or open a new issue on our GitHub page. Make sure it was not already posted by someone else.</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgFailure" xml:space="preserve">
+    <value>Failure</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgGettingSchedule" xml:space="preserve">
+    <value>{0}: Game schedule for {1} from NHL.tv</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgGamesFound" xml:space="preserve">
+    <value>Games Found : {0}</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgHostsFailure" xml:space="preserve">
+    <value>Hosts entry doesn't seem to be working :(</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgHostsSuccess" xml:space="preserve">
+    <value>Windows Hosts file looks good: NHL.tv and NHLGames IP addresses matches :)</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgLoadingGames" xml:space="preserve">
+    <value>Loading Games</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgNewVersionAvailable" xml:space="preserve">
+    <value>New Version {0} is available</value>
+    <comment>Version</comment>
+  </data>
+  <data name="lnkNewVersionText" xml:space="preserve">
+    <value>New version {0} is available! Click to update.</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgOff" xml:space="preserve">
+    <value>OFF</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgOn" xml:space="preserve">
+    <value>ON</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgRemoveReadOnly" xml:space="preserve">
+    <value>Status: The {0} file is no longer Read Only</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgRunAsAdmin" xml:space="preserve">
+    <value>Admin Access Required</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgRunAsAdminText" xml:space="preserve">
+    <value>NHLGames has detected a host entry which is no longer needed. Do you want to restart this application as an Administrator to remove the old entry?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgSettingUpdated" xml:space="preserve">
+    <value>Status: Setting updated for '{0}' to '{1}'</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgStreaming" xml:space="preserve">
+    <value>Streaming: {0} on {1} using {2} player</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorDoubleDot" xml:space="preserve">
+    <value>:</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSuccess" xml:space="preserve">
+    <value>Success</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgTeamVsTeam" xml:space="preserve">
+    <value>{0} vs {1}</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgThisEnable" xml:space="preserve">
+    <value>{0} enable</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgValueTooLarge" xml:space="preserve">
+    <value>[Value too large for display]</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgViewHosts" xml:space="preserve">
+    <value>Open Hosts File</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgViewHostsText" xml:space="preserve">
+    <value>Do you wish to view the changes NHLGames made to your Hosts file?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="msgVOD" xml:space="preserve">
+    <value>Video On Demand Status: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="tabConsole" xml:space="preserve">
+    <value>Console</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabGames" xml:space="preserve">
+    <value>Games</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabModules" xml:space="preserve">
+    <value>Modules</value>
+    <comment>Main</comment>
+  </data>
+  <data name="tabSettings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Main</comment>
+  </data>
+  <data name="errorDetection" xml:space="preserve">
+    <value>error:</value>
+    <comment>Console</comment>
+  </data>
+  <data name="gamePeriod1" xml:space="preserve">
+    <value>1st</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriod2" xml:space="preserve">
+    <value>2nd</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriod3" xml:space="preserve">
+    <value>3rd</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodFinal" xml:space="preserve">
+    <value>Final</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodOt" xml:space="preserve">
+    <value>OT</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesLead" xml:space="preserve">
+    <value>leads</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesTied" xml:space="preserve">
+    <value>tied</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gameSeriesWin" xml:space="preserve">
+    <value>wins</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Language</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblNoGames" xml:space="preserve">
+    <value>No game found</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="errorExceptionDetection" xml:space="preserve">
+    <value>exception</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorCliStreamer" xml:space="preserve">
+    <value>[cli]</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgDateTimeNow" xml:space="preserve">
+    <value>[{0}] </value>
+    <comment>Console</comment>
+  </data>
+  <data name="lblFormatWeekMonthDayYear" xml:space="preserve">
+    <value>{0}, {1} {2}, {3}</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="lblCamViews" xml:space="preserve">
+    <value>{0} camera views</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblRefCam" xml:space="preserve">
+    <value>Referee camera</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="gamePeriodOtMore" xml:space="preserve">
+    <value>{0}OT</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="msgServerSeemsDown" xml:space="preserve">
+    <value>Status: Server {0} seems down</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorUnknownServerDown" xml:space="preserve">
+    <value>unknown (server is not available)</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgServerNoRespondTryingAgain" xml:space="preserve">
+    <value>Status: Failed to download the game schedule file from {0}. Second attempt.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorFetchingGames" xml:space="preserve">
+    <value>Error: Failed to fetch games schedule.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgStreamer" xml:space="preserve">
+    <value>Streamer:</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgStartingStreamer" xml:space="preserve">
+    <value>Starting: Streamer {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="cbQualityGood" xml:space="preserve">
+    <value>Good - 504p - 950Mb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbQualityGreat" xml:space="preserve">
+    <value>Great - 540p - 1.3Gb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbQualityLow" xml:space="preserve">
+    <value>Low - 288p - 500Mb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbQualityMobile" xml:space="preserve">
+    <value>Mobile - 224p - 300Mb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbQualityNormal" xml:space="preserve">
+    <value>Normal - 360p - 700Mb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbQualitySuperb" xml:space="preserve">
+    <value>Superb - 720p - 1.8Gb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgCensoredStream" xml:space="preserve">
+    <value>[CENSORED_STREAM_URL]</value>
+    <comment>Console</comment>
+  </data>
+  <data name="cbHostsAdd" xml:space="preserve">
+    <value>Add the NHL.tv authentication bypass line to Hosts file</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbHostsEntry" xml:space="preserve">
+    <value>Copy to clipboard the authentication bypass line</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbHostsLocation" xml:space="preserve">
+    <value>Open Hosts file location</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbHostsRemove" xml:space="preserve">
+    <value>Remove the NHL.tv authentication bypass line from Hosts file</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbHostsTest" xml:space="preserve">
+    <value>Test if the NHL.tv authentication bypass works</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbHostsView" xml:space="preserve">
+    <value>View Hosts file content in Notepad</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblModules" xml:space="preserve">
+    <value>Ad detection</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblObs" xml:space="preserve">
+    <value>OBS</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblObsAdEndingHotkey" xml:space="preserve">
+    <value>Ad ending hotkey</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblObsAdStartingHotkey" xml:space="preserve">
+    <value>Ad starting hotkey</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblObsDesc" xml:space="preserve">
+    <value>Switch scenes using binded keys when an Ad is detected</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMedia" xml:space="preserve">
+    <value>Media</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblMediaDesc" xml:space="preserve">
+    <value>Play/Pause the media player when an Ad is detected</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgFetching" xml:space="preserve">
+    <value>Fetching</value>
+    <comment>Console</comment>
+  </data>
+  <data name="cbQualitySuperb60fps" xml:space="preserve">
+    <value>Excellent - 720p @ 60 fps - 2.5Gb/hour</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="tipBrowse" xml:space="preserve">
+    <value>Browse</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="tipHostsExecuteAction" xml:space="preserve">
+    <value>Execute action</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgHostsCopyEntry" xml:space="preserve">
+    <value>The NHL.tv authentication bypass line ''{0}'' was copied to your clipboard. Use CTRL+V to paste it in your Hosts file.</value>
+    <comment>Message</comment>
+  </data>
+  <data name="noWebAccess" xml:space="preserve">
+    <value>No Internet access!</value>
+    <comment>Message</comment>
+  </data>
+  <data name="chkSpotifyForceToStart" xml:space="preserve">
+    <value>Force Spotify to start</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="chkSpotifyPlayNextSong" xml:space="preserve">
+    <value>Always play next media</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblAlternateCdn" xml:space="preserve">
+    <value>Use the alternate network</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblGamePanel" xml:space="preserve">
+    <value>Game Panel</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="errorWarning" xml:space="preserve">
+    <value>warning:</value>
+    <comment>Console</comment>
+  </data>
+  <data name="chkSpotifyHotkeys" xml:space="preserve">
+    <value>Bind to Spotify</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgAdDetectionException" xml:space="preserve">
+    <value>Warning: Ad Detection: Unexpected Exception: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgAdDetectionProbInit" xml:space="preserve">
+    <value>Warning: Ad Detection: Problem initializing tasks: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgObsChangingScene" xml:space="preserve">
+    <value>Ad Detection: OBS is changing to {0} scene</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgObsHotkeyNotSet" xml:space="preserve">
+    <value>Warning: Ad Detection: OBS {0} scene hotkey not set</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSpotifyCantStart" xml:space="preserve">
+    <value>Warning: Ad Detection: Can't start Spotify: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSpotifyException" xml:space="preserve">
+    <value>Warning: Ad Detection: Unexpected exception connecting to Spotify: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSpotifyIsntInstalled" xml:space="preserve">
+    <value>Warning: Ad Detection: Spotify is not installed</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSpotifyNotConnected" xml:space="preserve">
+    <value>Ad Detection: Spotify didn't connect in time, try again.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgSpotifyNotRunning" xml:space="preserve">
+    <value>Ad Detection: Spotify isn't running. Trying to start it...</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgObsAdWord" xml:space="preserve">
+    <value>Ad</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgObsGameWord" xml:space="preserve">
+    <value>Game</value>
+    <comment>Console</comment>
+  </data>
+  <data name="gamePeriodSo" xml:space="preserve">
+    <value>SO</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="errorHostname" xml:space="preserve">
+    <value>Error: Selected Hostname is unreachable</value>
+    <comment>Console</comment>
+  </data>
+  <data name="lblModulesDesc" xml:space="preserve">
+    <value>Detects ads and notify activated apps below</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblShowTeamCityAbr" xml:space="preserve">
+    <value>Teams city abbreviation</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgGettingStreamFailed" xml:space="preserve">
+    <value>Game stream: {0} not found or unavailable on the server</value>
+    <comment>Console</comment>
+  </data>
+  <data name="errorStreamFailedCantRead" xml:space="preserve">
+    <value>Warning: Starting stream failed. Try to use a different quality in settings, so it will try another stream.</value>
+    <comment>Console</comment>
+  </data>
+  <data name="lblShowTodayLiveGamesFirst" xml:space="preserve">
+    <value>Order by live games first</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lnkSubreddit" xml:space="preserve">
+    <value>/r/nhl_games</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="tipBrokenStream" xml:space="preserve">
+    <value>Broken stream</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="errorAccessPath" xml:space="preserve">
+    <value>Error: Checking access to path: {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgAnnouncement" xml:space="preserve">
+    <value>Announcement!</value>
+    <comment>Announcement</comment>
+  </data>
+  <data name="errorStreamTypeUnknown" xml:space="preserve">
+    <value>Game stream: Stream type unknown for the game {0} vs {1} : {2} - {3}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="lblStarCam" xml:space="preserve">
+    <value>Star camera</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="msgNotStarting" xml:space="preserve">
+    <value>Make sure your antivirus did not delete a file or reinstall the app. Do you want to exit NHLGames?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="noGameServer" xml:space="preserve">
+    <value>No redirection server found!</value>
+    <comment>Message</comment>
+  </data>
+  <data name="tipCalendar" xml:space="preserve">
+    <value>Calendar</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="tipRefresh" xml:space="preserve">
+    <value>Refresh</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="tipDayRight" xml:space="preserve">
+    <value>Day after</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="tipDayLeft" xml:space="preserve">
+    <value>Day before</value>
+    <comment>Games tab</comment>
+  </data>
+  <data name="tipMonthLeft" xml:space="preserve">
+    <value>Month before</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="tipMonthRight" xml:space="preserve">
+    <value>Month after</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="tipYearDown" xml:space="preserve">
+    <value>Year before</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="tipYearUp" xml:space="preserve">
+    <value>Year after</value>
+    <comment>Calendar</comment>
+  </data>
+  <data name="tipHelp" xml:space="preserve">
+    <value>Documentation</value>
+    <comment>Main</comment>
+  </data>
+  <data name="lblLiveRewind" xml:space="preserve">
+    <value>Live Rewind</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblLiveRewindDetails" xml:space="preserve">
+    <value>{0} minutes behind live stream ({1})</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbLiveStatusLive" xml:space="preserve">
+    <value>Live - Today's games follow the live stream (Default)</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbLiveStatusReplay" xml:space="preserve">
+    <value>Replay - Today's games ignore live stream</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbLiveStatusRewind" xml:space="preserve">
+    <value>Rewind - Today's games are set behind live stream</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="tipLiveStatusLive" xml:space="preserve">
+    <value>Live</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="tipLiveStatusReplay" xml:space="preserve">
+    <value>Replay</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="tipLiveStatusRewind" xml:space="preserve">
+    <value>Rewind {0} min</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="enumGameState10" xml:space="preserve">
+    <value>Cancelled</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState11" xml:space="preserve">
+    <value>Delayed</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState5" xml:space="preserve">
+    <value>Ended</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState3" xml:space="preserve">
+    <value>In progress</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState4" xml:space="preserve">
+    <value>In progress</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState6" xml:space="preserve">
+    <value>Final</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState9" xml:space="preserve">
+    <value>Postponed</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState2" xml:space="preserve">
+    <value>Pregame</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState1" xml:space="preserve">
+    <value>Scheduled</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState7" xml:space="preserve">
+    <value>Final</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState8" xml:space="preserve">
+    <value>TBD</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="enumGameState0" xml:space="preserve">
+    <value>Undefined</value>
+    <comment>Game State Enum</comment>
+  </data>
+  <data name="cbLiveReplayFeedStart" xml:space="preserve">
+    <value>At the beginning of the stream</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbLiveReplayGameTime" xml:space="preserve">
+    <value>When the event starts (game time)</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="cbLiveReplayPuckDrop" xml:space="preserve">
+    <value>When the game starts (drops the puck)</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblLiveReplay" xml:space="preserve">
+    <value>Live Replay</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="gameIntermission" xml:space="preserve">
+    <value>Intermission</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblShowLiveTime" xml:space="preserve">
+    <value>Live remaining time</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Dark theme</value>
+    <comment>Settings</comment>
+  </data>
+  <data name="msgAcceptToRestart" xml:space="preserve">
+    <value>Do you want to restart NHLGames to have the changes applied ?</value>
+    <comment>Message</comment>
+  </data>
+  <data name="missingFramework" xml:space="preserve">
+    <value>Missing required Microsoft .NET 4.5 Framework!</value>
+    <comment>Message</comment>
+  </data>
+  <data name="errorMitmProxyNotFound" xml:space="preserve">
+    <value>Error: Can't find mitmproxy : mitmproxy is a https proxy that we shipped with NHLGames. You probably moved it or deleted it. Please go to our GitHub page to get it back, NHLGames needs it</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgProxyListening" xml:space="preserve">
+    <value>MLBAMProxy: Proxy is listening on local port {0}</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgProxyStarting" xml:space="preserve">
+    <value>MLBAMProxy: Proxy {0} is getting ready</value>
+    <comment>Console</comment>
+  </data>
+  <data name="msgProxyGettingReady" xml:space="preserve">
+    <value>Proxy is getting ready</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="msgChekingRequirements" xml:space="preserve">
+    <value>Checking Requirements</value>
+    <comment>Status bar</comment>
+  </data>
+  <data name="tipTrackBarMove" xml:space="preserve">
+    <value>Keyboard shorcuts: (++)Page Up/Down(--) , (-)Arrow Left/Right(+)</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgChangeLogNone" xml:space="preserve">
+    <value>Do you want to download the newest version?</value>
+    <comment>Version</comment>
+  </data>
+  <data name="tipMessage1" xml:space="preserve">
+    <value>Rewind a live game by clicking once on the red Live icon at the top-left of a game panel</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage5" xml:space="preserve">
+    <value>Replay a live game by clicking twice on the red Live icon at the top-left of a game panel</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage3" xml:space="preserve">
+    <value>Show scores, remaining period time and team names by customizing the game panel in settings</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage4" xml:space="preserve">
+    <value>Record any game on Windows 10 by enabling the Output option in settings</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage2" xml:space="preserve">
+    <value>Display the interface in black when enabling the Dark theme in settings</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage6" xml:space="preserve">
+    <value>Find the documentation or an anwser to your issue on our Wiki. Click at the top-right on [?] to get there</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage7" xml:space="preserve">
+    <value>Report any bug by opening an issue on Github. Click at the top-right on [?] to get there</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage8" xml:space="preserve">
+    <value>Visit our subreddit /r/nhl_games to chat with other redditors about NHLGames</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage10" xml:space="preserve">
+    <value>Cast a game to your Chromecast with the VLC 3.0 player menu: Playback &gt; Rendered &gt;Cast</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="tipMessage9" xml:space="preserve">
+    <value>Fast forward/rewind on a live game is only supported by the MPV player</value>
+    <comment>Tip</comment>
+  </data>
+  <data name="lblServerDown" xml:space="preserve">
+    <value>Server unavailable</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="tipRecap" xml:space="preserve">
+    <value>Recap</value>
+    <comment>Game panel</comment>
+  </data>
+  <data name="lblMediaControlDelay" xml:space="preserve">
+    <value>Media control delay</value>
+    <comment>Settings Tab</comment>
+  </data>
+  <data name="tipMediaControlDelay" xml:space="preserve">
+    <value>Raising this value may fix music still playing after a commercial break.</value>
+    <comment>Settings Tab</comment>
+  </data>
+  <data name="tabStandings" xml:space="preserve">
+    <value>Standings</value>
+    <comment>Main</comment>
+  </data>
+  <data name="lblSeason" xml:space="preserve">
+    <value>Season</value>
+    <comment>Standings Tab</comment>
+  </data>
+  <data name="grLblAWAY" xml:space="preserve">
+    <value>AWAY</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblDIFF" xml:space="preserve">
+    <value>DIFF</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGA" xml:space="preserve">
+    <value>GA</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGF" xml:space="preserve">
+    <value>GF</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblGP" xml:space="preserve">
+    <value>GP</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblHOME" xml:space="preserve">
+    <value>HOME</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblL" xml:space="preserve">
+    <value>L</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblL10" xml:space="preserve">
+    <value>L10</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblOT" xml:space="preserve">
+    <value>OT</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblPerc" xml:space="preserve">
+    <value>P%</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblPTS" xml:space="preserve">
+    <value>PTS</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblROW" xml:space="preserve">
+    <value>ROW</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblRW" xml:space="preserve">
+    <value>RW</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblShootOut" xml:space="preserve">
+    <value>S/O</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblSTRK" xml:space="preserve">
+    <value>STRK</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="grLblW" xml:space="preserve">
+    <value>W</value>
+    <comment>Grid Label Standing Tab</comment>
+  </data>
+  <data name="tabConferenceStandings" xml:space="preserve">
+    <value>Conference</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabDivisionStandings" xml:space="preserve">
+    <value>Division</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabLeagueStandings" xml:space="preserve">
+    <value>League</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="tabWildCardStandings" xml:space="preserve">
+    <value>Wild Card</value>
+    <comment>Standing Tab</comment>
+  </data>
+  <data name="lblShowStanding" xml:space="preserve">
+    <value>Standing rank</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="msgChangeLog" xml:space="preserve">
+    <value>Do you want to update to the latest version? Here the lastest changes:{0}{1}</value>
+    <comment>Version</comment>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Settings tab</comment>
+  </data>
+  <data name="lblResetDesc" xml:space="preserve">
+    <value>Reset settings to default and restart</value>
+    <comment>Settings tab</comment>
+  </data>
+</root>

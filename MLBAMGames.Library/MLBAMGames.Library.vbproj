@@ -44,8 +44,28 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.3\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg, Version=2.2.1.39233, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg.2.3.0\lib\net35\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,7 +84,68 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="AdDetection.vb" />
+    <Compile Include="AdDetectionConfigs.vb" />
+    <Compile Include="ConsoleRedirectStreamWriter.vb" />
+    <Compile Include="Controls\BorderPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CalendarControl.Designer.vb">
+      <DependentUpon>CalendarControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CalendarControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GameControl.Designer.vb">
+      <DependentUpon>GameControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GameControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MetroComboBoxNoMW.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MetroTrackBarNoMW.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\NHLStats\Badge.vb" />
+    <Compile Include="Controls\NHLStats\TeamCell.vb" />
+    <Compile Include="Controls\NHLStats\TeamColumn.vb" />
+    <Compile Include="DateHelper.vb" />
+    <Compile Include="English1.Designer.vb">
+      <DependentUpon>English.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Enums.vb" />
+    <Compile Include="FileAccess.vb" />
+    <Compile Include="French.Designer.vb">
+      <DependentUpon>French.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Game.vb" />
+    <Compile Include="GameFetcher.vb" />
+    <Compile Include="GameManager.vb" />
+    <Compile Include="GameStream.vb" />
+    <Compile Include="GameWatchArguments.vb" />
+    <Compile Include="GitHub.vb" />
+    <Compile Include="GitHub\Asset.vb" />
+    <Compile Include="GitHub\Commit.vb" />
+    <Compile Include="GitHub\Issue.vb" />
+    <Compile Include="GitHub\Label.vb" />
+    <Compile Include="GitHub\Milestone.vb" />
+    <Compile Include="GitHub\Release.vb" />
+    <Compile Include="GitHub\User.vb" />
+    <Compile Include="ImageFetcher.vb" />
+    <Compile Include="IMLBAMForm.vb" />
+    <Compile Include="Instance.vb" />
+    <Compile Include="InvokeElement.vb" />
+    <Compile Include="Lang.vb" />
+    <Compile Include="Modules\Hotkey.vb" />
+    <Compile Include="Modules\IAdModule.vb" />
+    <Compile Include="Modules\MediaAndSpotify.vb" />
+    <Compile Include="Modules\Obs.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -80,8 +161,80 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="NHLStats\Conference.vb" />
+    <Compile Include="NHLStats\DataAccessLayer.vb" />
+    <Compile Include="NHLStats\Division.vb" />
+    <Compile Include="NHLStats\League.vb" />
+    <Compile Include="NHLStats\Leaguerecord.vb" />
+    <Compile Include="NHLStats\NHLAPIServiceURLs.vb" />
+    <Compile Include="NHLStats\Overallrecord.vb" />
+    <Compile Include="NHLStats\Record.vb" />
+    <Compile Include="NHLStats\Records.vb" />
+    <Compile Include="NHLStats\Season.vb" />
+    <Compile Include="NHLStats\Seasons.vb" />
+    <Compile Include="NHLStats\Standing.vb" />
+    <Compile Include="NHLStats\Streak.vb" />
+    <Compile Include="NHLStats\Team.vb" />
+    <Compile Include="NHLStats\TeamRecord.vb" />
+    <Compile Include="NHLStats\ViewModels.vb" />
+    <Compile Include="NHL\Conference.vb" />
+    <Compile Include="NHL\Content.vb" />
+    <Compile Include="NHL\Date.vb" />
+    <Compile Include="NHL\Division.vb" />
+    <Compile Include="NHL\Editorial.vb" />
+    <Compile Include="NHL\Epg.vb" />
+    <Compile Include="NHL\Franchise.vb" />
+    <Compile Include="NHL\Game.vb" />
+    <Compile Include="NHL\Highlights.vb" />
+    <Compile Include="NHL\Image.vb" />
+    <Compile Include="NHL\IntermissionInfo.vb" />
+    <Compile Include="NHL\Item.vb" />
+    <Compile Include="NHL\Keyword.vb" />
+    <Compile Include="NHL\LeagueRecord.vb" />
+    <Compile Include="NHL\Linescore.vb" />
+    <Compile Include="NHL\Media.vb" />
+    <Compile Include="NHL\Period.vb" />
+    <Compile Include="NHL\Playback.vb" />
+    <Compile Include="NHL\PowerPlayInfo.vb" />
+    <Compile Include="NHL\Schedule.vb" />
+    <Compile Include="NHL\SeriesSummary.vb" />
+    <Compile Include="NHL\Status.vb" />
+    <Compile Include="NHL\Team.vb" />
+    <Compile Include="NHL\TeamInfo.vb" />
+    <Compile Include="NHL\Teams.vb" />
+    <Compile Include="NHL\TimeZone.vb" />
+    <Compile Include="NHL\Venue.vb" />
+    <Compile Include="Parameters.vb" />
+    <Compile Include="PathFinder.vb" />
+    <Compile Include="Player.vb" />
+    <Compile Include="Proxy.vb" />
+    <Compile Include="Serialization.vb" />
+    <Compile Include="SettingsExtensions.vb" />
+    <Compile Include="StandingsHelper.vb" />
+    <Compile Include="Updater.vb" />
+    <Compile Include="Web.vb" />
+    <Compile Include="WindowsEvents.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\CalendarControl.resx">
+      <DependentUpon>CalendarControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GameControl.resx">
+      <DependentUpon>GameControl.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="English.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>English1.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="French.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>French.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -99,6 +252,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
