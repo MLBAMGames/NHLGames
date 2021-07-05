@@ -1,5 +1,5 @@
 ﻿Namespace Controls
-    Friend Class MetroTrackBarNoMW
+    Public Class MetroTrackBarNoMW
         Inherits MetroFramework.Controls.MetroTrackBar
         Protected Overrides Sub OnMouseWheel(e As MouseEventArgs)
             Return

@@ -82,8 +82,8 @@ Namespace Utilities
 
                         If lastError <> Nothing Then
                             InvokeElement.MsgBoxRed(
-                                String.Format(NHLGamesMetro.RmText.GetString("msgErrorGeneralText"), vbCrLf, lastError),
-                                NHLGamesMetro.RmText.GetString("msgFailure"),
+                                String.Format(Lang.RmText.GetString("msgErrorGeneralText"), vbCrLf, lastError),
+                                Lang.RmText.GetString("msgFailure"),
                                 MessageBoxButtons.OK)
                         End If
 

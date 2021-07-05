@@ -13,37 +13,8 @@ Imports NHLGames.Objects.Modules
 Imports NHLGames.Utilities
 
 Public Class NHLGamesMetro
-    Public Const DomainName As String = "mf.svc.nhl.com"
-    Public Shared HostName As String = String.Empty
-    Public Shared FormInstance As NHLGamesMetro = Nothing
-    Public Shared StreamStarted As Boolean = False
-    Public Shared SpnLoadingValue As Integer = 0
-    Public Shared SpnLoadingMaxValue As Integer = 1000
-    Public Shared SpnLoadingVisible As Boolean = False
-    Public Shared SpnStreamingValue As Integer = 0
-    Public Shared SpnStreamingMaxValue As Integer = 1000
-    Public Shared SpnStreamingVisible As Boolean = False
-    Public Shared FlpCalendar As FlowLayoutPanel
-    Public Shared LabelDate As Label
-    Private Const SubredditLink As String = "https://www.reddit.com/r/nhl_games/"
-    Private Const LatestReleaseLink As String = "https://github.com/NHLGames/NHLGames/releases/latest"
-    Public Shared GameDate As Date = DateHelper.GetPacificTime()
-    Private _resizeDirection As Integer = -1
-    Private Const ResizeBorderWidth As Integer = 8
-    Public Shared RmText As ResourceManager = English.ResourceManager
-    Public Shared FormLoaded As Boolean = False
-    Public Shared TodayLiveGamesFirst As Boolean = False
-    Private Shared _adDetectionEngine As AdDetection
-    Public Shared ReadOnly GamesDict As New Dictionary(Of String, Game)
-    Public Shared IsDarkMode As Boolean = False
-    Public Shared AnimateTipsTick As Integer = 0
-    Public Const AnimateTipsEveryTick As Integer = 10000
-    Public Shared Tips As New Dictionary(Of Integer, String)
-    Public Shared MLBAMProxy As Proxy
-    Public Shared IsServerUp As Boolean = Nothing
-    Public IsProxyListening As Task(Of Boolean) = Nothing
-    Public Shared IsHostsRedirectionSet As Boolean = False
-    Public Shared WatchArgs As GameWatchArguments = New GameWatchArguments
+    Implements IMLBAMForm
+
 
     <SecurityPermission(SecurityAction.Demand, Flags:=SecurityPermissionFlag.ControlAppDomain)>
     Public Shared Sub Main()
@@ -53,10 +24,10 @@ Public Class NHLGamesMetro
 
         Updater.UpgradeSettings()
 
-        IsDarkMode = My.Settings.UseDarkMode
+        Parameters.IsDarkMode = My.Settings.UseDarkMode
 
         Dim form As New NHLGamesMetro()
-        FormInstance = form
+        Instance.Form = form
 
         Dim writer = New ConsoleRedirectStreamWriter(form.txtConsole)
         Console.SetOut(writer)
@@ -80,24 +51,24 @@ Public Class NHLGamesMetro
 
         SuspendLayout()
 
-        Common.GetLanguage()
+        Web.GetLanguage()
         tabMenu.SelectedIndex = MainTabsEnum.Matchs
-        FlpCalendar = flpCalendarPanel
+        CalendarControl.FlpCalendar = flpCalendarPanel
         InitializeForm.SetSettings()
 
         If Proxy.TestHostsEntry() Then
-            IsHostsRedirectionSet = True
+            Parameters.IsHostsRedirectionSet = True
         Else
-            MLBAMProxy = New Proxy()
+            Proxy.MLBAMProxy = New Proxy()
         End If
 
-        Await Common.CheckAppCanRun()
+        Await Web.CheckAppCanRun()
 
-        FormLoaded = True
+        Parameters.UILoaded = True
         ResumeLayout(True)
 
         tmr.Enabled = True
-        InvokeElement.LoadGames()
+        InvokeElement.LoadGames(CalendarControl.GameDate)
 
         InvokeElement.LoadTeamsName()
         InvokeElement.LoadStandings()
@@ -114,22 +85,22 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Shared Sub _writeToConsoleSettingsChanged(key As String, value As String)
-        If FormLoaded Then Console.WriteLine(English.msgSettingUpdated, key, value)
+        If Parameters.UILoaded Then Console.WriteLine(English.msgSettingUpdated, key, value)
     End Sub
 
     Private Shared Sub tmrAnimate_Tick(sender As Object, e As EventArgs) Handles tmr.Tick
-        If StreamStarted Then
+        If Parameters.StreamStarted Then
             GameFetcher.StreamingProgress()
         Else
             GameFetcher.LoadingProgress()
         End If
-        AnimateTipsTick += NHLGamesMetro.tmr.Interval
+        InvokeElement.AnimateTipsTick += NHLGamesMetro.tmr.Interval
         InvokeElement.AnimateTips()
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         flpCalendarPanel.Visible = False
-        InvokeElement.LoadGames()
+        InvokeElement.LoadGames(CalendarControl.GameDate)
         flpGames.Focus()
     End Sub
 
@@ -218,7 +189,7 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
@@ -250,7 +221,7 @@ Public Class NHLGamesMetro
         Dim rb As RadioButton = sender
         If rb.Checked Then
             Player.RenewArgs()
-            SetPlayerDefaultArgs(FormInstance, True)
+            SetPlayerDefaultArgs(True)
             _writeToConsoleSettingsChanged(lblPlayer.Text, rb.Text)
         End If
     End Sub
@@ -259,7 +230,7 @@ Public Class NHLGamesMetro
         Dim cdn = If(tgAlternateCdn.Checked, CdnTypeEnum.L3C, CdnTypeEnum.Akc)
         Player.RenewArgs()
         _writeToConsoleSettingsChanged(lblCdn.Text, cdn.ToString())
-        InvokeElement.LoadGames()
+        InvokeElement.LoadGames(CalendarControl.GameDate)
     End Sub
 
     Private Sub txtOutputPath_TextChanged(sender As Object, e As EventArgs) Handles txtOutputArgs.TextChanged
@@ -268,7 +239,7 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub txtPlayerArgs_TextChanged(sender As Object, e As EventArgs) Handles txtPlayerArgs.TextChanged
-        Dim playerType = Player.GetPlayerType(FormInstance)
+        Dim playerType = Player.GetPlayerType(Instance.Form)
         Dim args = txtPlayerArgs.Text.Split(New String() {" "}, StringSplitOptions.RemoveEmptyEntries)
         GameWatchArguments.SavedPlayerArgs(playerType) = args
         Player.RenewArgs()
@@ -292,13 +263,13 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub btnYesterday_Click(sender As Object, e As EventArgs) Handles btnYesterday.Click
-        GameDate = GameDate.AddDays(-1)
-        lblDate.Text = DateHelper.GetFormattedDate(GameDate)
+        CalendarControl.GameDate = CalendarControl.GameDate.AddDays(-1)
+        lblDate.Text = DateHelper.GetFormattedDate(CalendarControl.GameDate)
     End Sub
 
     Private Sub btnTomorrow_Click(sender As Object, e As EventArgs) Handles btnTomorrow.Click
-        GameDate = GameDate.AddDays(1)
-        lblDate.Text = DateHelper.GetFormattedDate(GameDate)
+        CalendarControl.GameDate = CalendarControl.GameDate.AddDays(1)
+        lblDate.Text = DateHelper.GetFormattedDate(CalendarControl.GameDate)
     End Sub
 
     Private Sub lnkVLCDownload_Click(sender As Object, e As EventArgs) Handles lnkGetVlc.Click
@@ -317,7 +288,7 @@ Public Class NHLGamesMetro
 
     Private Sub lblDate_TextChanged(sender As Object, e As EventArgs) Handles lblDate.TextChanged
         flpCalendarPanel.Visible = False
-        InvokeElement.LoadGames()
+        InvokeElement.LoadGames(CalendarControl.GameDate)
         flpGames.Focus()
     End Sub
 
@@ -334,7 +305,7 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
@@ -350,12 +321,12 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
     Private Sub lnkReddit_Click(sender As Object, e As EventArgs) Handles lnkReddit.Click
-        Dim sInfo As ProcessStartInfo = New ProcessStartInfo(SubredditLink)
+        Dim sInfo As ProcessStartInfo = New ProcessStartInfo(Parameters.SubredditLink)
         Process.Start(sInfo)
     End Sub
 
@@ -364,7 +335,7 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub tgStreamer_CheckedChanged(sender As Object, e As EventArgs) Handles tgStreamer.CheckedChanged
-        SetStreamerDefaultArgs(FormInstance)
+        SetStreamerDefaultArgs()
         txtStreamerArgs.Enabled = tgStreamer.Checked
         Player.RenewArgs()
         _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblStreamerArgs.Text),
@@ -396,7 +367,7 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
@@ -426,15 +397,15 @@ Public Class NHLGamesMetro
         RefreshFocus()
     End Sub
 
-    Public Sub SetStreamerDefaultArgs(form As NHLGamesMetro)
-        If form Is Nothing Then Return
-        If Not form.tgStreamer.Checked Then
-            SetDefaultArgs(GameWatchArguments.StreamerDefaultArgs, form.txtStreamerArgs)
+    Public Sub SetStreamerDefaultArgs()
+        If tgStreamer Is Nothing Then Return
+        If Not tgStreamer.Checked Then
+            SetDefaultArgs(GameWatchArguments.StreamerDefaultArgs, txtStreamerArgs)
         End If
     End Sub
 
-    Public Sub SetPlayerDefaultArgs(form As NHLGamesMetro, Optional overwrite As Boolean = False)
-        If form Is Nothing Then Return
+    Public Sub SetPlayerDefaultArgs(Optional overwrite As Boolean = False)
+        If txtPlayerArgs Is Nothing Then Return
         Dim gameArgs = SettingsExtensions.ReadGameWatchArgs()
         Dim defaultPlayerArgs = New String() {}
         Select Case gameArgs.PlayerType
@@ -446,7 +417,7 @@ Public Class NHLGamesMetro
                 defaultPlayerArgs = GameWatchArguments.SavedPlayerArgs(PlayerTypeEnum.Mpc)
         End Select
 
-        SetDefaultArgs(defaultPlayerArgs.ToDictionary(Function(x) x.Split("=").First(), Function(y) y.Substring(y.IndexOf("=") + 1)), form.txtPlayerArgs, overwrite)
+        SetDefaultArgs(defaultPlayerArgs.ToDictionary(Function(x) x.Split("=").First(), Function(y) y.Substring(y.IndexOf("=") + 1)), txtPlayerArgs, overwrite)
     End Sub
 
     Private Sub SetDefaultArgs(args As Dictionary(Of String, String), txt As TextBox, Optional overwrite As Boolean = False)
@@ -458,34 +429,38 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub NHLGamesMetro_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
-        _resizeDirection = -1
+        Dim ResizeDirection = -1
+        Dim ResizeBorderWidth = Parameters.ResizeBorderWidth
+
         If e.Location.X < ResizeBorderWidth And e.Location.Y < ResizeBorderWidth Then
             Cursor = Cursors.SizeNWSE
-            _resizeDirection = WindowsCode.HTTOPLEFT
+            ResizeDirection = WindowsCode.HTTOPLEFT
         ElseIf e.Location.X < ResizeBorderWidth And e.Location.Y > Height - ResizeBorderWidth Then
             Cursor = Cursors.SizeNESW
-            _resizeDirection = WindowsCode.HTBOTTOMLEFT
+            ResizeDirection = WindowsCode.HTBOTTOMLEFT
         ElseIf e.Location.X > Width - ResizeBorderWidth And e.Location.Y > Height - ResizeBorderWidth Then
             Cursor = Cursors.SizeNWSE
-            _resizeDirection = WindowsCode.HTBOTTOMRIGHT
+            ResizeDirection = WindowsCode.HTBOTTOMRIGHT
         ElseIf e.Location.X > Width - ResizeBorderWidth And e.Location.Y < ResizeBorderWidth Then
             Cursor = Cursors.SizeNESW
-            _resizeDirection = WindowsCode.HTTOPRIGHT
+            ResizeDirection = WindowsCode.HTTOPRIGHT
         ElseIf e.Location.X < ResizeBorderWidth Then
             Cursor = Cursors.SizeWE
-            _resizeDirection = WindowsCode.HTLEFT
+            ResizeDirection = WindowsCode.HTLEFT
         ElseIf e.Location.X > Width - ResizeBorderWidth Then
             Cursor = Cursors.SizeWE
-            _resizeDirection = WindowsCode.HTRIGHT
+            ResizeDirection = WindowsCode.HTRIGHT
         ElseIf e.Location.Y < ResizeBorderWidth Then
             Cursor = Cursors.SizeNS
-            _resizeDirection = WindowsCode.HTTOP
+            ResizeDirection = WindowsCode.HTTOP
         ElseIf e.Location.Y > Height - ResizeBorderWidth Then
             Cursor = Cursors.SizeNS
-            _resizeDirection = WindowsCode.HTBOTTOM
+            ResizeDirection = WindowsCode.HTBOTTOM
         Else
             Cursor = Cursors.Default
         End If
+
+        Parameters.ResizeDirection = ResizeDirection
     End Sub
 
     Private Sub NHLGamesMetro_MouseDown(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDown
@@ -495,9 +470,9 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub ResizeForm()
-        If Not _resizeDirection.Equals(-1) Then
+        If Not Parameters.ResizeDirection.Equals(-1) Then
             NativeMethods.ReleaseCaptureOfForm()
-            NativeMethods.SendMessageToHandle(Handle, WindowsCode.WM_NCLBUTTONDOWN, _resizeDirection, 0)
+            NativeMethods.SendMessageToHandle(Handle, WindowsCode.WM_NCLBUTTONDOWN, Parameters.ResizeDirection, 0)
         End If
     End Sub
 
@@ -506,9 +481,9 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub cbServers_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbServers.SelectedIndexChanged
-        If Not FormLoaded Then Return
-        Common.SetRedirectionServerInApp()
-        InvokeElement.LoadGames()
+        If Not Parameters.UILoaded Then Return
+        Web.SetRedirectionServerInApp()
+        InvokeElement.LoadGames(CalendarControl.GameDate)
     End Sub
 
     Private Sub btnCopyConsole_Click(sender As Object, e As EventArgs) Handles btnCopyConsole.Click
@@ -520,7 +495,7 @@ Public Class NHLGamesMetro
         My.Settings.SelectedLanguage = cbLanguage.SelectedItem.ToString()
         My.Settings.Save()
         _writeToConsoleSettingsChanged(lblLanguage.Text, cbLanguage.SelectedItem.ToString())
-        Common.GetLanguage()
+        Web.GetLanguage()
         InitializeForm.SetLanguage()
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
@@ -529,7 +504,7 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
@@ -537,7 +512,7 @@ Public Class NHLGamesMetro
         Dim tg As MetroToggle = sender
 
         If tg.Checked Then
-            _adDetectionEngine = New AdDetection
+            AdDetection.Engine = New AdDetection
         Else
             tgMedia.Checked = False
             tgOBS.Checked = False
@@ -548,8 +523,8 @@ Public Class NHLGamesMetro
         tlpOBSSettings.Enabled = tg.Checked
         flpSpotifyParameters.Enabled = tg.Checked
 
-        _adDetectionEngine.IsEnabled = tg.Checked
-        If tg.Checked Then _adDetectionEngine.Start()
+        AdDetection.Engine.IsEnabled = tg.Checked
+        If tg.Checked Then AdDetection.Engine.Start()
         AdDetection.Renew()
         _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblModules.Text),
                                        If(tgModules.Checked, English.msgOn, English.msgOff))
@@ -572,9 +547,9 @@ Public Class NHLGamesMetro
             obs.HotkeyGame.Alt = chkGameAlt.Checked
             obs.HotkeyGame.Shift = chkGameShift.Checked
 
-            _adDetectionEngine.AddModule(obs)
-        ElseIf _adDetectionEngine.IsInAdModulesList(obs.Title) Then
-            _adDetectionEngine.RemoveModule(obs.Title)
+            AdDetection.Engine.AddModule(obs)
+        ElseIf AdDetection.Engine.IsInAdModulesList(obs.Title) Then
+            AdDetection.Engine.RemoveModule(obs.Title)
         End If
 
         AdDetection.Renew()
@@ -593,9 +568,9 @@ Public Class NHLGamesMetro
             spotify.PlayNextSong = chkSpotifyPlayNextSong.Checked
             spotify.UseHotkeys = chkSpotifyHotkeys.Checked
             spotify.MediaControlDelay = txtMediaControlDelay.Text
-            _adDetectionEngine.AddModule(spotify)
-        ElseIf _adDetectionEngine.IsInAdModulesList(spotify.Title) Then
-            _adDetectionEngine.RemoveModule(spotify.Title)
+            AdDetection.Engine.AddModule(spotify)
+        ElseIf AdDetection.Engine.IsInAdModulesList(spotify.Title) Then
+            AdDetection.Engine.RemoveModule(spotify.Title)
         End If
 
         AdDetection.Renew()
@@ -645,7 +620,7 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
@@ -664,7 +639,7 @@ Public Class NHLGamesMetro
         If flpCalendarPanel.Visible Then
             btnDate.BackColor = Color.FromArgb(0, 170, 210)
         Else
-            btnDate.BackColor = If(IsDarkMode, Color.DarkGray, Color.FromArgb(80, 80, 80))
+            btnDate.BackColor = If(Parameters.IsDarkMode, Color.DarkGray, Color.FromArgb(80, 80, 80))
         End If
     End Sub
 
@@ -674,8 +649,8 @@ Public Class NHLGamesMetro
         My.Settings.Save()
         _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowTodayLiveGamesFirst.Text),
                                        If(tgShowTodayLiveGamesFirst.Checked, English.msgOn, English.msgOff))
-        TodayLiveGamesFirst = tgShowTodayLiveGamesFirst.Checked
-        InvokeElement.LoadGames()
+        Parameters.TodayLiveGamesFirst = tgShowTodayLiveGamesFirst.Checked
+        InvokeElement.LoadGames(CalendarControl.GameDate)
     End Sub
 
     Private Async Sub CopyConsoleToClipBoard()
@@ -687,7 +662,7 @@ Public Class NHLGamesMetro
         Dim mpcPath = My.Settings.MpcPath
         Dim mpvPath = My.Settings.MpvPath
         Dim streamerExists = streamerPath <> "" AndAlso File.Exists(streamerPath)
-        Dim pingGoogle = Await Common.SendWebRequestAsync("https://www.google.com")
+        Dim pingGoogle = Await Web.SendWebRequestAsync("https://www.google.com")
         Dim vlcExists = vlcPath <> "" AndAlso File.Exists(vlcPath)
         Dim mpcExists = mpcPath <> "" AndAlso File.Exists(mpcPath)
         Dim mpvExists = mpvPath <> "" AndAlso File.Exists(mpvPath)
@@ -729,7 +704,7 @@ Public Class NHLGamesMetro
     Private Sub tbLiveRewind_ValueChanged(sender As Object, e As EventArgs) Handles tbLiveRewind.ValueChanged
         Dim minutesBehind = tbLiveRewind.Value * 5
         lblLiveRewindDetails.Text = String.Format(
-            RmText.GetString("lblLiveRewindDetails"),
+            Lang.RmText.GetString("lblLiveRewindDetails"),
             minutesBehind, Now.AddMinutes(-minutesBehind).ToString("h:mm tt", CultureInfo.InvariantCulture))
         Player.RenewArgs()
 
@@ -758,15 +733,15 @@ Public Class NHLGamesMetro
                             tgShowTeamCityAbr.Checked,
                             tgShowLiveTime.Checked,
                             tgShowStanding.Checked,
-                            GamesDict(game.GameId))
+                            GameFetcher.Entries(game.GameId))
         Next
     End Sub
 
     Private Sub tgDarkMode_CheckedChanged(sender As Object, e As EventArgs) Handles tgDarkMode.CheckedChanged
         Dim darkMode = My.Settings.UseDarkMode
         If Not darkMode.Equals(tgDarkMode.Checked) AndAlso InvokeElement.MsgBoxBlue(
-            RmText.GetString("msgAcceptToRestart"),
-            RmText.GetString("lblDark"),
+            Lang.RmText.GetString("msgAcceptToRestart"),
+            Lang.RmText.GetString("lblDark"),
             MessageBoxButtons.YesNo) = DialogResult.Yes Then
             RestartNHLGames()
         End If
@@ -808,8 +783,8 @@ Public Class NHLGamesMetro
         If tgReset.Checked = False Then Return
 
         If InvokeElement.MsgBoxBlue(
-            RmText.GetString("msgAcceptToRestart"),
-            RmText.GetString("lblReset"),
+            Lang.RmText.GetString("msgAcceptToRestart"),
+            Lang.RmText.GetString("lblReset"),
             MessageBoxButtons.YesNo) = DialogResult.Yes Then
             My.Settings.Reset()
             My.Settings.Save()
@@ -819,4 +794,433 @@ Public Class NHLGamesMetro
 
         tgReset.Checked = False
     End Sub
+
+#Region "Implements IMLBAMForm"
+    Private Function IMLBAMForm_BeginInvoke(method As [Delegate], ParamArray args() As Object) As IAsyncResult Implements IMLBAMForm.BeginInvoke
+        Return BeginInvoke(method, args)
+    End Function
+
+    Private Function IMLBAMForm_EndInvoke(asyncResult As IAsyncResult) As Object Implements IMLBAMForm.EndInvoke
+        Return EndInvoke(asyncResult)
+    End Function
+
+    Private Sub IMLBAMForm_Close() Implements IMLBAMForm.Close
+        Close()
+    End Sub
+
+    Private Sub IMLBAMForm_ClearGamePanel() Implements IMLBAMForm.ClearGamePanel
+        ClearGamePanel()
+    End Sub
+
+    Private Property IMLBAMForm_tgModules As MetroToggle Implements IMLBAMForm.tgModules
+        Get
+            Return tgModules
+        End Get
+        Set(value As MetroToggle)
+            tgModules = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tgMedia As MetroToggle Implements IMLBAMForm.tgMedia
+        Get
+            Return tgMedia
+        End Get
+        Set(value As MetroToggle)
+            tgMedia = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tgOBS As MetroToggle Implements IMLBAMForm.tgOBS
+        Get
+            Return tgOBS
+        End Get
+        Set(value As MetroToggle)
+            tgOBS = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tgOutput As MetroToggle Implements IMLBAMForm.tgOutput
+        Get
+            Return tgOutput
+        End Get
+        Set(value As MetroToggle)
+            tgOutput = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_spnStreaming As MetroProgressSpinner Implements IMLBAMForm.spnStreaming
+        Get
+            Return spnStreaming
+        End Get
+        Set(value As MetroProgressSpinner)
+            spnStreaming = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_spnLoading As MetroProgressSpinner Implements IMLBAMForm.spnLoading
+        Get
+            Return spnLoading
+        End Get
+        Set(value As MetroProgressSpinner)
+            spnLoading = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tabMenu As MetroTabControl Implements IMLBAMForm.tabMenu
+        Get
+            Return tabMenu
+        End Get
+        Set(value As MetroTabControl)
+            tabMenu = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_lblNoGames As Label Implements IMLBAMForm.lblNoGames
+        Get
+            Return lblNoGames
+        End Get
+        Set(value As Label)
+            lblNoGames = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_lblStatus As MetroLabel Implements IMLBAMForm.lblStatus
+        Get
+            Return lblStatus
+        End Get
+        Set(value As MetroLabel)
+            lblStatus = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_lblTip As MetroLabel Implements IMLBAMForm.lblTip
+        Get
+            Return lblTip
+        End Get
+        Set(value As MetroLabel)
+            lblTip = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_lnkRelease As MetroLink Implements IMLBAMForm.lnkRelease
+        Get
+            Return lnkRelease
+        End Get
+        Set(value As MetroLink)
+            lnkRelease = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkSpotifyForceToStart As MetroCheckBox Implements IMLBAMForm.chkSpotifyForceToStart
+        Get
+            Return chkSpotifyForceToStart
+        End Get
+        Set(value As MetroCheckBox)
+            chkSpotifyForceToStart = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkSpotifyPlayNextSong As MetroCheckBox Implements IMLBAMForm.chkSpotifyPlayNextSong
+        Get
+            Return chkSpotifyPlayNextSong
+        End Get
+        Set(value As MetroCheckBox)
+            chkSpotifyPlayNextSong = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkSpotifyHotkeys As MetroCheckBox Implements IMLBAMForm.chkSpotifyHotkeys
+        Get
+            Return chkSpotifyHotkeys
+        End Get
+        Set(value As MetroCheckBox)
+            chkSpotifyHotkeys = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkGameCtrl As MetroCheckBox Implements IMLBAMForm.chkGameCtrl
+        Get
+            Return chkGameCtrl
+        End Get
+        Set(value As MetroCheckBox)
+            chkGameCtrl = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkGameAlt As MetroCheckBox Implements IMLBAMForm.chkGameAlt
+        Get
+            Return chkGameAlt
+        End Get
+        Set(value As MetroCheckBox)
+            chkGameAlt = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkGameShift As MetroCheckBox Implements IMLBAMForm.chkGameShift
+        Get
+            Return chkGameShift
+        End Get
+        Set(value As MetroCheckBox)
+            chkGameShift = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkAdCtrl As MetroCheckBox Implements IMLBAMForm.chkAdCtrl
+        Get
+            Return chkAdCtrl
+        End Get
+        Set(value As MetroCheckBox)
+            chkAdCtrl = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkAdAlt As MetroCheckBox Implements IMLBAMForm.chkAdAlt
+        Get
+            Return chkAdAlt
+        End Get
+        Set(value As MetroCheckBox)
+            chkAdAlt = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_chkAdShift As MetroCheckBox Implements IMLBAMForm.chkAdShift
+        Get
+            Return chkAdShift
+        End Get
+        Set(value As MetroCheckBox)
+            chkAdShift = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_flpGames As FlowLayoutPanel Implements IMLBAMForm.flpGames
+        Get
+            Return flpGames
+        End Get
+        Set(value As FlowLayoutPanel)
+            flpGames = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_rbMPV As MetroRadioButton Implements IMLBAMForm.rbMPV
+        Get
+            Return rbMPV
+        End Get
+        Set(value As MetroRadioButton)
+            rbMPV = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_rbMPC As MetroRadioButton Implements IMLBAMForm.rbMPC
+        Get
+            Return rbMPC
+        End Get
+        Set(value As MetroRadioButton)
+            rbMPC = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_rbVLC As MetroRadioButton Implements IMLBAMForm.rbVLC
+        Get
+            Return rbVLC
+        End Get
+        Set(value As MetroRadioButton)
+            rbVLC = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtMediaControlDelay As MetroTextBox Implements IMLBAMForm.txtMediaControlDelay
+        Get
+            Return txtMediaControlDelay
+        End Get
+        Set(value As MetroTextBox)
+            txtMediaControlDelay = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtGameKey As MetroTextBox Implements IMLBAMForm.txtGameKey
+        Get
+            Return txtGameKey
+        End Get
+        Set(value As MetroTextBox)
+            txtGameKey = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtAdKey As MetroTextBox Implements IMLBAMForm.txtAdKey
+        Get
+            Return txtAdKey
+        End Get
+        Set(value As MetroTextBox)
+            txtAdKey = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtPlayerArgs As TextBox Implements IMLBAMForm.txtPlayerArgs
+        Get
+            Return txtPlayerArgs
+        End Get
+        Set(value As TextBox)
+            txtPlayerArgs = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_cbSeasons As MetroComboBoxNoMW Implements IMLBAMForm.cbSeasons
+        Get
+            Return cbSeasons
+        End Get
+        Set(value As MetroComboBoxNoMW)
+            cbSeasons = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_cbServers As MetroComboBoxNoMW Implements IMLBAMForm.cbServers
+        Get
+            Return cbServers
+        End Get
+        Set(value As MetroComboBoxNoMW)
+            cbServers = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_btnDate As Button Implements IMLBAMForm.btnDate
+        Get
+            Return btnDate
+        End Get
+        Set(value As Button)
+            btnDate = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_btnTomorrow As Button Implements IMLBAMForm.btnTomorrow
+        Get
+            Return btnTomorrow
+        End Get
+        Set(value As Button)
+            btnTomorrow = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_btnYesterday As Button Implements IMLBAMForm.btnYesterday
+        Get
+            Return btnYesterday
+        End Get
+        Set(value As Button)
+            btnYesterday = value
+        End Set
+    End Property
+
+    Private ReadOnly Property IMLBAMForm_InvokeRequired As Boolean Implements IMLBAMForm.InvokeRequired
+        Get
+            Return InvokeRequired
+        End Get
+    End Property
+
+    Private Property IMLBAMForm_tgAlternateCdn As MetroToggle Implements IMLBAMForm.tgAlternateCdn
+        Get
+            Return tgAlternateCdn
+        End Get
+        Set(value As MetroToggle)
+            tgAlternateCdn = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tgPlayer As MetroToggle Implements IMLBAMForm.tgPlayer
+        Get
+            Return tgPlayer
+        End Get
+        Set(value As MetroToggle)
+            tgPlayer = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tgStreamer As MetroToggle Implements IMLBAMForm.tgStreamer
+        Get
+            Return tgStreamer
+        End Get
+        Set(value As MetroToggle)
+            tgStreamer = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_tbLiveRewind As MetroTrackBarNoMW Implements IMLBAMForm.tbLiveRewind
+        Get
+            Return tbLiveRewind
+        End Get
+        Set(value As MetroTrackBarNoMW)
+            tbLiveRewind = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtMpvPath As TextBox Implements IMLBAMForm.txtMpvPath
+        Get
+            Return txtMpvPath
+        End Get
+        Set(value As TextBox)
+            txtMpvPath = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtMPCPath As TextBox Implements IMLBAMForm.txtMPCPath
+        Get
+            Return txtMPCPath
+        End Get
+        Set(value As TextBox)
+            txtMPCPath = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtVLCPath As TextBox Implements IMLBAMForm.txtVLCPath
+        Get
+            Return txtVLCPath
+        End Get
+        Set(value As TextBox)
+            txtVLCPath = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtStreamerPath As TextBox Implements IMLBAMForm.txtStreamerPath
+        Get
+            Return txtStreamerPath
+        End Get
+        Set(value As TextBox)
+            txtStreamerPath = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtStreamerArgs As TextBox Implements IMLBAMForm.txtStreamerArgs
+        Get
+            Return txtStreamerArgs
+        End Get
+        Set(value As TextBox)
+            txtStreamerArgs = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_txtOutputArgs As TextBox Implements IMLBAMForm.txtOutputArgs
+        Get
+            Return txtOutputArgs
+        End Get
+        Set(value As TextBox)
+            txtOutputArgs = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_cbStreamQuality As MetroComboBoxNoMW Implements IMLBAMForm.cbStreamQuality
+        Get
+            Return cbStreamQuality
+        End Get
+        Set(value As MetroComboBoxNoMW)
+            cbStreamQuality = value
+        End Set
+    End Property
+
+    Private Property IMLBAMForm_cbLiveReplay As MetroComboBoxNoMW Implements IMLBAMForm.cbLiveReplay
+        Get
+            Return cbLiveReplay
+        End Get
+        Set(value As MetroComboBoxNoMW)
+            cbLiveReplay = value
+        End Set
+    End Property
+#End Region
 End Class

@@ -10,7 +10,7 @@ Namespace Utilities
         Private Const _exeName = "go-mlbam-proxy.exe"
         Public ReadOnly port As String = If(My.Settings.ProxyPort.ToString(), "17070")
         Private ReadOnly _folderPath As String = Path.Combine(Application.StartupPath, "proxy")
-
+        Public Shared MLBAMProxy As Proxy
         Private _pathToProxy As String = String.Empty
 
         Private Sub StartProxy()
@@ -39,7 +39,7 @@ Namespace Utilities
             _proxy = New Process() With {
                 .StartInfo = New ProcessStartInfo With {
                     .FileName = _pathToProxy,
-                    .Arguments = $"-p {port} -d {NHLGamesMetro.HostName} -s {NHLGamesMetro.DomainName}",
+                    .Arguments = $"-p {port} -d {Parameters.HostName} -s {Parameters.DomainName}",
                     .UseShellExecute = False,
                     .RedirectStandardOutput = True,
                     .CreateNoWindow = True
@@ -47,7 +47,7 @@ Namespace Utilities
                 .EnableRaisingEvents = True
             }
 
-            InvokeElement.SetFormStatusLabel(NHLGamesMetro.RmText.GetString("msgProxyGettingReady"))
+            InvokeElement.SetFormStatusLabel(Lang.RmText.GetString("msgProxyGettingReady"))
 
             If Not IsProxyFileFound() Then
                 Console.WriteLine(English.errorMitmProxyNotFound)
@@ -63,9 +63,9 @@ Namespace Utilities
                     Dim log = If(indexAfterMatch <> -1, line.Substring(indexAfterMatch + _stringToFind.Length), Nothing)
                     If log <> Nothing Then Console.WriteLine("MLBAMProxy: " & log)
                     If line.ToLower().Contains("proxy server listening") Then
-                        NHLGamesMetro.FormInstance.IsProxyListening = Task.Run(Function()
-                                                                                   Return True
-                                                                               End Function)
+                        Parameters.IsProxyListening = Task.Run(Function()
+                                                                   Return True
+                                                               End Function)
                     End If
                 End While
 
@@ -85,17 +85,17 @@ Namespace Utilities
 
             ' For proxy debug purpose, uncomment below, comment above
 
-            'NHLGamesMetro.FormInstance.ProxyListening = Task.Run(Function()
+            'Instance.Form.ProxyListening = Task.Run(Function()
             '                                                         Return True
             '                                                     End Function)
         End Sub
 
         Public Shared Function TestHostsEntry() As Boolean
             Dim hasRedirection = False
-            If NHLGamesMetro.HostName.Equals(String.Empty) Then Return hasRedirection
+            If Parameters.HostName.Equals(String.Empty) Then Return hasRedirection
             Try
-                Dim serverIp = Dns.GetHostEntry(NHLGamesMetro.HostName).AddressList.First.ToString()
-                Dim resolvedIp = Dns.GetHostAddresses(NHLGamesMetro.DomainName)(0).ToString()
+                Dim serverIp = Dns.GetHostEntry(Parameters.HostName).AddressList.First.ToString()
+                Dim resolvedIp = Dns.GetHostAddresses(Parameters.DomainName)(0).ToString()
                 hasRedirection = serverIp.Equals(resolvedIp)
             Catch ex As Exception
             End Try
@@ -124,19 +124,19 @@ Namespace Utilities
 
         Public Shared Async Function WaitToBeReady() As Task(Of Boolean)
             If Await Ready() Then Return True
-            InvokeElement.SetFormStatusLabel(NHLGamesMetro.RmText.GetString("msgProxyGettingReady"))
+            InvokeElement.SetFormStatusLabel(Lang.RmText.GetString("msgProxyGettingReady"))
 
             While Not Await Ready()
                 Await Task.Delay(200)
             End While
 
-            InvokeElement.SetFormStatusLabel(String.Format(NHLGamesMetro.RmText.GetString("msgGamesFound"),
-                                                               NHLGamesMetro.GamesDict.Values.Count.ToString()))
+            InvokeElement.SetFormStatusLabel(String.Format(Lang.RmText.GetString("msgGamesFound"),
+                                                               GameFetcher.Entries.Values.Count.ToString()))
             Return True
         End Function
 
         Public Shared Async Function Ready() As Task(Of Boolean)
-            Return Not (NHLGamesMetro.FormInstance.IsProxyListening Is Nothing OrElse Not Await NHLGamesMetro.FormInstance.IsProxyListening)
+            Return Not (Parameters.IsProxyListening Is Nothing OrElse Not Await Parameters.IsProxyListening)
         End Function
 
         Public Sub SetEnvironmentVariableForMpv()

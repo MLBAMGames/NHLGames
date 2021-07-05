@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Threading
+Imports MetroFramework.Controls
 Imports NHLGames.My.Resources
 Imports NHLGames.Objects
 
@@ -8,7 +9,7 @@ Namespace Utilities
         Private Const Http = "http"
 
         Public Shared Sub Watch(args As GameWatchArguments)
-            Dim form As NHLGamesMetro = NHLGamesMetro.FormInstance
+            Dim form As IMLBAMForm = Instance.Form
 
             If args.PlayerPath.Equals(String.Empty) OrElse args.StreamerPath.Equals(String.Empty) Then
                 If form.txtStreamerPath.Text.Equals(String.Empty) Then
@@ -24,13 +25,13 @@ Namespace Utilities
             End If
 
             Dim taskLaunchingStream = New Task(Async Sub()
-                                                   NHLGamesMetro.StreamStarted = True
-                                                   NHLGamesMetro.SpnStreamingValue = 1
+                                                   Parameters.StreamStarted = True
+                                                   Parameters.SpnStreamingValue = 1
                                                    Thread.Sleep(100)
-                                                   If Not NHLGamesMetro.IsHostsRedirectionSet Then Await Proxy.WaitToBeReady()
+                                                   If Not Parameters.IsHostsRedirectionSet Then Await Proxy.WaitToBeReady()
                                                    LaunchingStream(args)
                                                    Thread.Sleep(100)
-                                                   NHLGamesMetro.StreamStarted = False
+                                                   Parameters.StreamStarted = False
                                                End Sub)
 
             taskLaunchingStream.Start()
@@ -41,7 +42,7 @@ Namespace Utilities
                     New List(Of String) _
                     From {"found matching plugin stream", "available streams", "opening stream", "starting player"}
             Dim lstInvalidLines As New List(Of String) From {"could not open stream", "failed to read"}
-            Dim progressStep As Integer = (NHLGamesMetro.SpnLoadingMaxValue) / (lstValidLines.Count + 1)
+            Dim progressStep As Integer = (Parameters.SpnLoadingMaxValue) / (lstValidLines.Count + 1)
 
 
             Console.WriteLine(English.msgStreaming, args.GameTitle, args.Stream.Network, args.PlayerType.ToString())
@@ -53,7 +54,7 @@ Namespace Utilities
                     .Arguments = args.ToString(),
                     .UseShellExecute = False,
                     .RedirectStandardOutput = True,
-                    .CreateNoWindow = Not (NHLGamesMetro.FormInstance.tgOutput.Checked And args.Stream.Game IsNot Nothing)}
+                    .CreateNoWindow = Not (Instance.Form.tgOutput.Checked And args.Stream.Game IsNot Nothing)}
                     }
             procStreaming.EnableRaisingEvents = True
 
@@ -64,7 +65,7 @@ Namespace Utilities
             Try
                 procStreaming.Start()
 
-                If NHLGamesMetro.FormInstance.tgOutput.Checked Then Return
+                If Instance.Form.tgOutput.Checked Then Return
 
                 While (procStreaming.StandardOutput.EndOfStream = False)
                     Dim line = procStreaming.StandardOutput.ReadLine().ToLower()
@@ -73,7 +74,7 @@ Namespace Utilities
                                English.msgCensoredStream
                     End If
                     If lstValidLines.Any(Function(x) line.Contains(x)) Then
-                        NHLGamesMetro.SpnStreamingValue += progressStep
+                        Parameters.SpnStreamingValue += progressStep
                     End If
                     If line.Contains(lstValidLines(3)) Then
                         taskPlayerWatcher.Start()
@@ -90,7 +91,7 @@ Namespace Utilities
             Catch ex As Exception
                 Console.WriteLine(English.errorGeneral, $"Starting stream", ex.Message)
             Finally
-                NHLGamesMetro.StreamStarted = False
+                Parameters.StreamStarted = False
             End Try
         End Sub
 
@@ -99,18 +100,18 @@ Namespace Utilities
             Dim i = 0
             While Not _
             processes.Any(Function(p) p.ProcessName.ToLower().Contains(args.PlayerType.ToString().ToLower()) _
-            OrElse NHLGamesMetro.StreamStarted = False _
+            OrElse Parameters.StreamStarted = False _
             OrElse i = 30)
                 processes = Process.GetProcesses()
                 Thread.Sleep(500)
                 i += 1
             End While
-            NHLGamesMetro.SpnStreamingValue = NHLGamesMetro.SpnStreamingMaxValue - 1
+            Parameters.SpnStreamingValue = Parameters.SpnStreamingMaxValue - 1
             Thread.Sleep(1000)
-            NHLGamesMetro.StreamStarted = False
+            Parameters.StreamStarted = False
         End Sub
 
-        Public Shared Function GetPlayerType(form As NHLGamesMetro) As PlayerTypeEnum
+        Public Shared Function GetPlayerType(form As IMLBAMForm) As PlayerTypeEnum
             If form.rbMPV.Checked Then
                 Return PlayerTypeEnum.Mpv
             ElseIf form.rbMPC.Checked Then
@@ -122,27 +123,27 @@ Namespace Utilities
             End If
         End Function
 
-        Private Shared Function GetPlayerPath(form As NHLGamesMetro) As String
+        Private Shared Function GetPlayerPath(form As IMLBAMForm) As String
             If form.rbMPV.Checked Then
                 Return form.txtMpvPath.Text
-            Else If form.rbMPC.Checked Then
+            ElseIf form.rbMPC.Checked Then
                 Return form.txtMPCPath.Text
-            Else If form.rbVLC.Checked Then
+            ElseIf form.rbVLC.Checked Then
                 Return form.txtVLCPath.Text
             Else
                 Return String.Empty
             End If
         End Function
 
-        Private Shared Function GetCdn(form As NHLGamesMetro) As CdnTypeEnum
-            Return If(form.tgAlternateCdn.Checked, CdnTypeEnum.L3C, CdnTypeEnum.Akc)
+        Private Shared Function GetCdn(tgAlternateCdn As MetroToggle) As CdnTypeEnum
+            Return If(tgAlternateCdn.Checked, CdnTypeEnum.L3C, CdnTypeEnum.Akc)
         End Function
 
         Public Shared Function RenewArgs(Optional forceSet As Boolean = False) As GameWatchArguments
 
-            Dim form As NHLGamesMetro = NHLGamesMetro.FormInstance
+            Dim form As IMLBAMForm = Instance.Form
 
-            If NHLGamesMetro.FormLoaded OrElse forceSet Then
+            If Parameters.UILoaded OrElse forceSet Then
                 Dim watchArgs As New GameWatchArguments With {
                     .Is60Fps = form.cbStreamQuality.SelectedIndex = 0,
                     .Quality = form.cbStreamQuality.SelectedIndex,
@@ -156,7 +157,7 @@ Namespace Utilities
                     .CustomPlayerArgs = form.txtPlayerArgs.Text,
                     .UseCustomStreamerArgs = form.tgStreamer.Checked,
                     .CustomStreamerArgs = form.txtStreamerArgs.Text,
-                    .Cdn = GetCdn(form),
+                    .Cdn = GetCdn(form.tgAlternateCdn),
                     .UseOutputArgs = form.tgOutput.Checked,
                     .PlayerOutputPath = form.txtOutputArgs.Text
                 }

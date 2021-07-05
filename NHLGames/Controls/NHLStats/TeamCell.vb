@@ -76,7 +76,7 @@ Namespace NHLStats
             End If
 
             Dim themeChar = "l"
-            If NHLGamesMetro.IsDarkMode Then
+            If Parameters.IsDarkMode Then
                 themeChar = "d"
             End If
 

@@ -6,6 +6,10 @@ Namespace Controls
     Public Class CalendarControl
         Implements IDisposable
 
+        Public Shared LabelDate As Label
+        Public Shared FlpCalendar As FlowLayoutPanel
+        Public Shared GameDate As Date = DateHelper.GetPacificTime()
+
         Private _currentDate As Date
         Private ReadOnly _arrayButtons(,) As Button
         Private ReadOnly _btnBackColor As Color = Color.White
@@ -13,11 +17,11 @@ Namespace Controls
 
         Private Sub ReloadCal(ldate As Date, selected As Integer)
             _currentDate = ldate
-            lnkToday.Text = NHLGamesMetro.RmText.GetString("lnkCalendarToday")
-            tt.SetToolTip(btnBeforeMonth, NHLGamesMetro.RmText.GetString("tipMonthLeft"))
-            tt.SetToolTip(_btnBeforeYear, NHLGamesMetro.RmText.GetString("tipYearUp"))
-            tt.SetToolTip(btnNextMonth, NHLGamesMetro.RmText.GetString("tipMonthRight"))
-            tt.SetToolTip(btnNextYear, NHLGamesMetro.RmText.GetString("tipYearDown"))
+            lnkToday.Text = Lang.RmText.GetString("lnkCalendarToday")
+            tt.SetToolTip(btnBeforeMonth, Lang.RmText.GetString("tipMonthLeft"))
+            tt.SetToolTip(_btnBeforeYear, Lang.RmText.GetString("tipYearUp"))
+            tt.SetToolTip(btnNextMonth, Lang.RmText.GetString("tipMonthRight"))
+            tt.SetToolTip(btnNextYear, Lang.RmText.GetString("tipYearDown"))
             Clearall()
             lblDate.Text = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(ldate.Month) & $" " &
                            ldate.Year.ToString
@@ -96,8 +100,8 @@ Namespace Controls
                                               {Su6, Mo6, Tu6, We6, Th6, Fr6, Sa6}
                                           }
 
-            Dim theme = If(NHLGamesMetro.IsDarkMode, "d", "l")
-            If NHLGamesMetro.IsDarkMode Then
+            Dim theme = If(Parameters.IsDarkMode, "d", "l")
+            If Parameters.IsDarkMode Then
                 _btnBackColor = Color.FromArgb(40, 40, 40)
                 _btnForeColor = Color.LightGray
                 BackColor = Color.FromArgb(40, 40, 40)
@@ -149,9 +153,9 @@ Namespace Controls
 
         Private Sub btnToday_Click(sender As Object, e As EventArgs) Handles lnkToday.Click
             ReloadCal(Date.Today, Date.Today.Day)
-            NHLGamesMetro.GameDate = Date.Today
-            NHLGamesMetro.LabelDate.Text = DateHelper.GetFormattedDate(Date.Today)
-            NHLGamesMetro.FlpCalendar.Visible = False
+            GameDate = Date.Today
+            LabelDate.Text = DateHelper.GetFormattedDate(Date.Today)
+            FlpCalendar.Visible = False
         End Sub
 
         Private Sub Day_Click(sender As Object, e As EventArgs) _
@@ -163,9 +167,9 @@ Namespace Controls
             Dim btn As Button
             btn = sender
             Dim myDate = _currentDate.AddDays(-_currentDate.Day + btn.Text)
-            NHLGamesMetro.GameDate = _currentDate.AddDays(-_currentDate.Day + btn.Text)
-            NHLGamesMetro.LabelDate.Text = DateHelper.GetFormattedDate(myDate)
-            NHLGamesMetro.FlpCalendar.Visible = False
+            GameDate = _currentDate.AddDays(-_currentDate.Day + btn.Text)
+            LabelDate.Text = DateHelper.GetFormattedDate(myDate)
+            FlpCalendar.Visible = False
         End Sub
 
         Private Sub btnBeforeYear_Click(sender As Object, e As EventArgs) Handles btnBeforeYear.Click

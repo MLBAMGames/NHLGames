@@ -18,7 +18,7 @@ Namespace Utilities
 
             If request Is Nothing Then Return
 
-            Dim content = Await Common.SendWebRequestAndGetContentAsync(Nothing, request)
+            Dim content = Await Web.SendWebRequestAndGetContentAsync(Nothing, request)
             Dim release = JsonConvert.DeserializeObject(Of Release)(content)
 
             If release Is Nothing Then Return
@@ -32,18 +32,18 @@ Namespace Utilities
 
             If gitHubTagVersion <= assemblyVersion Then Return
 
-            NHLGamesMetro.FormInstance.lnkRelease.Text = String.Format(NHLGamesMetro.RmText.GetString("lnkNewVersionText"), gitHubTagVersion)
-            NHLGamesMetro.FormInstance.lnkRelease.Visible = True
-            NHLGamesMetro.FormInstance.lblTip.Visible = False
+            Instance.Form.lnkRelease.Text = String.Format(Lang.RmText.GetString("lnkNewVersionText"), gitHubTagVersion)
+            Instance.Form.lnkRelease.Visible = True
+            Instance.Form.lblTip.Visible = False
 
             If GetLastBuildVersionSkipped() = gitHubTagVersion Then Return
 
             Dim changelog = BuildChangeLog(release.body)
 
-            Dim dialogTitle = String.Format(NHLGamesMetro.RmText.GetString("msgNewVersionAvailable"), gitHubTagVersion)
+            Dim dialogTitle = String.Format(Lang.RmText.GetString("msgNewVersionAvailable"), gitHubTagVersion)
             Dim dialogMessage = If(String.IsNullOrEmpty(changelog),
-                NHLGamesMetro.RmText.GetString("msgChangeLogNone"),
-                String.Format(NHLGamesMetro.RmText.GetString("msgChangeLog"), vbCrLf, changelog))
+                Lang.RmText.GetString("msgChangeLogNone"),
+                String.Format(Lang.RmText.GetString("msgChangeLog"), vbCrLf, changelog))
             Dim dialogResult = InvokeElement.MsgBoxBlue(
                 dialogMessage,
                 dialogTitle,
@@ -62,7 +62,7 @@ Namespace Utilities
 
             If request Is Nothing Then Return
 
-            Dim content = Await Common.SendWebRequestAndGetContentAsync(Nothing, request)
+            Dim content = Await Web.SendWebRequestAndGetContentAsync(Nothing, request)
             Dim issues = JsonConvert.DeserializeObject(Of Issue())(content)
 
             If issues Is Nothing OrElse issues.Count = 0 Then Return
@@ -75,7 +75,7 @@ Namespace Utilities
 
             Dim dialogResult = InvokeElement.MsgBoxBlue(
                 dialogMessage,
-                NHLGamesMetro.RmText.GetString("msgAnnouncement"),
+                Lang.RmText.GetString("msgAnnouncement"),
                 MessageBoxButtons.OK)
         End Function
 

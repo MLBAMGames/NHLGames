@@ -17,16 +17,16 @@ Namespace Objects
 
         Private Const MediaOff = "MEDIA_OFF"
 
-        Public Async Function GetGamesAsync() As Task(Of Game())
-            Dim schedule As Schedule = Await Common.GetScheduleAsync(NHLGamesMetro.GameDate)
+        Public Async Function GetGamesAsync(gameDate As Date) As Task(Of Game())
+            Dim schedule As Schedule = Await Web.GetScheduleAsync(gameDate)
 
             If schedule Is Nothing Then
                 Console.WriteLine(English.errorFetchingGames)
                 Return Nothing
             End If
 
-            If Not NHLGamesMetro.IsServerUp Then
-                Console.WriteLine(String.Format(NHLGamesMetro.RmText.GetString($"msgServerSeemsDown"), NHLGamesMetro.HostName))
+            If Not Parameters.IsServerUp Then
+                Console.WriteLine(String.Format(Lang.RmText.GetString($"msgServerSeemsDown"), Parameters.HostName))
             End If
 
             Dim gamesArray As Game()
@@ -39,9 +39,9 @@ Namespace Objects
             If numberOfGames = 0 Then Return Nothing
 
             gamesArray = New Game(numberOfGames - 1) {}
-            lstStreamsTask = If(NHLGamesMetro.IsServerUp, New Task(numberOfStreams - 1) {}, New Task() {})
+            lstStreamsTask = If(Parameters.IsServerUp, New Task(numberOfStreams - 1) {}, New Task() {})
 
-            Dim progressPerGame = Convert.ToInt32(((NHLGamesMetro.SpnLoadingMaxValue - 1) - NHLGamesMetro.SpnLoadingValue) / numberOfGames)
+            Dim progressPerGame = Convert.ToInt32(((Parameters.SpnLoadingMaxValue - 1) - Parameters.SpnLoadingValue) / numberOfGames)
             Dim currentGame As Game
 
             For Each game As NHL.Game In schedule.date.games
@@ -73,10 +73,10 @@ Namespace Objects
                     currentGame.SetStatsInfo(game)
                 End If
 
-                If NHLGamesMetro.IsServerUp Then
+                If Parameters.IsServerUp Then
                     Dim progressPerStream = If(game.numberOfNHLTVFeedsWithRecap <> 0, Convert.ToInt32(progressPerGame / game.numberOfNHLTVFeedsWithRecap), progressPerGame)
                     For Each feed In game.NHLTVFeeds
-                        NHLGamesMetro.SpnLoadingValue += progressPerStream
+                        Parameters.SpnLoadingValue += progressPerStream
                         Dim streamType As StreamTypeEnum = GetStreamType(feed.streamTypeSelected)
                         If Not feed.mediaState.Equals(MediaOff) AndAlso numberOfStreams > 0 Then
                             Dim tCurrentGame = currentGame
@@ -108,7 +108,7 @@ Namespace Objects
 
                     If currentGame.IsEnded AndAlso game.numberOfRecapFeeds <> 0 Then
                         currentGame.Recap = SetGameRecap(game)
-                        NHLGamesMetro.SpnLoadingValue += progressPerStream
+                        Parameters.SpnLoadingValue += progressPerStream
                     End If
                 End If
 
@@ -159,7 +159,7 @@ Namespace Objects
         Private Shared Async Function GetGameFeedUrlAsync(gameStream As GameStream) As Task(Of String)
             If gameStream.GameUrl.Equals(String.Empty) Then Return String.Empty
 
-            Dim streamUrlReturned = Await Common.SendWebRequestAndGetContentAsync(gameStream.GameUrl)
+            Dim streamUrlReturned = Await Web.SendWebRequestAndGetContentAsync(gameStream.GameUrl)
 
             ' Recover old streams
             If gameStream.Game.GameDate.ToLocalTime() < DateTime.Today.AddDays(-2) And streamUrlReturned.StartsWith("https://hlslive") Then
@@ -177,7 +177,7 @@ Namespace Objects
 #End If
             If streamUrlReturned.Equals(String.Empty) Then Return String.Empty
 
-            Return If(Await Common.SendWebRequestAsync(streamUrlReturned), streamUrlReturned, String.Empty)
+            Return If(Await Web.SendWebRequestAsync(streamUrlReturned), streamUrlReturned, String.Empty)
         End Function
 
         Protected Overridable Sub Dispose(disposing As Boolean)

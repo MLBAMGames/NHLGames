@@ -7,78 +7,78 @@ Imports NHLGames.Objects
 
 Namespace Utilities
     Public Class InitializeForm
-        Private Shared ReadOnly Form As NHLGamesMetro = NHLGamesMetro.FormInstance
+        Private Shared ReadOnly Form As NHLGamesMetro = Instance.Form
         Public Shared ReadOnly TotalTipCount As Integer = 10
 
         Public Shared Sub SetLanguage()
             Dim lstStreamQualities = New String() {
-                                                      NHLGamesMetro.RmText.GetString("cbQualitySuperb60fps"),
-                                                      NHLGamesMetro.RmText.GetString("cbQualitySuperb"),
-                                                      NHLGamesMetro.RmText.GetString("cbQualityGreat"),
-                                                      NHLGamesMetro.RmText.GetString("cbQualityGood"),
-                                                      NHLGamesMetro.RmText.GetString("cbQualityNormal"),
-                                                      NHLGamesMetro.RmText.GetString("cbQualityLow"),
-                                                      NHLGamesMetro.RmText.GetString("cbQualityMobile")
+                                                      Lang.RmText.GetString("cbQualitySuperb60fps"),
+                                                      Lang.RmText.GetString("cbQualitySuperb"),
+                                                      Lang.RmText.GetString("cbQualityGreat"),
+                                                      Lang.RmText.GetString("cbQualityGood"),
+                                                      Lang.RmText.GetString("cbQualityNormal"),
+                                                      Lang.RmText.GetString("cbQualityLow"),
+                                                      Lang.RmText.GetString("cbQualityMobile")
                                                   }
 
             Dim lstLiveReplayPreferences = New String() {
-                                                            NHLGamesMetro.RmText.GetString("cbLiveReplayPuckDrop"),
-                                                            NHLGamesMetro.RmText.GetString("cbLiveReplayGameTime"),
-                                                            NHLGamesMetro.RmText.GetString("cbLiveReplayFeedStart")
+                                                            Lang.RmText.GetString("cbLiveReplayPuckDrop"),
+                                                            Lang.RmText.GetString("cbLiveReplayGameTime"),
+                                                            Lang.RmText.GetString("cbLiveReplayFeedStart")
                                                         }
 
             'Main
-            Form.tabMenu.TabPages.Item(0).Text = NHLGamesMetro.RmText.GetString("tabGames")
-            Form.tabMenu.TabPages.Item(1).Text = NHLGamesMetro.RmText.GetString("tabStandings")
-            Form.tabMenu.TabPages.Item(2).Text = NHLGamesMetro.RmText.GetString("tabSettings")
-            Form.tabMenu.TabPages.Item(3).Text = NHLGamesMetro.RmText.GetString("tabConsole")
-            Form.tt.SetToolTip(Form.btnHelp, NHLGamesMetro.RmText.GetString("tipHelp"))
+            Form.tabMenu.TabPages.Item(0).Text = Lang.RmText.GetString("tabGames")
+            Form.tabMenu.TabPages.Item(1).Text = Lang.RmText.GetString("tabStandings")
+            Form.tabMenu.TabPages.Item(2).Text = Lang.RmText.GetString("tabSettings")
+            Form.tabMenu.TabPages.Item(3).Text = Lang.RmText.GetString("tabConsole")
+            Form.tt.SetToolTip(Form.btnHelp, Lang.RmText.GetString("tipHelp"))
 
-            Form.lblNoGames.Text = NHLGamesMetro.RmText.GetString("lblNoGames")
-            Form.lblStatus.Text = String.Format(NHLGamesMetro.RmText.GetString("msgGamesFound"),
-                                                NHLGamesMetro.FormInstance.flpGames.Controls.Count())
+            Form.lblNoGames.Text = Lang.RmText.GetString("lblNoGames")
+            Form.lblStatus.Text = String.Format(Lang.RmText.GetString("msgGamesFound"),
+                                                Instance.Form.flpGames.Controls.Count())
 
             'Games
-            Form.tt.SetToolTip(Form.btnYesterday, NHLGamesMetro.RmText.GetString("tipDayLeft"))
-            Form.tt.SetToolTip(Form.btnDate, NHLGamesMetro.RmText.GetString("tipCalendar"))
-            Form.tt.SetToolTip(Form.btnTomorrow, NHLGamesMetro.RmText.GetString("tipDayRight"))
-            Form.tt.SetToolTip(Form.btnRefresh, NHLGamesMetro.RmText.GetString("tipRefresh"))
+            Form.tt.SetToolTip(Form.btnYesterday, Lang.RmText.GetString("tipDayLeft"))
+            Form.tt.SetToolTip(Form.btnDate, Lang.RmText.GetString("tipCalendar"))
+            Form.tt.SetToolTip(Form.btnTomorrow, Lang.RmText.GetString("tipDayRight"))
+            Form.tt.SetToolTip(Form.btnRefresh, Lang.RmText.GetString("tipRefresh"))
 
             'Standings
-            Form.lblSeason.Text = NHLGamesMetro.RmText.GetString("lblSeason")
+            Form.lblSeason.Text = Lang.RmText.GetString("lblSeason")
 
             'Settings
             Dim minutesBehind = Form.tbLiveRewind.Value * 5
-            Form.lblGamePanel.Text = NHLGamesMetro.RmText.GetString("lblShowScores")
-            Form.lblPlayer.Text = NHLGamesMetro.RmText.GetString("lblPlayer")
-            Form.lblQuality.Text = NHLGamesMetro.RmText.GetString("lblQuality")
-            Form.lblCdn.Text = NHLGamesMetro.RmText.GetString("lblCdn")
-            Form.lblDarkMode.Text = NHLGamesMetro.RmText.GetString("lblDark")
-            Form.lblHostname.Text = NHLGamesMetro.RmText.GetString("lblHostname")
-            Form.lblProxyPort.Text = NHLGamesMetro.RmText.GetString("lblProxyPort")
-            Form.lblVlcPath.Text = NHLGamesMetro.RmText.GetString("lblVlcPath")
-            Form.lblMpcPath.Text = NHLGamesMetro.RmText.GetString("lblMpcPath")
-            Form.lblMpvPath.Text = NHLGamesMetro.RmText.GetString("lblMpvPath")
-            Form.lblSlPath.Text = NHLGamesMetro.RmText.GetString("lblSlPath")
-            Form.lblOutput.Text = NHLGamesMetro.RmText.GetString("lblOutput")
-            Form.lblPlayerArgs.Text = NHLGamesMetro.RmText.GetString("lblPlayerArgs")
-            Form.lblStreamerArgs.Text = NHLGamesMetro.RmText.GetString("lblStreamerArgs")
-            Form.lblLanguage.Text = NHLGamesMetro.RmText.GetString("lblLanguage")
-            Form.lblShowLiveTime.Text = NHLGamesMetro.RmText.GetString("lblShowLiveTime")
-            Form.lblUseAlternateCdn.Text = NHLGamesMetro.RmText.GetString("lblAlternateCdn")
-            Form.lblLiveReplay.Text = NHLGamesMetro.RmText.GetString("lblLiveReplay")
-            Form.lblLiveRewind.Text = NHLGamesMetro.RmText.GetString("lblLiveRewind")
+            Form.lblGamePanel.Text = Lang.RmText.GetString("lblShowScores")
+            Form.lblPlayer.Text = Lang.RmText.GetString("lblPlayer")
+            Form.lblQuality.Text = Lang.RmText.GetString("lblQuality")
+            Form.lblCdn.Text = Lang.RmText.GetString("lblCdn")
+            Form.lblDarkMode.Text = Lang.RmText.GetString("lblDark")
+            Form.lblHostname.Text = Lang.RmText.GetString("lblHostname")
+            Form.lblProxyPort.Text = Lang.RmText.GetString("lblProxyPort")
+            Form.lblVlcPath.Text = Lang.RmText.GetString("lblVlcPath")
+            Form.lblMpcPath.Text = Lang.RmText.GetString("lblMpcPath")
+            Form.lblMpvPath.Text = Lang.RmText.GetString("lblMpvPath")
+            Form.lblSlPath.Text = Lang.RmText.GetString("lblSlPath")
+            Form.lblOutput.Text = Lang.RmText.GetString("lblOutput")
+            Form.lblPlayerArgs.Text = Lang.RmText.GetString("lblPlayerArgs")
+            Form.lblStreamerArgs.Text = Lang.RmText.GetString("lblStreamerArgs")
+            Form.lblLanguage.Text = Lang.RmText.GetString("lblLanguage")
+            Form.lblShowLiveTime.Text = Lang.RmText.GetString("lblShowLiveTime")
+            Form.lblUseAlternateCdn.Text = Lang.RmText.GetString("lblAlternateCdn")
+            Form.lblLiveReplay.Text = Lang.RmText.GetString("lblLiveReplay")
+            Form.lblLiveRewind.Text = Lang.RmText.GetString("lblLiveRewind")
             Form.lblLiveRewindDetails.Text = String.Format(
-                NHLGamesMetro.RmText.GetString("lblLiveRewindDetails"),
+                Lang.RmText.GetString("lblLiveRewindDetails"),
                 minutesBehind, Now.AddMinutes(-minutesBehind).ToString("h:mm tt", CultureInfo.InvariantCulture))
 
-            Form.lblGamePanel.Text = NHLGamesMetro.RmText.GetString("lblGamePanel")
-            Form.lblShowFinalScores.Text = NHLGamesMetro.RmText.GetString("lblShowFinalScores")
-            Form.lblShowLiveScores.Text = NHLGamesMetro.RmText.GetString("lblShowLiveScores")
-            Form.lblShowSeriesRecord.Text = NHLGamesMetro.RmText.GetString("lblShowSeriesRecord")
-            Form.lblShowTeamCityAbr.Text = NHLGamesMetro.RmText.GetString("lblShowTeamCityAbr")
-            Form.lblShowTodayLiveGamesFirst.Text = NHLGamesMetro.RmText.GetString("lblShowTodayLiveGamesFirst")
-            Form.lblShowStanding.Text = NHLGamesMetro.RmText.GetString("lblShowStanding")
+            Form.lblGamePanel.Text = Lang.RmText.GetString("lblGamePanel")
+            Form.lblShowFinalScores.Text = Lang.RmText.GetString("lblShowFinalScores")
+            Form.lblShowLiveScores.Text = Lang.RmText.GetString("lblShowLiveScores")
+            Form.lblShowSeriesRecord.Text = Lang.RmText.GetString("lblShowSeriesRecord")
+            Form.lblShowTeamCityAbr.Text = Lang.RmText.GetString("lblShowTeamCityAbr")
+            Form.lblShowTodayLiveGamesFirst.Text = Lang.RmText.GetString("lblShowTodayLiveGamesFirst")
+            Form.lblShowStanding.Text = Lang.RmText.GetString("lblShowStanding")
 
             Form.cbStreamQuality.Items.Clear()
             Form.cbStreamQuality.Items.AddRange(lstStreamQualities)
@@ -88,47 +88,47 @@ Namespace Utilities
             Form.cbLiveReplay.Items.AddRange(lstLiveReplayPreferences)
             Form.cbLiveReplay.SelectedIndex = 0
 
-            Form.tt.SetToolTip(Form.lnkGetVlc, NHLGamesMetro.RmText.GetString("tipGetVlc"))
-            Form.tt.SetToolTip(Form.lnkGetMpc, NHLGamesMetro.RmText.GetString("tipGetMpc"))
-            Form.tt.SetToolTip(Form.btnMPCPath, NHLGamesMetro.RmText.GetString("tipBrowse"))
-            Form.tt.SetToolTip(Form.btnMpvPath, NHLGamesMetro.RmText.GetString("tipBrowse"))
-            Form.tt.SetToolTip(Form.btnMPCPath, NHLGamesMetro.RmText.GetString("tipBrowse"))
-            Form.tt.SetToolTip(Form.btnStreamerPath, NHLGamesMetro.RmText.GetString("tipBrowse"))
-            Form.tt.SetToolTip(Form.btnOutput, NHLGamesMetro.RmText.GetString("tipBrowse"))
-            Form.tt.SetToolTip(Form.tbProxyPort, NHLGamesMetro.RmText.GetString("tipTrackBarMove"))
-            Form.tt.SetToolTip(Form.tbLiveRewind, NHLGamesMetro.RmText.GetString("tipTrackBarMove"))
-            Form.tt.SetToolTip(Form.lblMediaControlDelay, NHLGamesMetro.RmText.GetString("tipMediaControlDelay"))
+            Form.tt.SetToolTip(Form.lnkGetVlc, Lang.RmText.GetString("tipGetVlc"))
+            Form.tt.SetToolTip(Form.lnkGetMpc, Lang.RmText.GetString("tipGetMpc"))
+            Form.tt.SetToolTip(Form.btnMPCPath, Lang.RmText.GetString("tipBrowse"))
+            Form.tt.SetToolTip(Form.btnMpvPath, Lang.RmText.GetString("tipBrowse"))
+            Form.tt.SetToolTip(Form.btnMPCPath, Lang.RmText.GetString("tipBrowse"))
+            Form.tt.SetToolTip(Form.btnStreamerPath, Lang.RmText.GetString("tipBrowse"))
+            Form.tt.SetToolTip(Form.btnOutput, Lang.RmText.GetString("tipBrowse"))
+            Form.tt.SetToolTip(Form.tbProxyPort, Lang.RmText.GetString("tipTrackBarMove"))
+            Form.tt.SetToolTip(Form.tbLiveRewind, Lang.RmText.GetString("tipTrackBarMove"))
+            Form.tt.SetToolTip(Form.lblMediaControlDelay, Lang.RmText.GetString("tipMediaControlDelay"))
 
-            Form.lblModules.Text = NHLGamesMetro.RmText.GetString("lblModules")
-            Form.lblModulesDesc.Text = NHLGamesMetro.RmText.GetString("lblModulesDesc")
-            Form.lblMedia.Text = NHLGamesMetro.RmText.GetString("lblMedia")
-            Form.lblMediaDesc.Text = NHLGamesMetro.RmText.GetString("lblMediaDesc")
-            Form.lblMediaControlDelay.Text = NHLGamesMetro.RmText.GetString("lblMediaControlDelay")
-            Form.lblOBS.Text = NHLGamesMetro.RmText.GetString("lblObs")
-            Form.lblOBSDesc.Text = NHLGamesMetro.RmText.GetString("lblObsDesc")
-            Form.lblObsAdEndingHotkey.Text = NHLGamesMetro.RmText.GetString("lblObsAdEndingHotkey")
-            Form.lblObsAdStartingHotkey.Text = NHLGamesMetro.RmText.GetString("lblObsAdStartingHotkey")
-            Form.chkSpotifyForceToStart.Text = NHLGamesMetro.RmText.GetString("chkSpotifyForceToStart")
-            Form.chkSpotifyPlayNextSong.Text = NHLGamesMetro.RmText.GetString("chkSpotifyPlayNextSong")
-            Form.chkSpotifyHotkeys.Text = NHLGamesMetro.RmText.GetString("chkSpotifyHotkeys")
+            Form.lblModules.Text = Lang.RmText.GetString("lblModules")
+            Form.lblModulesDesc.Text = Lang.RmText.GetString("lblModulesDesc")
+            Form.lblMedia.Text = Lang.RmText.GetString("lblMedia")
+            Form.lblMediaDesc.Text = Lang.RmText.GetString("lblMediaDesc")
+            Form.lblMediaControlDelay.Text = Lang.RmText.GetString("lblMediaControlDelay")
+            Form.lblOBS.Text = Lang.RmText.GetString("lblObs")
+            Form.lblOBSDesc.Text = Lang.RmText.GetString("lblObsDesc")
+            Form.lblObsAdEndingHotkey.Text = Lang.RmText.GetString("lblObsAdEndingHotkey")
+            Form.lblObsAdStartingHotkey.Text = Lang.RmText.GetString("lblObsAdStartingHotkey")
+            Form.chkSpotifyForceToStart.Text = Lang.RmText.GetString("chkSpotifyForceToStart")
+            Form.chkSpotifyPlayNextSong.Text = Lang.RmText.GetString("chkSpotifyPlayNextSong")
+            Form.chkSpotifyHotkeys.Text = Lang.RmText.GetString("chkSpotifyHotkeys")
 
-            Form.lblReset.Text = NHLGamesMetro.RmText.GetString("lblReset")
-            Form.lblResetDesc.Text = NHLGamesMetro.RmText.GetString("lblResetDesc")
+            Form.lblReset.Text = Lang.RmText.GetString("lblReset")
+            Form.lblResetDesc.Text = Lang.RmText.GetString("lblResetDesc")
 
             'Console
-            Form.btnCopyConsole.Text = NHLGamesMetro.RmText.GetString("btnCopyConsole")
-            Form.btnClearConsole.Text = NHLGamesMetro.RmText.GetString("btnClearConsole")
+            Form.btnCopyConsole.Text = Lang.RmText.GetString("btnCopyConsole")
+            Form.btnClearConsole.Text = Lang.RmText.GetString("btnClearConsole")
 
             'Calendar
             Form.flpCalendarPanel.Controls.Clear()
             Form.flpCalendarPanel.Controls.Add(New CalendarControl())
 
             'Tips
-            NHLGamesMetro.Tips.Clear()
+            Parameters.Tips.Clear()
             For index As Integer = 1 To TotalTipCount
-                NHLGamesMetro.Tips.Add(index, NHLGamesMetro.RmText.GetString($"tipMessage{index}"))
+                Parameters.Tips.Add(index, Lang.RmText.GetString($"tipMessage{index}"))
             Next
-            Form.lblTip.Text = NHLGamesMetro.Tips.First().Value
+            Form.lblTip.Text = Parameters.Tips.First().Value
 
             SetThemeAndSvgOnForm()
         End Sub
@@ -141,8 +141,8 @@ Namespace Utilities
 
         Public Shared Sub SetSettings()
             Dim lstLanguages = New String() {
-                                                NHLGamesMetro.RmText.GetString("cbEnglish"),
-                                                NHLGamesMetro.RmText.GetString("cbFrench")
+                                                Lang.RmText.GetString("cbEnglish"),
+                                                Lang.RmText.GetString("cbFrench")
                                             }
             Dim livestreamerPath = GetApplication(SettingsEnum.StreamerPath,
                                                        Path.Combine(Application.StartupPath,
@@ -171,7 +171,7 @@ Namespace Utilities
             Form.tbProxyPort.Value = proxyPort / 10
             Form.lblProxyPortNumber.Text = proxyPort.ToString()
 
-            Form.tgDarkMode.Checked = NHLGamesMetro.IsDarkMode
+            Form.tgDarkMode.Checked = Parameters.IsDarkMode
 
             Form.tgShowFinalScores.Checked = My.Settings.ShowScores
             Form.tgShowLiveScores.Checked = My.Settings.ShowLiveScores
@@ -189,9 +189,9 @@ Namespace Utilities
             End If
 
             PopulateComboBox(Form.cbServers, SettingsEnum.SelectedServer, SettingsEnum.ServerList, String.Empty)
-            Common.SetRedirectionServerInApp()
+            Web.SetRedirectionServerInApp()
 
-            NHLGamesMetro.WatchArgs = BindWatchArgsToForm(watchArgs)
+            Parameters.WatchArgs = BindWatchArgsToForm(watchArgs)
 
             Dim adDetectionConfigs = SettingsExtensions.ReadAdDetectionConfigs()
 
@@ -199,8 +199,8 @@ Namespace Utilities
                 adDetectionConfigs = AdDetection.Renew(True)
             End If
 
-            Form.SetStreamerDefaultArgs(Form)
-            Form.SetPlayerDefaultArgs(Form)
+            Form.SetStreamerDefaultArgs()
+            Form.SetPlayerDefaultArgs()
 
             BindAdDetectionConfigsToForm(adDetectionConfigs)
 
@@ -209,13 +209,13 @@ Namespace Utilities
             Form.spnLoading.Location = New Point(((Form.tabGames.Width - Form.lblNoGames.Width) / 2) + 40,
                                                  (Form.tabGames.Height / 2) - 20)
 
-            Form.spnLoading.Value = NHLGamesMetro.SpnLoadingValue
-            Form.spnLoading.Maximum = NHLGamesMetro.SpnLoadingMaxValue
-            Form.spnStreaming.Value = NHLGamesMetro.SpnStreamingValue
-            Form.spnStreaming.Maximum = NHLGamesMetro.SpnStreamingMaxValue
-            Form.lblDate.Text = DateHelper.GetFormattedDate(NHLGamesMetro.GameDate)
+            Form.spnLoading.Value = Parameters.SpnLoadingValue
+            Form.spnLoading.Maximum = Parameters.SpnLoadingMaxValue
+            Form.spnStreaming.Value = Parameters.SpnStreamingValue
+            Form.spnStreaming.Maximum = Parameters.SpnStreamingMaxValue
+            Form.lblDate.Text = DateHelper.GetFormattedDate(CalendarControl.GameDate)
 
-            NHLGamesMetro.LabelDate = Form.lblDate
+            CalendarControl.LabelDate = Form.lblDate
         End Sub
 
         Private Shared Function GetApplication(varSetting As SettingsEnum, currentPath As String)
@@ -361,7 +361,7 @@ Namespace Utilities
         Private Shared Sub SetThemeAndSvgOnForm()
             Dim themeChar = "l"
             Dim colorMetroThemeDark = Color.FromArgb(17, 17, 17)
-            If NHLGamesMetro.IsDarkMode Then
+            If Parameters.IsDarkMode Then
                 themeChar = "d"
                 Form.Theme = MetroThemeStyle.Dark
                 Form.lblNoGames.BackColor = Color.FromArgb(60, 60, 60)

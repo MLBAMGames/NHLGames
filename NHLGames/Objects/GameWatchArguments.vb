@@ -51,7 +51,7 @@ Namespace Objects
         End Function
 
         Private Function IsProxyNecessary() As Boolean
-            Return Not NHLGamesMetro.IsHostsRedirectionSet AndAlso Not Stream.Type.Equals(StreamTypeEnum.Recap)
+            Return Not Parameters.IsHostsRedirectionSet AndAlso Not Stream.Type.Equals(StreamTypeEnum.Recap)
         End Function
 
         Private Function GetStreamQuality() As String
@@ -102,7 +102,7 @@ Namespace Objects
             Dim title = $"{GameTitle} - {Stream.Network} - {Quality.ToString()}"
             Select Case PlayerType
                 Case PlayerTypeEnum.Mpv
-                    args &= $"--force-window=immediate --title=""""{title}"""" --user-agent=User-Agent=""""{Common.UserAgent}"""""
+                    args &= $"--force-window=immediate --title=""""{title}"""" --user-agent=User-Agent=""""{Web.UserAgent}"""""
                 Case PlayerTypeEnum.Vlc
                      args &= $"--meta-title=""""{title}"""" "
                     If IsProxyNecessary() Then args &= $"{VlcHttpProxyArgs()} "
@@ -151,11 +151,11 @@ Namespace Objects
         End Function
 
         Private Function StreamlinkHttpsProxyArgs() As String
-            Return String.Format("--https-proxy=""https://127.0.0.1:{0}"" --http-proxy=""http://127.0.0.1:{0}"" ", NHLGamesMetro.MLBAMProxy.port)
+            Return String.Format("--https-proxy=""https://127.0.0.1:{0}"" --http-proxy=""http://127.0.0.1:{0}"" ", Proxy.MLBAMProxy.port)
         End Function
 
         Private Function VlcHttpProxyArgs() As String
-            Return String.Format("--http-proxy=""https://127.0.0.1:{0}"" --http-reconnect --http-forward-cookies", NHLGamesMetro.MLBAMProxy.port)
+            Return String.Format("--http-proxy=""https://127.0.0.1:{0}"" --http-reconnect --http-forward-cookies", Proxy.MLBAMProxy.port)
         End Function
 
         Private Function RetryArgs() As String
@@ -163,11 +163,11 @@ Namespace Objects
         End Function
 
         Private Function NhlCookieArgs() As String
-            Return $" --http-cookie=""mediaAuth={Common.GetRandomString(240)} """
+            Return $" --http-cookie=""mediaAuth={Web.GetRandomString(240)} """
         End Function
 
         Private Function UserAgentArgs() As String
-            Return $" --http-header=""User-Agent={Common.UserAgent}"" "
+            Return $" --http-header=""User-Agent={Web.UserAgent}"" "
         End Function
 
         Private Function StreamLinkArgs() As String

@@ -34,7 +34,7 @@ Namespace Objects
                 Me.StreamTypeSelected = streamTypeSelected
             End If
             CdnParameter = SettingsExtensions.ReadGameWatchArgs().Cdn
-            GameUrl = $"http://{NHLGamesMetro.HostName}/getM3U8.php?league=NHL&id={PlayBackId}&cdn={CdnParameter.ToString().ToLower()}&date={DateHelper.GetPacificTime(game.GameDate).ToString("yyyy-MM-dd")}"
+            GameUrl = $"http://{Parameters.HostName}/getM3U8.php?league=NHL&id={PlayBackId}&cdn={CdnParameter.ToString().ToLower()}&date={DateHelper.GetPacificTime(game.GameDate).ToString("yyyy-MM-dd")}"
             Title = $"{game.AwayAbbrev} vs {game.HomeAbbrev} on {Network}"
         End Sub
 

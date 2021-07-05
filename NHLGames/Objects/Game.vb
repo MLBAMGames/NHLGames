@@ -37,7 +37,7 @@ Namespace Objects
         Public Property HomeScore As String
 
         Public Overrides Function ToString() As String
-            Return String.Format(NHLGamesMetro.RmText.GetString("msgTeamVsTeam"), HomeTeam, AwayTeam)
+            Return String.Format(Lang.RmText.GetString("msgTeamVsTeam"), HomeTeam, AwayTeam)
         End Function
 
         Public ReadOnly Property IsTodaysGame As Boolean

@@ -7,6 +7,8 @@ Imports NHLGames.Objects.Modules
 Namespace Utilities
     Public Class AdDetection
         Implements IDisposable
+        Public Shared Engine As AdDetection
+
         Private _disposedValue As Boolean
 
         Private _mediaPlayerProcesses As List(Of Integer)
@@ -186,30 +188,29 @@ Namespace Utilities
         End Function
 
         Public Shared Function Renew(Optional forceSet As Boolean = False) As AdDetectionConfigs
-            Dim form = NHLGamesMetro.FormInstance
-            If NHLGamesMetro.FormLoaded OrElse forceSet Then
+            If Parameters.UILoaded OrElse forceSet Then
                 _settings = New AdDetectionConfigs With {
-                    .IsEnabled = form.tgModules.Checked,
-                    .EnabledSpotifyModule = form.tgMedia.Checked,
-                    .EnabledObsModule = form.tgOBS.Checked,
-                    .EnabledSpotifyForceToOpen = form.chkSpotifyForceToStart.Checked,
-                    .EnabledSpotifyPlayNextSong = form.chkSpotifyPlayNextSong.Checked,
-                    .EnabledSpotifyHotkeys = form.chkSpotifyHotkeys.Checked
+                    .IsEnabled = Instance.Form.tgModules.Checked,
+                    .EnabledSpotifyModule = Instance.Form.tgMedia.Checked,
+                    .EnabledObsModule = Instance.Form.tgOBS.Checked,
+                    .EnabledSpotifyForceToOpen = Instance.Form.chkSpotifyForceToStart.Checked,
+                    .EnabledSpotifyPlayNextSong = Instance.Form.chkSpotifyPlayNextSong.Checked,
+                    .EnabledSpotifyHotkeys = Instance.Form.chkSpotifyHotkeys.Checked
                 }
 
-                If Not String.IsNullOrEmpty(form.txtMediaControlDelay.Text) Then
-                    _settings.MediaControlDelay = form.txtMediaControlDelay.Text
+                If Not String.IsNullOrEmpty(Instance.Form.txtMediaControlDelay.Text) Then
+                    _settings.MediaControlDelay = Instance.Form.txtMediaControlDelay.Text
                 End If
 
-                _settings.EnabledObsGameSceneHotKey.Key = form.txtGameKey.Text
-                _settings.EnabledObsGameSceneHotKey.Ctrl = form.chkGameCtrl.Checked
-                _settings.EnabledObsGameSceneHotKey.Alt = form.chkGameAlt.Checked
-                _settings.EnabledObsGameSceneHotKey.Shift = form.chkGameShift.Checked
+                _settings.EnabledObsGameSceneHotKey.Key = Instance.Form.txtGameKey.Text
+                _settings.EnabledObsGameSceneHotKey.Ctrl = Instance.Form.chkGameCtrl.Checked
+                _settings.EnabledObsGameSceneHotKey.Alt = Instance.Form.chkGameAlt.Checked
+                _settings.EnabledObsGameSceneHotKey.Shift = Instance.Form.chkGameShift.Checked
 
-                _settings.EnabledObsAdSceneHotKey.Key = form.txtAdKey.Text
-                _settings.EnabledObsAdSceneHotKey.Ctrl = form.chkAdCtrl.Checked
-                _settings.EnabledObsAdSceneHotKey.Alt = form.chkAdAlt.Checked
-                _settings.EnabledObsAdSceneHotKey.Shift = form.chkAdShift.Checked
+                _settings.EnabledObsAdSceneHotKey.Key = Instance.Form.txtAdKey.Text
+                _settings.EnabledObsAdSceneHotKey.Ctrl = Instance.Form.chkAdCtrl.Checked
+                _settings.EnabledObsAdSceneHotKey.Alt = Instance.Form.chkAdAlt.Checked
+                _settings.EnabledObsAdSceneHotKey.Shift = Instance.Form.chkAdShift.Checked
 
                 My.Settings.AdDetection = Serialization.SerializeObject(Of AdDetectionConfigs)(_settings)
                 My.Settings.Save()

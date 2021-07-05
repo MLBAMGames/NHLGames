@@ -4,6 +4,7 @@ Imports MetroFramework.Components
 Imports MetroFramework.Controls
 Imports MetroFramework.Forms
 Imports Microsoft.VisualBasic.CompilerServices
+Imports NHLGames.Controls
 Imports NHLGames.My.Resources
 
 <DesignerGenerated()>
@@ -34,11 +35,6 @@ Partial Class NHLGamesMetro
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NHLGamesMetro))
         Me.txtConsole = New System.Windows.Forms.RichTextBox()
         Me.tabMenu = New MetroFramework.Controls.MetroTabControl()
-        Me.tabStandings = New MetroFramework.Controls.MetroTabPage()
-        Me.tlpStandings = New System.Windows.Forms.TableLayoutPanel()
-        Me.cbSeasons = New NHLGames.Controls.MetroComboBoxNoMW()
-        Me.lblSeason = New MetroFramework.Controls.MetroLabel()
-        Me.tbStanding = New MetroFramework.Controls.MetroTabControl()
         Me.tabGames = New MetroFramework.Controls.MetroTabPage()
         Me.spnLoading = New MetroFramework.Controls.MetroProgressSpinner()
         Me.lblDate = New MetroFramework.Controls.MetroLabel()
@@ -50,6 +46,11 @@ Partial Class NHLGamesMetro
         Me.btnYesterday = New System.Windows.Forms.Button()
         Me.btnDate = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.tabStandings = New MetroFramework.Controls.MetroTabPage()
+        Me.tlpStandings = New System.Windows.Forms.TableLayoutPanel()
+        Me.cbSeasons = New NHLGames.Controls.MetroComboBoxNoMW()
+        Me.lblSeason = New MetroFramework.Controls.MetroLabel()
+        Me.tbStanding = New MetroFramework.Controls.MetroTabControl()
         Me.tabSettings = New MetroFramework.Controls.MetroTabPage()
         Me.tlpSettings = New System.Windows.Forms.TableLayoutPanel()
         Me.tlpOBSSettings = New System.Windows.Forms.TableLayoutPanel()
@@ -193,10 +194,10 @@ Partial Class NHLGamesMetro
         Me.btnHelp = New MetroFramework.Controls.MetroLink()
         Me.pnlLogo = New System.Windows.Forms.Panel()
         Me.tabMenu.SuspendLayout()
-        Me.tabStandings.SuspendLayout()
-        Me.tlpStandings.SuspendLayout()
         Me.tabGames.SuspendLayout()
         Me.pnlGameBar.SuspendLayout()
+        Me.tabStandings.SuspendLayout()
+        Me.tlpStandings.SuspendLayout()
         Me.tabSettings.SuspendLayout()
         Me.tlpSettings.SuspendLayout()
         Me.tlpOBSSettings.SuspendLayout()
@@ -266,93 +267,6 @@ Partial Class NHLGamesMetro
         Me.tabMenu.Style = MetroFramework.MetroColorStyle.Blue
         Me.tabMenu.TabIndex = 10
         Me.tabMenu.UseSelectable = True
-        '
-        'tabStandings
-        '
-        Me.tabStandings.Controls.Add(Me.tlpStandings)
-        Me.tabStandings.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.tabStandings.HorizontalScrollbarBarColor = False
-        Me.tabStandings.HorizontalScrollbarHighlightOnWheel = False
-        Me.tabStandings.HorizontalScrollbarSize = 10
-        Me.tabStandings.Location = New System.Drawing.Point(4, 38)
-        Me.tabStandings.Name = "tabStandings"
-        Me.tabStandings.Padding = New System.Windows.Forms.Padding(1)
-        Me.tabStandings.Size = New System.Drawing.Size(984, 518)
-        Me.tabStandings.TabIndex = 1
-        Me.tabStandings.Text = "STANDINGS"
-        Me.tabStandings.UseCustomForeColor = True
-        Me.tabStandings.UseStyleColors = True
-        Me.tabStandings.VerticalScrollbarBarColor = False
-        Me.tabStandings.VerticalScrollbarHighlightOnWheel = False
-        Me.tabStandings.VerticalScrollbarSize = 10
-        '
-        'tlpStandings
-        '
-        Me.tlpStandings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tlpStandings.AutoScroll = True
-        Me.tlpStandings.BackColor = System.Drawing.Color.White
-        Me.tlpStandings.ColumnCount = 3
-        Me.tlpStandings.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.tlpStandings.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.tlpStandings.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpStandings.Controls.Add(Me.cbSeasons, 2, 1)
-        Me.tlpStandings.Controls.Add(Me.lblSeason, 0, 1)
-        Me.tlpStandings.Controls.Add(Me.tbStanding, 0, 2)
-        Me.tlpStandings.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.tlpStandings.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize
-        Me.tlpStandings.Location = New System.Drawing.Point(1, 1)
-        Me.tlpStandings.Margin = New System.Windows.Forms.Padding(0)
-        Me.tlpStandings.Name = "tlpStandings"
-        Me.tlpStandings.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
-        Me.tlpStandings.RowCount = 3
-        Me.tlpStandings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
-        Me.tlpStandings.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tlpStandings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tlpStandings.Size = New System.Drawing.Size(982, 514)
-        Me.tlpStandings.TabIndex = 2
-        '
-        'cbSeasons
-        '
-        Me.cbSeasons.Dock = System.Windows.Forms.DockStyle.Left
-        Me.cbSeasons.FontSize = MetroFramework.MetroComboBoxSize.Small
-        Me.cbSeasons.FormattingEnabled = True
-        Me.cbSeasons.IntegralHeight = False
-        Me.cbSeasons.ItemHeight = 19
-        Me.cbSeasons.Location = New System.Drawing.Point(103, 33)
-        Me.cbSeasons.Name = "cbSeasons"
-        Me.cbSeasons.Size = New System.Drawing.Size(200, 25)
-        Me.cbSeasons.TabIndex = 501
-        Me.cbSeasons.UseSelectable = True
-        '
-        'lblSeason
-        '
-        Me.lblSeason.AutoSize = True
-        Me.lblSeason.Dock = System.Windows.Forms.DockStyle.Right
-        Me.lblSeason.Location = New System.Drawing.Point(20, 30)
-        Me.lblSeason.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblSeason.Name = "lblSeason"
-        Me.lblSeason.Size = New System.Drawing.Size(60, 31)
-        Me.lblSeason.TabIndex = 3
-        Me.lblSeason.Text = "SEASON"
-        Me.lblSeason.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'tbStanding
-        '
-        Me.tbStanding.CausesValidation = False
-        Me.tlpStandings.SetColumnSpan(Me.tbStanding, 3)
-        Me.tbStanding.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbStanding.FontSize = MetroFramework.MetroTabControlSize.Tall
-        Me.tbStanding.FontWeight = MetroFramework.MetroTabControlWeight.Regular
-        Me.tbStanding.ItemSize = New System.Drawing.Size(120, 34)
-        Me.tbStanding.Location = New System.Drawing.Point(23, 64)
-        Me.tbStanding.Name = "tbStanding"
-        Me.tbStanding.Size = New System.Drawing.Size(936, 447)
-        Me.tbStanding.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
-        Me.tbStanding.Style = MetroFramework.MetroColorStyle.Blue
-        Me.tbStanding.TabIndex = 502
-        Me.tbStanding.UseSelectable = True
         '
         'tabGames
         '
@@ -542,6 +456,93 @@ Partial Class NHLGamesMetro
         Me.btnRefresh.Size = New System.Drawing.Size(24, 24)
         Me.btnRefresh.TabIndex = 140
         Me.btnRefresh.UseVisualStyleBackColor = False
+        '
+        'tabStandings
+        '
+        Me.tabStandings.Controls.Add(Me.tlpStandings)
+        Me.tabStandings.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.tabStandings.HorizontalScrollbarBarColor = False
+        Me.tabStandings.HorizontalScrollbarHighlightOnWheel = False
+        Me.tabStandings.HorizontalScrollbarSize = 10
+        Me.tabStandings.Location = New System.Drawing.Point(4, 38)
+        Me.tabStandings.Name = "tabStandings"
+        Me.tabStandings.Padding = New System.Windows.Forms.Padding(1)
+        Me.tabStandings.Size = New System.Drawing.Size(984, 518)
+        Me.tabStandings.TabIndex = 1
+        Me.tabStandings.Text = "STANDINGS"
+        Me.tabStandings.UseCustomForeColor = True
+        Me.tabStandings.UseStyleColors = True
+        Me.tabStandings.VerticalScrollbarBarColor = False
+        Me.tabStandings.VerticalScrollbarHighlightOnWheel = False
+        Me.tabStandings.VerticalScrollbarSize = 10
+        '
+        'tlpStandings
+        '
+        Me.tlpStandings.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tlpStandings.AutoScroll = True
+        Me.tlpStandings.BackColor = System.Drawing.Color.White
+        Me.tlpStandings.ColumnCount = 3
+        Me.tlpStandings.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.tlpStandings.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.tlpStandings.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlpStandings.Controls.Add(Me.cbSeasons, 2, 1)
+        Me.tlpStandings.Controls.Add(Me.lblSeason, 0, 1)
+        Me.tlpStandings.Controls.Add(Me.tbStanding, 0, 2)
+        Me.tlpStandings.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.tlpStandings.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize
+        Me.tlpStandings.Location = New System.Drawing.Point(1, 1)
+        Me.tlpStandings.Margin = New System.Windows.Forms.Padding(0)
+        Me.tlpStandings.Name = "tlpStandings"
+        Me.tlpStandings.Padding = New System.Windows.Forms.Padding(20, 0, 20, 0)
+        Me.tlpStandings.RowCount = 3
+        Me.tlpStandings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
+        Me.tlpStandings.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.tlpStandings.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlpStandings.Size = New System.Drawing.Size(982, 514)
+        Me.tlpStandings.TabIndex = 2
+        '
+        'cbSeasons
+        '
+        Me.cbSeasons.Dock = System.Windows.Forms.DockStyle.Left
+        Me.cbSeasons.FontSize = MetroFramework.MetroComboBoxSize.Small
+        Me.cbSeasons.FormattingEnabled = True
+        Me.cbSeasons.IntegralHeight = False
+        Me.cbSeasons.ItemHeight = 19
+        Me.cbSeasons.Location = New System.Drawing.Point(103, 33)
+        Me.cbSeasons.Name = "cbSeasons"
+        Me.cbSeasons.Size = New System.Drawing.Size(200, 25)
+        Me.cbSeasons.TabIndex = 501
+        Me.cbSeasons.UseSelectable = True
+        '
+        'lblSeason
+        '
+        Me.lblSeason.AutoSize = True
+        Me.lblSeason.Dock = System.Windows.Forms.DockStyle.Right
+        Me.lblSeason.Location = New System.Drawing.Point(20, 30)
+        Me.lblSeason.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblSeason.Name = "lblSeason"
+        Me.lblSeason.Size = New System.Drawing.Size(60, 31)
+        Me.lblSeason.TabIndex = 3
+        Me.lblSeason.Text = "SEASON"
+        Me.lblSeason.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'tbStanding
+        '
+        Me.tbStanding.CausesValidation = False
+        Me.tlpStandings.SetColumnSpan(Me.tbStanding, 3)
+        Me.tbStanding.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tbStanding.FontSize = MetroFramework.MetroTabControlSize.Tall
+        Me.tbStanding.FontWeight = MetroFramework.MetroTabControlWeight.Regular
+        Me.tbStanding.ItemSize = New System.Drawing.Size(120, 34)
+        Me.tbStanding.Location = New System.Drawing.Point(23, 64)
+        Me.tbStanding.Name = "tbStanding"
+        Me.tbStanding.Size = New System.Drawing.Size(936, 447)
+        Me.tbStanding.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.tbStanding.Style = MetroFramework.MetroColorStyle.Blue
+        Me.tbStanding.TabIndex = 502
+        Me.tbStanding.UseSelectable = True
         '
         'tabSettings
         '
@@ -2405,12 +2406,12 @@ Partial Class NHLGamesMetro
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "NHLGames"
         Me.tabMenu.ResumeLayout(False)
-        Me.tabStandings.ResumeLayout(False)
-        Me.tlpStandings.ResumeLayout(False)
-        Me.tlpStandings.PerformLayout()
         Me.tabGames.ResumeLayout(False)
         Me.tabGames.PerformLayout()
         Me.pnlGameBar.ResumeLayout(False)
+        Me.tabStandings.ResumeLayout(False)
+        Me.tlpStandings.ResumeLayout(False)
+        Me.tlpStandings.PerformLayout()
         Me.tabSettings.ResumeLayout(False)
         Me.tabSettings.PerformLayout()
         Me.tlpSettings.ResumeLayout(False)
@@ -2465,6 +2466,7 @@ Partial Class NHLGamesMetro
         Me.ResumeLayout(False)
 
     End Sub
+
     Friend WithEvents txtConsole As RichTextBox
     Friend WithEvents tabMenu As MetroTabControl
     Friend WithEvents tabGames As MetroTabPage

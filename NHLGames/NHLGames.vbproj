@@ -276,11 +276,15 @@
     <Compile Include="Objects\Modules\Hotkey.vb" />
     <Compile Include="Objects\Modules\Obs.vb" />
     <Compile Include="Objects\Modules\MediaAndSpotify.vb" />
+    <Compile Include="Utilities\IMLBAMForm.vb" />
+    <Compile Include="Utilities\Instance.vb" />
+    <Compile Include="Utilities\Parameters.vb" />
     <Compile Include="Utilities\Enums.vb" />
     <Compile Include="Objects\GameWatchArguments.vb" />
     <Compile Include="Objects\GameManager.vb" />
+    <Compile Include="Utilities\Lang.vb" />
     <Compile Include="Utilities\SettingsExtensions.vb" />
-    <Compile Include="Utilities\Common.vb" />
+    <Compile Include="Utilities\Web.vb" />
     <Compile Include="Utilities\DateHelper.vb" />
     <Compile Include="Objects\Game.vb" />
     <Compile Include="Objects\GameStream.vb" />

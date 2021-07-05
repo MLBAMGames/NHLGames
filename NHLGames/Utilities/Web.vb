@@ -9,7 +9,7 @@ Imports NHLGames.NHLStats
 Imports NHLGames.Objects.NHL
 
 Namespace Utilities
-    Public Class Common
+    Public Class Web
         Public Const UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"
         Private Const s = "abcdefghijklmnopqrstuvwxyz0123456789"
         Private Shared r As New Random
@@ -32,7 +32,7 @@ Namespace Utilities
             Console.WriteLine(English.msgGettingSchedule, English.msgFetching,
                               startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
 
-            Dim data = Await Common.SendWebRequestAndGetContentAsync(url)
+            Dim data = Await Web.SendWebRequestAndGetContentAsync(url)
             If data.Equals(String.Empty) Then Return Nothing
 
             Return JsonConvert.DeserializeObject(Of Schedule)(data)
@@ -96,16 +96,16 @@ Namespace Utilities
         End Function
 
         Public Shared Sub GetLanguage()
-            Dim lang = If(My.Settings.SelectedLanguage, "English")
-            If lang = NHLGamesMetro.RmText.GetString("cbEnglish") Then
-                NHLGamesMetro.RmText = English.ResourceManager
-            ElseIf lang = NHLGamesMetro.RmText.GetString("cbFrench") Then
-                NHLGamesMetro.RmText = French.ResourceManager
+            Dim language = If(My.Settings.SelectedLanguage, "English")
+            If language = Lang.RmText.GetString("cbEnglish") Then
+                Lang.RmText = English.ResourceManager
+            ElseIf language = Lang.RmText.GetString("cbFrench") Then
+                Lang.RmText = French.ResourceManager
             End If
         End Sub
 
         Public Shared Async Function CheckAppCanRun() As Task(Of Boolean)
-            InvokeElement.SetFormStatusLabel(NHLGamesMetro.RmText.GetString("msgChekingRequirements"))
+            InvokeElement.SetFormStatusLabel(Lang.RmText.GetString("msgChekingRequirements"))
 
             Dim errorMessage = String.Empty
 
@@ -118,11 +118,11 @@ Namespace Utilities
             Await GitHub.GetVersion()
             Await GitHub.GetAccouncement()
 
-            Dim hostName As String = NHLGamesMetro.HostName
-            NHLGamesMetro.IsServerUp = If(Not hostName.Equals(String.Empty), Await SendWebRequestAsync($"http://{hostName}"), False)
+            Dim hostName As String = Parameters.HostName
+            Parameters.IsServerUp = If(Not hostName.Equals(String.Empty), Await SendWebRequestAsync($"http://{hostName}"), False)
 
             If Not errorMessage.Equals(String.Empty) Then
-                FatalError(NHLGamesMetro.RmText.GetString(errorMessage))
+                FatalError(Lang.RmText.GetString(errorMessage))
                 Console.WriteLine($"Status: {English.ResourceManager.GetString(errorMessage)}")
             End If
 
@@ -130,17 +130,17 @@ Namespace Utilities
         End Function
 
         Public Shared Sub SetRedirectionServerInApp()
-            NHLGamesMetro.HostName = NHLGamesMetro.FormInstance.cbServers.SelectedItem.ToString()
-            My.Settings.SelectedServer = NHLGamesMetro.HostName
+            Parameters.HostName = Instance.Form.cbServers.SelectedItem.ToString()
+            My.Settings.SelectedServer = Parameters.HostName
             My.Settings.Save()
-            Console.WriteLine(English.msgSettingUpdated, NHLGamesMetro.lblHostname.Text, NHLGamesMetro.HostName)
+            Console.WriteLine(English.msgSettingUpdated, Lang.RmText.GetString("lblHostname"), Parameters.HostName)
         End Sub
 
         Private Shared Sub FatalError(message As String)
-            If InvokeElement.MsgBoxRed($"{message} {NHLGamesMetro.RmText.GetString("msgNotStarting")}",
-                                       NHLGamesMetro.RmText.GetString("msgFailure"),
+            If InvokeElement.MsgBoxRed($"{message} {Lang.RmText.GetString("msgNotStarting")}",
+                                       Lang.RmText.GetString("msgFailure"),
                                        MessageBoxButtons.YesNo) = DialogResult.Yes Then
-                NHLGamesMetro.FormInstance.Close()
+                Instance.Form.Close()
             End If
         End Sub
     End Class

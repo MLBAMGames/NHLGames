@@ -27,7 +27,7 @@ Namespace Utilities
             Dim metroTabPage = GeneratMetroTabPage(StandingTypeEnum.League, season)
 
             If metroTabPage IsNot Nothing Then
-                metroTabPage.Text = NHLGamesMetro.RmText.GetString("tabLeagueStandings")
+                metroTabPage.Text = Lang.RmText.GetString("tabLeagueStandings")
                 tbStanding.Controls.Add(metroTabPage)
             End If
         End Sub
@@ -36,7 +36,7 @@ Namespace Utilities
             Dim metroTabPage = GeneratMetroTabPage(StandingTypeEnum.Conference, season)
 
             If metroTabPage IsNot Nothing Then
-                metroTabPage.Text = NHLGamesMetro.RmText.GetString("tabConferenceStandings")
+                metroTabPage.Text = Lang.RmText.GetString("tabConferenceStandings")
                 tbStanding.Controls.Add(metroTabPage)
             End If
         End Sub
@@ -45,7 +45,7 @@ Namespace Utilities
             Dim metroTabPage = GeneratMetroTabPage(StandingTypeEnum.Division, season)
 
             If metroTabPage IsNot Nothing Then
-                metroTabPage.Text = NHLGamesMetro.RmText.GetString("tabDivisionStandings")
+                metroTabPage.Text = Lang.RmText.GetString("tabDivisionStandings")
                 tbStanding.Controls.Add(metroTabPage)
             End If
         End Sub
@@ -54,7 +54,7 @@ Namespace Utilities
             Dim metroTabPage = GeneratMetroTabPage(StandingTypeEnum.WildCard, season)
 
             If metroTabPage IsNot Nothing Then
-                metroTabPage.Text = NHLGamesMetro.RmText.GetString("tabWildCardStandings")
+                metroTabPage.Text = Lang.RmText.GetString("tabWildCardStandings")
                 tbStanding.Controls.Add(metroTabPage)
             End If
 
@@ -68,7 +68,7 @@ Namespace Utilities
                 Dim metroTabPage As MetroTabPage = New MetroTabPage()
                 metroTabPage.Padding = New Padding(5)
 
-                If NHLGamesMetro.IsDarkMode Then
+                If Parameters.IsDarkMode Then
                     metroTabPage.Theme = MetroThemeStyle.Dark
                 End If
 
@@ -83,7 +83,7 @@ Namespace Utilities
                     Dim dataSource = StandingsViewModel.GenerateViewModels(standingType, record)
 
                     Dim metroGrid As MetroGrid = New MetroGrid()
-                    If NHLGamesMetro.IsDarkMode Then
+                    If Parameters.IsDarkMode Then
                         metroGrid.Theme = MetroThemeStyle.Dark
                     End If
 
@@ -121,7 +121,7 @@ Namespace Utilities
 
         Private Shared Sub ColumnAddedEventHandler(sender As Object, e As DataGridViewColumnEventArgs)
             If (e.Column.Index <> 0) Then
-                e.Column.HeaderText = NHLGamesMetro.RmText.GetString(String.Format("grLbl{0}", e.Column.DataPropertyName))
+                e.Column.HeaderText = Lang.RmText.GetString(String.Format("grLbl{0}", e.Column.DataPropertyName))
             End If
         End Sub
 
