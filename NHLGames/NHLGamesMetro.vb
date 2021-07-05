@@ -5,11 +5,11 @@ Imports System.Resources
 Imports System.Security.Permissions
 Imports System.Threading
 Imports MetroFramework.Controls
-Imports NHLGames.Controls
-Imports NHLGames.My.Resources
-Imports NHLGames.NHLStats
-Imports NHLGames.Objects
-Imports NHLGames.Objects.Modules
+Imports MLBAMGames.Library
+Imports MLBAMGames.Library.Controls
+Imports MLBAMGames.Library.Objects
+Imports MLBAMGames.Library.Objects.Modules
+Imports MLBAMGames.Library.Utilities
 Imports NHLGames.Utilities
 
 Public Class NHLGamesMetro
@@ -100,7 +100,7 @@ Public Class NHLGamesMetro
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         flpCalendarPanel.Visible = False
-        InvokeElement.LoadGames(CalendarControl.GameDate)
+        InvokeElement.LoadGames(MLBAMGames.Library.Controls.CalendarControl.GameDate)
         flpGames.Focus()
     End Sub
 
@@ -775,7 +775,7 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Sub cbSeasons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbSeasons.SelectedIndexChanged
-        Dim season As Season = cbSeasons.Items(cbSeasons.SelectedIndex)
+        Dim season As NHLStats.Season = cbSeasons.Items(cbSeasons.SelectedIndex)
         StandingsHelper.GenerateStandings(tbStanding, season)
     End Sub
 

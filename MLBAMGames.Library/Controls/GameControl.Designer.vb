@@ -22,7 +22,7 @@ Namespace Controls
         Private Sub InitializeComponent()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GameControl))
             Me.tt = New MetroFramework.Components.MetroToolTip()
-            Me.bpGameControl = New NHLGames.Controls.BorderPanel()
+            Me.bpGameControl = New MLBAMGames.Library.Controls.BorderPanel()
             Me.btnRecap = New System.Windows.Forms.Button()
             Me.btnLiveReplay = New System.Windows.Forms.Button()
             Me.lblGameStatus = New MetroFramework.Controls.MetroLabel()

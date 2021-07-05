@@ -171,96 +171,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\BorderPanel.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CalendarControl.Designer.vb">
-      <DependentUpon>CalendarControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\CalendarControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\GameControl.Designer.vb">
-      <DependentUpon>GameControl.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\GameControl.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\MetroComboBoxNoMW.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\MetroTrackBarNoMW.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\NHLStats\Badge.vb" />
-    <Compile Include="Controls\NHLStats\TeamCell.vb" />
-    <Compile Include="Controls\NHLStats\TeamColumn.vb" />
-    <Compile Include="English1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>English.resx</DependentUpon>
-    </Compile>
-    <Compile Include="French.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>French.resx</DependentUpon>
-    </Compile>
     <Compile Include="NHLGamesMetro.Designer.vb">
       <DependentUpon>NHLGamesMetro.vb</DependentUpon>
     </Compile>
     <Compile Include="NHLGamesMetro.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Objects\GitHub\Asset.vb" />
-    <Compile Include="Objects\GitHub\Commit.vb" />
-    <Compile Include="Objects\GitHub\Issue.vb" />
-    <Compile Include="Objects\GitHub\Label.vb" />
-    <Compile Include="Objects\GitHub\Milestone.vb" />
-    <Compile Include="Objects\GitHub\Release.vb" />
-    <Compile Include="Objects\GitHub\User.vb" />
-    <Compile Include="Objects\NHLStats\Seasons.vb" />
-    <Compile Include="Objects\NHLStats\Streak.vb" />
-    <Compile Include="Objects\NHLStats\Conference.vb" />
-    <Compile Include="Objects\NHLStats\DataAccessLayer.vb" />
-    <Compile Include="Objects\NHLStats\Division.vb" />
-    <Compile Include="Objects\NHLStats\League.vb" />
-    <Compile Include="Objects\NHLStats\Leaguerecord.vb" />
-    <Compile Include="Objects\NHLStats\NHLAPIServiceURLs.vb" />
-    <Compile Include="Objects\NHLStats\Overallrecord.vb" />
-    <Compile Include="Objects\NHLStats\Record.vb" />
-    <Compile Include="Objects\NHLStats\Records.vb" />
-    <Compile Include="Objects\NHLStats\Standing.vb" />
-    <Compile Include="Objects\NHLStats\Season.vb" />
-    <Compile Include="Objects\NHLStats\ViewModels.vb" />
-    <Compile Include="Objects\NHLStats\Team.vb" />
-    <Compile Include="Objects\NHLStats\TeamRecord.vb" />
-    <Compile Include="Objects\NHL\Conference.vb" />
-    <Compile Include="Objects\NHL\Content.vb" />
-    <Compile Include="Objects\NHL\Date.vb" />
-    <Compile Include="Objects\NHL\Division.vb" />
-    <Compile Include="Objects\NHL\Editorial.vb" />
-    <Compile Include="Objects\NHL\Epg.vb" />
-    <Compile Include="Objects\NHL\Franchise.vb" />
-    <Compile Include="Objects\NHL\Game.vb" />
-    <Compile Include="Objects\NHL\Highlights.vb" />
-    <Compile Include="Objects\NHL\Image.vb" />
-    <Compile Include="Objects\NHL\IntermissionInfo.vb" />
-    <Compile Include="Objects\NHL\Item.vb" />
-    <Compile Include="Objects\NHL\Keyword.vb" />
-    <Compile Include="Objects\NHL\LeagueRecord.vb" />
-    <Compile Include="Objects\NHL\Linescore.vb" />
-    <Compile Include="Objects\NHL\Media.vb" />
-    <Compile Include="Objects\NHL\Schedule.vb" />
-    <Compile Include="Objects\NHL\Period.vb" />
-    <Compile Include="Objects\NHL\Playback.vb" />
-    <Compile Include="Objects\NHL\PowerPlayInfo.vb" />
-    <Compile Include="Objects\NHL\SeriesSummary.vb" />
-    <Compile Include="Objects\NHL\Status.vb" />
-    <Compile Include="Objects\NHL\Team.vb" />
-    <Compile Include="Objects\NHL\TeamInfo.vb" />
-    <Compile Include="Objects\NHL\Teams.vb" />
-    <Compile Include="Objects\NHL\TimeZone.vb" />
-    <Compile Include="Objects\NHL\Venue.vb" />
     <None Include="RESET_APP_SETTINGS.BAT">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -269,22 +185,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\AdDetectionConfigs.vb" />
-    <Compile Include="Objects\Modules\Hotkey.vb" />
-    <Compile Include="Objects\Modules\Obs.vb" />
-    <Compile Include="Objects\Modules\MediaAndSpotify.vb" />
-    <Compile Include="Utilities\IMLBAMForm.vb" />
-    <Compile Include="Utilities\Instance.vb" />
-    <Compile Include="Utilities\Parameters.vb" />
-    <Compile Include="Utilities\Enums.vb" />
-    <Compile Include="Objects\GameWatchArguments.vb" />
-    <Compile Include="Objects\GameManager.vb" />
-    <Compile Include="Utilities\Lang.vb" />
-    <Compile Include="Utilities\SettingsExtensions.vb" />
-    <Compile Include="Utilities\Web.vb" />
-    <Compile Include="Utilities\DateHelper.vb" />
-    <Compile Include="Objects\Game.vb" />
-    <Compile Include="Objects\GameStream.vb" />
     <Compile Include="res\AssemblyInfo.vb" />
     <Compile Include="res\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -295,42 +195,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Utilities\FileAccess.vb" />
-    <Compile Include="Utilities\GameFetcher.vb" />
-    <Compile Include="Utilities\GitHub.vb" />
-    <Compile Include="Utilities\ImageFetcher.vb" />
-    <Compile Include="Utilities\InitializeForm.vb" />
-    <Compile Include="Utilities\InvokeElement.vb" />
-    <Compile Include="Utilities\AdDetection.vb" />
-    <Compile Include="Utilities\PathFinder.vb" />
-    <Compile Include="Utilities\Player.vb" />
-    <Compile Include="Utilities\Proxy.vb" />
-    <Compile Include="Utilities\Serialization.vb" />
-    <Compile Include="Utilities\ConsoleRedirectStreamWriter.vb" />
-    <Compile Include="Utilities\StandingsHelper.vb" />
-    <Compile Include="Utilities\Updater.vb" />
-    <Compile Include="Utilities\WindowsEvents.vb" />
+    <Compile Include="InitializeForm.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\CalendarControl.resx">
-      <DependentUpon>CalendarControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\GameControl.resx">
-      <DependentUpon>GameControl.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="French.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>French.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="English.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>English1.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="NHLGamesMetro.resx">
       <DependentUpon>NHLGamesMetro.vb</DependentUpon>
     </EmbeddedResource>
@@ -377,9 +244,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Objects\Modules\IAdModule.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="res\images\alt.png" />

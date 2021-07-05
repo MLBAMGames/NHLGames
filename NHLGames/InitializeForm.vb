@@ -2,8 +2,10 @@
 Imports System.IO
 Imports MetroFramework
 Imports MetroFramework.Controls
-Imports NHLGames.Controls
-Imports NHLGames.Objects
+Imports MLBAMGames.Library
+Imports MLBAMGames.Library.Utilities
+Imports MLBAMGames.Library.Controls
+Imports MLBAMGames.Library.Objects
 
 Namespace Utilities
     Public Class InitializeForm
@@ -116,19 +118,19 @@ Namespace Utilities
             Form.lblResetDesc.Text = Lang.RmText.GetString("lblResetDesc")
 
             'Console
-            Form.btnCopyConsole.Text = Lang.RmText.GetString("btnCopyConsole")
-            Form.btnClearConsole.Text = Lang.RmText.GetString("btnClearConsole")
+            Form.btnCopyConsole.Text = MLBAMGames.Library.Lang.RmText.GetString("btnCopyConsole")
+            Form.btnClearConsole.Text = MLBAMGames.Library.Lang.RmText.GetString("btnClearConsole")
 
             'Calendar
             Form.flpCalendarPanel.Controls.Clear()
-            Form.flpCalendarPanel.Controls.Add(New CalendarControl())
+            Form.flpCalendarPanel.Controls.Add(New MLBAMGames.Library.Controls.CalendarControl())
 
             'Tips
-            Parameters.Tips.Clear()
+            MLBAMGames.Library.Parameters.Tips.Clear()
             For index As Integer = 1 To TotalTipCount
-                Parameters.Tips.Add(index, Lang.RmText.GetString($"tipMessage{index}"))
+                MLBAMGames.Library.Parameters.Tips.Add(index, MLBAMGames.Library.Lang.RmText.GetString($"tipMessage{index}"))
             Next
-            Form.lblTip.Text = Parameters.Tips.First().Value
+            Form.lblTip.Text = MLBAMGames.Library.Parameters.Tips.First().Value
 
             SetThemeAndSvgOnForm()
         End Sub
@@ -361,7 +363,7 @@ Namespace Utilities
         Private Shared Sub SetThemeAndSvgOnForm()
             Dim themeChar = "l"
             Dim colorMetroThemeDark = Color.FromArgb(17, 17, 17)
-            If Parameters.IsDarkMode Then
+            If MLBAMGames.Library.Parameters.IsDarkMode Then
                 themeChar = "d"
                 Form.Theme = MetroThemeStyle.Dark
                 Form.lblNoGames.BackColor = Color.FromArgb(60, 60, 60)
