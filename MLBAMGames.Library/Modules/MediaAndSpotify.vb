@@ -130,7 +130,7 @@ Namespace Objects.Modules
             If Not SpotifyIsInstalled() Then
                 _stopIt = True
                 InvokeElement.ModuleSpotifyOff()
-                Console.WriteLine(English.msgSpotifyIsntInstalled)
+                Console.WriteLine(Lang.EnglishRmText.GetString("msgSpotifyIsntInstalled"))
             End If
 
             Task.Run(AddressOf ConnectLoop)
@@ -166,11 +166,11 @@ Namespace Objects.Modules
         Private Function ConnectInternal() As Boolean
             If Not SpotifyIsRunning() Then
                 If ForceToOpen Then
-                    Console.WriteLine(English.msgSpotifyNotRunning)
+                    Console.WriteLine(Lang.EnglishRmText.GetString("msgSpotifyNotRunning"))
                     Try
                         RunSpotify()
                     Catch ex As Exception
-                        Console.WriteLine(English.msgSpotifyCantStart, ex.Message)
+                        Console.WriteLine(Lang.EnglishRmText.GetString("msgSpotifyCantStart"), ex.Message)
                     End Try
                     ForceToOpen = False
                 End If

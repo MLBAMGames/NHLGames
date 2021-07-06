@@ -10,6 +10,7 @@ Imports MLBAMGames.Library.Controls
 Imports MLBAMGames.Library.Objects
 Imports MLBAMGames.Library.Objects.Modules
 Imports MLBAMGames.Library.Utilities
+Imports NHLGames.My.Resources
 Imports NHLGames.Utilities
 
 Public Class NHLGamesMetro
@@ -25,9 +26,12 @@ Public Class NHLGamesMetro
         Updater.UpgradeSettings()
 
         Parameters.IsDarkMode = My.Settings.UseDarkMode
+        Parameters.StartupPath = Application.StartupPath
 
         Dim form As New NHLGamesMetro()
         Instance.Form = form
+        Lang.FrenchhRmText = French.ResourceManager
+        Lang.EnglishRmText = English.ResourceManager
 
         Dim writer = New ConsoleRedirectStreamWriter(form.txtConsole)
         Console.SetOut(writer)
@@ -35,15 +39,15 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Shared Sub Form1_UIThreadException(sender As Object, t As ThreadExceptionEventArgs)
-        Console.WriteLine(English.errorGeneral, $"Running UI thread", t.Exception.ToString())
+        Console.WriteLine(Lang.EnglishRmText.GetString("errorGeneral"), $"Running UI thread", t.Exception.ToString())
     End Sub
 
     Private Shared Sub CurrentDomain_UnhandledException(sender As Object, e As UnhandledExceptionEventArgs)
-        Console.WriteLine(English.errorGeneral, $"Using NHLGames domain", e.ExceptionObject.ToString())
+        Console.WriteLine(Lang.EnglishRmText.GetString("errorGeneral"), $"Using NHLGames domain", e.ExceptionObject.ToString())
     End Sub
 
     Public Sub HandleException(e As Exception)
-        Console.WriteLine(English.errorGeneral, $"Running main thread", e.ToString())
+        Console.WriteLine(Lang.EnglishRmText.GetString("errorGeneral"), $"Running main thread", e.ToString())
     End Sub
 
     Private Async Sub NHLGames_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -51,7 +55,7 @@ Public Class NHLGamesMetro
 
         SuspendLayout()
 
-        Web.GetLanguage()
+        Lang.GetLanguage()
         tabMenu.SelectedIndex = MainTabsEnum.Matchs
         CalendarControl.FlpCalendar = flpCalendarPanel
         InitializeForm.SetSettings()
@@ -85,7 +89,7 @@ Public Class NHLGamesMetro
     End Sub
 
     Private Shared Sub _writeToConsoleSettingsChanged(key As String, value As String)
-        If Parameters.UILoaded Then Console.WriteLine(English.msgSettingUpdated, key, value)
+        If Parameters.UILoaded Then Console.WriteLine(Lang.EnglishRmText.GetString("msgSettingUpdated"), key, value)
     End Sub
 
     Private Shared Sub tmrAnimate_Tick(sender As Object, e As EventArgs) Handles tmr.Tick
@@ -176,12 +180,16 @@ Public Class NHLGamesMetro
         End If
     End Sub
 
+    Private Sub _writeToConsoleSettingToggleChanged(label As String, checked As Boolean)
+        _writeToConsoleSettingsChanged(String.Format(Lang.EnglishRmText.GetString("msgThisEnable"), label),
+            If(checked, Lang.EnglishRmText.GetString("msgOn"), Lang.EnglishRmText.GetString("msgOff")))
+    End Sub
+
     Private Sub tgShowFinalScores_CheckedChanged(sender As Object, e As EventArgs) _
         Handles tgShowFinalScores.CheckedChanged
         My.Settings.ShowScores = tgShowFinalScores.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowFinalScores.Text),
-                                       If(tgShowFinalScores.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowFinalScores.Text, tgShowFinalScores.Checked)
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
                             tgShowLiveScores.Checked,
@@ -296,8 +304,7 @@ Public Class NHLGamesMetro
         Handles tgShowLiveScores.CheckedChanged
         My.Settings.ShowLiveScores = tgShowLiveScores.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowLiveScores.Text),
-                                    If(tgShowLiveScores.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowLiveScores.Text, tgShowLiveScores.Checked)
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
                             tgShowLiveScores.Checked,
@@ -312,8 +319,7 @@ Public Class NHLGamesMetro
     Private Sub tgShowStanding_CheckedChanged(sender As Object, e As EventArgs) Handles tgShowStanding.CheckedChanged
         My.Settings.ShowStanding = tgShowStanding.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowStanding.Text),
-                                    If(tgShowStanding.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowStanding.Text, tgShowStanding.Checked)
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
                             tgShowLiveScores.Checked,
@@ -338,8 +344,7 @@ Public Class NHLGamesMetro
         SetStreamerDefaultArgs()
         txtStreamerArgs.Enabled = tgStreamer.Checked
         Player.RenewArgs()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblStreamerArgs.Text),
-                                       If(tgStreamer.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblStreamerArgs.Text, tgStreamer.Checked)
     End Sub
 
     Private Sub tgOutput_CheckedChanged(sender As Object, e As EventArgs) Handles tgOutput.CheckedChanged
@@ -350,16 +355,14 @@ Public Class NHLGamesMetro
                     }\(DATE)_(HOME)_vs_(AWAY)_(TYPE)_(NETWORK).mp4"
         End If
         Player.RenewArgs()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblOutput.Text),
-                                       If(tgOutput.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblOutput.Text, tgOutput.Checked)
     End Sub
 
     Private Sub chkShowSeriesRecord_CheckedChanged(sender As Object, e As EventArgs) _
         Handles tgShowSeriesRecord.CheckedChanged
         My.Settings.ShowSeriesRecord = tgShowSeriesRecord.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowSeriesRecord.Text),
-                                       If(tgShowSeriesRecord.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowSeriesRecord.Text, tgShowSeriesRecord.Checked)
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
                             tgShowLiveScores.Checked,
@@ -495,7 +498,7 @@ Public Class NHLGamesMetro
         My.Settings.SelectedLanguage = cbLanguage.SelectedItem.ToString()
         My.Settings.Save()
         _writeToConsoleSettingsChanged(lblLanguage.Text, cbLanguage.SelectedItem.ToString())
-        Web.GetLanguage()
+        Lang.GetLanguage()
         InitializeForm.SetLanguage()
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
@@ -526,8 +529,7 @@ Public Class NHLGamesMetro
         AdDetection.Engine.IsEnabled = tg.Checked
         If tg.Checked Then AdDetection.Engine.Start()
         AdDetection.Renew()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblModules.Text),
-                                       If(tgModules.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblModules.Text, tgModules.Checked)
     End Sub
 
     Private Sub tgOBS_CheckedChanged(sender As Object, e As EventArgs) Handles tgOBS.CheckedChanged
@@ -553,8 +555,7 @@ Public Class NHLGamesMetro
         End If
 
         AdDetection.Renew()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblOBS.Text),
-                                       If(tgOBS.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblOBS.Text, tgOBS.Checked)
     End Sub
 
     Private Sub tgMedia_CheckedChanged(sender As Object, e As EventArgs) Handles tgMedia.CheckedChanged
@@ -574,8 +575,7 @@ Public Class NHLGamesMetro
         End If
 
         AdDetection.Renew()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblMedia.Text),
-                                       If(tgMedia.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblMedia.Text, tgMedia.Checked)
     End Sub
 
     Private Sub txtMediaControlDelay_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtMediaControlDelay.KeyPress
@@ -611,8 +611,7 @@ Public Class NHLGamesMetro
     Private Sub tgTeamNamesAbr_CheckedChanged(sender As Object, e As EventArgs) Handles tgShowTeamCityAbr.CheckedChanged
         My.Settings.ShowTeamCityAbr = tgShowTeamCityAbr.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowTeamCityAbr.Text),
-                                       If(tgShowTeamCityAbr.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowTeamCityAbr.Text, tgShowTeamCityAbr.Checked)
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
                             tgShowLiveScores.Checked,
@@ -647,8 +646,7 @@ Public Class NHLGamesMetro
         Handles tgShowTodayLiveGamesFirst.CheckedChanged
         My.Settings.ShowTodayLiveGamesFirst = tgShowTodayLiveGamesFirst.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowTodayLiveGamesFirst.Text),
-                                       If(tgShowTodayLiveGamesFirst.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowTodayLiveGamesFirst.Text, tgShowTodayLiveGamesFirst.Checked)
         Parameters.TodayLiveGamesFirst = tgShowTodayLiveGamesFirst.Checked
         InvokeElement.LoadGames(CalendarControl.GameDate)
     End Sub
@@ -724,8 +722,7 @@ Public Class NHLGamesMetro
     Private Sub tgShowLiveTime_CheckedChanged(sender As Object, e As EventArgs) Handles tgShowLiveTime.CheckedChanged
         My.Settings.ShowLiveTime = tgShowLiveTime.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblShowLiveTime.Text),
-                                       If(tgShowLiveTime.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblShowLiveTime.Text, tgShowLiveTime.Checked)
         For Each game As GameControl In flpGames.Controls
             game.UpdateGame(tgShowFinalScores.Checked,
                             tgShowLiveScores.Checked,
@@ -747,8 +744,7 @@ Public Class NHLGamesMetro
         End If
         My.Settings.UseDarkMode = tgDarkMode.Checked
         My.Settings.Save()
-        _writeToConsoleSettingsChanged(String.Format(English.msgThisEnable, lblDarkMode.Text),
-                                       If(tgDarkMode.Checked, English.msgOn, English.msgOff))
+        _writeToConsoleSettingToggleChanged(lblDarkMode.Text, tgDarkMode.Checked)
     End Sub
 
     Private Sub RestartNHLGames()

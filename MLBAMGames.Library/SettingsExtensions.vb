@@ -17,7 +17,7 @@ Namespace Utilities
             Try
                 Return Serialization.DeserializeObject(Of GameWatchArguments)(args)
             Catch ex As Exception
-                Console.WriteLine(English.errorDeserialize, Instance.Form.GetSetting("DefaultWatchArgs"), NameOf(GameWatchArguments))
+                Console.WriteLine(Lang.EnglishRmText.GetString("errorDeserialize"), Instance.Form.GetSetting("DefaultWatchArgs"), NameOf(GameWatchArguments))
                 Return defaultReturnValue
             End Try
         End Function

@@ -39,11 +39,11 @@ Namespace Objects.Modules
         Public ReadOnly Property Title As AdModulesEnum = AdModulesEnum.Obs Implements IAdModule.Title
 
         Public Sub AdEnded() Implements IAdModule.AdEnded
-            Switching(HotkeyGame, IsHotkeyGameSet, IsHotkeyGameHasSpecialKeys, English.msgObsGameWord)
+            Switching(HotkeyGame, IsHotkeyGameSet, IsHotkeyGameHasSpecialKeys, Lang.EnglishRmText.GetString("msgObsGameWord"))
         End Sub
 
         Public Sub AdStarted() Implements IAdModule.AdStarted
-            Switching(HotkeyAd, IsHotkeyAdSet, IsHotkeyAdHasSpecialKeys, English.msgObsAdWord)
+            Switching(HotkeyAd, IsHotkeyAdSet, IsHotkeyAdHasSpecialKeys, Lang.EnglishRmText.GetString("msgObsAdWord"))
         End Sub
         Public Sub AdPlaying() Implements IAdModule.AdPlaying
 
@@ -51,7 +51,7 @@ Namespace Objects.Modules
 
         Private Sub Switching(hotkey As Hotkey, isHotkeySet As Boolean, specialKey As Boolean, scene As String)
             If Not isHotkeySet Then
-                Console.WriteLine(English.msgObsHotkeyNotSet, scene)
+                Console.WriteLine(Lang.EnglishRmText.GetString("msgObsHotkeyNotSet"), scene)
                 Return
             End If
 

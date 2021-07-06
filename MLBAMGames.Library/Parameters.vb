@@ -24,6 +24,8 @@ Public Class Parameters
     Public Shared SpnStreamingMaxValue As Integer = 1000
     Public Shared SpnStreamingVisible As Boolean = False
 
+    Public Shared StartupPath As String = Nothing
+
     Public Shared Tips As New Dictionary(Of Integer, String)
     Public Shared WatchArgs As GameWatchArguments = New GameWatchArguments
 End Class

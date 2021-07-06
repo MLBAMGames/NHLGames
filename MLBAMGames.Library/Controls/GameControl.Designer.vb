@@ -88,7 +88,6 @@ Namespace Controls
             'btnRecap
             '
             Me.btnRecap.BackColor = System.Drawing.Color.Gray
-            Me.btnRecap.BackgroundImage = Global.NHLGames.My.Resources.Resources.recap_l
             Me.btnRecap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
             Me.btnRecap.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
             Me.btnRecap.FlatAppearance.BorderSize = 0

@@ -29,7 +29,7 @@ Namespace Utilities
             Dim dateTimeString As String = startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             Dim url As String = String.Format(NHLAPIServiceURLs.scheduleGames, dateTimeString, dateTimeString)
 
-            Console.WriteLine(English.msgGettingSchedule, English.msgFetching,
+            Console.WriteLine(Lang.EnglishRmText.GetString("msgGettingSchedule"), Lang.EnglishRmText.GetString("msgFetching"),
                               startDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))
 
             Dim data = Await Web.SendWebRequestAndGetContentAsync(url)
@@ -95,15 +95,6 @@ Namespace Utilities
             Return result
         End Function
 
-        Public Shared Sub GetLanguage()
-            Dim language = If(Instance.Form.GetSetting("SelectedLanguage"), "English")
-            If language = Lang.RmText.GetString("cbEnglish") Then
-                Lang.RmText = English.ResourceManager
-            ElseIf language = Lang.RmText.GetString("cbFrench") Then
-                Lang.RmText = French.ResourceManager
-            End If
-        End Sub
-
         Public Shared Async Function CheckAppCanRun() As Task(Of Boolean)
             InvokeElement.SetFormStatusLabel(Lang.RmText.GetString("msgChekingRequirements"))
 
@@ -123,7 +114,7 @@ Namespace Utilities
 
             If Not errorMessage.Equals(String.Empty) Then
                 FatalError(Lang.RmText.GetString(errorMessage))
-                Console.WriteLine($"Status: {English.ResourceManager.GetString(errorMessage)}")
+                Console.WriteLine($"Status: {Lang.EnglishRmText.GetString("errorMessage")}")
             End If
 
             Return errorMessage.Equals(String.Empty)
@@ -132,7 +123,7 @@ Namespace Utilities
         Public Shared Sub SetRedirectionServerInApp()
             Parameters.HostName = Instance.Form.cbServers.SelectedItem.ToString()
             Instance.Form.SetSetting("SelectedServer", Parameters.HostName)
-            Console.WriteLine(English.msgSettingUpdated, Lang.RmText.GetString("lblHostname"), Parameters.HostName)
+            Console.WriteLine(Lang.EnglishRmText.GetString("msgSettingUpdated"), Lang.RmText.GetString("lblHostname"), Parameters.HostName)
         End Sub
 
         Private Shared Sub FatalError(message As String)

@@ -261,7 +261,7 @@ Partial Class NHLGamesMetro
         Me.tabMenu.Location = New System.Drawing.Point(-1, 60)
         Me.tabMenu.Margin = New System.Windows.Forms.Padding(0)
         Me.tabMenu.Name = "tabMenu"
-        Me.tabMenu.SelectedIndex = 0
+        Me.tabMenu.SelectedIndex = 2
         Me.tabMenu.Size = New System.Drawing.Size(992, 560)
         Me.tabMenu.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabMenu.Style = MetroFramework.MetroColorStyle.Blue
@@ -2281,7 +2281,7 @@ Partial Class NHLGamesMetro
         Me.lnkReddit.Name = "lnkReddit"
         Me.lnkReddit.Size = New System.Drawing.Size(88, 38)
         Me.lnkReddit.TabIndex = 20
-        Me.lnkReddit.Text = Global.NHLGames.My.Resources.English.lnkSubreddit
+        Me.lnkReddit.Text = "/r/nhl_games"
         Me.lnkReddit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lnkReddit.UseCustomBackColor = True
         Me.lnkReddit.UseSelectable = True

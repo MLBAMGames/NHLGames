@@ -151,7 +151,7 @@ Namespace Utilities
             Try
                 Task.WaitAll(_initializationTasks.ToArray(), TimeSpan.FromSeconds(5))
             Catch ex As Exception
-                Console.WriteLine(English.msgAdDetectionProbInit, ex.Message)
+                Console.WriteLine(Lang.EnglishRmText.GetString("msgAdDetectionProbInit"), ex.Message)
             End Try
             While DetectionEnabled
                 Try

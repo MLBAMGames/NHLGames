@@ -112,18 +112,8 @@
     <Compile Include="Controls\NHLStats\TeamCell.vb" />
     <Compile Include="Controls\NHLStats\TeamColumn.vb" />
     <Compile Include="DateHelper.vb" />
-    <Compile Include="English1.Designer.vb">
-      <DependentUpon>English.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Enums.vb" />
     <Compile Include="FileAccess.vb" />
-    <Compile Include="French.Designer.vb">
-      <DependentUpon>French.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Game.vb" />
     <Compile Include="GameFetcher.vb" />
     <Compile Include="GameManager.vb" />
@@ -221,18 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\GameControl.resx">
       <DependentUpon>GameControl.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="English.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>English1.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="French.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>French.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">

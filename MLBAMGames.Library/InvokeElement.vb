@@ -9,6 +9,7 @@ Namespace Utilities
     Public Class InvokeElement
         Public Shared AnimateTipsTick As Integer = 0
         Public Const AnimateTipsEveryTick As Integer = 10000
+        Public Shared ReadOnly TotalTipCount As Integer = 10
 
         Public Shared Async Sub LoadGames(gameDate As Date)
             Instance.Form.ClearGamePanel()
@@ -70,7 +71,7 @@ Namespace Utilities
                 Dim currentTip = Parameters.Tips.FirstOrDefault(Function(x) x.Value = Instance.Form.lblTip.Text)
                 If currentTip.Value Is Nothing Then Return
 
-                Dim nextTip = Parameters.Tips.FirstOrDefault(Function(x) If(currentTip.Key + 1 > InitializeForm.TotalTipCount, x.Key = 1, x.Key = currentTip.Key + 1))
+                Dim nextTip = Parameters.Tips.FirstOrDefault(Function(x) If(currentTip.Key + 1 > TotalTipCount, x.Key = 1, x.Key = currentTip.Key + 1))
                 If nextTip.Value Is Nothing Then Return
 
                 Instance.Form.lblTip.Text = nextTip.Value

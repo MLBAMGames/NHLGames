@@ -31,13 +31,13 @@ Namespace Utilities
                         Dim startIndex As Integer = -1
                         Dim length As Integer = -1
                         Dim type = OutputTypeEnum.Normal
-                        Dim timestamp As String = String.Format(English.msgDateTimeNow, Now.ToString("HH:mm:ss"))
+                        Dim timestamp As String = String.Format(Lang.EnglishRmText.GetString("msgDateTimeNow"), Now.ToString("HH:mm:ss"))
 
-                        If value.ToLower().IndexOf(English.errorDetection, StringComparison.Ordinal) = 0 OrElse
-                           value.ToLower().IndexOf(English.errorExceptionDetection, StringComparison.Ordinal) = 0 Then
+                        If value.ToLower().IndexOf(Lang.EnglishRmText.GetString("errorDetection"), StringComparison.Ordinal) = 0 OrElse
+                           value.ToLower().IndexOf(Lang.EnglishRmText.GetString("errorExceptionDetection"), StringComparison.Ordinal) = 0 Then
                             type = OutputTypeEnum.Error
                             startIndex = _output.TextLength
-                            length = value.IndexOf(English.errorDoubleDot, StringComparison.Ordinal) + 2
+                            length = value.IndexOf(Lang.EnglishRmText.GetString("errorDoubleDot"), StringComparison.Ordinal) + 2
                             _output.AppendText(vbCr)
                         ElseIf value.ToLower().IndexOf(English.errorCliStreamer, StringComparison.Ordinal) = 0 Then
                             value = English.msgStreamer & regex.Replace(value, String.Empty)

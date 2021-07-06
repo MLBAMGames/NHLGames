@@ -10,7 +10,6 @@ Imports MLBAMGames.Library.Objects
 Namespace Utilities
     Public Class InitializeForm
         Private Shared ReadOnly Form As NHLGamesMetro = Instance.Form
-        Public Shared ReadOnly TotalTipCount As Integer = 10
 
         Public Shared Sub SetLanguage()
             Dim lstStreamQualities = New String() {
@@ -127,7 +126,7 @@ Namespace Utilities
 
             'Tips
             MLBAMGames.Library.Parameters.Tips.Clear()
-            For index As Integer = 1 To TotalTipCount
+            For index As Integer = 1 To InvokeElement.TotalTipCount
                 MLBAMGames.Library.Parameters.Tips.Add(index, MLBAMGames.Library.Lang.RmText.GetString($"tipMessage{index}"))
             Next
             Form.lblTip.Text = MLBAMGames.Library.Parameters.Tips.First().Value

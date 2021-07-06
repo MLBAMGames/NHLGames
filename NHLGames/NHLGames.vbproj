@@ -171,6 +171,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="English1.Designer.vb">
+      <DependentUpon>English.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="French.Designer.vb">
+      <DependentUpon>French.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="NHLGamesMetro.Designer.vb">
       <DependentUpon>NHLGamesMetro.vb</DependentUpon>
     </Compile>
@@ -198,6 +208,18 @@
     <Compile Include="InitializeForm.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="English.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>English1.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="French.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>French.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="NHLGamesMetro.resx">
       <DependentUpon>NHLGamesMetro.vb</DependentUpon>
     </EmbeddedResource>
@@ -364,6 +386,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="res\images\bs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MLBAMGames.Library\MLBAMGames.Library.vbproj">
+      <Project>{2d251417-09ce-429d-bbe3-7111318266f4}</Project>
+      <Name>MLBAMGames.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

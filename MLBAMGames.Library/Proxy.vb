@@ -1,7 +1,6 @@
 ﻿Imports System.IO
 Imports System.Net
 Imports MLBAMGames.Library.My.Resources
-Imports NHLGames.My.Resources
 
 Namespace Utilities
     Public Class Proxy
@@ -10,7 +9,7 @@ Namespace Utilities
         Private Const _stringToFind = "[MLBAMProxy] "
         Private Const _exeName = "go-mlbam-proxy.exe"
         Public ReadOnly port As String = If(Instance.Form.GetSetting("ProxyPort").ToString(), "17070")
-        Private ReadOnly _folderPath As String = Path.Combine(Application.StartupPath, "proxy")
+        Private ReadOnly _folderPath As String = Path.Combine(Parameters.StartupPath, "proxy")
         Public Shared MLBAMProxy As Proxy
         Private _pathToProxy As String = String.Empty
 

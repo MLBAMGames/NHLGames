@@ -16,13 +16,13 @@ Namespace Utilities
                 ' Make the file RW
                 attributes = RemoveAttribute(attributes, FileAttributes.[ReadOnly])
                 File.SetAttributes(path, attributes)
-                Console.WriteLine(English.msgRemoveReadOnly, path)
+                Console.WriteLine(Lang.EnglishRmText.GetString("msgRemoveReadOnly"), path)
             End If
         End Sub
 
         Public Shared Sub AddReadonly(path As String)
             File.SetAttributes(path, File.GetAttributes(path) Or FileAttributes.ReadOnly)
-            Console.WriteLine(English.msgAddReadOnly, path)
+            Console.WriteLine(Lang.EnglishRmText.GetString("msgAddReadOnly"), path)
         End Sub
 
         Private Shared Function RemoveAttribute(attributes As FileAttributes, attributesToRemove As FileAttributes) _
@@ -42,7 +42,7 @@ Namespace Utilities
 
                 Return True
             Catch ex As Exception
-                Console.WriteLine(English.errorAccessPath, ex.Message)
+                Console.WriteLine(Lang.EnglishRmText.GetString("errorAccessPath"), ex.Message)
                 Return False
             End Try
         End Function

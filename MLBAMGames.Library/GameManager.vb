@@ -21,7 +21,7 @@ Namespace Objects
             Dim schedule As Schedule = Await Web.GetScheduleAsync(gameDate)
 
             If schedule Is Nothing Then
-                Console.WriteLine(English.errorFetchingGames)
+                Console.WriteLine(Lang.EnglishRmText.GetString("errorFetchingGames"))
                 Return Nothing
             End If
 
@@ -95,7 +95,7 @@ Namespace Objects
                                          End Function)
 
                             If streamType = StreamTypeEnum.Unknown Then
-                                Console.WriteLine(English.errorStreamTypeUnknown, currentGame.AwayAbbrev,
+                                Console.WriteLine(Lang.EnglishRmText.GetString("errorStreamTypeUnknown"), currentGame.AwayAbbrev,
                                                     currentGame.HomeAbbrev,
                                                     feed.mediaFeedType,
                                                     feed.feedName)
@@ -119,7 +119,7 @@ Namespace Objects
             Try
                 Await Task.WhenAll(lstStreamsTask).ContinueWith(Sub(x) x.Dispose())
             Catch ex As AggregateException
-                Console.WriteLine(English.errorGeneral, $"Getting streams in manager", ex.Message)
+                Console.WriteLine(Lang.EnglishRmText.GetString("errorGeneral"), $"Getting streams in manager", ex.Message)
             End Try
 
             Return gamesArray
@@ -140,7 +140,7 @@ Namespace Objects
             gs.StreamUrl = Await GetGameFeedUrlAsync(gs)
 
             If gs.StreamUrl.Equals(String.Empty) Then
-                Console.WriteLine(English.msgGettingStreamFailed, gs.Title)
+                Console.WriteLine(Lang.EnglishRmText.GetString("msgGettingStreamFailed"), gs.Title)
             End If
 
             Return gs

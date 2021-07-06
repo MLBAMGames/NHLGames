@@ -45,8 +45,8 @@ Namespace Utilities
             Dim progressStep As Integer = (Parameters.SpnLoadingMaxValue) / (lstValidLines.Count + 1)
 
 
-            Console.WriteLine(English.msgStreaming, args.GameTitle, args.Stream.Network, args.PlayerType.ToString())
-            Console.WriteLine(English.msgStartingStreamer, args.ToString(True))
+            Console.WriteLine(Lang.EnglishRmText.GetString("msgStreaming"), args.GameTitle, args.Stream.Network, args.PlayerType.ToString())
+            Console.WriteLine(Lang.EnglishRmText.GetString("msgStartingStreamer"), args.ToString(True))
 
             Dim procStreaming = New Process() With {.StartInfo =
                     New ProcessStartInfo With {
