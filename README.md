@@ -1,4 +1,4 @@
-[![image](https://user-images.githubusercontent.com/23088305/39225217-073f7dc8-4819-11e8-86f8-bcfdbc395d10.png)](http://nhlgames.github.io/NHLGames/)
+[![image](https://raw.githubusercontent.com/NHLGames/NHLGames/master/psd/nhlgames_title.png)](http://nhlgames.github.io/NHLGames/)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/nhlgames/nhlgames?style=flat-square)](https://www.github.com/NHLGames/NHLGames/releases/latest)
 [![GitHub all releases](https://img.shields.io/github/downloads/NHLGames/NHLGames/total?style=flat-square)](https://www.github.com/NHLGames/NHLGames/releases/latest)
