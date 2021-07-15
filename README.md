@@ -1,10 +1,10 @@
-[![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/psd/nhlgames_title.png)](http://mlbamgames.github.io/NHLGames/)
+[![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/nhlgames.png)](http://mlbamgames.github.io/NHLGames)
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/mlbamgames/nhlgames?style=flat-square)](https://www.github.com/MLBAMGames/NHLGames/releases/latest)
 [![GitHub all releases](https://img.shields.io/github/downloads/MLBAMGames/NHLGames/total?style=flat-square)](https://www.github.com/MLBAMGames/NHLGames/releases/latest)
 [![Windows](https://img.shields.io/badge/plateform-windows-inactive?style=flat-square)](https://www.github.com/MLBAMGames/NHLGames/releases/latest)
 [![Subreddit subscribers](https://img.shields.io/reddit/subreddit-subscribers/nhl_games?style=flat-square)](https://www.reddit.com/r/nhl_games)
-[![Status](https://mlbam-games-status.herokuapp.com/us/badge)](https://mlbamgames.github.io/nhl-games-status/)
+[![Status](https://nhl-games-status.herokuapp.com/us/badge)](https://mlbamgames.github.io/nhl-games-status/)
 
 Tool to watch NHL games streams in High Definition
 
@@ -13,7 +13,7 @@ Choose a game.
 Choose a stream.  
 Enjoy!
 
-![image](https://user-images.githubusercontent.com/23088305/123110157-d3509580-d409-11eb-9527-5df8bd888807.png)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/ui.png)
 
 ## _Index_
 
@@ -83,7 +83,7 @@ Everytime you launch NHLGames it will search for today's games.
 
 If you want to watch past games, use the calendar or use the arrows to navigate through the days.
 
-![image](https://user-images.githubusercontent.com/23088305/32304708-b0bf16f2-bf47-11e7-99f7-51c9dcb2382f.png)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/navigation-bar.png)
 
 Use the refresh button (right side) to refresh the current day's games.
 
@@ -93,12 +93,12 @@ Game panels will have a different frame color based on their game status (schedu
 
 Games broadcasting will be shown with a blue border:
 
-![image](https://user-images.githubusercontent.com/23088305/52686505-fd314d80-2f1b-11e9-83a7-17bf80997cc8.png)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/game-live-panel.png)
 
 Other games (ended or scheduled) are grey:
 
-![image](https://user-images.githubusercontent.com/23088305/52686420-99a72000-2f1b-11e9-93a4-5df0f85c6a1d.png)
-![image](https://user-images.githubusercontent.com/23088305/52686434-b5aac180-2f1b-11e9-9eaa-abe31e889902.png)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/game-old-panel-spoiler.png)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/game-old-panel.png)
 
 Features on the panel:
 
@@ -145,13 +145,13 @@ The selected value will define which video quality will be sent to your media pl
 
 The Rewind/Replay feature is only available for **Live games only** and it's good way to **prevent a live stream from lagging** because you set the stream _X_ minutes behind so the delay gives you a nice buffer.
 
-If you see a blue game panel with a ![image](https://user-images.githubusercontent.com/23088305/38781081-37d9d68a-40ae-11e8-8c37-50388470b299.png) icon in the left corner that means you will have access to the Replay or Rewind feature. To use the feature, you have click on the icon (top-left corner of the game panel), and click on a stream to start watching.
+If you see a blue game panel with a ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/live-button.png) icon in the left corner that means you will have access to the Replay or Rewind feature. To use the feature, you have click on the icon (top-left corner of the game panel), and click on a stream to start watching.
 
-- ![image](https://user-images.githubusercontent.com/23088305/38781195-9eecf626-40af-11e8-85fb-857c7d50d385.png) Rewind: click it once.
-- ![image](https://user-images.githubusercontent.com/23088305/38781187-9418e818-40af-11e8-86df-d8025473574c.png) Replay: click it twice.
-- ![image](https://user-images.githubusercontent.com/23088305/38781081-37d9d68a-40ae-11e8-8c37-50388470b299.png) Live (default): Click it three times to set it back to Live.
+- ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/rewind-button.png) Rewind: click it once.
+- ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/replay-button.png) Replay: click it twice.
+- ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/live-button.png) Live (default): Click it three times to set it back to Live.
 
-![image](https://user-images.githubusercontent.com/23088305/35660550-a8ccfe3e-06da-11e8-974c-141f6d3b3d31.gif)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/game-live-panel-actions.gif)
 
 If you use the rewind or replay feature and you want to change the default behaviour, you can set your preferences here.
 
@@ -167,7 +167,7 @@ If Replay is selected, it will start the stream from the selected value
 
 If Rewind is selected, it will use the slider value to set the stream behind the live stream.
 
-![image](https://user-images.githubusercontent.com/23088305/52688428-76cd3980-2f24-11e9-944c-f1990ad7bb6a.png)
+![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/track-bar-live-rewind.png)
 
 > _NOTE: If you use the rewind slider in settings, but you set it before game time and the stream has no data at this time, it might start from live._
 
@@ -203,7 +203,7 @@ NHLGames supports 3 media players:
 
 If you don't have or want VLC/MPC players, use the default media player to watch games. Make sure you select MPV as the default player.
 
-If you had previously installed VLC or MPC, NHLGames should find it automatically if you installed it in Program Files. Otherwise you will have to browse ![image](https://cloud.githubusercontent.com/assets/23088305/25557239/b99ec37a-2cdb-11e7-8c27-d8b563128e8d.png) your computer and get the path to the .EXE file.
+If you had previously installed VLC or MPC, NHLGames should find it automatically if you installed it in Program Files. Otherwise you will have to browse ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/dotdot.png) your computer and get the path to the .EXE file.
 
 If you don't have one of these players installed, use the links on the right to download it.
 
@@ -261,15 +261,13 @@ Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side ba
 
 > #### [Wiki and Support](https://github.com/MLBAMGames/NHLGames/wiki)
 
-
 If you think that the app does not work or is down, please check if our services are up :
 
 > #### [Server Status](https://jwallet.github.io/nhl-games-status/)
 
-
 Support by the reddit community :
 
-> #### [Subreddit](https://www.reddit.com/r/nhl_games)  
+> #### [Subreddit](https://www.reddit.com/r/nhl_games)
 
 # _Contribute_
 
@@ -285,6 +283,7 @@ Donate via Bitcoin: `17uSfctCE4n5uLAHqZQEozqEiLafSaUgQL`
 # _Download_
 
 In the _assets_ section of the release, download the `.zip` archive:
+
 - **Complete**: If you never downloaded NHLGames before, or you want to start fresh.
 - **Simplified**: If you already have MPV latest version and StreamLink apps on your PC.
 
