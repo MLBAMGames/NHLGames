@@ -227,7 +227,7 @@ More can be added, but we are waiting for contributions.
 
 Contribute:
 
-> If you want to contribute. Translate the file [`MLBAMGames/NHLGames/English.resx`](https://github.com/MLBAMGames/MLBAMGames/NHLGames/English.resx). It can be modified in Visual Studio, remove any lines tagged as Console lines (these are not translated), rename the file and open a Pull Request.
+> If you want to contribute. Translate the file [`MLBAMGames/NHLGames/English.resx`](https://github.com/MLBAMGames/MLBAMGames/blob/main/NHLGames/English.resx). It can be modified in Visual Studio, remove any lines tagged as Console lines (these are not translated), rename the file and open a Pull Request.
 
 ### _Arguments_
 
@@ -271,7 +271,7 @@ Support by the reddit community :
 
 # _Contribute_
 
-NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute : [Follow the guidelines](https://github.com/MLBAMGames/MLBAMGames/CONTRIBUTING.md)
+NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute : [Follow the guidelines](https://github.com/MLBAMGames/MLBAMGames/blob/main/CONTRIBUTING.md)
 
 # _Donation_
 
