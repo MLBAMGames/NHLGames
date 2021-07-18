@@ -71,7 +71,7 @@ If you choose the simplified version instead of the complete version, you'll nee
 
 ## _Is this app safe?_
 
-Yes, it is. The server only responds in plain text and won't harm your PC. You can verify yourself by inspecting the code.
+Yes, it is. The server only responds in plain text and won't harm your PC. You can verify yourself by inspecting [the code](https://github.com/MLBAMGames/MLBAMGames).
 
 # _Documentation_
 
