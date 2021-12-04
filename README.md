@@ -50,18 +50,18 @@ Enjoy!
 
 ## _Requirements_
 
-NHLGames is an app built on .NET Framework 4.5. It's only available on Windows (Windows XP, Vista are not supported). Any CPU architecture is supported (x86/x64).
+NHLGames is an app built on .NET Framework 4.5. It's only available on Windows (Windows XP and Windows Vista are unsupported). Any CPU architecture is supported (x86/x64).
 
 If you run NHLGames on Windows 7 you will probably need to install:
 
 - [.NET Framework 4.5](https://www.microsoft.com/en-ca/download/details.aspx?id=30653)
 
-In the release page, [download](#download) the complete version includes:
+In the release page, [downloading](#download) the complete version includes:
 
 - Our proxy [mlbam-proxy](https://github.com/MLBAMGames/go-mlbam-proxy)
 - Our Windows-Hosts-File editor [mlbam-host](https://github.com/MLBAMGames/go-mlbam-hosts) (if you have issues with our proxy)
-- Our app upater
-- Media player MPV
+- Our app updater
+- Media player [MPV](https://mpv.io/installation/)
 - Streamer Streamlink
 
 If you choose the simplified version instead of the complete version, you'll need:
@@ -71,21 +71,21 @@ If you choose the simplified version instead of the complete version, you'll nee
 
 ## _Is this app safe?_
 
-Yes, it is. The server only responds in plain text and won't harm your PC. You can verify yourself by inspecting [the code](https://github.com/MLBAMGames/MLBAMGames).
+Yes, it is. The server only responds in plain text and won't harm your PC. You can verify this yourself by inspecting [the code](https://github.com/MLBAMGames/MLBAMGames).
 
 # _Documentation_
 
-Everytime you launch NHLGames it will search for today's games.
+Every time you launch NHLGames, it will search for today's games.
 
 ## _Games_
 
 ### _Navigation bar_
 
-If you want to watch past games, use the calendar or use the arrows to navigate through the days.
+If you want to watch past games, use the calendar or the arrows to navigate through the days.
 
 ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/navigation-bar.png)
 
-Use the refresh button (right side) to refresh the current day's games.
+Use the refresh button (far right) to refresh the current day's games.
 
 ### _Game panel_
 
@@ -110,13 +110,13 @@ Game panels can be customized to show or hide information. It can be changed in 
 
 ## _Standings_
 
-It will show League, Conference, Division or Wild card standings for any season. You can also display the league standing for all teams in Games tab by turning ON the option **Standing rank** in Settings tab.
+It will show League, Conference, Division, or Wild Card standings for any season. You can also display the league standing for all teams in the Games tab by turning ON **Standing rank** in the Settings tab.
 
 ## _Settings_
 
 ### _Customize Game panels_
 
-NHLGames gives you options to change how a game panel will appear.
+NHLGames includes options to change a game panel's appearance.
 
 | Option                    | Required game statuses to work | Default value |
 | :------------------------ | :----------------------------- | :-----------: |
@@ -124,13 +124,13 @@ NHLGames gives you options to change how a game panel will appear.
 | Live remaining time       | Live games                     |     `ON`      |
 | Live scores               | Live games                     |     `OFF`     |
 | Series record             | Live and past series games     |     `ON`      |
-| Teams city abbreviation   | Upcoming, live and past games  |     `OFF`     |
+| Teams city abbreviation   | Upcoming, live, and past games  |     `OFF`     |
 | Final scores              | Past games                     |     `OFF`     |
 | Standing rank (League)    | All                            |     `OFF`     |
 
 ### _Stream Quality_
 
-The selected value will define which video quality will be sent to your media player, from the worst to the best quality. Selecting the highest quality also means larger files to download :
+The selected value defines the video quality sent to your media player, from the worst to the best quality. Selecting the highest quality also means larger files to download. 
 
 | Name      | Resolution              | Data usage  |
 | :-------- | :---------------------- | :---------: |
@@ -143,9 +143,9 @@ The selected value will define which video quality will be sent to your media pl
 
 ### _Rewind and Replay_
 
-The Rewind/Replay feature is only available for **Live games only** and it's good way to **prevent a live stream from lagging** because you set the stream _X_ minutes behind so the delay gives you a nice buffer.
+The Rewind/Replay feature is available for **Live games only**. You can set the stream _X_ minutes behind, so the delay gives you a nice buffer. This can **prevent a live stream from lagging**. 
 
-If you see a blue game panel with a ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/live-button.png) icon in the left corner that means you will have access to the Replay or Rewind feature. To use the feature, you have click on the icon (top-left corner of the game panel), and click on a stream to start watching.
+If you see a blue game panel with a ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/live-button.png) icon in the left corner, you will have access to the Replay or Rewind feature. To use the feature, click on the icon (top-left corner of the game panel), and click on a stream.
 
 - ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/rewind-button.png) Rewind: click it once.
 - ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/replay-button.png) Replay: click it twice.
@@ -169,7 +169,7 @@ If Rewind is selected, it will use the slider value to set the stream behind the
 
 ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/track-bar-live-rewind.png)
 
-> _NOTE: If you use the rewind slider in settings, but you set it before game time and the stream has no data at this time, it might start from live._
+> _NOTE: If you use the rewind slider but set it before game time and the stream has no data yet, it might start from live._
 
 ### _Content Delivery Network (CDN)_
 
@@ -191,7 +191,7 @@ This drop down list shows all NHLGames server hostnames. If you can't play games
 
 Use the slider to change the proxy port when starting NHLGames.
 
-Remember that if you close NHLGames while watching a stream, it will close the proxy as well and it will kill the stream. Just minimize NHLGames instead while playing.
+Remember that if you close NHLGames while watching a stream, it will close the proxy as well and kill the stream. Just minimize NHLGames instead while playing.
 
 ### _Players_
 
@@ -201,24 +201,24 @@ NHLGames supports 3 media players:
 - [VLC](https://www.videolan.org/vlc/index.html) : a strong and popular cross-platform multimedia player
 - [MPC](https://mpc-hc.org/downloads/) : a light-weight media player
 
-If you don't have or want VLC/MPC players, use the default media player to watch games. Make sure you select MPV as the default player.
+If you don't have or want VLC/MPC, use the default media player to watch games. Make sure you select MPV as the default player.
 
-If you had previously installed VLC or MPC, NHLGames should find it automatically if you installed it in Program Files. Otherwise you will have to browse ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/dotdot.png) your computer and get the path to the .EXE file.
+If you had previously installed VLC or MPC, NHLGames should find it automatically if you installed it in Program Files. Otherwise, you will have to browse ![image](https://raw.githubusercontent.com/MLBAMGames/NHLGames/master/dotdot.png) your computer and get the path to the .EXE file.
 
-If you don't have one of these players installed, use the links on the right to download it.
+If you don't have one of these players installed, use the provided links to download it.
 
 ### _Streamer_
 
-A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to speciy another streamer to be able to stream a game.
+A streamer is not a media player. It's an application that NHLGames uses to get the stream from the Internet and parse it to your media player. The default streamer that NHLGames provided can be found in the **Complete** zip. The **Simplified** .zip file does not have any. If you use the Complete package, don't move the provided streamer and media player out of the NHLGames folder. Otherwise, you will have to specify another streamer to be able to stream a game.
 
-- [StreamLink](https://streamlink.github.io/install.html) : recommanded command-line tool that extracts and pipes streams into a media player
+- [StreamLink](https://streamlink.github.io/install.html) : recommended command-line tool that extracts and pipes streams into a media player.
 - [Livestreamer](https://docs.livestreamer.io/install.html) : old and deprecated tiny command-line tool that extracts and pipes streams into a media player. It may takes 60 secs to open a stream.
 
-Follow the link above, download the installer and set the path in NHLGames settings.
+Follow the link above, download the installer, and set the path in NHLGames settings.
 
 ### _Dark Theme_
 
-Renders NHLGames with dark tones. An application restarts is needed for changes to take effect.
+Renders NHLGames with dark tones. Restarting NHLGames is needed for changes to take effect.
 
 ### _Language_
 
@@ -227,28 +227,28 @@ More can be added, but we are waiting for contributions.
 
 Contribute:
 
-> If you want to contribute. Translate the file [`MLBAMGames/NHLGames/English.resx`](https://github.com/MLBAMGames/MLBAMGames/blob/main/NHLGames/English.resx). It can be modified in Visual Studio, remove any lines tagged as Console lines (these are not translated), rename the file and open a Pull Request.
+> If you want to contribute, translate the file [`MLBAMGames/NHLGames/English.resx`](https://github.com/MLBAMGames/MLBAMGames/blob/main/NHLGames/English.resx). It can be modified in Visual Studio. Remove any lines tagged as Console lines (these are not translated), rename the file, and open a Pull Request.
 
 ### _Arguments_
 
 If you wish to customise the way your player or the streamer opens, turn on one of these options and add your arguments:
 
-- Player args : If you want to add more arguments (commands) to be sent to your media player with the default args that NHLGames send.
-- Streamer args : If you want to add more arguments (commands) to be sent to streamlink with the default args that NHLGames send.
+- Player args: If you want to add more arguments (commands) to be sent to your media player with the default args that NHLGames sends.
+- Streamer args: If you want to add more arguments (commands) to be sent to streamlink with the default args that NHLGames sends.
 
 ### _Ad Detection_
 
-NHLGames doesn't use any Ad Detection by default, but you can activate it and select the app you want to use during commercials. If you don't use any, it's better if you keept the Ad Detection disabled.
+NHLGames doesn't use any Ad Detection by default, but you can activate it and select the app you want to use during commercials. If you don't use any, it's better if you keep the Ad Detection disabled.
 
 Ad detection supports these applications:
 
 - Media player: If you want to play music/video during ads from another media player.
   - Always play next media: It won't pause your media player when the ad ends, but it will skip to the media (song/video).
-  - Bind to Spotify: If you want to use Spotify app, but Windows use another one instead, enabled this feature to use Spotify hotkeys.
-  - Force to start: It will open Spotify when you start NHLGames, or enable the media app detector.
-  - Media control delay: By default 100ms, but can be increased if your media player doesn't play or pause at the right time, 1000ms = 1 second btw.
+  - Bind to Spotify: If you want to use Spotify app but have windows use another one instead, enable this feature to use Spotify hotkeys.
+  - Force to start: It will open Spotify when you start NHLGames or enable the media app detector.
+  - Media control delay: By default 100ms, but can be increased if your media player doesn't play or pause at the right time (1000ms = 1 second).
 - OBS Scene Changer : If you want to switch between windows when an ad hits.
-  - Ad ending hotkey: Set the same hotkey that the one in OBS to display the window that the game is on.
+  - Ad ending hotkey: Set the same hotkey that you use in OBS to display the window that the game is on.
   - Ad starting hotkey: Set the same hotkey that you use in OBS to display the window when a commercial plays.
 
 ## _Console_
@@ -257,21 +257,21 @@ Go to this tab to see everything that NHLGames logs. Any error or warning will s
 
 # _Wiki and Support_
 
-Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side bar, on the right, to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/MLBAMGames/NHLGames/issues) :
+Having an issue with NHLGames? Go to our Wiki to find a fix. Look at the side bar on the right to navigate between known issues. If you can't find it, feel free to open an [issue](https://github.com/MLBAMGames/NHLGames/issues):
 
 > #### [Wiki and Support](https://github.com/MLBAMGames/NHLGames/wiki)
 
-If you think that the app does not work or is down, please check if our services are up :
+If you think that the app does not work or is down, please check if our services are up:
 
 > #### [Server Status](https://jwallet.github.io/nhl-games-status/)
 
-Support by the reddit community :
+Support from the reddit community:
 
 > #### [Subreddit](https://www.reddit.com/r/nhl_games)
 
 # _Contribute_
 
-NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute : [Follow the guidelines](https://github.com/MLBAMGames/MLBAMGames/blob/main/CONTRIBUTING.md)
+NHLGames is coded in VB.NET using Visual Studio and .Net Framework 4.5. If you want to contribute, please make sure to [follow the guidelines](https://github.com/MLBAMGames/MLBAMGames/blob/main/CONTRIBUTING.md)
 
 # _Donation_
 
@@ -282,7 +282,7 @@ Donate via Bitcoin: `17uSfctCE4n5uLAHqZQEozqEiLafSaUgQL`
 
 In the _assets_ section of the release, download the `.zip` archive:
 
-- **Complete**: If you never downloaded NHLGames before, or you want to start fresh.
+- **Complete**: If you never downloaded NHLGames before or want to start fresh.
 - **Simplified**: If you already have MPV latest version and StreamLink apps on your PC.
 
 > Simplified version is x10 lighter than the Complete one.
